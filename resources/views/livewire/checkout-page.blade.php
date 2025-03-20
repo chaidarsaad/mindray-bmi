@@ -54,10 +54,10 @@
                                         </figure>
                                         <div class="content">
                                             <div class="info">
-                                                <p class="name">Ribbed modal T-shirt</p>
-                                                <span class="variant">Brown / M</span>
+                                                <p class="name">Mindray
+                                                    BeneHeart R3 Electrocardiograph</p>
                                             </div>
-                                            <span class="price">$25.00</span>
+                                            {{-- <span class="price">$25.00</span> --}}
                                         </div>
                                     </li>
                                     <li class="checkout-product-item">
@@ -68,17 +68,18 @@
                                         </figure>
                                         <div class="content">
                                             <div class="info">
-                                                <p class="name">Vanilla White</p>
+                                                <p class="name">Mindray
+                                                    BeneHeart R3 Electrocardiograph</p>
                                             </div>
-                                            <span class="price">$35.00</span>
+                                            {{-- <span class="price">$35.00</span> --}}
                                         </div>
                                     </li>
                                 </ul>
 
-                                <div class="d-flex justify-content-between line pb_20">
+                                {{-- <div class="d-flex justify-content-between line pb_20">
                                     <h6 class="fw-5">Total</h6>
                                     <h6 class="total fw-5">$122.00</h6>
-                                </div>
+                                </div> --}}
                                 <button
                                     class="tf-btn radius-3 btn-fill btn-icon animate-hover-btn justify-content-center">Proses
                                     Pesanan</button>

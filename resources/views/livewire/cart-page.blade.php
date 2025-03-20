@@ -44,8 +44,8 @@
                                                     alt="img-product">
                                             </a>
                                             <div class="cart-info">
-                                                <a href="product-detail.html" class="cart-title link">Oversized Printed
-                                                    T-shirt</a>
+                                                <a href="product-detail.html" class="cart-title link">Mindray
+                                                    BeneHeart R3 Electrocardiograph</a>
                                                 {{-- <div class="cart-meta-variant">White / M</div> --}}
                                                 <span class="remove-cart link remove text-danger">Hapus</span>
                                             </div>
