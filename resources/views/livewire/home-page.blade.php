@@ -16,7 +16,7 @@
                     <div class="swiper-slide">
                         <div class="wrap-slider">
                             <img src="{{ asset('assets/images/slider/slider1.png') }}" alt="fashion-slideshow" />
-                            <div class="box-content">
+                            {{-- <div class="box-content">
                                 <div class="container">
                                     <h1 class="fade-item fade-item-1">
                                         Glamorous<br />Glam
@@ -28,13 +28,13 @@
                                         class="fade-item fade-item-3 tf-btn btn-fill animate-hover-btn btn-xl radius-3"><span>Detail</span><i
                                             class="icon icon-arrow-right"></i></a>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="wrap-slider">
                             <img src="{{ asset('assets/images/slider/slider1.png') }}" alt="fashion-slideshow" />
-                            <div class="box-content">
+                            {{-- <div class="box-content">
                                 <div class="container">
                                     <h1 class="fade-item fade-item-1">
                                         Simple <br class="md-hidden" />Style
@@ -46,13 +46,13 @@
                                         class="fade-item fade-item-3 tf-btn btn-fill animate-hover-btn btn-xl radius-3"><span>Shop
                                             collection</span><i class="icon icon-arrow-right"></i></a>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="wrap-slider">
                             <img src="{{ asset('assets/images/slider/slider1.png') }}" alt="fashion-slideshow" />
-                            <div class="box-content">
+                            {{-- <div class="box-content">
                                 <div class="container">
                                     <h1 class="fade-item fade-item-1">Glamorous<br />Glam</h1>
                                     <p class="fade-item fade-item-2">
@@ -62,7 +62,7 @@
                                         class="fade-item fade-item-3 tf-btn btn-fill animate-hover-btn btn-xl radius-3"><span>Shop
                                             collection</span><i class="icon icon-arrow-right"></i></a>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
