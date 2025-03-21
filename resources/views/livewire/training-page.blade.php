@@ -22,8 +22,8 @@
                             <div class="blog-article-item">
                                 <div class="article-thumb">
                                     <a href="{{ route('detail.training') }}" wire:navigate.ignore>
-                                        <img class="lazyload" data-src="{{ asset('assets/images/blog/blog-2.jpg') }}"
-                                            src="{{ asset('assets/images/blog/blog-2.jpg') }}" alt="img-blog" />
+                                        <img class="lazyload" data-src="{{ asset('assets/images/blog/wxp.webp') }}"
+                                            src="{{ asset('assets/images/blog/wxp.webp') }}" alt="img-blog" />
                                     </a>
                                 </div>
                                 <div class="article-content">
@@ -41,8 +41,8 @@
                             <div class="blog-article-item">
                                 <div class="article-thumb">
                                     <a href="{{ route('detail.training') }}" wire:navigate.ignore>
-                                        <img class="lazyload" data-src="{{ asset('assets/images/blog/blog-2.jpg') }}"
-                                            src="{{ asset('assets/images/blog/blog-2.jpg') }}" alt="img-blog" />
+                                        <img class="lazyload" data-src="{{ asset('assets/images/blog/wxp.webp') }}"
+                                            src="{{ asset('assets/images/blog/wxp.webp') }}" alt="img-blog" />
                                     </a>
                                 </div>
                                 <div class="article-content">
@@ -60,8 +60,8 @@
                             <div class="blog-article-item">
                                 <div class="article-thumb">
                                     <a href="{{ route('detail.training') }}" wire:navigate.ignore>
-                                        <img class="lazyload" data-src="{{ asset('assets/images/blog/blog-2.jpg') }}"
-                                            src="{{ asset('assets/images/blog/blog-2.jpg') }}" alt="img-blog" />
+                                        <img class="lazyload" data-src="{{ asset('assets/images/blog/wxp.webp') }}"
+                                            src="{{ asset('assets/images/blog/wxp.webp') }}" alt="img-blog" />
                                     </a>
                                 </div>
                                 <div class="article-content">
