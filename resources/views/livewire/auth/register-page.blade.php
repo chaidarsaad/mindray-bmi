@@ -17,7 +17,7 @@
             <div class="form-register-wrap">
                 <a href="{{ route('home') }}" wire:navigate.ignore
                     style="width: 120px; display: block; margin: 0 auto; margin-bottom: 18px;">
-                    <img src="{{ asset('assets/images/logo/bmi.png') }}" alt="logo" />
+                    <img src="{{ asset('assets/images/logo/bmi.webp') }}" alt="logo" />
                 </a>
                 <h5 class="mb_18 text-center">Daftar</h5>
                 <div>

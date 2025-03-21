@@ -7,7 +7,7 @@
                         {{-- <div class="col-xl-6 col-md-8 col-12"> --}}
                         <div class="footer-infor">
                             <div class="footer-logo">
-                                <img src="{{ asset('assets/images/logo/bmi.png') }}" alt="" class="logo-bmi" />
+                                <img src="{{ asset('assets/images/logo/bmi.webp') }}" alt="" class="logo-bmi" />
                             </div>
                             <ul class="list-unstyled">
                                 <li>
