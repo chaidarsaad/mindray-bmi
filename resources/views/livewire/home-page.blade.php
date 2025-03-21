@@ -15,7 +15,7 @@
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <div class="wrap-slider">
-                            <img src="{{ asset('assets/images/slider/slider1.png') }}" alt="fashion-slideshow" />
+                            <img src="{{ asset('assets/images/slider/slider1.webp') }}" alt="fashion-slideshow" />
                             {{-- <div class="box-content">
                                 <div class="container">
                                     <h1 class="fade-item fade-item-1">
@@ -33,7 +33,7 @@
                     </div>
                     <div class="swiper-slide">
                         <div class="wrap-slider">
-                            <img src="{{ asset('assets/images/slider/slider1.png') }}" alt="fashion-slideshow" />
+                            <img src="{{ asset('assets/images/slider/slider1.webp') }}" alt="fashion-slideshow" />
                             {{-- <div class="box-content">
                                 <div class="container">
                                     <h1 class="fade-item fade-item-1">
@@ -51,7 +51,7 @@
                     </div>
                     <div class="swiper-slide">
                         <div class="wrap-slider">
-                            <img src="{{ asset('assets/images/slider/slider1.png') }}" alt="fashion-slideshow" />
+                            <img src="{{ asset('assets/images/slider/slider1.webp') }}" alt="fashion-slideshow" />
                             {{-- <div class="box-content">
                                 <div class="container">
                                     <h1 class="fade-item fade-item-1">Glamorous<br />Glam</h1>
