@@ -23,7 +23,8 @@
                             <a href="{{ route('home') }}" wire:navigate.ignore class="item-link">Beranda</a>
                         </li>
                         <li class="menu-item {{ request()->routeIs('usg.all') ? 'active' : '' }}">
-                            <a href="{{ route('usg.all') }}" wire:navigate.ignore class="item-link">Alat USG</a>
+                            <a href="{{ route('usg.all') }}" wire:navigate.ignore class="item-link">Produk USG
+                                Mindray</a>
                         </li>
                         <li class="menu-item {{ request()->routeIs('training.all') ? 'active' : '' }}">
                             <a href="{{ route('training.all') }}" wire:navigate.ignore class="item-link">Pelatihan</a>

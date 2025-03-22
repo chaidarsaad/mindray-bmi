@@ -102,8 +102,8 @@
                                             <a href="{{ route('detail.category') }}" wire:navigate.ignore
                                                 class="collection-image img-style">
                                                 <img class="lazyload"
-                                                    data-src="{{ asset('assets/images/collections/kategori.png') }}"
-                                                    src="{{ asset('assets/images/collections/kategori.png') }}"
+                                                    data-src="{{ asset('assets/images/collections/kategori.webp') }}"
+                                                    src="{{ asset('assets/images/collections/kategori.webp') }}"
                                                     alt="collection-img" />
                                             </a>
                                             <div class="collection-content">
@@ -120,8 +120,8 @@
                                             <a href="{{ route('detail.category') }}" wire:navigate.ignore
                                                 class="collection-image img-style">
                                                 <img class="lazyload"
-                                                    data-src="{{ asset('assets/images/collections/kategori.png') }}"
-                                                    src="{{ asset('assets/images/collections/kategori.png') }}"
+                                                    data-src="{{ asset('assets/images/collections/kategori.webp') }}"
+                                                    src="{{ asset('assets/images/collections/kategori.webp') }}"
                                                     alt="collection-img" />
                                             </a>
                                             <div class="collection-content">
@@ -138,8 +138,8 @@
                                             <a href="{{ route('detail.category') }}" wire:navigate.ignore
                                                 class="collection-image img-style">
                                                 <img class="lazyload"
-                                                    data-src="{{ asset('assets/images/collections/kategori.png') }}"
-                                                    src="{{ asset('assets/images/collections/kategori.png') }}"
+                                                    data-src="{{ asset('assets/images/collections/kategori.webp') }}"
+                                                    src="{{ asset('assets/images/collections/kategori.webp') }}"
                                                     alt="collection-img" />
                                             </a>
                                             <div class="collection-content">
@@ -156,8 +156,8 @@
                                             <a href="{{ route('detail.category') }}" wire:navigate.ignore
                                                 class="collection-image img-style">
                                                 <img class="lazyload"
-                                                    data-src="{{ asset('assets/images/collections/kategori.png') }}"
-                                                    src="{{ asset('assets/images/collections/kategori.png') }}"
+                                                    data-src="{{ asset('assets/images/collections/kategori.webp') }}"
+                                                    src="{{ asset('assets/images/collections/kategori.webp') }}"
                                                     alt="collection-img" />
                                             </a>
                                             <div class="collection-content">
@@ -313,7 +313,7 @@
         <!-- Pelatihan -->
         <section class="flat-spacing-6 pb_0">
             <div class="flat-title wow fadeInUp" data-wow-delay="0s">
-                <span class="title">Pelatihan Terbaru</span>
+                <span class="title">Pelatihan USG Terbaru</span>
                 <a href="{{ route('training.all') }}" wire:navigate.ignore class="tf-btn btn-line">
                     <p class="sub-title">
                         Lihat Semua Pelatihan<i class="icon icon-arrow1-top-left"></i>
@@ -692,3 +692,21 @@
     @livewire('components.sidebar-shopping-cart')
     <!-- /shoppingCart -->
 </div>
+
+@push('scripts')
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let message = @json(session('notify-error'));
+
+            if (message) {
+                Toastify({
+                    text: message,
+                    duration: 3000,
+                    gravity: "top",
+                    position: "center",
+                    backgroundColor: "red",
+                }).showToast();
+            }
+        });
+    </script>
+@endpush

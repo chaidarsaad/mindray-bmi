@@ -7,35 +7,58 @@
                         {{-- <div class="col-xl-6 col-md-8 col-12"> --}}
                         <div class="footer-infor">
                             <div class="footer-logo">
-                                <img src="{{ asset('assets/images/logo/bmi.webp') }}" alt="" class="logo-bmi" />
+                                <img src="{{ $about->logo ? Storage::url($about->logo) : asset('assets/images/logo/bmi.webp') }}"
+                                    alt="Logo" class="logo-bmi" />
                             </div>
+
                             <ul class="list-unstyled">
                                 <li>
+                                    <p>{{ $about->trusted ?: '' }}</p>
+                                </li>
+                                <li>
                                     <p>Alamat: <a href="">
-                                            Komp. Ponpes Al Islam, blok. CDMA, No. 37,
-                                            des. Cimekar, kec. Cileunyi, kab. Bandung, Jawa Barat,
-                                            Bandung 40363
+                                            {{ $about->address }}
                                         </a>
                                     </p>
                                 </li>
                                 <li>
-                                    <p>Email: <a href="mailto:binamedikacom@gmail.com">binamedikacom@gmail.com</a></p>
+                                    <p>Email: <a href="mailto:{{ $about->email }}">{{ $about->email }}</a></p>
                                 </li>
                                 <li>
-                                    <p>No HP: <a href="tel:+62882240758084">+62-822-4075-8084</a></p>
+                                    <p>No HP: <a
+                                            href="tel:+62{{ $about->phone_number }}">+62{{ $about->phone_number }}</a>
+                                    </p>
                                 </li>
                             </ul>
-                            <a href="#" class="btn btn-outline-primary mt-2">Google Maps<i
-                                    class="ms-2 fa-solid fa-map"></i></a>
                             <ul class="d-flex justify-content-center list-unstyled gap-3 mt-3">
-                                <li>
-                                    <a href="#" class="btn btn-outline-secondary rounded-circle"><i
-                                            class="fa-brands fa-instagram"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="btn btn-outline-success rounded-circle"><i
-                                            class="fa-brands fa-whatsapp"></i></a>
-                                </li>
+                                @if (!empty($about->instagram))
+                                    <li>
+                                        <a href="{{ $about->instagram }}" target="_blank"
+                                            class="btn btn-outline-secondary rounded-circle"><i
+                                                class="fa-brands fa-instagram"></i></a>
+                                    </li>
+                                @endif
+                                @if (!empty($about->facebook))
+                                    <li>
+                                        <a href="{{ $about->facebook }}" target="_blank"
+                                            class="btn btn-outline-success rounded-circle"><i
+                                                class="fa-brands fa-facebook"></i></a>
+                                    </li>
+                                @endif
+                                @if (!empty($about->phone_number))
+                                    <li>
+                                        <a href="{{ $about->phone_number }}" target="_blank"
+                                            class="btn btn-outline-secondary rounded-circle"><i
+                                                class="fa-brands fa-whatsapp"></i></a>
+                                    </li>
+                                @endif
+                                @if (!empty($about->youtube))
+                                    <li>
+                                        <a href="{{ $about->youtube }}" target="_blank"
+                                            class="btn btn-outline-success rounded-circle"><i
+                                                class="fa-brands fa-youtube"></i></a>
+                                    </li>
+                                @endif
                             </ul>
                         </div>
                     </div>

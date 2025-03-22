@@ -14,7 +14,7 @@ class PageTitle extends Component
         $routeName = Route::currentRouteName();
 
         $this->title = match ($routeName) {
-            'usg.all' => 'Semua Produk',
+            'usg.all' => 'Semua Produk USG Mindray',
             'training.all' => 'Semua Pelatihan',
             'article.all' => 'Semua Artikel',
             'checkout' => 'Proses Pesanan',

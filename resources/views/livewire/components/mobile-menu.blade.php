@@ -44,7 +44,6 @@
                             Cileunyi, kab. Bandung, Jawa Barat, Bandung 40363
                         </b>
                     </li>
-                    <a href="#" class="text-need">Google Maps</a>
 
                     <li>Email: <b>binamedikacom@gmail.com</b></li>
                     <li>No HP: <b>+62-822-4075-8084</b></li>

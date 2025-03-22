@@ -55,9 +55,9 @@ class LoginPage extends Component
 
             $user = Auth::user();
 
-            // if ($user->is_admin) {
-            //     return redirect()->route('filament.admin.pages.dashboard');
-            // }
+            if ($user->roles->isNotEmpty()) {
+                return redirect()->route('filament.admin.pages.dashboard');
+            }
 
             return redirect()->intended(route('home'));
         }
