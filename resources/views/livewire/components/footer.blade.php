@@ -7,8 +7,12 @@
                         {{-- <div class="col-xl-6 col-md-8 col-12"> --}}
                         <div class="footer-infor">
                             <div class="footer-logo">
-                                <img src="{{ $about->logo ? Storage::url($about->logo) : asset('assets/images/logo/bmi.webp') }}"
-                                    alt="Logo" class="logo-bmi" />
+                                @if (!empty($about->logo))
+                                    <img src="{{ Storage::url($about->logo) }}" alt="" class="logo-bmi" />
+                                @else
+                                    <img src="{{ asset('assets/images/logo/bmi.webp') }}" alt="Default Logo"
+                                        class="logo-bmi" />
+                                @endif
                             </div>
 
                             <ul class="list-unstyled">
