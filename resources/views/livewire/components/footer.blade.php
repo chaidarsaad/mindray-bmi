@@ -22,18 +22,24 @@
                                     @endif
                                 </li>
                                 <li>
-                                    <p>Alamat: <a href="">
-                                            {{ $about->address }}
-                                        </a>
-                                    </p>
+                                    @if (!empty($about->trusted))
+                                        <p>Alamat: <a href="">
+                                                {{ $about->trusted }}
+                                            </a>
+                                        </p>
+                                    @endif
                                 </li>
                                 <li>
-                                    <p>Email: <a href="mailto:{{ $about->email }}">{{ $about->email }}</a></p>
+                                    @if (!empty($about->email))
+                                        <p>Email: <a href="mailto:{{ $about->email }}">{{ $about->email }}</a></p>
+                                    @endif
                                 </li>
                                 <li>
-                                    <p>No HP: <a
-                                            href="tel:+62{{ $about->phone_number }}">+62{{ $about->phone_number }}</a>
-                                    </p>
+                                    @if (!empty($about->phone_number))
+                                        <p>No HP: <a
+                                                href="tel:+62{{ $about->phone_number }}">+62{{ $about->phone_number }}</a>
+                                        </p>
+                                    @endif
                                 </li>
                             </ul>
                             <ul class="d-flex justify-content-center list-unstyled gap-3 mt-3">
