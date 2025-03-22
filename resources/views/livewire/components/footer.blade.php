@@ -17,7 +17,9 @@
 
                             <ul class="list-unstyled">
                                 <li>
-                                    <p>{{ $about->trusted ?: '' }}</p>
+                                    @if (!empty($about->trusted))
+                                        <p>{{ $about->trusted }}</p>
+                                    @endif
                                 </li>
                                 <li>
                                     <p>Alamat: <a href="">
