@@ -22,9 +22,9 @@
                                     @endif
                                 </li>
                                 <li>
-                                    @if (!empty($about->trusted))
+                                    @if (!empty($about->address))
                                         <p>Alamat: <a href="">
-                                                {{ $about->trusted }}
+                                                {{ $about->address }}
                                             </a>
                                         </p>
                                     @endif
