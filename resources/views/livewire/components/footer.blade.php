@@ -59,7 +59,7 @@
                                 @endif
                                 @if (!empty($about->phone_number))
                                     <li>
-                                        <a href="{{ $about->phone_number }}" target="_blank"
+                                        <a href="https://wa.me/{{ $about->phone_number }}" target="_blank"
                                             class="btn btn-outline-secondary rounded-circle"><i
                                                 class="fa-brands fa-whatsapp"></i></a>
                                     </li>
