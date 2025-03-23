@@ -13,7 +13,11 @@
             </div>
             <div class="col-xl-3 col-md-4 col-6">
                 <a href="{{ route('home') }}" wire:navigate.ignore class="logo-header">
-                    <img src="{{ asset('assets/images/logo/bmi.webp') }}" alt="logo" class="logo" />
+                    @if (!empty($about->logo))
+                        <img src="{{ Storage::url($about->logo) }}" alt="logo" class="logo" />
+                    @else
+                        <img src="{{ asset('assets/images/logo/bmi.webp') }}" alt="logo" class="logo" />
+                    @endif
                 </a>
             </div>
             <div class="col-xl-6 tf-md-hidden">

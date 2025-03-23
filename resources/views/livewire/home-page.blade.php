@@ -654,25 +654,7 @@
         <!-- /Icon box -->
 
         <!-- Question -->
-        <section class="flat-spacing-11">
-            <div class="container">
-                <div class="tf-accordion-wrap d-flex justify-content-between">
-                    <div class="content">
-                        <h5 class="mb_24">Pertanyaan</h5>
-                        <div class="flat-accordion style-default has-btns-arrow mb_60">
-                            <div class="flat-toggle active">
-                                <div class="toggle-title active">
-                                    Apakah pengiriman diluar jawa barat ada biaya tambahan?
-                                </div>
-                                <div class="toggle-content">
-                                    <p>Ya, ada biaya tambahan</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        @livewire('components.question')
         <!-- /Question -->
 
         <!-- Footer -->
