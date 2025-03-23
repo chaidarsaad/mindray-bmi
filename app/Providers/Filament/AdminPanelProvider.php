@@ -65,6 +65,7 @@ class AdminPanelProvider extends PanelProvider
             ->userMenuItems([
                 MenuItem::make()
                     ->label('Home')
+                    ->icon('heroicon-o-home')
                     ->url('/', shouldOpenInNewTab: true)
             ])
             ->spa()
