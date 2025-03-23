@@ -9,16 +9,16 @@
 
     {{-- Style --}}
 
-    @include('includes.style')
     @livewireStyles()
+    @include('includes.style')
     @stack('styles')
 </head>
 
 <body class="preload-wrapper">
     {{ $slot }}
 
-    @include('includes.script')
     @livewireScripts
+    @include('includes.script')
     @stack('scripts')
 </body>
 
