@@ -72,7 +72,6 @@ class AccountDetailPage extends Component
 
         $user->save();
 
-        // set form password and password_confirmation to empty
         $this->password = '';
         $this->password_confirmation = '';
 
