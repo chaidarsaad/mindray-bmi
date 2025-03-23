@@ -82,10 +82,12 @@
                 <a href="{{ route('login') }}" wire:navigate.ignore class="site-nav-icon"><i
                         class="icon icon-account"></i>Masuk</a>
             @endauth
-            @if (Auth::user()->roles->isNotEmpty())
-                <a href="{{ route('filament.admin.pages.dashboard') }}" wire:navigate.ignore class="site-nav-icon"><i
-                        class="icon icon-home"></i>Admin</a>
+            @if (Auth::check() && Auth::user()->roles->isNotEmpty())
+                <a href="{{ route('filament.admin.pages.dashboard') }}" wire:navigate.ignore class="site-nav-icon">
+                    <i class="icon icon-home"></i>Admin
+                </a>
             @endif
+
         </div>
     </div>
 </div>
