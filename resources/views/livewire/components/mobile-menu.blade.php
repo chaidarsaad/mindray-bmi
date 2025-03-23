@@ -34,19 +34,43 @@
             </ul>
 
             <div class="mb-other-content">
-                <div class="mb-notice">
+                {{-- <div class="mb-notice">
                     <a href="#" class="text-need">Butuh Bantuan ?</a>
+                </div> --}}
+
+                <div class="footer-logo" style="margin-bottom: 10px; margin-top:30px;">
+                    @if (!empty($about->logo))
+                        <img src="{{ Storage::url($about->logo) }}" alt="" class="logo-bmi" />
+                    @else
+                        <img src="{{ asset('assets/images/logo/bmi.webp') }}" alt="Default Logo" class="logo-bmi" />
+                    @endif
                 </div>
+
                 <ul class="mb-info">
                     <li>
-                        Alamat:
-                        <b>Komp. Ponpes Al Islam, blok. CDMA, No. 37, des. Cimekar, kec.
-                            Cileunyi, kab. Bandung, Jawa Barat, Bandung 40363
-                        </b>
+                        @if (!empty($about->trusted))
+                            <p>{{ $about->trusted }}</p>
+                        @endif
                     </li>
-
-                    <li>Email: <b>binamedikacom@gmail.com</b></li>
-                    <li>No HP: <b>+62-822-4075-8084</b></li>
+                    <li>
+                        @if (!empty($about->address))
+                            <p>Alamat: <a href="">
+                                    {{ $about->address }}
+                                </a>
+                            </p>
+                        @endif
+                    </li>
+                    <li>
+                        @if (!empty($about->email))
+                            <p>Email: <a href="mailto:{{ $about->email }}">{{ $about->email }}</a></p>
+                        @endif
+                    </li>
+                    <li>
+                        @if (!empty($about->phone_number))
+                            <p>No HP: <a href="tel:+62{{ $about->phone_number }}">+62{{ $about->phone_number }}</a>
+                            </p>
+                        @endif
+                    </li>
                 </ul>
             </div>
         </div>
