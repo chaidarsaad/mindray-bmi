@@ -77,6 +77,7 @@ class AccountDetailPage extends Component
         $this->password_confirmation = '';
 
         $this->dispatch('notify-success', message: 'Berhasil disimpan');
+        return redirect()->route('dashboard.detail-account');
     }
 
     public function togglePassword()
