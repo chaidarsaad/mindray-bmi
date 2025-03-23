@@ -14,7 +14,8 @@
                 Akun</a>
         </li>
         @if (Auth::check() && Auth::user()->roles->isNotEmpty())
-            <a href="{{ route('filament.admin.pages.dashboard') }}" wire:navigate.ignore class="site-nav-icon">
+            <a href="{{ route('filament.admin.pages.dashboard') }}" class="my-account-nav-item" wire:navigate.ignore
+                class="site-nav-icon">
                 <i class="icon icon-home"></i>Admin
             </a>
         @endif
