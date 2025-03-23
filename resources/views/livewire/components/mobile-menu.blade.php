@@ -84,7 +84,7 @@
             @endauth
             @if (Auth::user()->roles->isNotEmpty())
                 <a href="{{ route('filament.admin.pages.dashboard') }}" wire:navigate.ignore class="site-nav-icon"><i
-                        class="icon icon-home"></i>Dashboard Admin</a>
+                        class="icon icon-home"></i>Admin</a>
             @endif
         </div>
     </div>
