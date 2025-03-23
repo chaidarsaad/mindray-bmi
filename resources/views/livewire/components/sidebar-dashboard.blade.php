@@ -15,8 +15,7 @@
         </li>
         @if (Auth::check() && Auth::user()->roles->isNotEmpty())
             <a href="{{ route('filament.admin.pages.dashboard') }}" class="my-account-nav-item" wire:navigate.ignore
-                class="site-nav-icon">
-                <i class="icon icon-home"></i>Admin
+                class="site-nav-icon">Dashboard Admin
             </a>
         @endif
 
