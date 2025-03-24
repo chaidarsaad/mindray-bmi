@@ -4,6 +4,20 @@
 
 <div>
     <div id="wrapper">
+        @if (session('notify-success'))
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    Toastify({
+                        text: "{{ session('notify-success') }}",
+                        duration: 4000,
+                        gravity: "top",
+                        position: "center",
+                        backgroundColor: "green",
+                    }).showToast();
+                });
+            </script>
+        @endif
+
         <!-- Navbar -->
         @livewire('components.navbar')
         <!-- /Navbar -->
@@ -92,22 +106,6 @@
                     gravity: "top",
                     position: "center",
                     backgroundColor: "red",
-                }).showToast();
-            });
-        });
-    </script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            window.addEventListener("notify-success", event => {
-                const message = event.detail.message || "Terjadi kesalahan, coba lagi.";
-
-                Toastify({
-                    text: message,
-                    duration: 3000,
-                    gravity: "top",
-                    position: "center",
-                    backgroundColor: "green",
                 }).showToast();
             });
         });
