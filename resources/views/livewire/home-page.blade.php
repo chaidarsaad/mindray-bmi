@@ -99,15 +99,14 @@
                                 <div class="swiper-slide" lazy="true">
                                     <div class="collection-item style-left hover-img">
                                         <div class="collection-inner">
-                                            <a href="{{ route('detail.category') }}" wire:navigate.ignore
-                                                class="collection-image img-style">
+                                            <a href="{{ route('detail.category') }}" class="collection-image img-style">
                                                 <img class="lazyload"
                                                     data-src="{{ asset('assets/images/collections/kategori.webp') }}"
                                                     src="{{ asset('assets/images/collections/kategori.webp') }}"
                                                     alt="collection-img" />
                                             </a>
                                             <div class="collection-content">
-                                                <a href="{{ route('detail.category') }}" wire:navigate.ignore
+                                                <a href="{{ route('detail.category') }}"
                                                     class="tf-btn collection-title hover-icon fs-15"><span>Kategori
                                                         1</span><i class="icon icon-arrow1-top-left"></i></a>
                                             </div>
@@ -117,15 +116,14 @@
                                 <div class="swiper-slide" lazy="true">
                                     <div class="collection-item style-left hover-img">
                                         <div class="collection-inner">
-                                            <a href="{{ route('detail.category') }}" wire:navigate.ignore
-                                                class="collection-image img-style">
+                                            <a href="{{ route('detail.category') }}" class="collection-image img-style">
                                                 <img class="lazyload"
                                                     data-src="{{ asset('assets/images/collections/kategori.webp') }}"
                                                     src="{{ asset('assets/images/collections/kategori.webp') }}"
                                                     alt="collection-img" />
                                             </a>
                                             <div class="collection-content">
-                                                <a href="{{ route('detail.category') }}" wire:navigate.ignore
+                                                <a href="{{ route('detail.category') }}"
                                                     class="tf-btn collection-title hover-icon fs-15"><span>Kategori
                                                         2</span><i class="icon icon-arrow1-top-left"></i></a>
                                             </div>
@@ -135,7 +133,7 @@
                                 <div class="swiper-slide" lazy="true">
                                     <div class="collection-item style-left hover-img">
                                         <div class="collection-inner">
-                                            <a href="{{ route('detail.category') }}" wire:navigate.ignore
+                                            <a href="{{ route('detail.category') }}"
                                                 class="collection-image img-style">
                                                 <img class="lazyload"
                                                     data-src="{{ asset('assets/images/collections/kategori.webp') }}"
@@ -143,7 +141,7 @@
                                                     alt="collection-img" />
                                             </a>
                                             <div class="collection-content">
-                                                <a href="{{ route('detail.category') }}" wire:navigate.ignore
+                                                <a href="{{ route('detail.category') }}"
                                                     class="tf-btn collection-title hover-icon fs-15"><span>Kategori
                                                         2</span><i class="icon icon-arrow1-top-left"></i></a>
                                             </div>
@@ -153,7 +151,7 @@
                                 <div class="swiper-slide" lazy="true">
                                     <div class="collection-item style-left hover-img">
                                         <div class="collection-inner">
-                                            <a href="{{ route('detail.category') }}" wire:navigate.ignore
+                                            <a href="{{ route('detail.category') }}"
                                                 class="collection-image img-style">
                                                 <img class="lazyload"
                                                     data-src="{{ asset('assets/images/collections/kategori.webp') }}"
@@ -161,7 +159,7 @@
                                                     alt="collection-img" />
                                             </a>
                                             <div class="collection-content">
-                                                <a href="{{ route('detail.category') }}" wire:navigate.ignore
+                                                <a href="{{ route('detail.category') }}"
                                                     class="tf-btn collection-title hover-icon fs-15"><span>Kategori
                                                         2</span><i class="icon icon-arrow1-top-left"></i></a>
                                             </div>
@@ -181,7 +179,7 @@
             <div class="container">
                 <div class="flat-title">
                     <span class="title wow fadeInUp" data-wow-delay="0s">Produk Mindray</span>
-                    <a href="{{ route('usg.all') }}" wire:navigate.ignore class="tf-btn btn-line">
+                    <a href="{{ route('usg.all') }}" class="tf-btn btn-line">
                         <p class="sub-title">
                             Lihat Semua Produk<i class="icon icon-arrow1-top-left"></i>
                         </p>
@@ -191,7 +189,7 @@
                     <!-- card product 1 -->
                     <div class="card-product fl-item">
                         <div class="card-product-wrapper">
-                            <a href="{{ route('detail.product') }}" wire:navigate.ignore class="product-img">
+                            <a href="{{ route('detail.product') }}" class="product-img">
                                 <img class="lazyload img-product"
                                     data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
                                     src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
@@ -211,7 +209,7 @@
                             </div>
                         </div>
                         <div class="card-product-info">
-                            <a href="{{ route('detail.product') }}" wire:navigate.ignore class="title link">Mindray
+                            <a href="{{ route('detail.product') }}" class="title link">Mindray
                                 BeneHeart R3 Electrocardiograph</a>
                             <!-- <span class="price">$10.00</span> -->
                         </div>
@@ -219,7 +217,7 @@
                     <!-- card product 1 -->
                     <div class="card-product fl-item">
                         <div class="card-product-wrapper">
-                            <a href="{{ route('detail.product') }}" wire:navigate.ignore class="product-img">
+                            <a href="{{ route('detail.product') }}" class="product-img">
                                 <img class="lazyload img-product"
                                     data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
                                     src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
@@ -239,7 +237,7 @@
                             </div>
                         </div>
                         <div class="card-product-info">
-                            <a href="{{ route('detail.product') }}" wire:navigate.ignore class="title link">Mindray
+                            <a href="{{ route('detail.product') }}" class="title link">Mindray
                                 BeneHeart R3 Electrocardiograph</a>
                             <!-- <span class="price">$10.00</span> -->
                         </div>
@@ -247,7 +245,7 @@
                     <!-- card product 1 -->
                     <div class="card-product fl-item">
                         <div class="card-product-wrapper">
-                            <a href="{{ route('detail.product') }}" wire:navigate.ignore class="product-img">
+                            <a href="{{ route('detail.product') }}" class="product-img">
                                 <img class="lazyload img-product"
                                     data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
                                     src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
@@ -267,7 +265,7 @@
                             </div>
                         </div>
                         <div class="card-product-info">
-                            <a href="{{ route('detail.product') }}" wire:navigate.ignore class="title link">Mindray
+                            <a href="{{ route('detail.product') }}" class="title link">Mindray
                                 BeneHeart R3 Electrocardiograph</a>
                             <!-- <span class="price">$10.00</span> -->
                         </div>
@@ -275,7 +273,7 @@
                     <!-- card product 1 -->
                     <div class="card-product fl-item">
                         <div class="card-product-wrapper">
-                            <a href="{{ route('detail.product') }}" wire:navigate.ignore class="product-img">
+                            <a href="{{ route('detail.product') }}" class="product-img">
                                 <img class="lazyload img-product"
                                     data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
                                     src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
@@ -295,7 +293,7 @@
                             </div>
                         </div>
                         <div class="card-product-info">
-                            <a href="{{ route('detail.product') }}" wire:navigate.ignore class="title link">Mindray
+                            <a href="{{ route('detail.product') }}" class="title link">Mindray
                                 BeneHeart R3 Electrocardiograph</a>
                             <!-- <span class="price">$10.00</span> -->
                         </div>
@@ -314,7 +312,7 @@
         <section class="flat-spacing-6 pb_0">
             <div class="flat-title wow fadeInUp" data-wow-delay="0s">
                 <span class="title">Pelatihan USG Terbaru</span>
-                <a href="{{ route('training.all') }}" wire:navigate.ignore class="tf-btn btn-line">
+                <a href="{{ route('training.all') }}" class="tf-btn btn-line">
                     <p class="sub-title">
                         Lihat Semua Pelatihan<i class="icon icon-arrow1-top-left"></i>
                     </p>
@@ -327,15 +325,14 @@
                         <div class="col-xl-4 col-md-6 col-12">
                             <div class="blog-article-item">
                                 <div class="article-thumb">
-                                    <a href="{{ route('detail.training') }}" wire:navigate.ignore>
+                                    <a href="{{ route('detail.training') }}">
                                         <img class="lazyload" data-src="{{ asset('assets/images/blog/wxp.webp') }}"
                                             src="{{ asset('assets/images/blog/wxp.webp') }}" alt="img-blog" />
                                     </a>
                                 </div>
                                 <div class="article-content">
                                     <div class="article-title">
-                                        <a href="{{ route('detail.training') }}" wire:navigate.ignore
-                                            class="">The next
+                                        <a href="{{ route('detail.training') }}" class="">The next
                                             generation of leather
                                             alternatives</a>
                                     </div>
@@ -346,15 +343,14 @@
                         <div class="col-xl-4 col-md-6 col-12">
                             <div class="blog-article-item">
                                 <div class="article-thumb">
-                                    <a href="{{ route('detail.training') }}" wire:navigate.ignore>
+                                    <a href="{{ route('detail.training') }}">
                                         <img class="lazyload" data-src="{{ asset('assets/images/blog/wxp.webp') }}"
                                             src="{{ asset('assets/images/blog/wxp.webp') }}" alt="img-blog" />
                                     </a>
                                 </div>
                                 <div class="article-content">
                                     <div class="article-title">
-                                        <a href="{{ route('detail.training') }}" wire:navigate.ignore
-                                            class="">The next
+                                        <a href="{{ route('detail.training') }}" class="">The next
                                             generation of leather
                                             alternatives</a>
                                     </div>
@@ -365,15 +361,14 @@
                         <div class="col-xl-4 col-md-6 col-12">
                             <div class="blog-article-item">
                                 <div class="article-thumb">
-                                    <a href="{{ route('detail.training') }}" wire:navigate.ignore>
+                                    <a href="{{ route('detail.training') }}">
                                         <img class="lazyload" data-src="{{ asset('assets/images/blog/wxp.webp') }}"
                                             src="{{ asset('assets/images/blog/wxp.webp') }}" alt="img-blog" />
                                     </a>
                                 </div>
                                 <div class="article-content">
                                     <div class="article-title">
-                                        <a href="{{ route('detail.training') }}" wire:navigate.ignore
-                                            class="">The next
+                                        <a href="{{ route('detail.training') }}" class="">The next
                                             generation of leather
                                             alternatives</a>
                                     </div>
@@ -390,7 +385,7 @@
         <section class="flat-spacing-6 pb_0">
             <div class="flat-title wow fadeInUp" data-wow-delay="0s">
                 <span class="title">Artikel Terbaru</span>
-                <a href="{{ route('article.all') }}" wire:navigate.ignore class="tf-btn btn-line">
+                <a href="{{ route('article.all') }}" class="tf-btn btn-line">
                     <p class="sub-title">
                         Lihat Semua Artikel<i class="icon icon-arrow1-top-left"></i>
                     </p>
@@ -403,15 +398,14 @@
                         <div class="col-xl-4 col-md-6 col-12">
                             <div class="blog-article-item">
                                 <div class="article-thumb">
-                                    <a href="{{ route('detail.article') }}" wire:navigate.ignore>
+                                    <a href="{{ route('detail.article') }}">
                                         <img class="lazyload" data-src="{{ asset('assets/images/blog/wxp.webp') }}"
                                             src="{{ asset('assets/images/blog/wxp.webp') }}" alt="img-blog" />
                                     </a>
                                 </div>
                                 <div class="article-content">
                                     <div class="article-title">
-                                        <a href="{{ route('detail.article') }}" wire:navigate.ignore
-                                            class="">The next
+                                        <a href="{{ route('detail.article') }}" class="">The next
                                             generation of
                                             leather
                                             alternatives</a>
@@ -423,15 +417,14 @@
                         <div class="col-xl-4 col-md-6 col-12">
                             <div class="blog-article-item">
                                 <div class="article-thumb">
-                                    <a href="{{ route('detail.article') }}" wire:navigate.ignore>
+                                    <a href="{{ route('detail.article') }}">
                                         <img class="lazyload" data-src="{{ asset('assets/images/blog/wxp.webp') }}"
                                             src="{{ asset('assets/images/blog/wxp.webp') }}" alt="img-blog" />
                                     </a>
                                 </div>
                                 <div class="article-content">
                                     <div class="article-title">
-                                        <a href="{{ route('detail.article') }}" wire:navigate.ignore
-                                            class="">The next
+                                        <a href="{{ route('detail.article') }}" class="">The next
                                             generation of
                                             leather
                                             alternatives</a>
@@ -443,15 +436,14 @@
                         <div class="col-xl-4 col-md-6 col-12">
                             <div class="blog-article-item">
                                 <div class="article-thumb">
-                                    <a href="{{ route('detail.article') }}" wire:navigate.ignore>
+                                    <a href="{{ route('detail.article') }}">
                                         <img class="lazyload" data-src="{{ asset('assets/images/blog/wxp.webp') }}"
                                             src="{{ asset('assets/images/blog/wxp.webp') }}" alt="img-blog" />
                                     </a>
                                 </div>
                                 <div class="article-content">
                                     <div class="article-title">
-                                        <a href="{{ route('detail.article') }}" wire:navigate.ignore
-                                            class="">The next
+                                        <a href="{{ route('detail.article') }}" class="">The next
                                             generation of
                                             leather
                                             alternatives</a>
@@ -483,8 +475,7 @@
                             <div class="swiper-slide" lazy="true">
                                 <div class="card-product">
                                     <div class="card-product-wrapper">
-                                        <a href="{{ route('detail.product') }}" wire:navigate.ignore
-                                            class="product-img">
+                                        <a href="{{ route('detail.product') }}" class="product-img">
                                             <img class="lazyload img-product"
                                                 data-src="{{ asset('assets/images/doctors/doctors.png') }}"
                                                 src="{{ asset('assets/images/doctors/doctors.png') }}"
@@ -496,8 +487,7 @@
                                         </a>
                                     </div>
                                     <div class="card-product-info">
-                                        <a href="{{ route('detail.product') }}" wire:navigate.ignore
-                                            class="title link text-center">Dr
+                                        <a href="{{ route('detail.product') }}" class="title link text-center">Dr
                                             Rajes Punjabi</a>
                                         {{-- <span class="price">$10.00</span> --}}
                                         <p class="text-center">Spesialis Kandungan</p>
@@ -508,8 +498,7 @@
                             <div class="swiper-slide" lazy="true">
                                 <div class="card-product">
                                     <div class="card-product-wrapper">
-                                        <a href="{{ route('detail.product') }}" wire:navigate.ignore
-                                            class="product-img">
+                                        <a href="{{ route('detail.product') }}" class="product-img">
                                             <img class="lazyload img-product"
                                                 data-src="{{ asset('assets/images/doctors/doctors.png') }}"
                                                 src="{{ asset('assets/images/doctors/doctors.png') }}"
@@ -521,8 +510,7 @@
                                         </a>
                                     </div>
                                     <div class="card-product-info">
-                                        <a href="{{ route('detail.product') }}" wire:navigate.ignore
-                                            class="title link text-center">Dr
+                                        <a href="{{ route('detail.product') }}" class="title link text-center">Dr
                                             Rajes Punjabi</a>
                                         {{-- <span class="price">$10.00</span> --}}
                                         <p class="text-center">Spesialis Kandungan</p>
@@ -533,8 +521,7 @@
                             <div class="swiper-slide" lazy="true">
                                 <div class="card-product">
                                     <div class="card-product-wrapper">
-                                        <a href="{{ route('detail.product') }}" wire:navigate.ignore
-                                            class="product-img">
+                                        <a href="{{ route('detail.product') }}" class="product-img">
                                             <img class="lazyload img-product"
                                                 data-src="{{ asset('assets/images/doctors/doctors.png') }}"
                                                 src="{{ asset('assets/images/doctors/doctors.png') }}"
@@ -546,8 +533,7 @@
                                         </a>
                                     </div>
                                     <div class="card-product-info">
-                                        <a href="{{ route('detail.product') }}" wire:navigate.ignore
-                                            class="title link text-center">Dr
+                                        <a href="{{ route('detail.product') }}" class="title link text-center">Dr
                                             Rajes Punjabi</a>
                                         {{-- <span class="price">$10.00</span> --}}
                                         <p class="text-center">Spesialis Kandungan</p>
@@ -558,8 +544,7 @@
                             <div class="swiper-slide" lazy="true">
                                 <div class="card-product">
                                     <div class="card-product-wrapper">
-                                        <a href="{{ route('detail.product') }}" wire:navigate.ignore
-                                            class="product-img">
+                                        <a href="{{ route('detail.product') }}" class="product-img">
                                             <img class="lazyload img-product"
                                                 data-src="{{ asset('assets/images/doctors/doctors.png') }}"
                                                 src="{{ asset('assets/images/doctors/doctors.png') }}"
@@ -571,8 +556,7 @@
                                         </a>
                                     </div>
                                     <div class="card-product-info">
-                                        <a href="{{ route('detail.product') }}" wire:navigate.ignore
-                                            class="title link text-center">Dr
+                                        <a href="{{ route('detail.product') }}" class="title link text-center">Dr
                                             Rajes Punjabi</a>
                                         {{-- <span class="price">$10.00</span> --}}
                                         <p class="text-center">Spesialis Kandungan</p>

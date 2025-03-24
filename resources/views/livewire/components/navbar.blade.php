@@ -12,7 +12,7 @@
                 </a>
             </div>
             <div class="col-xl-3 col-md-4 col-6">
-                <a href="{{ route('home') }}" wire:navigate.ignore class="logo-header">
+                <a href="{{ route('home') }}" class="logo-header">
                     @if (!empty($about->logo))
                         <img src="{{ Storage::url($about->logo) }}" alt="logo" class="logo" />
                     @else
@@ -24,17 +24,17 @@
                 <nav class="box-navigation text-center">
                     <ul class="box-nav-ul d-flex align-items-center justify-content-center gap-30">
                         <li class="menu-item {{ request()->routeIs('home') ? 'active' : '' }}">
-                            <a href="{{ route('home') }}" wire:navigate.ignore class="item-link">Beranda</a>
+                            <a href="{{ route('home') }}" class="item-link">Beranda</a>
                         </li>
                         <li class="menu-item {{ request()->routeIs('usg.all') ? 'active' : '' }}">
-                            <a href="{{ route('usg.all') }}" wire:navigate.ignore class="item-link">Produk USG
+                            <a href="{{ route('usg.all') }}" class="item-link">Produk USG
                                 Mindray</a>
                         </li>
                         <li class="menu-item {{ request()->routeIs('training.all') ? 'active' : '' }}">
-                            <a href="{{ route('training.all') }}" wire:navigate.ignore class="item-link">Pelatihan</a>
+                            <a href="{{ route('training.all') }}" class="item-link">Pelatihan</a>
                         </li>
                         <li class="menu-item {{ request()->routeIs('article.all') ? 'active' : '' }}">
-                            <a href="{{ route('article.all') }}" wire:navigate.ignore class="item-link">Artikel</a>
+                            <a href="{{ route('article.all') }}" class="item-link">Artikel</a>
                         </li>
                     </ul>
                 </nav>
@@ -44,11 +44,11 @@
                 <ul class="nav-icon d-flex justify-content-end align-items-center gap-20">
                     <li class="nav-account">
                         @auth
-                            <a href="{{ route('dashboard') }}" wire:navigate.ignore class="nav-icon-item">
+                            <a href="{{ route('dashboard') }}" class="nav-icon-item">
                                 <i class="icon icon-account"></i>
                             </a>
                         @else
-                            <a href="{{ route('login') }}" wire:navigate.ignore class="item-link">Masuk</a>
+                            <a href="{{ route('login') }}" class="item-link">Masuk</a>
                         @endauth
                     </li>
                     {{-- @auth
@@ -58,8 +58,8 @@
                         </li>
                     @else --}}
                     <li class="nav-cart">
-                        <a href="{{ route('cart') }}" wire:navigate.ignore class="nav-icon-item"><i
-                                class="icon icon-bag"></i><span class="count-box">0</span></a>
+                        <a href="{{ route('cart') }}" class="nav-icon-item"><i class="icon icon-bag"></i><span
+                                class="count-box">0</span></a>
                     </li>
                     {{-- @endauth --}}
                 </ul>

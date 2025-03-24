@@ -21,14 +21,14 @@
                         <div class="col-xl-4 col-md-6 col-12">
                             <div class="blog-article-item">
                                 <div class="article-thumb">
-                                    <a href="{{ route('detail.training') }}" wire:navigate.ignore>
+                                    <a href="{{ route('detail.training') }}">
                                         <img class="lazyload" data-src="{{ asset('assets/images/blog/wxp.webp') }}"
                                             src="{{ asset('assets/images/blog/wxp.webp') }}" alt="img-blog" />
                                     </a>
                                 </div>
                                 <div class="article-content">
                                     <div class="article-title">
-                                        <a href="{{ route('detail.training') }}" wire:navigate.ignore class="">The
+                                        <a href="{{ route('detail.training') }}" class="">The
                                             next
                                             generation of leather
                                             alternatives</a>
@@ -40,14 +40,14 @@
                         <div class="col-xl-4 col-md-6 col-12">
                             <div class="blog-article-item">
                                 <div class="article-thumb">
-                                    <a href="{{ route('detail.training') }}" wire:navigate.ignore>
+                                    <a href="{{ route('detail.training') }}">
                                         <img class="lazyload" data-src="{{ asset('assets/images/blog/wxp.webp') }}"
                                             src="{{ asset('assets/images/blog/wxp.webp') }}" alt="img-blog" />
                                     </a>
                                 </div>
                                 <div class="article-content">
                                     <div class="article-title">
-                                        <a href="{{ route('detail.training') }}" wire:navigate.ignore class="">The
+                                        <a href="{{ route('detail.training') }}" class="">The
                                             next
                                             generation of leather
                                             alternatives</a>
@@ -59,15 +59,14 @@
                         <div class="col-xl-4 col-md-6 col-12">
                             <div class="blog-article-item">
                                 <div class="article-thumb">
-                                    <a href="{{ route('detail.training') }}" wire:navigate.ignore>
+                                    <a href="{{ route('detail.training') }}">
                                         <img class="lazyload" data-src="{{ asset('assets/images/blog/wxp.webp') }}"
                                             src="{{ asset('assets/images/blog/wxp.webp') }}" alt="img-blog" />
                                     </a>
                                 </div>
                                 <div class="article-content">
                                     <div class="article-title">
-                                        <a href="{{ route('detail.training') }}" wire:navigate.ignore
-                                            class="">The next
+                                        <a href="{{ route('detail.training') }}" class="">The next
                                             generation of leather
                                             alternatives</a>
                                     </div>

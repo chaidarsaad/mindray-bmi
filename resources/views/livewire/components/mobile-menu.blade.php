@@ -4,28 +4,28 @@
         <div class="mb-body">
             <ul class="nav-ul-mb" id="wrapper-menu-navigation">
                 <li class="nav-mb-item">
-                    <a href="{{ route('home') }}" wire:navigate.ignore
+                    <a href="{{ route('home') }}"
                         class="collapsed mb-menu-link {{ request()->routeIs('home') ? 'active' : '' }}"
                         aria-expanded="true">
                         <span>Beranda</span>
                     </a>
                 </li>
                 <li class="nav-mb-item">
-                    <a href="{{ route('usg.all') }}" wire:navigate.ignore
+                    <a href="{{ route('usg.all') }}"
                         class="collapsed mb-menu-link {{ request()->routeIs('usg.all') ? 'active' : '' }}"
                         aria-expanded="true">
                         <span>Produk USG</span>
                     </a>
                 </li>
                 <li class="nav-mb-item">
-                    <a href="{{ route('training.all') }}" wire:navigate.ignore
+                    <a href="{{ route('training.all') }}"
                         class="collapsed mb-menu-link {{ request()->routeIs('training.all') ? 'active' : '' }}"
                         aria-expanded="true">
                         <span>Pelatihan</span>
                     </a>
                 </li>
                 <li class="nav-mb-item">
-                    <a href="{{ route('article.all') }}" wire:navigate.ignore
+                    <a href="{{ route('article.all') }}"
                         class="collapsed mb-menu-link {{ request()->routeIs('article.all') ? 'active' : '' }}"
                         aria-expanded="true">
                         <span>Artikel</span>
@@ -76,14 +76,12 @@
         </div>
         <div class="mb-bottom">
             @auth
-                <a href="{{ route('dashboard') }}" wire:navigate.ignore class="site-nav-icon"><i
-                        class="icon icon-account"></i>Profil</a>
+                <a href="{{ route('dashboard') }}" class="site-nav-icon"><i class="icon icon-account"></i>Profil</a>
             @else
-                <a href="{{ route('login') }}" wire:navigate.ignore class="site-nav-icon"><i
-                        class="icon icon-account"></i>Masuk</a>
+                <a href="{{ route('login') }}" class="site-nav-icon"><i class="icon icon-account"></i>Masuk</a>
             @endauth
             @if (Auth::check() && Auth::user()->roles->isNotEmpty())
-                <a href="{{ route('filament.admin.pages.dashboard') }}" wire:navigate.ignore class="site-nav-icon">
+                <a href="{{ route('filament.admin.pages.dashboard') }}" class="site-nav-icon">
                     <i class="icon icon-home"></i>Admin
                 </a>
             @endif

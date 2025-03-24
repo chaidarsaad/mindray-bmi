@@ -12,8 +12,7 @@
   ">
         <div class="container">
             <div class="form-register-wrap">
-                <a href="{{ route('home') }}" wire:navigate.ignore
-                    style="width: 120px; display: block; margin: 0 auto; margin-bottom: 18px;">
+                <a href="{{ route('home') }}" style="width: 120px; display: block; margin: 0 auto; margin-bottom: 18px;">
                     <img src="{{ asset('assets/images/logo/bmi.webp') }}" alt="logo" />
                 </a>
                 <h5 class="mb_18 text-center">Masuk</h5>
@@ -38,7 +37,7 @@
                             </button>
                         </div>
                         <div class="text-center">
-                            <a href="{{ route('register') }}" wire:navigate.ignore class="tf-btn btn-line">Belum punya
+                            <a href="{{ route('register') }}" class="tf-btn btn-line">Belum punya
                                 akun?
                                 daftar
                                 disini</a>

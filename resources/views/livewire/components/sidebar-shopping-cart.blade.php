@@ -12,14 +12,13 @@
                             <div class="tf-mini-cart-items">
                                 <div class="tf-mini-cart-item">
                                     <div class="tf-mini-cart-image">
-                                        <a href="{{ route('detail.product') }}" wire:navigate.ignore>
+                                        <a href="{{ route('detail.product') }}">
                                             <img src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
                                                 alt="" />
                                         </a>
                                     </div>
                                     <div class="tf-mini-cart-info">
-                                        <a class="title link" href="{{ route('detail.product') }}"
-                                            wire:navigate.ignore>T-shirt</a>
+                                        <a class="title link" href="{{ route('detail.product') }}">T-shirt</a>
                                         <div class="meta-variant">Light gray</div>
                                         <!-- <div class="price fw-6">$25.00</div> -->
                                         <div class="tf-mini-cart-btns">
@@ -34,14 +33,13 @@
                                 </div>
                                 <div class="tf-mini-cart-item">
                                     <div class="tf-mini-cart-image">
-                                        <a href="{{ route('detail.product') }}" wire:navigate.ignore>
+                                        <a href="{{ route('detail.product') }}">
                                             <img src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
                                                 alt="" />
                                         </a>
                                     </div>
                                     <div class="tf-mini-cart-info">
-                                        <a class="title link" href="{{ route('detail.product') }}"
-                                            wire:navigate.ignore>Oversized Motif
+                                        <a class="title link" href="{{ route('detail.product') }}">Oversized Motif
                                             T-shirt</a>
                                         <div class="meta-variant">Light gray</div>
                                         <!-- <div class="price fw-6">$25.00</div> -->
@@ -74,7 +72,7 @@
                         </div>
                         <div class="tf-mini-cart-bottom-wrap">
                             <div class="tf-mini-cart-view-checkout">
-                                <a href="{{ route('cart') }}" wire:navigate.ignore
+                                <a href="{{ route('cart') }}"
                                     class="tf-btn btn-outline radius-3 link w-100 justify-content-center">Lihat
                                     Detail Keranjang</a>
                                 <a href="checkout.html"

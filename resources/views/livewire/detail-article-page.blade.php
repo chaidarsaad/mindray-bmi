@@ -89,15 +89,14 @@
                             <div class="swiper-slide" lazy="true">
                                 <div class="blog-article-item">
                                     <div class="article-thumb radius-10">
-                                        <a href="{{ route('detail.article') }}" wire:navigate.ignore>
+                                        <a href="{{ route('detail.article') }}">
                                             <img class="lazyload" data-src="{{ asset('assets/images/blog/wxp.webp') }}"
                                                 src="{{ asset('assets/images/blog/wxp.webp') }}" alt="img-blog">
                                         </a>
                                     </div>
                                     <div class="article-content">
                                         <div class="article-title">
-                                            <a href="{{ route('detail.article') }}" wire:navigate.ignore
-                                                class="">The
+                                            <a href="{{ route('detail.article') }}" class="">The
                                                 next generation of leather
                                                 alternatives</a>
                                         </div>
@@ -107,15 +106,14 @@
                             <div class="swiper-slide" lazy="true">
                                 <div class="blog-article-item">
                                     <div class="article-thumb radius-10">
-                                        <a href="{{ route('detail.article') }}" wire:navigate.ignore>
+                                        <a href="{{ route('detail.article') }}">
                                             <img class="lazyload" data-src="{{ asset('assets/images/blog/wxp.webp') }}"
                                                 src="{{ asset('assets/images/blog/wxp.webp') }}" alt="img-blog">
                                         </a>
                                     </div>
                                     <div class="article-content">
                                         <div class="article-title">
-                                            <a href="{{ route('detail.article') }}" wire:navigate.ignore
-                                                class="">The
+                                            <a href="{{ route('detail.article') }}" class="">The
                                                 next generation of leather
                                                 alternatives</a>
                                         </div>
