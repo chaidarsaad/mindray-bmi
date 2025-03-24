@@ -9,7 +9,70 @@
         <!-- /Navbar -->
 
         <!-- Carousel -->
-
+        <div class="tf-slideshow slider-effect-fade position-relative">
+            <div class="swiper tf-sw-slideshow" data-preview="1" data-tablet="1" data-mobile="1" data-centered="false"
+                data-space="0" data-loop="true" data-auto-play="false" data-delay="0" data-speed="1000">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="wrap-slider">
+                            <img src="{{ asset('assets/images/slider/slider1.webp') }}" alt="fashion-slideshow" />
+                            {{-- <div class="box-content">
+                                <div class="container">
+                                    <h1 class="fade-item fade-item-1">
+                                        Glamorous<br />Glam
+                                    </h1>
+                                    <p class="fade-item fade-item-2">
+                                        From casual to formal, we've got you covered
+                                    </p>
+                                    <a href="#"
+                                        class="fade-item fade-item-3 tf-btn btn-fill animate-hover-btn btn-xl radius-3"><span>Detail</span><i
+                                            class="icon icon-arrow-right"></i></a>
+                                </div>
+                            </div> --}}
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="wrap-slider">
+                            <img src="{{ asset('assets/images/slider/slider1.webp') }}" alt="fashion-slideshow" />
+                            {{-- <div class="box-content">
+                                <div class="container">
+                                    <h1 class="fade-item fade-item-1">
+                                        Simple <br class="md-hidden" />Style
+                                    </h1>
+                                    <p class="fade-item fade-item-2">
+                                        From casual to formal, we've got you covered
+                                    </p>
+                                    <a href="#"
+                                        class="fade-item fade-item-3 tf-btn btn-fill animate-hover-btn btn-xl radius-3"><span>Shop
+                                            collection</span><i class="icon icon-arrow-right"></i></a>
+                                </div>
+                            </div> --}}
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="wrap-slider">
+                            <img src="{{ asset('assets/images/slider/slider1.webp') }}" alt="fashion-slideshow" />
+                            {{-- <div class="box-content">
+                                <div class="container">
+                                    <h1 class="fade-item fade-item-1">Glamorous<br />Glam</h1>
+                                    <p class="fade-item fade-item-2">
+                                        From casual to formal, we've got you covered
+                                    </p>
+                                    <a href="#"
+                                        class="fade-item fade-item-3 tf-btn btn-fill animate-hover-btn btn-xl radius-3"><span>Shop
+                                            collection</span><i class="icon icon-arrow-right"></i></a>
+                                </div>
+                            </div> --}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="wrap-pagination">
+                <div class="container">
+                    <div class="sw-dots sw-pagination-slider justify-content-center"></div>
+                </div>
+            </div>
+        </div>
         <!-- /Carousel -->
 
         <!-- Categories -->
@@ -70,7 +133,8 @@
                                 <div class="swiper-slide" lazy="true">
                                     <div class="collection-item style-left hover-img">
                                         <div class="collection-inner">
-                                            <a href="{{ route('detail.category') }}" class="collection-image img-style">
+                                            <a href="{{ route('detail.category') }}"
+                                                class="collection-image img-style">
                                                 <img class="lazyload"
                                                     data-src="{{ asset('assets/images/collections/kategori.webp') }}"
                                                     src="{{ asset('assets/images/collections/kategori.webp') }}"
@@ -393,123 +457,9 @@
         </section>
         <!-- /Artikel -->
 
-        <!-- Dokter Spesialis -->
-        <section class="flat-spacing-1 pt_0">
-            <div class="container">
-                <div class="flat-title">
-                    <span class="title">Dokter Spesialis Kami</span>
-                    <p class="sub-title">
-                        Kami memiliki dokter spesialis yang profesional dibidangnya.
-                    </p>
-                </div>
-                <div class="hover-sw-nav hover-sw-2">
-                    <div class="swiper tf-sw-recent wrap-sw-over" data-preview="4" data-tablet="3" data-mobile="2"
-                        data-space-lg="30" data-space-md="30" data-space="15" data-pagination="1"
-                        data-pagination-md="1" data-pagination-lg="1">
-                        <div class="swiper-wrapper">
-                            {{-- 1 --}}
-                            <div class="swiper-slide" lazy="true">
-                                <div class="card-product">
-                                    <div class="card-product-wrapper">
-                                        <a href="{{ route('detail.product') }}" class="product-img">
-                                            <img class="lazyload img-product"
-                                                data-src="{{ asset('assets/images/doctors/doctors.png') }}"
-                                                src="{{ asset('assets/images/doctors/doctors.png') }}"
-                                                alt="image-product">
-                                            <img class="lazyload img-hover"
-                                                data-src="{{ asset('assets/images/doctors/doctors.png') }}"
-                                                src="{{ asset('assets/images/doctors/doctors.png') }}"
-                                                alt="image-product">
-                                        </a>
-                                    </div>
-                                    <div class="card-product-info">
-                                        <a href="{{ route('detail.product') }}" class="title link text-center">Dr
-                                            Rajes Punjabi</a>
-                                        {{-- <span class="price">$10.00</span> --}}
-                                        <p class="text-center">Spesialis Kandungan</p>
-                                    </div>
-                                </div>
-                            </div>
-                            {{-- 2 --}}
-                            <div class="swiper-slide" lazy="true">
-                                <div class="card-product">
-                                    <div class="card-product-wrapper">
-                                        <a href="{{ route('detail.product') }}" class="product-img">
-                                            <img class="lazyload img-product"
-                                                data-src="{{ asset('assets/images/doctors/doctors.png') }}"
-                                                src="{{ asset('assets/images/doctors/doctors.png') }}"
-                                                alt="image-product">
-                                            <img class="lazyload img-hover"
-                                                data-src="{{ asset('assets/images/doctors/doctors.png') }}"
-                                                src="{{ asset('assets/images/doctors/doctors.png') }}"
-                                                alt="image-product">
-                                        </a>
-                                    </div>
-                                    <div class="card-product-info">
-                                        <a href="{{ route('detail.product') }}" class="title link text-center">Dr
-                                            Rajes Punjabi</a>
-                                        {{-- <span class="price">$10.00</span> --}}
-                                        <p class="text-center">Spesialis Kandungan</p>
-                                    </div>
-                                </div>
-                            </div>
-                            {{-- 2 --}}
-                            <div class="swiper-slide" lazy="true">
-                                <div class="card-product">
-                                    <div class="card-product-wrapper">
-                                        <a href="{{ route('detail.product') }}" class="product-img">
-                                            <img class="lazyload img-product"
-                                                data-src="{{ asset('assets/images/doctors/doctors.png') }}"
-                                                src="{{ asset('assets/images/doctors/doctors.png') }}"
-                                                alt="image-product">
-                                            <img class="lazyload img-hover"
-                                                data-src="{{ asset('assets/images/doctors/doctors.png') }}"
-                                                src="{{ asset('assets/images/doctors/doctors.png') }}"
-                                                alt="image-product">
-                                        </a>
-                                    </div>
-                                    <div class="card-product-info">
-                                        <a href="{{ route('detail.product') }}" class="title link text-center">Dr
-                                            Rajes Punjabi</a>
-                                        {{-- <span class="price">$10.00</span> --}}
-                                        <p class="text-center">Spesialis Kandungan</p>
-                                    </div>
-                                </div>
-                            </div>
-                            {{-- 2 --}}
-                            <div class="swiper-slide" lazy="true">
-                                <div class="card-product">
-                                    <div class="card-product-wrapper">
-                                        <a href="{{ route('detail.product') }}" class="product-img">
-                                            <img class="lazyload img-product"
-                                                data-src="{{ asset('assets/images/doctors/doctors.png') }}"
-                                                src="{{ asset('assets/images/doctors/doctors.png') }}"
-                                                alt="image-product">
-                                            <img class="lazyload img-hover"
-                                                data-src="{{ asset('assets/images/doctors/doctors.png') }}"
-                                                src="{{ asset('assets/images/doctors/doctors.png') }}"
-                                                alt="image-product">
-                                        </a>
-                                    </div>
-                                    <div class="card-product-info">
-                                        <a href="{{ route('detail.product') }}" class="title link text-center">Dr
-                                            Rajes Punjabi</a>
-                                        {{-- <span class="price">$10.00</span> --}}
-                                        <p class="text-center">Spesialis Kandungan</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="nav-sw nav-next-slider nav-next-recent box-icon w_46 round"><span
-                            class="icon icon-arrow-left"></span></div>
-                    <div class="nav-sw nav-prev-slider nav-prev-recent box-icon w_46 round"><span
-                            class="icon icon-arrow-right"></span></div>
-                    <div class="sw-dots style-2 sw-pagination-recent justify-content-center"></div>
-                </div>
-            </div>
-        </section>
-        <!-- /Dokter Spesialis -->
+        <!-- Testimonial -->
+        @livewire('components.testimonials')
+        <!-- /Testimonial -->
 
         <!-- Features -->
         @livewire('components.features')
