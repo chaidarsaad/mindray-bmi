@@ -52,6 +52,7 @@ class TestimonialResource extends Resource
                             ->numeric(),
                         Forms\Components\Toggle::make('is_show')
                             ->label('Tampilkan review?')
+                            ->default(1)
                             ->required(),
                     ]),
             ]);
