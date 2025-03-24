@@ -20,7 +20,7 @@ class AboutResource extends Resource
     protected static ?string $model = About::class;
     protected static ?string $pluralLabel = 'Data CV';
     protected static ?string $navigationLabel = 'Data CV';
-    protected static ?string $navigationGroup = 'Manajemen CV';
+    protected static ?string $navigationGroup = 'Data Utama';
 
     public static function form(Form $form): Form
     {

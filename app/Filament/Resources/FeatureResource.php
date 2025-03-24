@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\QuestionResource\Pages;
-use App\Filament\Resources\QuestionResource\RelationManagers;
-use App\Models\Question;
+use App\Filament\Resources\FeatureResource\Pages;
+use App\Filament\Resources\FeatureResource\RelationManagers;
+use App\Models\Feature;
 use Filament\Forms;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
@@ -14,29 +14,30 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class QuestionResource extends Resource
+class FeatureResource extends Resource
 {
-    protected static ?string $model = Question::class;
-    protected static ?string $pluralLabel = 'Pertanyaan';
-    protected static ?string $navigationLabel = 'Pertanyaan';
-    protected static ?string $navigationGroup = 'Data Utama';
+    protected static ?string $model = Feature::class;
 
+    protected static ?string $pluralLabel = 'Kelebihan';
+    protected static ?string $navigationLabel = 'Kelebihan';
+    protected static ?string $navigationGroup = 'Data Utama';
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Section::make('Pertanyaan')
+                Section::make('Fitur')
                     ->collapsible()
                     ->schema([
-                        Forms\Components\Textarea::make('question')
-                            ->label('Pertanyaan')
-                            ->required()
+                        Forms\Components\TextInput::make('title')
                             ->unique(ignoreRecord: true)
-                            ->columnSpanFull(),
-                        Forms\Components\Textarea::make('answer')
-                            ->label('Jawaban')
                             ->required()
-                            ->columnSpanFull(),
+                            ->maxLength(255),
+                        Forms\Components\Textarea::make('subtitle')
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('logo')
+                            ->maxLength(255)
+                            ->default(null),
                     ]),
             ]);
     }
@@ -48,10 +49,8 @@ class QuestionResource extends Resource
             ->defaultPaginationPageOption(5)
             ->defaultSort('id', direction: 'desc')
             ->columns([
-                Tables\Columns\TextColumn::make('question')
-                    ->label('Pertanyaan'),
-                Tables\Columns\TextColumn::make('answer')
-                    ->label('Jawaban'),
+                Tables\Columns\TextColumn::make('title')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -85,9 +84,9 @@ class QuestionResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListQuestions::route('/'),
-            'create' => Pages\CreateQuestion::route('/create'),
-            'edit' => Pages\EditQuestion::route('/{record}/edit'),
+            'index' => Pages\ListFeatures::route('/'),
+            'create' => Pages\CreateFeature::route('/create'),
+            'edit' => Pages\EditFeature::route('/{record}/edit'),
         ];
     }
 }
