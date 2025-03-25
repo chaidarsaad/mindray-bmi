@@ -1,5 +1,5 @@
 @section('title')
-    BMI | Beranda
+    BMI | Supplier alat USG Mindray dan Penyelenggara Pelatihan USG Abdomen & ANC
 @endsection
 
 <div>
@@ -9,74 +9,11 @@
         <!-- /Navbar -->
 
         <!-- Carousel -->
-        <div class="tf-slideshow slider-effect-fade position-relative">
-            <div class="swiper tf-sw-slideshow" data-preview="1" data-tablet="1" data-mobile="1" data-centered="false"
-                data-space="0" data-loop="true" data-auto-play="false" data-delay="0" data-speed="1000">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="wrap-slider">
-                            <img src="{{ asset('assets/images/slider/slider1.webp') }}" alt="fashion-slideshow" />
-                            {{-- <div class="box-content">
-                                <div class="container">
-                                    <h1 class="fade-item fade-item-1">
-                                        Glamorous<br />Glam
-                                    </h1>
-                                    <p class="fade-item fade-item-2">
-                                        From casual to formal, we've got you covered
-                                    </p>
-                                    <a href="#"
-                                        class="fade-item fade-item-3 tf-btn btn-fill animate-hover-btn btn-xl radius-3"><span>Detail</span><i
-                                            class="icon icon-arrow-right"></i></a>
-                                </div>
-                            </div> --}}
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="wrap-slider">
-                            <img src="{{ asset('assets/images/slider/slider1.webp') }}" alt="fashion-slideshow" />
-                            {{-- <div class="box-content">
-                                <div class="container">
-                                    <h1 class="fade-item fade-item-1">
-                                        Simple <br class="md-hidden" />Style
-                                    </h1>
-                                    <p class="fade-item fade-item-2">
-                                        From casual to formal, we've got you covered
-                                    </p>
-                                    <a href="#"
-                                        class="fade-item fade-item-3 tf-btn btn-fill animate-hover-btn btn-xl radius-3"><span>Shop
-                                            collection</span><i class="icon icon-arrow-right"></i></a>
-                                </div>
-                            </div> --}}
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="wrap-slider">
-                            <img src="{{ asset('assets/images/slider/slider1.webp') }}" alt="fashion-slideshow" />
-                            {{-- <div class="box-content">
-                                <div class="container">
-                                    <h1 class="fade-item fade-item-1">Glamorous<br />Glam</h1>
-                                    <p class="fade-item fade-item-2">
-                                        From casual to formal, we've got you covered
-                                    </p>
-                                    <a href="#"
-                                        class="fade-item fade-item-3 tf-btn btn-fill animate-hover-btn btn-xl radius-3"><span>Shop
-                                            collection</span><i class="icon icon-arrow-right"></i></a>
-                                </div>
-                            </div> --}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="wrap-pagination">
-                <div class="container">
-                    <div class="sw-dots sw-pagination-slider justify-content-center"></div>
-                </div>
-            </div>
-        </div>
+        @livewire('components.carousel')
         <!-- /Carousel -->
 
         <!-- Categories -->
-        <section class="flat-spacing-4 flat-categorie">
+        {{-- <section class="flat-spacing-4 flat-categorie">
             <div class="container-full">
                 <div class="flat-title-v2">
                     <div class="box-sw-navigation">
@@ -133,8 +70,7 @@
                                 <div class="swiper-slide" lazy="true">
                                     <div class="collection-item style-left hover-img">
                                         <div class="collection-inner">
-                                            <a href="{{ route('detail.category') }}"
-                                                class="collection-image img-style">
+                                            <a href="{{ route('detail.category') }}" class="collection-image img-style">
                                                 <img class="lazyload"
                                                     data-src="{{ asset('assets/images/collections/kategori.webp') }}"
                                                     src="{{ asset('assets/images/collections/kategori.webp') }}"
@@ -171,11 +107,11 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
         <!-- /Categories -->
 
         <!-- Produk -->
-        <section class="flat-spacing-5 flat-seller pt_0">
+        <section class="flat-spacing-5 flat-seller" style="margin-top: 40px">
             <div class="container">
                 <div class="flat-title">
                     <span class="title wow fadeInUp" data-wow-delay="0s">Produk Mindray</span>
@@ -185,276 +121,182 @@
                         </p>
                     </a>
                 </div>
-                <div class="grid-layout loadmore-item wow fadeInUp" data-wow-delay="0s" data-grid="grid-4">
-                    <!-- card product 1 -->
-                    <div class="card-product fl-item">
-                        <div class="card-product-wrapper">
-                            <a href="{{ route('detail.product') }}" class="product-img">
-                                <img class="lazyload img-product"
-                                    data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
-                                    src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
-                                    alt="image-product" />
-                                <img class="lazyload img-hover"
-                                    data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
-                                    src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
-                                    alt="image-product" />
-                            </a>
-                            <div class="list-product-btn absolute-2">
-                                {{-- <a href="#shoppingCart" data-bs-toggle="modal" --}}
-                                <a href="#" data-bs-toggle="modal"
-                                    class="box-icon bg_white quick-add tf-btn-loading">
-                                    <span class="icon icon-bag"></span>
-                                    <span class="tooltip">+ Keranjang</span>
-                                </a>
+                <div style="width:auto">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist" style="text-wrap: nowrap; font-size:larger">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="pencitraan-tab" data-bs-toggle="tab"
+                                data-bs-target="#pencitraan" type="button" role="tab" aria-controls="pencitraan"
+                                aria-selected="true">Pencitraan Umum</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="wanita-tab" data-bs-toggle="tab" data-bs-target="#wanita"
+                                type="button" role="tab" aria-controls="wanita" aria-selected="false">Kesehatan
+                                Kaum Wanita</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="kardiovaskular-tab" data-bs-toggle="tab"
+                                data-bs-target="#kardiovaskular" type="button" role="tab"
+                                aria-controls="kardiovaskular" aria-selected="false">Kardiovaskular</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pointofcare-tab" data-bs-toggle="tab"
+                                data-bs-target="#pointofcare" type="button" role="tab" aria-controls="pointofcare"
+                                aria-selected="false">Point of Care</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="primarycare-tab" data-bs-toggle="tab"
+                                data-bs-target="#primarycare" type="button" role="tab" aria-controls="primarycare"
+                                aria-selected="false">Primary Care</button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" id="myTabContent" style="margin-top: 10px">
+                        <!-- Pencitraan Umum Tab -->
+                        <div class="tab-pane fade show active" id="pencitraan" role="tabpanel"
+                            aria-labelledby="pencitraan-tab">
+                            <div class="grid-layout loadmore-item" data-grid="grid-4">
+                                <!-- Card Produk Pencitraan Umum -->
+                                <div class="card-product fl-item">
+                                    <div class="card-product-wrapper">
+                                        <a href="{{ route('detail.product') }}" class="product-img">
+                                            <img class="lazyload img-product"
+                                                data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
+                                                src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
+                                                alt="image-product" />
+                                            <img class="lazyload img-hover"
+                                                data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
+                                                src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
+                                                alt="image-product" />
+                                        </a>
+                                    </div>
+                                    <div class="card-product-info">
+                                        <a href="{{ route('detail.product') }}" class="title link">Mindray BeneHeart R3
+                                            Electrocardiograph</a>
+                                    </div>
+                                </div>
+                                <!-- Tambahkan produk lainnya sesuai kebutuhan -->
                             </div>
                         </div>
-                        <div class="card-product-info">
-                            <a href="{{ route('detail.product') }}" class="title link">Mindray
-                                BeneHeart R3 Electrocardiograph</a>
-                            <!-- <span class="price">$10.00</span> -->
-                        </div>
-                    </div>
-                    <!-- card product 1 -->
-                    <div class="card-product fl-item">
-                        <div class="card-product-wrapper">
-                            <a href="{{ route('detail.product') }}" class="product-img">
-                                <img class="lazyload img-product"
-                                    data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
-                                    src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
-                                    alt="image-product" />
-                                <img class="lazyload img-hover"
-                                    data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
-                                    src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
-                                    alt="image-product" />
-                            </a>
-                            <div class="list-product-btn absolute-2">
-                                {{-- <a href="#shoppingCart" data-bs-toggle="modal" --}}
-                                <a href="#" data-bs-toggle="modal"
-                                    class="box-icon bg_white quick-add tf-btn-loading">
-                                    <span class="icon icon-bag"></span>
-                                    <span class="tooltip">+ Keranjang</span>
-                                </a>
+
+                        <!-- Kesehatan Kaum Wanita Tab -->
+                        <div class="tab-pane fade" id="wanita" role="tabpanel" aria-labelledby="wanita-tab">
+                            <div class="grid-layout loadmore-item" data-grid="grid-4">
+                                <!-- Card Produk Kesehatan Kaum Wanita -->
+                                <div class="card-product fl-item">
+                                    <div class="card-product-wrapper">
+                                        <a href="{{ route('detail.product') }}" class="product-img">
+                                            <img class="lazyload img-product"
+                                                data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
+                                                src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
+                                                alt="image-product" />
+                                            <img class="lazyload img-hover"
+                                                data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
+                                                src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
+                                                alt="image-product" />
+                                        </a>
+                                    </div>
+                                    <div class="card-product-info">
+                                        <a href="{{ route('detail.product') }}" class="title link">Mindray BeneHeart
+                                            R3 Electrocardiograph</a>
+                                    </div>
+                                </div>
+                                <!-- Tambahkan produk lainnya sesuai kebutuhan -->
                             </div>
                         </div>
-                        <div class="card-product-info">
-                            <a href="{{ route('detail.product') }}" class="title link">Mindray
-                                BeneHeart R3 Electrocardiograph</a>
-                            <!-- <span class="price">$10.00</span> -->
-                        </div>
-                    </div>
-                    <!-- card product 1 -->
-                    <div class="card-product fl-item">
-                        <div class="card-product-wrapper">
-                            <a href="{{ route('detail.product') }}" class="product-img">
-                                <img class="lazyload img-product"
-                                    data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
-                                    src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
-                                    alt="image-product" />
-                                <img class="lazyload img-hover"
-                                    data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
-                                    src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
-                                    alt="image-product" />
-                            </a>
-                            <div class="list-product-btn absolute-2">
-                                {{-- <a href="#shoppingCart" data-bs-toggle="modal" --}}
-                                <a href="#" data-bs-toggle="modal"
-                                    class="box-icon bg_white quick-add tf-btn-loading">
-                                    <span class="icon icon-bag"></span>
-                                    <span class="tooltip">+ Keranjang</span>
-                                </a>
+
+                        <!-- Kardiovaskular Tab -->
+                        <div class="tab-pane fade" id="kardiovaskular" role="tabpanel"
+                            aria-labelledby="kardiovaskular-tab">
+                            <div class="grid-layout loadmore-item" data-grid="grid-4">
+                                <!-- Card Produk Kardiovaskular -->
+                                <div class="card-product fl-item">
+                                    <div class="card-product-wrapper">
+                                        <a href="{{ route('detail.product') }}" class="product-img">
+                                            <img class="lazyload img-product"
+                                                data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
+                                                src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
+                                                alt="image-product" />
+                                            <img class="lazyload img-hover"
+                                                data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
+                                                src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
+                                                alt="image-product" />
+                                        </a>
+                                    </div>
+                                    <div class="card-product-info">
+                                        <a href="{{ route('detail.product') }}" class="title link">Mindray BeneHeart
+                                            R3 Electrocardiograph</a>
+                                    </div>
+                                </div>
+                                <!-- Tambahkan produk lainnya sesuai kebutuhan -->
                             </div>
                         </div>
-                        <div class="card-product-info">
-                            <a href="{{ route('detail.product') }}" class="title link">Mindray
-                                BeneHeart R3 Electrocardiograph</a>
-                            <!-- <span class="price">$10.00</span> -->
-                        </div>
-                    </div>
-                    <!-- card product 1 -->
-                    <div class="card-product fl-item">
-                        <div class="card-product-wrapper">
-                            <a href="{{ route('detail.product') }}" class="product-img">
-                                <img class="lazyload img-product"
-                                    data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
-                                    src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
-                                    alt="image-product" />
-                                <img class="lazyload img-hover"
-                                    data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
-                                    src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
-                                    alt="image-product" />
-                            </a>
-                            <div class="list-product-btn absolute-2">
-                                {{-- <a href="#shoppingCart" data-bs-toggle="modal" --}}
-                                <a href="#" data-bs-toggle="modal"
-                                    class="box-icon bg_white quick-add tf-btn-loading">
-                                    <span class="icon icon-bag"></span>
-                                    <span class="tooltip">+ Keranjang</span>
-                                </a>
+
+                        <!-- Point of Care Tab -->
+                        <div class="tab-pane fade" id="pointofcare" role="tabpanel"
+                            aria-labelledby="pointofcare-tab">
+                            <div class="grid-layout loadmore-item" data-grid="grid-4">
+                                <!-- Card Produk Point of Care -->
+                                <div class="card-product fl-item">
+                                    <div class="card-product-wrapper">
+                                        <a href="{{ route('detail.product') }}" class="product-img">
+                                            <img class="lazyload img-product"
+                                                data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
+                                                src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
+                                                alt="image-product" />
+                                            <img class="lazyload img-hover"
+                                                data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
+                                                src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
+                                                alt="image-product" />
+                                        </a>
+                                    </div>
+                                    <div class="card-product-info">
+                                        <a href="{{ route('detail.product') }}" class="title link">Mindray BeneHeart
+                                            R3 Electrocardiograph</a>
+                                    </div>
+                                </div>
+                                <!-- Tambahkan produk lainnya sesuai kebutuhan -->
                             </div>
                         </div>
-                        <div class="card-product-info">
-                            <a href="{{ route('detail.product') }}" class="title link">Mindray
-                                BeneHeart R3 Electrocardiograph</a>
-                            <!-- <span class="price">$10.00</span> -->
+
+                        <!-- Primary Care Tab -->
+                        <div class="tab-pane fade" id="primarycare" role="tabpanel"
+                            aria-labelledby="primarycare-tab">
+                            <div class="grid-layout loadmore-item" data-grid="grid-4">
+                                <!-- Card Produk Primary Care -->
+                                <div class="card-product fl-item">
+                                    <div class="card-product-wrapper">
+                                        <a href="{{ route('detail.product') }}" class="product-img">
+                                            <img class="lazyload img-product"
+                                                data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
+                                                src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
+                                                alt="image-product" />
+                                            <img class="lazyload img-hover"
+                                                data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
+                                                src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
+                                                alt="image-product" />
+                                        </a>
+                                    </div>
+                                    <div class="card-product-info">
+                                        <a href="{{ route('detail.product') }}" class="title link">Mindray BeneHeart
+                                            R3 Electrocardiograph</a>
+                                    </div>
+                                </div>
+                                <!-- Tambahkan produk lainnya sesuai kebutuhan -->
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="tf-pagination-wrap view-more-button text-center">
-                    <button class="tf-btn-loading tf-loading-default style-2 btn-loadmore">
-                        <span class="text"> Tampilkan Lainnya </span>
-                    </button>
-                </div>
+
             </div>
         </section>
         <!-- /Produk -->
 
         <!-- Pelatihan -->
-        <section class="flat-spacing-6 pb_0">
-            <div class="flat-title wow fadeInUp" data-wow-delay="0s">
-                <span class="title">Pelatihan USG Terbaru</span>
-                <a href="{{ route('training.all') }}" class="tf-btn btn-line">
-                    <p class="sub-title">
-                        Lihat Semua Pelatihan<i class="icon icon-arrow1-top-left"></i>
-                    </p>
-                </a>
-            </div>
-            <div class="blog-grid-main">
-                <div class="container">
-                    <div class="row">
-                        {{-- 1 --}}
-                        <div class="col-xl-4 col-md-6 col-12">
-                            <div class="blog-article-item">
-                                <div class="article-thumb">
-                                    <a href="{{ route('detail.training') }}">
-                                        <img class="lazyload" data-src="{{ asset('assets/images/blog/wxp.webp') }}"
-                                            src="{{ asset('assets/images/blog/wxp.webp') }}" alt="img-blog" />
-                                    </a>
-                                </div>
-                                <div class="article-content">
-                                    <div class="article-title">
-                                        <a href="{{ route('detail.training') }}" class="">The next
-                                            generation of leather
-                                            alternatives</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {{-- 1 --}}
-                        <div class="col-xl-4 col-md-6 col-12">
-                            <div class="blog-article-item">
-                                <div class="article-thumb">
-                                    <a href="{{ route('detail.training') }}">
-                                        <img class="lazyload" data-src="{{ asset('assets/images/blog/wxp.webp') }}"
-                                            src="{{ asset('assets/images/blog/wxp.webp') }}" alt="img-blog" />
-                                    </a>
-                                </div>
-                                <div class="article-content">
-                                    <div class="article-title">
-                                        <a href="{{ route('detail.training') }}" class="">The next
-                                            generation of leather
-                                            alternatives</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {{-- 1 --}}
-                        <div class="col-xl-4 col-md-6 col-12">
-                            <div class="blog-article-item">
-                                <div class="article-thumb">
-                                    <a href="{{ route('detail.training') }}">
-                                        <img class="lazyload" data-src="{{ asset('assets/images/blog/wxp.webp') }}"
-                                            src="{{ asset('assets/images/blog/wxp.webp') }}" alt="img-blog" />
-                                    </a>
-                                </div>
-                                <div class="article-content">
-                                    <div class="article-title">
-                                        <a href="{{ route('detail.training') }}" class="">The next
-                                            generation of leather
-                                            alternatives</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        @livewire('components.training')
         <!-- /Pelatihan -->
 
         <!-- Artikel -->
-        <section class="flat-spacing-6 pb_0">
-            <div class="flat-title wow fadeInUp" data-wow-delay="0s">
-                <span class="title">Artikel Terbaru</span>
-                <a href="{{ route('article.all') }}" class="tf-btn btn-line">
-                    <p class="sub-title">
-                        Lihat Semua Artikel<i class="icon icon-arrow1-top-left"></i>
-                    </p>
-                </a>
-            </div>
-            <div class="blog-grid-main">
-                <div class="container">
-                    <div class="row">
-                        {{-- 1 --}}
-                        <div class="col-xl-4 col-md-6 col-12">
-                            <div class="blog-article-item">
-                                <div class="article-thumb">
-                                    <a href="{{ route('detail.article') }}">
-                                        <img class="lazyload" data-src="{{ asset('assets/images/blog/wxp.webp') }}"
-                                            src="{{ asset('assets/images/blog/wxp.webp') }}" alt="img-blog" />
-                                    </a>
-                                </div>
-                                <div class="article-content">
-                                    <div class="article-title">
-                                        <a href="{{ route('detail.article') }}" class="">The next
-                                            generation of
-                                            leather
-                                            alternatives</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {{-- 1 --}}
-                        <div class="col-xl-4 col-md-6 col-12">
-                            <div class="blog-article-item">
-                                <div class="article-thumb">
-                                    <a href="{{ route('detail.article') }}">
-                                        <img class="lazyload" data-src="{{ asset('assets/images/blog/wxp.webp') }}"
-                                            src="{{ asset('assets/images/blog/wxp.webp') }}" alt="img-blog" />
-                                    </a>
-                                </div>
-                                <div class="article-content">
-                                    <div class="article-title">
-                                        <a href="{{ route('detail.article') }}" class="">The next
-                                            generation of
-                                            leather
-                                            alternatives</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {{-- 1 --}}
-                        <div class="col-xl-4 col-md-6 col-12">
-                            <div class="blog-article-item">
-                                <div class="article-thumb">
-                                    <a href="{{ route('detail.article') }}">
-                                        <img class="lazyload" data-src="{{ asset('assets/images/blog/wxp.webp') }}"
-                                            src="{{ asset('assets/images/blog/wxp.webp') }}" alt="img-blog" />
-                                    </a>
-                                </div>
-                                <div class="article-content">
-                                    <div class="article-title">
-                                        <a href="{{ route('detail.article') }}" class="">The next
-                                            generation of
-                                            leather
-                                            alternatives</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        @livewire('components.article')
         <!-- /Artikel -->
 
         <!-- Testimonial -->

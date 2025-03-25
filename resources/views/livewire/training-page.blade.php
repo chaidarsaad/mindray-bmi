@@ -1,5 +1,5 @@
 @section('title')
-    BMI | Semua Pelatihan
+    BMI | Pelatihan
 @endsection
 
 <div>

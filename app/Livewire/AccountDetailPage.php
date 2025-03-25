@@ -75,7 +75,7 @@ class AccountDetailPage extends Component
         $this->reset(['password', 'password_confirmation']);
 
         session()->flash('notify-success', 'Berhasil disimpan');
-        return $this->redirectRoute('dashboard.detail-account');
+        $this->redirectRoute('dashboard.detail-account', navigate: true);
     }
 
     public function togglePassword()
