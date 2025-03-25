@@ -35,16 +35,6 @@ class CategoryResource extends Resource
                             ->required()
                             ->maxLength(255),
                     ]),
-                Section::make('Gambar Kategori')
-                    ->collapsible()
-                    ->schema([
-                        Forms\Components\FileUpload::make('image')
-                            ->helperText('Untuk menjaga performa website, disarankan format gambar .webp dengan ukuran 100x100')
-                            ->label('')
-                            ->required()
-                            ->image(),
-                    ]),
-
             ]);
     }
 
@@ -58,8 +48,6 @@ class CategoryResource extends Resource
                 Tables\Columns\TextColumn::make('name')
                     ->label('Nama Kategori')
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('image')
-                    ->label('Gambar Kategori'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
