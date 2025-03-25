@@ -114,7 +114,7 @@
         <section class="flat-spacing-5 flat-seller" style="margin-top: 40px">
             <div class="container">
                 <div class="flat-title">
-                    <span class="title wow fadeInUp" data-wow-delay="0s">Produk Mindray</span>
+                    <span class="title wow fadeInUp" data-wow-delay="0s">Berbagai Produk USG Mindray</span>
                     <a href="{{ route('usg.all') }}" class="tf-btn btn-line">
                         <p class="sub-title">
                             Lihat Semua Produk<i class="icon icon-arrow1-top-left"></i>
