@@ -107,7 +107,7 @@
                                         </div>
                                     </div> --}}
                                     <a href="{{ route('checkout') }}"
-                                        class="tf-btn btn-fill radius-3 justify-content-center fw-6 fs-14 flex-grow-1 animate-hover-btn ">Lanjutkan
+                                        class="tf-btn tf-btn-process btn-fill radius-3 justify-content-center fw-6 fs-14 flex-grow-1 animate-hover-btn ">Lanjutkan
                                     </a>
                                 </div>
                             </form>

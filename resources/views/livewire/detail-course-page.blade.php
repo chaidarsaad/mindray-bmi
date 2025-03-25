@@ -53,18 +53,11 @@
         <div class="tf-sticky-btn-atc">
             <div class="container">
                 <div class="tf-height-observer w-100 d-flex align-items-center">
-                    <div class="tf-sticky-atc-infos" style="width: 100%">
-                        <form class="" style="width: 100%">
-                            <div class="tf-sticky-atc-btns" style="width: 100%">
-                                {{-- <div class="tf-product-info-quantity">
-                                    <div class="wg-quantity">
-                                        <span class="btn-quantity minus-btn">-</span>
-                                        <input type="text" name="number" value="1">
-                                        <span class="btn-quantity plus-btn">+</span>
-                                    </div>
-                                </div> --}}
+                    <div class="tf-sticky-atc-infos" style="width: 100%;">
+                        <form class="" style="width: 100%;">
+                            <div class="tf-sticky-atc-btns" style="width: 100%;">
                                 <a href="#"
-                                    class="tf-btn btn-fill radius-3 justify-content-center fw-6 fs-14 flex-grow-1 animate-hover-btn "><span>Tambah
+                                    class="tf-btn tf-btn-process btn-fill radius-3 justify-content-center fw-6 fs-14 flex-grow-1 animate-hover-btn "><span>Tambah
                                         ke keranjang</a>
                             </div>
                         </form>

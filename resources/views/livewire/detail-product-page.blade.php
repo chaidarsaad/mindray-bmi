@@ -189,7 +189,7 @@
                                         </div>
                                     </div> --}}
                                     <a href="#"
-                                        class="tf-btn btn-fill radius-3 justify-content-center fw-6 fs-14 flex-grow-1 animate-hover-btn "><span>Tambah
+                                        class="tf-btn tf-btn-process btn-fill radius-3 justify-content-center fw-6 fs-14 flex-grow-1 animate-hover-btn "><span>Tambah
                                             ke keranjang</a>
                                 </div>
                             </form>
