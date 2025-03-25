@@ -21,6 +21,8 @@ class AboutResource extends Resource
     protected static ?string $pluralLabel = 'Data CV';
     protected static ?string $navigationLabel = 'Data CV';
     protected static ?string $navigationGroup = 'Data Utama';
+    protected static ?int $navigationSort = 0;
+
 
     public static function form(Form $form): Form
     {

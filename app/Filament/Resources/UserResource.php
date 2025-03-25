@@ -23,6 +23,7 @@ class UserResource extends Resource
     protected static ?string $pluralLabel = 'Pengguna';
     protected static ?string $navigationLabel = 'Pengguna';
     protected static ?string $navigationGroup = 'Manajemen Pengguna';
+    protected static ?int $navigationSort = 7;
 
     public static function form(Form $form): Form
     {
