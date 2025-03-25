@@ -16,7 +16,7 @@
                             </div>
 
                             <ul class="list-unstyled">
-                                <li>
+                                <li style="margin-bottom: 20px">
                                     @if (!empty($about->trusted))
                                         <p>{{ $about->trusted }}</p>
                                     @endif

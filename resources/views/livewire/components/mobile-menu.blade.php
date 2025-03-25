@@ -47,7 +47,7 @@
                 </div>
 
                 <ul class="mb-info">
-                    <li>
+                    <li style="margin-bottom: 20px">
                         @if (!empty($about->trusted))
                             <p>{{ $about->trusted }}</p>
                         @endif
