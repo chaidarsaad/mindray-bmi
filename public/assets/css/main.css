@@ -3631,7 +3631,7 @@ header.header-bg {
 
 .btn-fill {
     background-color: var(--main);
-    border: 1px solid var(--main);
+    /* border: 1px solid var(--main); */
     color: var(--white);
 }
 
