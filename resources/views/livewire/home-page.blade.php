@@ -201,6 +201,28 @@
                                     </div>
                                 </div>
                                 <!-- Tambahkan produk lainnya sesuai kebutuhan -->
+
+                                <!-- Card Produk Kesehatan Kaum Wanita -->
+                                <div class="card-product fl-item">
+                                    <div class="card-product-wrapper">
+                                        <a href="{{ route('detail.product') }}" class="product-img">
+                                            <img class="lazyload img-product"
+                                                data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
+                                                src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
+                                                alt="image-product" />
+                                            <img class="lazyload img-hover"
+                                                data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
+                                                src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
+                                                alt="image-product" />
+                                        </a>
+                                    </div>
+                                    <div class="card-product-info">
+                                        <a href="{{ route('detail.product') }}" class="title link">Mindray BeneHeart
+                                            R3 Electrocardiograph</a>
+                                    </div>
+                                </div>
+                                <!-- Tambahkan produk lainnya sesuai kebutuhan -->
+
                             </div>
                         </div>
 
@@ -262,6 +284,27 @@
                         <div class="tab-pane fade" id="primarycare" role="tabpanel"
                             aria-labelledby="primarycare-tab">
                             <div class="grid-layout loadmore-item" data-grid="grid-4">
+                                <!-- Card Produk Primary Care -->
+                                <div class="card-product fl-item">
+                                    <div class="card-product-wrapper">
+                                        <a href="{{ route('detail.product') }}" class="product-img">
+                                            <img class="lazyload img-product"
+                                                data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
+                                                src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
+                                                alt="image-product" />
+                                            <img class="lazyload img-hover"
+                                                data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
+                                                src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
+                                                alt="image-product" />
+                                        </a>
+                                    </div>
+                                    <div class="card-product-info">
+                                        <a href="{{ route('detail.product') }}" class="title link">Mindray BeneHeart
+                                            R3 Electrocardiograph</a>
+                                    </div>
+                                </div>
+                                <!-- Tambahkan produk lainnya sesuai kebutuhan -->
+
                                 <!-- Card Produk Primary Care -->
                                 <div class="card-product fl-item">
                                     <div class="card-product-wrapper">
