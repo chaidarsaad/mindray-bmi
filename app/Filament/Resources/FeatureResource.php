@@ -27,14 +27,16 @@ class FeatureResource extends Resource
     {
         return $form
             ->schema([
-                Section::make('Fitur')
+                Section::make('Kelebihan')
                     ->collapsible()
                     ->schema([
                         Forms\Components\TextInput::make('title')
+                            ->label('Kelebihan')
                             ->unique(ignoreRecord: true)
                             ->required()
                             ->maxLength(255),
                         Forms\Components\Textarea::make('subtitle')
+                            ->label('Detail Kelebihan')
                             ->required()
                             ->maxLength(255),
                         Forms\Components\TextInput::make('logo')
