@@ -52,6 +52,7 @@ class FeatureResource extends Resource
             ->defaultSort('id', direction: 'desc')
             ->columns([
                 Tables\Columns\TextColumn::make('title')
+                    ->label('Kelebihan')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
