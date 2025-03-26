@@ -8,6 +8,7 @@ use App\Models\Category;
 use Filament\Forms;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
+use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -21,7 +22,7 @@ class CategoryResource extends Resource
     protected static ?string $pluralLabel = 'Kategori';
     protected static ?string $navigationLabel = 'Kategori';
     protected static ?string $navigationGroup = 'Data Utama';
-    protected static ?int $navigationSort = 1;
+    protected static ?int $navigationSort = 2;
 
     public static function form(Form $form): Form
     {
@@ -63,11 +64,46 @@ class CategoryResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\DeleteAction::make()
+                    ->action(function ($data, $record) {
+                        if ($record->products()->count() > 0) {
+                            Notification::make()
+                                ->danger()
+                                ->title('Kategori gagal dihapus')
+                                ->body('Kategori ini dipakai disalah satu produk')
+                                ->send();
+                            return;
+                        }
+
+                        Notification::make()
+                            ->success()
+                            ->title('Kategori berhasil dihapus')
+                            ->send();
+                        $record->delete();
+                    }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\DeleteBulkAction::make()
+                        ->action(function ($records) {
+                            foreach ($records as $record) {
+                                if ($record->products()->count() > 0) {
+                                    Notification::make()
+                                        ->danger()
+                                        ->title('Kategori gagal dihapus')
+                                        ->body('Kategori ini dipakai di salah satu produk')
+                                        ->send();
+                                    continue;
+                                }
+
+                                $record->delete();
+
+                                Notification::make()
+                                    ->success()
+                                    ->title('Kategori berhasil dihapus')
+                                    ->send();
+                            }
+                        }),
                 ]),
             ]);
     }

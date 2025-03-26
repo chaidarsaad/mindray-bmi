@@ -16,34 +16,14 @@
                     <div class="col-12">
                         <div class="blog-detail-main">
                             <div class="blog-detail-main-heading">
-                                <div class="title">Something About This Style Of Jeans</div>
+                                <div class="title">{{ $training->judul }}</div>
                                 <div class="image">
-                                    <img class="lazyload" data-src="{{ asset('assets/images/blog/blog-detail-1.jpg') }}"
-                                        src="{{ asset('assets/images/blog/blog-detail-1.jpg') }}" alt="">
+                                    <img class="lazyload" data-src="{{ Storage::url($training->image) }}"
+                                        src="{{ Storage::url($training->image) }}" alt="">
                                 </div>
                             </div>
                             <div class="desc">
-                                Pellentesque dapibus hendrerit tortor. Nam ipsum risus, rutrum vitae, vestibulum eu,
-                                molestie vel, lacus. Sed libero. Phasellus tempus. Etiam feugiat lorem non metus
-                                Maecenas vestibulum mollis diam. Pellentesque auctor neque nec urna. Pellentesque
-                                commodo eros a enim. Etiam sit amet orci eget eros faucibus tincidunt. Vestibulum purus
-                                quam, scelerisque ut, mollis sed, nonummy id, metus.In hac habitasse platea dictumst.
-                                Etiam ultricies nisi vel augue. Pellentesque egestas, neque sit amet convallis pulvinar,
-                                justo nulla eleifend augue, ac auctor orci leo non est. Quisque rutrum. Duis leo. <br>
-                                <br> <br>
-                                Pellentesque dapibus hendrerit tortor. Nam ipsum risus, rutrum vitae, vestibulum eu,
-                                molestie vel, lacus. Sed libero. Phasellus tempus. Etiam feugiat lorem non metus. Morbi
-                                mattis ullamcorper velit. Donec sodales sagittis magna. Curabitur a felis in nunc
-                                fringilla tristique. Quisque malesuada placerat nisl. Phasellus gravida semper nisi.
-                                <br> <br> <br>
-                                Curabitur blandit mollis lacus. Phasellus nec sem in justo pellentesque facilisis.
-                                Mauris turpis nunc, blandit et, volutpat molestie, porta ut, ligula. Fusce ac felis sit
-                                amet ligula pharetra condimentum. Integer tincidunt. <br> <br> <br>
-                                Maecenas vestibulum mollis diam. Pellentesque auctor neque nec urna. Pellentesque
-                                commodo eros a enim. Etiam sit amet orci eget eros faucibus tincidunt. Vestibulum purus
-                                quam, scelerisque ut, mollis sed, nonummy id, metus.In hac habitasse platea dictumst.
-                                Etiam ultricies nisi vel augue. Pellentesque egestas, neque sit amet convallis pulvinar,
-                                justo nulla eleifend augue, ac auctor orci leo non est. Quisque rutrum. Duis leo.
+                                {!! $training->description !!}
                             </div>
                         </div>
                     </div>

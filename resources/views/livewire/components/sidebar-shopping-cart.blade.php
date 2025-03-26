@@ -12,13 +12,13 @@
                             <div class="tf-mini-cart-items">
                                 <div class="tf-mini-cart-item">
                                     <div class="tf-mini-cart-image">
-                                        <a href="{{ route('detail.product') }}">
+                                        <a href="#">
                                             <img src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
                                                 alt="" />
                                         </a>
                                     </div>
                                     <div class="tf-mini-cart-info">
-                                        <a class="title link" href="{{ route('detail.product') }}">T-shirt</a>
+                                        <a class="title link" href="#">T-shirt</a>
                                         <div class="meta-variant">Light gray</div>
                                         <!-- <div class="price fw-6">$25.00</div> -->
                                         <div class="tf-mini-cart-btns">
@@ -33,13 +33,13 @@
                                 </div>
                                 <div class="tf-mini-cart-item">
                                     <div class="tf-mini-cart-image">
-                                        <a href="{{ route('detail.product') }}">
+                                        <a href="#">
                                             <img src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
                                                 alt="" />
                                         </a>
                                     </div>
                                     <div class="tf-mini-cart-info">
-                                        <a class="title link" href="{{ route('detail.product') }}">Oversized Motif
+                                        <a class="title link" href="#">Oversized Motif
                                             T-shirt</a>
                                         <div class="meta-variant">Light gray</div>
                                         <!-- <div class="price fw-6">$25.00</div> -->

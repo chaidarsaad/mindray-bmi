@@ -3,30 +3,26 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 
-class Category extends Model
+class Training extends Model
 {
     protected $fillable = [
-        'name',
         'slug',
+        'judul',
         'image',
+        'description',
+        'is_show',
     ];
 
-    public function setNameAttribute($value)
+    public function setJudulAttribute($value)
     {
-        $this->attributes['name'] = $value;
+        $this->attributes['judul'] = $value;
         $this->attributes['slug'] = Str::slug($value);
     }
 
     public function getRouteKeyName()
     {
         return 'slug';
-    }
-
-    public function products(): HasMany
-    {
-        return $this->hasMany(Product::class);
     }
 }

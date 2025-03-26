@@ -20,7 +20,7 @@
                     <!-- card product 1 -->
                     <div class="card-product">
                         <div class="card-product-wrapper">
-                            <a href="{{ route('detail.product') }}" class="product-img">
+                            <a href="#" class="product-img">
                                 <img class="lazyload img-product"
                                     data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
                                     src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
@@ -39,7 +39,7 @@
                             </div>
                         </div>
                         <div class="card-product-info">
-                            <a href="{{ route('detail.product') }}" class="title link">Mindray
+                            <a href="#" class="title link">Mindray
                                 BeneHeart R3 Electrocardiograph</a>
                             {{-- <span class="price">$16.95</span> --}}
                         </div>
@@ -47,7 +47,7 @@
                     <!-- card product 1 -->
                     <div class="card-product">
                         <div class="card-product-wrapper">
-                            <a href="{{ route('detail.product') }}" class="product-img">
+                            <a href="#" class="product-img">
                                 <img class="lazyload img-product"
                                     data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
                                     src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
@@ -66,7 +66,7 @@
                             </div>
                         </div>
                         <div class="card-product-info">
-                            <a href="{{ route('detail.product') }}" class="title link">Mindray
+                            <a href="#" class="title link">Mindray
                                 BeneHeart R3 Electrocardiograph</a>
                             {{-- <span class="price">$16.95</span> --}}
                         </div>
@@ -74,7 +74,7 @@
                     <!-- card product 1 -->
                     <div class="card-product">
                         <div class="card-product-wrapper">
-                            <a href="{{ route('detail.product') }}" class="product-img">
+                            <a href="#" class="product-img">
                                 <img class="lazyload img-product"
                                     data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
                                     src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
@@ -93,7 +93,7 @@
                             </div>
                         </div>
                         <div class="card-product-info">
-                            <a href="{{ route('detail.product') }}" class="title link">Mindray
+                            <a href="#" class="title link">Mindray
                                 BeneHeart R3 Electrocardiograph</a>
                             {{-- <span class="price">$16.95</span> --}}
                         </div>
@@ -101,7 +101,7 @@
                     <!-- card product 1 -->
                     <div class="card-product">
                         <div class="card-product-wrapper">
-                            <a href="{{ route('detail.product') }}" class="product-img">
+                            <a href="#" class="product-img">
                                 <img class="lazyload img-product"
                                     data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
                                     src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
@@ -120,7 +120,7 @@
                             </div>
                         </div>
                         <div class="card-product-info">
-                            <a href="{{ route('detail.product') }}" class="title link">Mindray
+                            <a href="#" class="title link">Mindray
                                 BeneHeart R3 Electrocardiograph</a>
                             {{-- <span class="price">$16.95</span> --}}
                         </div>

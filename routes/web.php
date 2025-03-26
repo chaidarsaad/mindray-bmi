@@ -21,11 +21,11 @@ Route::get('/', HomePage::class)->name('home');
 // todo kategori /slug
 Route::get('/detail-kategori', DetailCategoryPage::class)->name('detail.category');
 // todo product /slug
-Route::get('/detail-produk', DetailProductPage::class)->name('detail.product');
+Route::get('/detail-produk/{slug}', DetailProductPage::class)->name('detail.product');
 // todo article /slug
 Route::get('/detail-artikel', DetailArticlePage::class)->name('detail.article');
 // todo course /slug
-Route::get('/detail-pelatihan', DetailCoursePage::class)->name('detail.training');
+Route::get('/detail-pelatihan/{slug}', DetailCoursePage::class)->name('detail.training');
 // todo usg /slug
 Route::get('/semua-produk', UsgPage::class)->name('usg.all');
 // todo training /slug

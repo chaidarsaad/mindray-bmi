@@ -1,5 +1,5 @@
 @section('title')
-    BMI | Produk USG Mindray
+    BMI | Semua Produk USG Mindray
 @endsection
 
 <div>
@@ -13,146 +13,67 @@
         <!-- /page-title -->
 
         {{-- page --}}
-        <section class="flat-spacing-2">
-            <div class="container">
+        <div>
+            @if ($products->isNotEmpty())
+                <section class="flat-spacing-2">
+                    <div class="container">
 
-                <div class="grid-layout wrapper-shop" data-grid="grid-4">
-                    <!-- card product 1 -->
-                    <div class="card-product">
-                        <div class="card-product-wrapper">
-                            <a href="{{ route('detail.product') }}" class="product-img">
-                                <img class="lazyload img-product"
-                                    data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
-                                    src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
-                                    alt="image-product" />
-                                <img class="lazyload img-hover"
-                                    data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
-                                    src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
-                                    alt="image-product" />
+                        <div class="grid-layout wrapper-shop" data-grid="grid-4">
+                            @foreach ($products as $product)
+                                <div class="card-product">
+                                    <div class="card-product-wrapper">
+                                        <a href="{{ route('detail.product', $product->slug) }}" class="product-img">
+                                            <img class="lazyload img-product"
+                                                data-src="{{ Storage::url($product->images[0]) }}"
+                                                src="{{ Storage::url($product->images[0]) }}" alt="image-product" />
+                                            <img class="lazyload img-hover"
+                                                data-src="{{ Storage::url($product->images[0]) }}"
+                                                src="{{ Storage::url($product->images[0]) }}" alt="image-product" />
+                                        </a>
+                                        <div class="list-product-btn">
+                                            <a href="#quick_add" data-bs-toggle="modal"
+                                                class="box-icon bg_white quick-add tf-btn-loading">
+                                                <span class="icon icon-bag"></span>
+                                                <span class="tooltip">+ Keranjang</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="card-product-info">
+                                        <a href="{{ route('detail.product', $product->slug) }}"
+                                            class="title link">{{ $product->name }}</a>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                        <!-- pagination -->
+                        {{-- <ul class="tf-pagination-wrap tf-pagination-list">
+                        <li class="active">
+                            <a href="#" class="pagination-link">1</a>
+                        </li>
+                        <li>
+                            <a href="#" class="pagination-link animate-hover-btn">2</a>
+                        </li>
+                        <li>
+                            <a href="#" class="pagination-link animate-hover-btn">3</a>
+                        </li>
+                        <li>
+                            <a href="#" class="pagination-link animate-hover-btn">4</a>
+                        </li>
+                        <li>
+                            <a href="#" class="pagination-link animate-hover-btn">
+                                <span class="icon icon-arrow-right"></span>
                             </a>
-                            <div class="list-product-btn">
-                                <a href="#quick_add" data-bs-toggle="modal"
-                                    class="box-icon bg_white quick-add tf-btn-loading">
-                                    <span class="icon icon-bag"></span>
-                                    <span class="tooltip">+ Keranjang</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card-product-info">
-                            <a href="{{ route('detail.product') }}" class="title link">Mindray
-                                BeneHeart R3 Electrocardiograph</a>
-                            {{-- <span class="price">$16.95</span> --}}
-                        </div>
+                        </li>
+                    </ul> --}}
+                        {{-- <div class="tf-pagination-wrap view-more-button text-center">
+                        <button class="tf-btn-loading tf-loading-default style-2 btn-loadmore">
+                            <span class="text"> Tampilkan Lainnya </span>
+                        </button>
+                    </div> --}}
                     </div>
-                    <!-- card product 1 -->
-                    <div class="card-product">
-                        <div class="card-product-wrapper">
-                            <a href="{{ route('detail.product') }}" class="product-img">
-                                <img class="lazyload img-product"
-                                    data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
-                                    src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
-                                    alt="image-product" />
-                                <img class="lazyload img-hover"
-                                    data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
-                                    src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
-                                    alt="image-product" />
-                            </a>
-                            <div class="list-product-btn">
-                                <a href="#quick_add" data-bs-toggle="modal"
-                                    class="box-icon bg_white quick-add tf-btn-loading">
-                                    <span class="icon icon-bag"></span>
-                                    <span class="tooltip">+ Keranjang</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card-product-info">
-                            <a href="{{ route('detail.product') }}" class="title link">Mindray
-                                BeneHeart R3 Electrocardiograph</a>
-                            {{-- <span class="price">$16.95</span> --}}
-                        </div>
-                    </div>
-                    <!-- card product 1 -->
-                    <div class="card-product">
-                        <div class="card-product-wrapper">
-                            <a href="{{ route('detail.product') }}" class="product-img">
-                                <img class="lazyload img-product"
-                                    data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
-                                    src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
-                                    alt="image-product" />
-                                <img class="lazyload img-hover"
-                                    data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
-                                    src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
-                                    alt="image-product" />
-                            </a>
-                            <div class="list-product-btn">
-                                <a href="#quick_add" data-bs-toggle="modal"
-                                    class="box-icon bg_white quick-add tf-btn-loading">
-                                    <span class="icon icon-bag"></span>
-                                    <span class="tooltip">+ Keranjang</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card-product-info">
-                            <a href="{{ route('detail.product') }}" class="title link">Mindray
-                                BeneHeart R3 Electrocardiograph</a>
-                            {{-- <span class="price">$16.95</span> --}}
-                        </div>
-                    </div>
-                    <!-- card product 1 -->
-                    <div class="card-product">
-                        <div class="card-product-wrapper">
-                            <a href="{{ route('detail.product') }}" class="product-img">
-                                <img class="lazyload img-product"
-                                    data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
-                                    src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
-                                    alt="image-product" />
-                                <img class="lazyload img-hover"
-                                    data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
-                                    src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
-                                    alt="image-product" />
-                            </a>
-                            <div class="list-product-btn">
-                                <a href="#quick_add" data-bs-toggle="modal"
-                                    class="box-icon bg_white quick-add tf-btn-loading">
-                                    <span class="icon icon-bag"></span>
-                                    <span class="tooltip">+ Keranjang</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card-product-info">
-                            <a href="{{ route('detail.product') }}" class="title link">Mindray
-                                BeneHeart R3 Electrocardiograph</a>
-                            {{-- <span class="price">$16.95</span> --}}
-                        </div>
-                    </div>
-                </div>
-                <!-- pagination -->
-                {{-- <ul class="tf-pagination-wrap tf-pagination-list">
-                    <li class="active">
-                        <a href="#" class="pagination-link">1</a>
-                    </li>
-                    <li>
-                        <a href="#" class="pagination-link animate-hover-btn">2</a>
-                    </li>
-                    <li>
-                        <a href="#" class="pagination-link animate-hover-btn">3</a>
-                    </li>
-                    <li>
-                        <a href="#" class="pagination-link animate-hover-btn">4</a>
-                    </li>
-                    <li>
-                        <a href="#" class="pagination-link animate-hover-btn">
-                            <span class="icon icon-arrow-right"></span>
-                        </a>
-                    </li>
-                </ul> --}}
-                <div class="tf-pagination-wrap view-more-button text-center">
-                    <button class="tf-btn-loading tf-loading-default style-2 btn-loadmore">
-                        <span class="text"> Tampilkan Lainnya </span>
-                    </button>
-                </div>
-            </div>
-        </section>
+                </section>
+            @endif
+        </div>
         {{-- /page --}}
 
         <!-- Footer -->

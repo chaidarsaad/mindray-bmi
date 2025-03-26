@@ -14,6 +14,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class AboutResource extends Resource
 {
@@ -56,6 +57,9 @@ class AboutResource extends Resource
                     ->collapsible()
                     ->schema([
                         Forms\Components\FileUpload::make('logo')
+                            ->getUploadedFileNameForStorageUsing(
+                                fn(TemporaryUploadedFile $file): string => 'logo-' . $file->hashName()
+                            )
                             ->label('')
                             ->helperText('Untuk menjaga performa website, disarankan format gambar .webp')
                             ->image()
