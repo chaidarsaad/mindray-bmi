@@ -51,8 +51,6 @@ class QuestionResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('question')
                     ->label('Pertanyaan'),
-                Tables\Columns\TextColumn::make('answer')
-                    ->label('Jawaban'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
