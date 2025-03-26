@@ -38,7 +38,7 @@
                                             @foreach ($product->images as $image)
                                                 <div class="swiper-slide stagger-item">
                                                     <div class="item">
-                                                        <img class="lazyload" data-src="{{ Storage::url($image) }}"
+                                                        <img class="" data-src="{{ Storage::url($image) }}"
                                                             src="{{ Storage::url($image) }}" alt="img-compare">
                                                     </div>
                                                 </div>
@@ -51,7 +51,7 @@
                                                 <div class="swiper-slide">
                                                     <a href="{{ Storage::url($image) }}" target="_blank" class="item"
                                                         data-pswp-width="770px" data-pswp-height="1075px">
-                                                        <img class="tf-image-zoom lazyload"
+                                                        <img class="tf-image-zoom "
                                                             data-zoom="{{ Storage::url($image) }}"
                                                             data-src="{{ Storage::url($image) }}"
                                                             src="{{ Storage::url($image) }}" alt="">
@@ -93,7 +93,7 @@
                     <div class="tf-height-observer w-100 d-flex align-items-center">
                         <div class="tf-sticky-atc-product d-flex align-items-center">
                             <div class="tf-sticky-atc-img">
-                                <img class="lazyloaded" data-src="{{ Storage::url($image) }}" alt=""
+                                <img class="ed" data-src="{{ Storage::url($image) }}" alt=""
                                     src="{{ Storage::url($image) }}">
                             </div>
                             <div class="tf-sticky-atc-title fw-5 d-xl-block d-none">{{ $product->subname }}</div>
@@ -163,11 +163,11 @@
                                         <div class="card-product">
                                             <div class="card-product-wrapper">
                                                 <a href="#" class="product-img">
-                                                    <img class="lazyload img-product"
+                                                    <img class=" img-product"
                                                         data-src="{{ Storage::url($item->images[0]) }}"
                                                         src="{{ Storage::url($item->images[0]) }}"
                                                         alt="image-product">
-                                                    <img class="lazyload img-hover"
+                                                    <img class=" img-hover"
                                                         data-src="{{ Storage::url($item->images[0]) }}"
                                                         src="{{ Storage::url($item->images[0]) }}"
                                                         alt="image-product">

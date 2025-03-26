@@ -22,7 +22,7 @@
                             <div class="blog-article-item">
                                 <div class="article-thumb">
                                     <a href="{{ route('detail.article') }}">
-                                        <img class="lazyload" data-src="{{ asset('assets/images/blog/wxp.webp') }}"
+                                        <img class="" data-src="{{ asset('assets/images/blog/wxp.webp') }}"
                                             src="{{ asset('assets/images/blog/wxp.webp') }}" alt="img-blog" />
                                     </a>
                                 </div>
@@ -42,7 +42,7 @@
                             <div class="blog-article-item">
                                 <div class="article-thumb">
                                     <a href="{{ route('detail.article') }}">
-                                        <img class="lazyload" data-src="{{ asset('assets/images/blog/wxp.webp') }}"
+                                        <img class="" data-src="{{ asset('assets/images/blog/wxp.webp') }}"
                                             src="{{ asset('assets/images/blog/wxp.webp') }}" alt="img-blog" />
                                     </a>
                                 </div>
@@ -62,7 +62,7 @@
                             <div class="blog-article-item">
                                 <div class="article-thumb">
                                     <a href="{{ route('detail.article') }}">
-                                        <img class="lazyload" data-src="{{ asset('assets/images/blog/wxp.webp') }}"
+                                        <img class="" data-src="{{ asset('assets/images/blog/wxp.webp') }}"
                                             src="{{ asset('assets/images/blog/wxp.webp') }}" alt="img-blog" />
                                     </a>
                                 </div>

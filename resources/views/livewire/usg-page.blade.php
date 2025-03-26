@@ -23,11 +23,9 @@
                                 <div class="card-product">
                                     <div class="card-product-wrapper">
                                         <a href="{{ route('detail.product', $product->slug) }}" class="product-img">
-                                            <img class="lazyload img-product"
-                                                data-src="{{ Storage::url($product->images[0]) }}"
+                                            <img class="img-product" data-src="{{ Storage::url($product->images[0]) }}"
                                                 src="{{ Storage::url($product->images[0]) }}" alt="image-product" />
-                                            <img class="lazyload img-hover"
-                                                data-src="{{ Storage::url($product->images[0]) }}"
+                                            <img class="img-hover" data-src="{{ Storage::url($product->images[0]) }}"
                                                 src="{{ Storage::url($product->images[0]) }}" alt="image-product" />
                                         </a>
                                         <div class="list-product-btn">

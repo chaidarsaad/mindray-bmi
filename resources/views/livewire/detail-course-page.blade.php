@@ -18,7 +18,7 @@
                             <div class="blog-detail-main-heading">
                                 <div class="title">{{ $training->judul }}</div>
                                 <div class="image">
-                                    <img class="lazyload" data-src="{{ Storage::url($training->image) }}"
+                                    <img class="" data-src="{{ Storage::url($training->image) }}"
                                         src="{{ Storage::url($training->image) }}" alt="">
                                 </div>
                             </div>

@@ -19,7 +19,7 @@
                                 <div class="title">Something About This Style Of Jeans</div>
                                 <div class="meta">by <span>admin</span> on <span>Oct 02</span></div>
                                 <div class="image">
-                                    <img class="lazyload" data-src="{{ asset('assets/images/blog/blog-detail-1.jpg') }}"
+                                    <img class="" data-src="{{ asset('assets/images/blog/blog-detail-1.jpg') }}"
                                         src="{{ asset('assets/images/blog/blog-detail-1.jpg') }}" alt="">
                                 </div>
                             </div>
@@ -37,11 +37,11 @@
                             </blockquote>
                             <div class="grid-image">
                                 <div>
-                                    <img class="lazyload" data-src="{{ asset('assets/images/blog/blog-detail-1.jpg') }}"
+                                    <img class="" data-src="{{ asset('assets/images/blog/blog-detail-1.jpg') }}"
                                         src="{{ asset('assets/images/blog/blog-detail-1.jpg') }}" alt="">
                                 </div>
                                 <div>
-                                    <img class="lazyload" data-src="{{ asset('assets/images/blog/blog-detail-2.jpg') }}"
+                                    <img class="" data-src="{{ asset('assets/images/blog/blog-detail-2.jpg') }}"
                                         src="{{ asset('assets/images/blog/blog-detail-2.jpg') }}" alt="">
                                 </div>
                             </div>
@@ -90,7 +90,7 @@
                                 <div class="blog-article-item">
                                     <div class="article-thumb radius-10">
                                         <a href="{{ route('detail.article') }}">
-                                            <img class="lazyload" data-src="{{ asset('assets/images/blog/wxp.webp') }}"
+                                            <img class="" data-src="{{ asset('assets/images/blog/wxp.webp') }}"
                                                 src="{{ asset('assets/images/blog/wxp.webp') }}" alt="img-blog">
                                         </a>
                                     </div>
@@ -107,7 +107,7 @@
                                 <div class="blog-article-item">
                                     <div class="article-thumb radius-10">
                                         <a href="{{ route('detail.article') }}">
-                                            <img class="lazyload" data-src="{{ asset('assets/images/blog/wxp.webp') }}"
+                                            <img class="" data-src="{{ asset('assets/images/blog/wxp.webp') }}"
                                                 src="{{ asset('assets/images/blog/wxp.webp') }}" alt="img-blog">
                                         </a>
                                     </div>

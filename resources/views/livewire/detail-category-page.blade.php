@@ -21,38 +21,11 @@
                     <div class="card-product">
                         <div class="card-product-wrapper">
                             <a href="#" class="product-img">
-                                <img class="lazyload img-product"
+                                <img class="img-product"
                                     data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
                                     src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
                                     alt="image-product" />
-                                <img class="lazyload img-hover"
-                                    data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
-                                    src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
-                                    alt="image-product" />
-                            </a>
-                            <div class="list-product-btn">
-                                <a href="#quick_add" data-bs-toggle="modal"
-                                    class="box-icon bg_white quick-add tf-btn-loading">
-                                    <span class="icon icon-bag"></span>
-                                    <span class="tooltip">+ Keranjang</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card-product-info">
-                            <a href="#" class="title link">Mindray
-                                BeneHeart R3 Electrocardiograph</a>
-                            {{-- <span class="price">$16.95</span> --}}
-                        </div>
-                    </div>
-                    <!-- card product 1 -->
-                    <div class="card-product">
-                        <div class="card-product-wrapper">
-                            <a href="#" class="product-img">
-                                <img class="lazyload img-product"
-                                    data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
-                                    src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
-                                    alt="image-product" />
-                                <img class="lazyload img-hover"
+                                <img class="img-hover"
                                     data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
                                     src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
                                     alt="image-product" />
@@ -75,11 +48,11 @@
                     <div class="card-product">
                         <div class="card-product-wrapper">
                             <a href="#" class="product-img">
-                                <img class="lazyload img-product"
+                                <img class="img-product"
                                     data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
                                     src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
                                     alt="image-product" />
-                                <img class="lazyload img-hover"
+                                <img class="img-hover"
                                     data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
                                     src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
                                     alt="image-product" />
@@ -102,11 +75,38 @@
                     <div class="card-product">
                         <div class="card-product-wrapper">
                             <a href="#" class="product-img">
-                                <img class="lazyload img-product"
+                                <img class="img-product"
                                     data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
                                     src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
                                     alt="image-product" />
-                                <img class="lazyload img-hover"
+                                <img class="img-hover"
+                                    data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
+                                    src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
+                                    alt="image-product" />
+                            </a>
+                            <div class="list-product-btn">
+                                <a href="#quick_add" data-bs-toggle="modal"
+                                    class="box-icon bg_white quick-add tf-btn-loading">
+                                    <span class="icon icon-bag"></span>
+                                    <span class="tooltip">+ Keranjang</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="card-product-info">
+                            <a href="#" class="title link">Mindray
+                                BeneHeart R3 Electrocardiograph</a>
+                            {{-- <span class="price">$16.95</span> --}}
+                        </div>
+                    </div>
+                    <!-- card product 1 -->
+                    <div class="card-product">
+                        <div class="card-product-wrapper">
+                            <a href="#" class="product-img">
+                                <img class="img-product"
+                                    data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
+                                    src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
+                                    alt="image-product" />
+                                <img class="img-hover"
                                     data-src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
                                     src="{{ asset('assets/images/products/Mindray BeneHeart R3 Electrocardiograph.png') }}"
                                     alt="image-product" />

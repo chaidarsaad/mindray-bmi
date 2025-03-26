@@ -24,7 +24,7 @@
                                         <div class="blog-article-item">
                                             <div class="article-thumb">
                                                 <a href="{{ route('detail.training', $training->slug) }}">
-                                                    <img class="lazyload" data-src="{{ Storage::url($training->image) }}"
+                                                    <img class="" data-src="{{ Storage::url($training->image) }}"
                                                         src="{{ Storage::url($training->image) }}" alt="img-blog" />
                                                 </a>
                                             </div>
