@@ -18,8 +18,7 @@
                                 <div class="blog-article-item">
                                     <div class="article-thumb">
                                         <a href="{{ route('detail.training', $training->slug) }}">
-                                            <img fetchpriority="high" src="{{ Storage::url($training->image) }}"
-                                                alt="img-training" />
+                                            <img src="{{ Storage::url($training->image) }}" alt="img-training" />
 
                                         </a>
                                     </div>

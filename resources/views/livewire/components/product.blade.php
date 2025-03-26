@@ -60,11 +60,11 @@
                                             <div class="card-product-wrapper">
                                                 <a href="{{ route('detail.product', $product->slug) }}"
                                                     class="product-img">
-                                                    <img fetchpriority="high" class="img-product"
+                                                    <img class="img-product"
                                                         data-src="{{ Storage::url($product->images[0]) }}"
                                                         src="{{ Storage::url($product->images[0]) }}"
                                                         alt="{{ $product->name }}" />
-                                                    <img fetchpriority="high" class="img-hover"
+                                                    <img class="img-hover"
                                                         data-src="{{ Storage::url($product->images[0]) }}"
                                                         src="{{ Storage::url($product->images[0]) }}"
                                                         alt="{{ $product->name }}" />
