@@ -14,7 +14,7 @@
                     <a href="{{ route('usg.all') }}"
                         class="collapsed mb-menu-link {{ request()->routeIs('usg.all') ? 'active' : '' }}"
                         aria-expanded="true">
-                        <span>Produk USG</span>
+                        <span>Produk USG Mindray</span>
                     </a>
                 </li>
                 <li class="nav-mb-item">
