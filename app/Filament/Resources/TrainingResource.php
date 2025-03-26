@@ -39,7 +39,7 @@ class TrainingResource extends Resource
                             ->getUploadedFileNameForStorageUsing(
                                 fn(TemporaryUploadedFile $file): string => 'pelatihan-' . $file->hashName()
                             )
-                            ->helperText('Untuk menjaga performa website disarankan gambar berformat .webp dengan ukuran lebar 720 pixels, tinggi 1005 pixels.')
+                            ->helperText('Untuk menjaga performa website disarankan gambar berformat .webp dengan ukuran lebar 1600 pixels, tinggi 1600 pixels.')
                             ->label('Poster Pelatihan')
                             ->image()
                             ->required(),
