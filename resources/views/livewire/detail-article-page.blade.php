@@ -35,7 +35,10 @@
                         <div class="blog-detail-main">
                             <div class="blog-detail-main-heading">
                                 <div class="title">{{ $article->judul }}</div>
-                                <div class="meta">by <span>admin</span> on
+                                <div class="meta">
+                                    {{ $article->created_at->locale('id')->isoFormat('dddd, D MMMM YYYY') }}
+                                </div>
+                                <div class="meta">oleh <span>admin</span>
                                     <span>{{ $article->created_at->diffForHumans() }}</span>
                                 </div>
                                 <div class="image">

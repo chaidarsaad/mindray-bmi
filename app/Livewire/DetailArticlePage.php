@@ -14,6 +14,12 @@ class DetailArticlePage extends Component
     {
         $this->article = Article::where('slug', $slug)->firstOrFail();
         $this->otherArticle = Article::where('id', '!=', $this->article->id)->get();
+
+        $sessionKey = 'article_viewed_' . $this->article->id;
+        if (!session()->has($sessionKey)) {
+            $this->article->increment('views');
+            session([$sessionKey => true]);
+        }
     }
     public function render()
     {
