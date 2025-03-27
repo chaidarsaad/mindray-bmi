@@ -8,8 +8,7 @@
                         <div class="swiper-slide">
                             <div class="wrap-slider">
                                 <a href="{{ $banner->url ?? '#' }}">
-                                    <img src="{{ Storage::url($banner->image) }}" alt="slider"
-                                        style="width: 2000px; height: 1125px;" />
+                                    <img src="{{ Storage::url($banner->image) }}" alt="slider" />
                                 </a>
                             </div>
                         </div>

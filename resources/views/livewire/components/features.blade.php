@@ -3,7 +3,7 @@
         <section class="flat-spacing-7 flat-iconbox wow fadeInUp" data-wow-delay="0s">
             <div class="container">
                 <div class="flat-title wow fadeInUp" data-wow-delay="0s">
-                    <span class="title" style="text-align: center;">Mengapa anda harus belanja di kami</span>
+                    <span class="title" style="text-align: center;">Mengapa Anda harus belanja di kami</span>
                     <!-- <p class="sub-title">Hear what they say about us</p> -->
                 </div>
                 <div class="wrap-carousel wrap-mobile">
