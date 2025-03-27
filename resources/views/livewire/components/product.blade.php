@@ -31,7 +31,7 @@
                 <div style="width:auto">
                     <div class="scroll-hint"
                         style="text-align: center; margin-top: 10px; margin-bottom: 10px; color: #555; font-size: 14px;">
-                        <p>Geser kesamping kategori dibawah ini untuk melihat kategori lainnya</p>
+                        <p>Geser kesamping untuk melihat kategori lainnya</p>
                     </div>
                     <!-- Tab Navigation -->
                     <ul class="nav nav-tabs" id="myTab" role="tablist" style="text-wrap: nowrap; font-size: larger">
