@@ -4,7 +4,7 @@
    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" />
    <link rel="stylesheet" href="{{ asset('assets/css/swiper-bundle.min.css') }}" />
    <link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}" />
-   <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/mindray.css') }}" />
+   <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bmi.css') }}" />
 
    <!-- Favicon and Touch Icons  -->
    <link rel="shortcut icon" href="{{ asset('assets/images/logo/favicon-bmi.png') }}" />
