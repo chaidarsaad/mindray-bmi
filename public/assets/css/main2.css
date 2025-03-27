@@ -10129,9 +10129,10 @@ header.header-bg {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    padding-top: 30px;
+    padding-top: 10px;
 }
 .blog-article-item .article-title a {
+    text-align: center;
     font-size: 20px;
     font-weight: 400;
     line-height: 30px;

@@ -72,7 +72,7 @@
                                             </div>
                                             <div class="card-product-info">
                                                 <a href="{{ route('detail.product', $product->slug) }}"
-                                                    class="title link">
+                                                    class="title link text-center">
                                                     {{ $product->name }}
                                                 </a>
                                             </div>

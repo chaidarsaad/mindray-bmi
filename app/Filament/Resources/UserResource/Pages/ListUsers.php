@@ -3,8 +3,11 @@
 namespace App\Filament\Resources\UserResource\Pages;
 
 use App\Filament\Resources\UserResource;
+use App\Models\User;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
+use Filament\Resources\Components\Tab;
+use Illuminate\Database\Eloquent\Builder;
 
 class ListUsers extends ListRecords
 {
@@ -14,6 +17,29 @@ class ListUsers extends ListRecords
     {
         return [
             Actions\CreateAction::make(),
+        ];
+    }
+
+    public function getTabs(): array
+    {
+        return [
+            'Semua' => Tab::make()
+                ->badge(User::count()),
+            'Owner' => Tab::make()
+                ->modifyQueryUsing(fn(Builder $query) => $query->whereHas('roles', fn($q) => $q->where('name', 'owner')))
+                ->badge(User::whereHas('roles', fn($q) => $q->where('name', 'owner'))->count()),
+            'Admin' => Tab::make()
+                ->modifyQueryUsing(fn(Builder $query) => $query->whereHas('roles', fn($q) => $q->where('name', 'super_admin')))
+                ->badge(User::whereHas('roles', fn($q) => $q->where('name', 'super_admin'))->count()),
+            'Penulis' => Tab::make()
+                ->modifyQueryUsing(fn(Builder $query) => $query->whereHas('roles', fn($q) => $q->where('name', 'penulis')))
+                ->badge(User::whereHas('roles', fn($q) => $q->where('name', 'penulis'))->count()),
+            'Customer' => Tab::make()
+                ->modifyQueryUsing(fn(Builder $query) => $query->whereHas('roles', fn($q) => $q->where('name', 'penulis')))
+                ->badge(User::whereHas('roles', fn($q) => $q->where('name', 'penulis'))->count()),
+            'Customer' => Tab::make()
+                ->modifyQueryUsing(fn(Builder $query) => $query->whereDoesntHave('roles'))
+                ->badge(User::whereDoesntHave('roles')->count()),
         ];
     }
 }
