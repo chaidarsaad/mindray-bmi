@@ -17370,7 +17370,7 @@ blockquote .text {
         animation: slide-har 15s linear infinite !important;
     }
     .tf-slideshow .wrap-slider {
-        height: 450px;
+        height: auto;
     }
     .tf-slideshow .banner-wrapper {
         height: 500px;
