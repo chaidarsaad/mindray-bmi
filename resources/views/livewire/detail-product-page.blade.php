@@ -2,6 +2,24 @@
     BMI | Detail Produk
 @endsection
 
+@push('styles')
+    <style>
+        /* Menambahkan aturan untuk konten yang lebih responsif */
+        .article-content {
+            word-wrap: break-word;
+            /* Memecah kata yang terlalu panjang */
+            overflow-wrap: break-word;
+            /* Menambahkan kompatibilitas browser */
+            word-break: break-all;
+            /* Memastikan kata panjang dipecah jika perlu */
+            max-width: 100%;
+            /* Membatasi lebar konten */
+            box-sizing: border-box;
+            /* Pastikan padding dan margin tidak menambah lebar elemen */
+        }
+    </style>
+@endpush
+
 <div>
     <div id="wrapper">
         <!-- Navbar -->
@@ -133,7 +151,7 @@
                             </ul>
                             <div class="widget-content-tab">
                                 <div class="widget-content-inner active">
-                                    <div class="">
+                                    <div class="article-content">
                                         {!! $product->description !!}
                                     </div>
                                 </div>

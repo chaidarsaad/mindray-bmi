@@ -2,6 +2,24 @@
     BMI | Detail Pelatihan
 @endsection
 
+@push('styles')
+    <style>
+        /* Menambahkan aturan untuk konten yang lebih responsif */
+        .article-content {
+            word-wrap: break-word;
+            /* Memecah kata yang terlalu panjang */
+            overflow-wrap: break-word;
+            /* Menambahkan kompatibilitas browser */
+            word-break: break-all;
+            /* Memastikan kata panjang dipecah jika perlu */
+            max-width: 100%;
+            /* Membatasi lebar konten */
+            box-sizing: border-box;
+            /* Pastikan padding dan margin tidak menambah lebar elemen */
+        }
+    </style>
+@endpush
+
 <div>
     <div id="wrapper">
         <!-- Navbar -->
@@ -22,7 +40,7 @@
                                         src="{{ Storage::url($training->image) }}" alt="">
                                 </div>
                             </div>
-                            <div class="desc">
+                            <div class="desc article-content">
                                 {!! $training->description !!}
                             </div>
                         </div>

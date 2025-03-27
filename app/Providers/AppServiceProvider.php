@@ -3,11 +3,13 @@
 namespace App\Providers;
 
 use App\Models\About;
+use App\Models\Article;
 use App\Models\Carousel;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Training;
 use App\Observers\AboutObserver;
+use App\Observers\ArticleObserver;
 use App\Observers\CarouselObserver;
 use App\Observers\CategoryObserver;
 use App\Observers\ProductObserver;
@@ -34,5 +36,6 @@ class AppServiceProvider extends ServiceProvider
         About::observe(AboutObserver::class);
         Product::observe(ProductObserver::class);
         Training::observe(TrainingObserver::class);
+        Article::observe(ArticleObserver::class);
     }
 }
