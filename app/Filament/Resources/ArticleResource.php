@@ -58,6 +58,9 @@ class ArticleResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->paginationPageOptions([5, 25, 50, 100, 250])
+            ->defaultPaginationPageOption(5)
+            ->defaultSort('id', direction: 'desc')
             ->columns([
                 Tables\Columns\TextColumn::make('judul')
                     ->searchable(),
