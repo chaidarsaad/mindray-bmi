@@ -38,6 +38,7 @@ class ArticleResource extends Resource
                             ->required()
                             ->maxLength(255),
                         Forms\Components\FileUpload::make('image')
+                            ->helperText('Untuk menjaga performa website disarankan gambar berformat .webp dengan ukuran lebar 1366 pixels, tinggi 768 pixels.')
                             ->label('Thumbnail')
                             ->image()
                             ->required(),
