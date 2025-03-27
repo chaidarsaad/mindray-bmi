@@ -10,7 +10,9 @@ class TrainingPage extends Component
     public $trainings;
     public function mount()
     {
-        $this->trainings = Training::where('is_show', 1)->get();
+        $this->trainings = Training::where('is_show', 1)
+            ->orderBy('tanggal', 'desc')
+            ->get();
     }
     public function render()
     {

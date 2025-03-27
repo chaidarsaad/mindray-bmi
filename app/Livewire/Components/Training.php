@@ -11,7 +11,7 @@ class Training extends Component
     public function mount()
     {
         $this->trainings = ModelsTraining::where('is_show', 1)
-            ->latest()
+            ->orderBy('tanggal', 'desc')
             ->get();
     }
     public function render()

@@ -6,6 +6,7 @@ use App\Filament\Resources\TrainingResource\Pages;
 use App\Filament\Resources\TrainingResource\RelationManagers;
 use App\Models\Training;
 use Filament\Forms;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -46,6 +47,9 @@ class TrainingResource extends Resource
                         Forms\Components\Toggle::make('is_show')
                             ->label('Tampilkan Pelatihan?')
                             ->default(1),
+                        DatePicker::make('tanggal')
+                            ->label('Bulan Pelatihan')
+                            ->required(),
                     ]),
                 Section::make('Deskripsi Pelatihan')
                     ->collapsible()
