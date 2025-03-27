@@ -24,7 +24,8 @@
                                     </div>
                                     <div class="article-content">
                                         <div class="article-title">
-                                            <a href="{{ route('detail.training', $training->slug) }}"
+                                            <a style="text-align: center;"
+                                                href="{{ route('detail.training', $training->slug) }}"
                                                 class="">{{ $training->judul }}</a>
                                         </div>
                                     </div>

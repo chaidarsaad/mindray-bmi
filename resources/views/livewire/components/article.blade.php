@@ -23,7 +23,8 @@
                                     </div>
                                     <div class="article-content">
                                         <div class="article-title">
-                                            <a href="{{ route('detail.article', $article->slug) }}"
+                                            <a style="text-align: center;"
+                                                href="{{ route('detail.article', $article->slug) }}"
                                                 class="">{{ $article->judul }}</a>
                                         </div>
                                     </div>

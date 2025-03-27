@@ -79,7 +79,8 @@
                                         </div>
                                         <div class="article-content">
                                             <div class="article-title">
-                                                <a href="{{ route('detail.article') }}" class="">The
+                                                <a style="text-align: center;" href="{{ route('detail.article') }}"
+                                                    class="">The
                                                     next generation of leather
                                                     alternatives</a>
                                             </div>
@@ -97,7 +98,8 @@
                                         </div>
                                         <div class="article-content">
                                             <div class="article-title">
-                                                <a href="{{ route('detail.article') }}" class="">The
+                                                <a style="text-align: center;" href="{{ route('detail.article') }}"
+                                                    class="">The
                                                     next generation of leather
                                                     alternatives</a>
                                             </div>
