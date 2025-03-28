@@ -55,6 +55,8 @@ class TrainingResource extends Resource
                     ->collapsible()
                     ->schema([
                         TinyEditor::make('description')
+                            ->toolbarSticky(1)
+                            ->showMenuBar(1)
                             ->label('')
                             ->required()
                             ->columnSpanFull(),
