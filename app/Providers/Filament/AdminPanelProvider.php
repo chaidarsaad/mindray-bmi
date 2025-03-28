@@ -68,7 +68,7 @@ class AdminPanelProvider extends PanelProvider
                     ->icon('heroicon-o-home')
                     ->url('/', shouldOpenInNewTab: true)
             ])
-            ->spa()
+            // ->spa()
             ->unsavedChangesAlerts()
             ->profile(isSimple: false)
             ->breadcrumbs(false)
