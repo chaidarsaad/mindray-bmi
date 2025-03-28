@@ -9728,9 +9728,9 @@ fieldset:disabled .btn {
     font-style: italic !important;
 }
 
-i, em {
+/* i, em {
     font-style: italic !important;
-}
+} */
 
 .fst-normal {
     font-style: normal !important;
