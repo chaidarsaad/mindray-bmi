@@ -54,9 +54,19 @@
                     <div class="tf-sticky-atc-infos" style="width: 100%;">
                         <form class="" style="width: 100%;">
                             <div class="tf-sticky-atc-btns" style="width: 100%;">
-                                <a href="#"
-                                    class="tf-btn tf-btn-process btn-fill radius-3 justify-content-center fw-6 fs-14 flex-grow-1 animate-hover-btn "><span>Tambah
-                                        ke keranjang</a>
+                                @if ($isPastDate)
+                                    <span
+                                        class="tf-btn tf-btn-process btn-fill radius-3 justify-content-center fw-6 fs-14 flex-grow-1 animate-hover-btn"
+                                        style="pointer-events: none;">
+                                        Sudah Terselenggara
+                                    </span>
+                                @else
+                                    <!-- Jika belum lewat, tombol tetap aktif -->
+                                    <a href="#"
+                                        class="tf-btn tf-btn-process btn-fill radius-3 justify-content-center fw-6 fs-14 flex-grow-1 animate-hover-btn">
+                                        <span>Pesan</span>
+                                    </a>
+                                @endif
                             </div>
                         </form>
                     </div>
