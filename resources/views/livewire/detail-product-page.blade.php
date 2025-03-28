@@ -180,7 +180,8 @@
                                     <div class="swiper-slide" lazy="true">
                                         <div class="card-product">
                                             <div class="card-product-wrapper">
-                                                <a href="#" class="product-img">
+                                                <a href="{{ route('detail.product', $item->slug) }}"
+                                                    class="product-img">
                                                     <img class=" img-product"
                                                         data-src="{{ Storage::url($item->images[0]) }}"
                                                         src="{{ Storage::url($item->images[0]) }}"
