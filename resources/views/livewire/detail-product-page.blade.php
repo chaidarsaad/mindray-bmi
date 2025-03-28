@@ -191,13 +191,6 @@
                                                         src="{{ Storage::url($item->images[0]) }}"
                                                         alt="image-product">
                                                 </a>
-                                                <div class="list-product-btn absolute-2">
-                                                    <a href="#quick_add" data-bs-toggle="modal"
-                                                        class="box-icon bg_white quick-add tf-btn-loading">
-                                                        <span class="icon icon-bag"></span>
-                                                        <span class="tooltip">+ Keranjang</span>
-                                                    </a>
-                                                </div>
                                             </div>
                                             <div class="card-product-info">
                                                 <a href="{{ route('detail.product', $item->slug) }}"
