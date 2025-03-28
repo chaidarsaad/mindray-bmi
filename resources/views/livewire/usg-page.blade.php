@@ -28,13 +28,13 @@
                                             <img class="img-hover" data-src="{{ Storage::url($product->images[0]) }}"
                                                 src="{{ Storage::url($product->images[0]) }}" alt="image-product" />
                                         </a>
-                                        <div class="list-product-btn">
+                                        {{-- <div class="list-product-btn">
                                             <a href="#quick_add" data-bs-toggle="modal"
                                                 class="box-icon bg_white quick-add tf-btn-loading">
                                                 <span class="icon icon-bag"></span>
                                                 <span class="tooltip">+ Keranjang</span>
                                             </a>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <div class="card-product-info">
                                         <a href="{{ route('detail.product', $product->slug) }}"
