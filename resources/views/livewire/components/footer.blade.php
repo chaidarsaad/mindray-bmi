@@ -46,29 +46,29 @@
                                 @if (!empty($about->instagram))
                                     <li>
                                         <a href="{{ $about->instagram }}" target="_blank"
-                                            class="btn btn-outline-secondary rounded-circle"><i
-                                                class="fa-brands fa-instagram"></i></a>
+                                            class="btn btn-outline-secondary rounded-circle" style="color: #0105da"><i
+                                                class="fa-brands fa-instagram" style="color: #0105da"></i></a>
                                     </li>
                                 @endif
                                 @if (!empty($about->facebook))
                                     <li>
                                         <a href="{{ $about->facebook }}" target="_blank"
-                                            class="btn btn-outline-success rounded-circle"><i
-                                                class="fa-brands fa-facebook"></i></a>
+                                            class="btn btn-outline-success rounded-circle" style="color: #0105da"><i
+                                                class="fa-brands fa-facebook" style="color: #0105da"></i></a>
                                     </li>
                                 @endif
                                 @if (!empty($about->phone_number))
                                     <li>
                                         <a href="https://wa.me/+62{{ $about->phone_number }}" target="_blank"
-                                            class="btn btn-outline-secondary rounded-circle"><i
-                                                class="fa-brands fa-whatsapp"></i></a>
+                                            class="btn btn-outline-secondary rounded-circle" style="color: #0105da"><i
+                                                class="fa-brands fa-whatsapp" style="color: #0105da"></i></a>
                                     </li>
                                 @endif
                                 @if (!empty($about->youtube))
                                     <li>
                                         <a href="{{ $about->youtube }}" target="_blank"
-                                            class="btn btn-outline-success rounded-circle"><i
-                                                class="fa-brands fa-youtube"></i></a>
+                                            class="btn btn-outline-success rounded-circle" style="color: #0105da"><i
+                                                class="fa-brands fa-youtube" style="color: #0105da"></i></a>
                                     </li>
                                 @endif
                             </ul>

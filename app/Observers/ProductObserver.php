@@ -26,7 +26,7 @@ class ProductObserver
             $newFieldContents = $product->images;
 
             # We attempt to JSON decode the field. If it is an array, this is an indication we have ->multiple() activated
-            $originalFieldContentsDecoded = json_decode($product->getOriginal('images'));
+            $originalFieldContentsDecoded = $product->getOriginal('images');
 
             # Clean up empty entries in the resulting array
             if (is_array($originalFieldContentsDecoded)) $originalFieldContentsDecoded = array_filter($originalFieldContentsDecoded);

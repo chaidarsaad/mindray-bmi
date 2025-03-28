@@ -200,7 +200,8 @@
                                                 </div>
                                             </div>
                                             <div class="card-product-info">
-                                                <a href="#" class="title link">{{ $item->name }}</a>
+                                                <a href="{{ route('detail.product', $item->slug) }}"
+                                                    class="title link">{{ $item->name }}</a>
                                             </div>
                                         </div>
                                     </div>

@@ -76,6 +76,8 @@ class ProductResource extends Resource
                     ->collapsible()
                     ->schema([
                         TinyEditor::make('description')
+                            ->toolbarSticky(1)
+                            ->showMenuBar(1)
                             ->required()
                             ->label('')
                             ->columnSpanFull(),
