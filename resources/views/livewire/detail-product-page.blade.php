@@ -92,14 +92,14 @@
                                     </div>
 
 
-                                    <div class="tf-product-info-quantity">
+                                    {{-- <div class="tf-product-info-quantity">
                                         <div class="quantity-title fw-6">Jumlah</div>
                                         <div class="wg-quantity">
                                             <span class="btn-quantity minus-btn">-</span>
                                             <input type="text" name="number" value="1">
                                             <span class="btn-quantity plus-btn">+</span>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>
