@@ -18,19 +18,12 @@ use App\Livewire\UsgPage;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomePage::class)->name('home');
-// todo kategori /slug
 Route::get('/detail-kategori', DetailCategoryPage::class)->name('detail.category');
-// todo product /slug
 Route::get('/detail-produk/{slug}', DetailProductPage::class)->name('detail.product');
-// todo article /slug
 Route::get('/detail-artikel/{slug}', DetailArticlePage::class)->name('detail.article');
-// todo course /slug
 Route::get('/detail-pelatihan/{slug}', DetailCoursePage::class)->name('detail.training');
-// todo usg /slug
 Route::get('/semua-produk', UsgPage::class)->name('usg.all');
-// todo training /slug
 Route::get('/semua-pelatihan', TrainingPage::class)->name('training.all');
-// todo article /slug
 Route::get('/semua-artikel', ArticlePage::class)->name('article.all');
 
 Route::middleware(['guest'])->group(function () {

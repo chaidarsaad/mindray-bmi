@@ -74,6 +74,14 @@
         </div>
         {{-- /page --}}
 
+        <!-- Features -->
+        @livewire('components.features')
+        <!-- /Features -->
+
+        <!-- Question -->
+        @livewire('components.question')
+        <!-- /Question -->
+
         <!-- Footer -->
         @livewire('components.footer')
         <!-- /Footer -->
