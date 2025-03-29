@@ -79,6 +79,9 @@ class AboutResource extends Resource
                         Forms\Components\TextInput::make('youtube')
                             ->url()
                             ->label('Link Youtube'),
+                        Forms\Components\TextInput::make('telegram')
+                            ->url()
+                            ->label('Link Telegram'),
                     ]),
             ]);
     }

@@ -18,6 +18,7 @@ class About extends Model
         'instagram',
         'facebook',
         'youtube',
+        'telegram',
     ];
 
     public function setNameAttribute($value)

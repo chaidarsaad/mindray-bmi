@@ -71,6 +71,13 @@
                                                 class="fa-brands fa-youtube" style="color: #0105da"></i></a>
                                     </li>
                                 @endif
+                                @if (!empty($about->telegram))
+                                    <li>
+                                        <a href="{{ $about->telegram }}" target="_blank"
+                                            class="btn btn-outline-success rounded-circle" style="color: #0105da"><i
+                                                class="fa-brands fa-telegram" style="color: #0105da"></i></a>
+                                    </li>
+                                @endif
                             </ul>
                         </div>
                     </div>
