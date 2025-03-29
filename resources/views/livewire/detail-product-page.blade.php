@@ -144,16 +144,24 @@
                     <div class="col-12">
                         <div class="widget-tabs style-has-border">
                             <ul class="widget-menu-tab">
-                                <li class="item-title active">
-                                    <span class="inner">Deskripsi</span>
-                                </li>
+                                <!-- Tab untuk Deskripsi Tambahan Produk -->
+                                @foreach ($productDescriptions as $index => $productDescription)
+                                    <li class="item-title {{ $index === 0 ? 'active' : '' }}"
+                                        data-tab="description_{{ $index }}">
+                                        <span class="inner">{{ $productDescription->judul_deskripsi }}</span>
+                                    </li>
+                                @endforeach
                             </ul>
                             <div class="widget-content-tab">
-                                <div class="widget-content-inner active">
-                                    <div class="article-content">
-                                        {!! $product->description !!}
+                                <!-- Konten untuk Setiap Deskripsi Produk -->
+                                @foreach ($productDescriptions as $index => $productDescription)
+                                    <div class="widget-content-inner {{ $index === 0 ? 'active' : '' }}"
+                                        id="description_{{ $index }}">
+                                        <div class="article-content">
+                                            {!! $productDescription->description !!}
+                                        </div>
                                     </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -231,3 +239,26 @@
     @livewire('components.sidebar-shopping-cart')
     <!-- /shoppingCart -->
 </div>
+
+@push('scripts')
+    <script>
+        // Menambahkan JavaScript untuk mengaktifkan tab yang benar
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.widget-menu-tab .item-title');
+            const contentTabs = document.querySelectorAll('.widget-content-tab .widget-content-inner');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Menonaktifkan semua tab dan konten
+                    tabs.forEach(t => t.classList.remove('active'));
+                    contentTabs.forEach(content => content.classList.remove('active'));
+
+                    // Menambahkan active pada tab dan konten yang dipilih
+                    const tabId = tab.getAttribute('data-tab');
+                    tab.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
+@endpush

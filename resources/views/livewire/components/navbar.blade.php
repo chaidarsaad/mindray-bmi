@@ -43,13 +43,13 @@
             <div class="col-xl-3 col-md-4 col-3">
                 <ul class="nav-icon d-flex justify-content-end align-items-center gap-20">
                     <li class="nav-account">
-                        @auth
+                        {{-- @auth
                             <a href="{{ route('dashboard') }}" class="nav-icon-item">
                                 <i class="icon icon-account"></i>
                             </a>
                         @else
                             <a href="{{ route('login') }}" class="item-link">Masuk</a>
-                        @endauth
+                        @endauth --}}
                     </li>
                     {{-- @auth
                         <li class="nav-cart">
@@ -57,10 +57,13 @@
                                     class="icon icon-bag"></i><span class="count-box">0</span></a>
                         </li>
                     @else --}}
-                    <li class="nav-cart">
+                    <a href="{{ route('dashboard') }}" class="nav-icon-item">
+                        <i class="icon icon-account"></i>
+                    </a>
+                    {{-- <li class="nav-cart">
                         <a href="{{ route('cart') }}" class="nav-icon-item"><i class="icon icon-bag"></i><span
                                 class="count-box">0</span></a>
-                    </li>
+                    </li> --}}
                     {{-- @endauth --}}
                 </ul>
             </div>

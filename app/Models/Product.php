@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 
 class Product extends Model
@@ -14,7 +15,6 @@ class Product extends Model
         'name',
         'subname',
         'images',
-        'description',
         'is_show',
     ];
 
@@ -36,5 +36,14 @@ class Product extends Model
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function descriptions(): HasMany
+    {
+        return $this->hasMany(ProductDescription::class);
+    }
+    public function productDescriptions(): HasMany
+    {
+        return $this->hasMany(ProductDescription::class, 'product_id');
     }
 }

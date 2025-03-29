@@ -9,11 +9,13 @@ class DetailProductPage extends Component
 {
     public $product;
     public $otherProducts;
+    public $productDescriptions;
 
     public function mount($slug)
     {
         $this->product = Product::where('slug', $slug)->firstOrFail();
         $this->otherProducts = Product::where('id', '!=', $this->product->id)->get();
+        $this->productDescriptions = $this->product->descriptions;
     }
     public function render()
     {

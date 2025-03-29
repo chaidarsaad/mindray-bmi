@@ -71,9 +71,6 @@ class CarouselResource extends Resource
                     ->label('Gambar'),
                 Tables\Columns\ToggleColumn::make('is_show')
                     ->label('Tampilkan Banner?'),
-                Tables\Columns\TextColumn::make('url')
-                    ->label('Link')
-                    ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

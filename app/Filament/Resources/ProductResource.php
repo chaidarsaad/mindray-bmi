@@ -6,6 +6,7 @@ use App\Filament\Resources\ProductResource\Pages;
 use App\Filament\Resources\ProductResource\RelationManagers;
 use App\Models\Product;
 use Filament\Forms;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -75,12 +76,23 @@ class ProductResource extends Resource
                 Section::make('Deskripsi Produk')
                     ->collapsible()
                     ->schema([
-                        TinyEditor::make('description')
-                            ->toolbarSticky(1)
-                            ->showMenuBar(1)
-                            ->required()
+                        Repeater::make('productDescriptions')
                             ->label('')
-                            ->columnSpanFull(),
+                            ->addable(true)
+                            ->deletable(true)
+                            ->relationship()
+                            ->schema([
+                                Forms\Components\TextInput::make('judul_deskripsi')
+                                    ->label('Nama Deskripsi')
+                                    ->required()
+                                    ->maxLength(255),
+                                TinyEditor::make('description')
+                                    ->showMenuBar(1)
+                                    ->toolbarSticky(1)
+                                    ->required()
+                                    ->label('Deskripsi')
+                                    ->columnSpanFull(),
+                            ])
                     ]),
             ]);
     }
@@ -136,7 +148,7 @@ class ProductResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            // RelationManagers\DescriptionsRelationManager::class,
         ];
     }
 
@@ -148,4 +160,9 @@ class ProductResource extends Resource
             'edit' => Pages\EditProduct::route('/{record}/edit'),
         ];
     }
+
+    // public static function getItemsRepeater(): Repeater
+    // {
+    //     return;
+    // }
 }
