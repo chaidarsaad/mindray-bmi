@@ -1,3 +1,18 @@
+@push('styles')
+    <style>
+        .tf-slideshow .swiper-slide .wrap-slider a {
+            display: inline-block;
+            width: 100%;
+        }
+
+        .tf-slideshow .swiper-slide .wrap-slider img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    </style>
+@endpush
+
 <div class="tf-slideshow slider-effect-fade position-relative">
     @if ($banners->isNotEmpty())
 
@@ -7,7 +22,9 @@
                 @foreach ($banners as $banner)
                     <div class="swiper-slide">
                         <div class="wrap-slider">
-                            <img src="{{ Storage::url($banner->image) }}" alt="fashion-slideshow">
+                            <a href="{{ $banner->url ?? '#' }}">
+                                <img src="{{ Storage::url($banner->image) }}" alt="fashion-slideshow">
+                            </a>
                         </div>
                     </div>
                 @endforeach
