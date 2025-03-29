@@ -6,22 +6,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class Article extends Model
+class City extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'slug',
-        'judul',
-        'image',
-        'content',
-        'views',
-        'is_show',
+        'name',
     ];
 
-    public function setJudulAttribute($value)
+    public function setNameAttribute($value)
     {
-        $this->attributes['judul'] = $value;
+        $this->attributes['name'] = $value;
         $this->attributes['slug'] = Str::slug($value);
     }
 
@@ -30,8 +26,8 @@ class Article extends Model
         return 'slug';
     }
 
-    public function incrementViews()
+    public function trainingPrices()
     {
-        $this->increment('views');
+        return $this->hasMany(TrainingPrice::class);
     }
 }

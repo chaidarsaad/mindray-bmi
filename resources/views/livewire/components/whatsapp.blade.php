@@ -13,7 +13,6 @@
             text-align: center;
             font-size: 16px;
             font-weight: bold;
-            margin-bottom: 8px;
             /* Memberikan jarak antara tulisan dan ikon */
         }
     </style>
