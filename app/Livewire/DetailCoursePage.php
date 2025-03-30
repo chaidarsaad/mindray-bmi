@@ -31,27 +31,59 @@ class DetailCoursePage extends Component
 
     public function groupTrainingPrices()
     {
-        $groupedPrices = $this->training->trainingPrices->groupBy('place');
+        // Mengelompokkan berdasarkan kota dan tempat (place)
+        $groupedPrices = $this->training->trainingPrices->groupBy(function ($price) {
+            return $price->place . '|' . $price->city->name; // Mengelompokkan berdasarkan tempat dan kota
+        });
 
-        foreach ($groupedPrices as $place => $prices) {
-            $city = $prices->first()->city->name;
+        foreach ($groupedPrices as $key => $prices) {
+            $placeCity = explode('|', $key);
+            $place = $placeCity[0];
+            $city = $placeCity[1];
 
-            // Gabungkan tipe pelatihan yang unik
-            $trainingTypes = $prices->pluck('trainingType.name')->unique()->implode(' + ');
+            // Mengelompokkan berdasarkan tipe pelatihan (ANC, ABDOMEN, dsb.)
+            $trainingTypesGrouped = $prices->groupBy('trainingType.name');
 
-            // Format tanggal mulai dan selesai
-            $startDate = Carbon::parse($prices->first()->start_date)->locale('id')->format('d');
-            $endDate = Carbon::parse($prices->first()->end_date)->locale('id')->format('d F Y');
+            // Array untuk menyimpan hasil pengelompokan
+            $datesByType = [];  // Untuk menyimpan tanggal berdasarkan tipe pelatihan
 
+            foreach ($trainingTypesGrouped as $trainingType => $typePrices) {
+                // Map tanggal yang unik untuk setiap tipe pelatihan dan urutkan berdasarkan tanggal
+                $dates = $typePrices->map(function ($price) {
+                    $startDate = Carbon::parse($price->start_date);
+                    $endDate = Carbon::parse($price->end_date);
+                    return [
+                        'start' => $startDate,
+                        'end' => $endDate,
+                        'formatted' => $startDate->locale('id')->format('d') . ' - ' . $endDate->locale('id')->format('d F Y')
+                    ];
+                });
+
+                // Urutkan berdasarkan startDate yang lebih awal
+                $dates = $dates->sortBy('start')->values();
+
+                // Menyimpan tanggal yang sudah diurutkan dalam array
+                $datesByType[$trainingType] = $dates->pluck('formatted');
+            }
+
+            // Gabungkan hasil ke dalam array yang sudah digabung
             $this->trainingPricesGrouped[] = [
                 'city' => $city,
                 'place' => $place,
-                'trainingTypes' => $trainingTypes,
-                'startDate' => $startDate,
-                'endDate' => $endDate,
+                'datesByType' => $datesByType, // Menyimpan tanggal berdasarkan tipe pelatihan
             ];
         }
     }
+
+
+
+
+
+
+
+
+
+
 
     public function groupTrainingPricesWithPrice()
     {
@@ -59,12 +91,25 @@ class DetailCoursePage extends Component
 
         foreach ($groupedPrices as $city => $prices) {
             $priceList = [];
+            $uniquePrices = [];
 
             foreach ($prices as $price) {
-                $priceList[] = [
-                    'trainingType' => $price->trainingType->name,
-                    'price' => "Rp. " . number_format($price->price, 0, ',', '.'),
-                ];
+                $trainingType = $price->trainingType->name;
+                $formattedPrice = "Rp. " . number_format($price->price, 0, ',', '.');
+
+                // Gabungkan harga dan training type untuk memastikan tidak ada duplikasi
+                $priceKey = $trainingType . ' - ' . $formattedPrice;
+
+                // Jika harga dan tipe pelatihan belum ada di dalam list, tambahkan
+                if (!in_array($priceKey, $uniquePrices)) {
+                    $priceList[] = [
+                        'trainingType' => $trainingType,
+                        'price' => $formattedPrice,
+                    ];
+
+                    // Tambahkan key harga dan tipe pelatihan ke array uniquePrices
+                    $uniquePrices[] = $priceKey;
+                }
             }
 
             // Ambil nama kota dari relasi city
@@ -76,6 +121,7 @@ class DetailCoursePage extends Component
             ];
         }
     }
+
 
 
     public function render()

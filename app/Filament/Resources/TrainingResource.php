@@ -62,12 +62,34 @@ class TrainingResource extends Resource
                             ->deletable(true)
                             ->schema([
                                 Forms\Components\Select::make('city_id')
+                                    ->createOptionForm([
+                                        Section::make('Kota')
+                                            ->collapsible()
+                                            ->schema([
+                                                Forms\Components\TextInput::make('name')
+                                                    ->label('Kota Pelatihan')
+                                                    ->unique(ignoreRecord: true)
+                                                    ->required()
+                                                    ->maxLength(255),
+                                            ]),
+                                    ])
                                     ->relationship('city', 'name')
                                     ->label('Kota Pelatihan')
                                     ->preload()
                                     ->required()
                                     ->searchable(),
                                 Forms\Components\Select::make('training_type_id')
+                                    ->createOptionForm([
+                                        Section::make('Jenis Pelatihan')
+                                            ->collapsible()
+                                            ->schema([
+                                                Forms\Components\TextInput::make('name')
+                                                    ->label('Jenis Pelatihan USG')
+                                                    ->unique(ignoreRecord: true)
+                                                    ->required()
+                                                    ->maxLength(255),
+                                            ]),
+                                    ])
                                     ->relationship('trainingType', 'name')
                                     ->label('Jenis Pelatihan')
                                     ->preload()

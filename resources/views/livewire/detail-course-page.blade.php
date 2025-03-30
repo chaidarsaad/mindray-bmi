@@ -49,14 +49,29 @@
                                     @foreach ($trainingPricesGrouped as $data)
                                         <p style="font-size:18px; font-weight: bold;">{{ strtoupper($data['city']) }} -
                                             {{ strtoupper($data['place']) }}</p>
-                                        <p style="font-size: 18px;">{{ $data['trainingTypes'] }} (
-                                            {{ $data['startDate'] }} -
-                                            {{ $data['endDate'] }} )</p><br>
+
+                                        @foreach ($data['datesByType'] as $trainingType => $dates)
+                                            @foreach ($dates as $date)
+                                                <p style="font-size: 18px;">
+                                                    {{ $trainingType }} ( {{ $date }} )
+                                                </p>
+                                            @endforeach
+                                        @endforeach
+                                        <br>
                                     @endforeach
                                 @else
                                     <p class="text-center">Tidak ada informasi waktu dan tempat yang tersedia.</p>
                                 @endif
                             </div>
+
+
+
+
+
+
+
+
+
 
                             <hr>
                             <div class="desc article-content text-center">
