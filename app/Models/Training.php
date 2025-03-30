@@ -32,6 +32,6 @@ class Training extends Model
 
     public function trainingPrices()
     {
-        return $this->hasMany(TrainingPrice::class);
+        return $this->hasMany(TrainingPrice::class, 'training_id');
     }
 }

@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\FeatureResource\Pages;
-use App\Filament\Resources\FeatureResource\RelationManagers;
-use App\Models\Feature;
+use App\Filament\Resources\CityResource\Pages;
+use App\Filament\Resources\CityResource\RelationManagers;
+use App\Models\City;
 use Filament\Forms;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
@@ -14,34 +14,26 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class FeatureResource extends Resource
+class CityResource extends Resource
 {
-    protected static ?string $model = Feature::class;
+    protected static ?string $model = City::class;
 
-    protected static ?string $pluralLabel = 'Kelebihan';
-    protected static ?string $navigationLabel = 'Kelebihan';
-    protected static ?string $navigationGroup = 'Data Utama';
-    protected static ?int $navigationSort = 6;
-
+    protected static ?string $pluralLabel = 'Kota Pelatihan';
+    protected static ?string $navigationLabel = 'Kota Pelatihan';
+    protected static ?string $navigationGroup = 'Manajemen Pelatihan';
+    protected static ?int $navigationSort = 7;
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Section::make('Kelebihan')
+                Section::make('Kota')
                     ->collapsible()
                     ->schema([
-                        Forms\Components\TextInput::make('title')
-                            ->label('Kelebihan')
+                        Forms\Components\TextInput::make('name')
+                            ->label('Kota Pelatihan')
                             ->unique(ignoreRecord: true)
                             ->required()
                             ->maxLength(255),
-                        Forms\Components\Textarea::make('subtitle')
-                            ->label('Detail Kelebihan')
-                            ->required()
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('logo')
-                            ->maxLength(255)
-                            ->default(null),
                     ]),
             ]);
     }
@@ -53,8 +45,9 @@ class FeatureResource extends Resource
             ->defaultPaginationPageOption(5)
             ->defaultSort('id', direction: 'desc')
             ->columns([
-                Tables\Columns\TextColumn::make('title')
-                    ->label('Kelebihan')
+                Tables\Columns\TextColumn::make('name')
+                    ->label('Nama Kota')
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
@@ -69,7 +62,8 @@ class FeatureResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->modalHeading('Ubah Kota'),
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
@@ -89,9 +83,9 @@ class FeatureResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListFeatures::route('/'),
-            'create' => Pages\CreateFeature::route('/create'),
-            'edit' => Pages\EditFeature::route('/{record}/edit'),
+            'index' => Pages\ListCities::route('/'),
+            // 'create' => Pages\CreateCity::route('/create'),
+            // 'edit' => Pages\EditCity::route('/{record}/edit'),
         ];
     }
 }

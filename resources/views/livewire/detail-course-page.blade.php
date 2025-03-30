@@ -40,6 +40,44 @@
                                         src="{{ Storage::url($training->image) }}" alt="">
                                 </div>
                             </div>
+
+                            <hr>
+                            <div class="desc article-content text-center">
+                                <strong style="font-size: 24px; color: #0105da;">WAKTU dan TEMPAT :</strong><br><br>
+
+                                @if ($trainingPricesGrouped)
+                                    @foreach ($trainingPricesGrouped as $data)
+                                        <p style="font-size:18px; font-weight: bold;">{{ strtoupper($data['city']) }} -
+                                            {{ strtoupper($data['place']) }}</p>
+                                        <p style="font-size: 18px;">{{ $data['trainingTypes'] }} (
+                                            {{ $data['startDate'] }} -
+                                            {{ $data['endDate'] }} )</p><br>
+                                    @endforeach
+                                @else
+                                    <p class="text-center">Tidak ada informasi waktu dan tempat yang tersedia.</p>
+                                @endif
+                            </div>
+
+                            <hr>
+                            <div class="desc article-content text-center">
+                                <strong style="font-size: 24px; color: #0105da;">INVESTASI :</strong><br><br>
+
+                                @if ($trainingPricesWithPrice)
+                                    @foreach ($trainingPricesWithPrice as $data)
+                                        <p style="font-size:18px; font-weight: bold;">{{ strtoupper($data['city']) }}
+                                        </p>
+                                        @foreach ($data['prices'] as $price)
+                                            <p style="font-size: 18px;">{{ $price['trainingType'] }} -
+                                                {{ $price['price'] }}</p>
+                                        @endforeach
+                                        <br>
+                                    @endforeach
+                                @else
+                                    <p class="text-center">Tidak ada informasi harga yang tersedia.</p>
+                                @endif
+                            </div>
+
+
                             <div class="desc article-content">
                                 {!! $training->description !!}
                             </div>
@@ -62,7 +100,7 @@
                                     </span>
                                 @else
                                     <!-- Jika belum lewat, tombol tetap aktif -->
-                                    <a href="#"
+                                    <a href="{{ route('checkout.training', $training->slug) }}"
                                         class="tf-btn tf-btn-process btn-fill radius-3 justify-content-center fw-6 fs-14 flex-grow-1 animate-hover-btn">
                                         <span>Pesan</span>
                                     </a>

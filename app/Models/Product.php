@@ -45,8 +45,4 @@ class Product extends Model
     {
         return $this->hasMany(ProductDescription::class);
     }
-    public function productDescriptions(): HasMany
-    {
-        return $this->hasMany(ProductDescription::class, 'product_id');
-    }
 }

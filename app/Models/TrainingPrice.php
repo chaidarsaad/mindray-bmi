@@ -10,7 +10,15 @@ class TrainingPrice extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['training_id', 'city_id', 'training_type_id', 'price'];
+    protected $fillable = [
+        'training_id',
+        'city_id',
+        'training_type_id',
+        'price',
+        'place',
+        'start_date',
+        'end_date',
+    ];
 
     public function training()
     {
@@ -19,7 +27,7 @@ class TrainingPrice extends Model
 
     public function city()
     {
-        return $this->belongsTo(City::class);
+        return $this->belongsTo(City::class, 'city_id');
     }
 
     public function trainingType()

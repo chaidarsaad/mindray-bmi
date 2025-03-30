@@ -76,7 +76,7 @@ class ProductResource extends Resource
                 Section::make('Deskripsi Produk')
                     ->collapsible()
                     ->schema([
-                        Repeater::make('productDescriptions')
+                        Repeater::make('descriptions')
                             ->label('')
                             ->addable(true)
                             ->deletable(true)

@@ -9,7 +9,17 @@ class TrainingOrder extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'order_number', 'total_harga', 'status', 'payment_status'];
+    protected $fillable = [
+        'user_id',
+        'order_number',
+        'total_harga',
+        'status',
+        'payment_status',
+        'name',
+        'email',
+        'phone',
+        'notes',
+    ];
 
     public function user()
     {

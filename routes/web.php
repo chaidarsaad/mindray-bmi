@@ -6,6 +6,7 @@ use App\Livewire\Auth\LoginPage;
 use App\Livewire\Auth\RegisterPage;
 use App\Livewire\CartPage;
 use App\Livewire\CheckoutPage;
+use App\Livewire\CheckoutTrainingPage;
 use App\Livewire\DetailArticlePage;
 use App\Livewire\DetailCategoryPage;
 use App\Livewire\DetailCoursePage;
@@ -37,4 +38,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/pesanan-saya', MyOrdersPage::class)->name('dashboard.pesanan');
     Route::get('/akun-saya', AccountDetailPage::class)->name('dashboard.detail-account');
     Route::get('/proses-pesanan', CheckoutPage::class)->name('checkout');
+    Route::get('/daftar-pelatihan/{slug}', CheckoutTrainingPage::class)->name('checkout.training');
 });

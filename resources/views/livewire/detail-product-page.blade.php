@@ -127,7 +127,7 @@
                                         </div>
                                     </div> --}}
                                     <a href="#"
-                                        class="tf-btn tf-btn-process btn-fill radius-3 justify-content-center fw-6 fs-14 flex-grow-1 animate-hover-btn "><span>Pesan</a>
+                                        class="tf-btn tf-btn-process btn-fill radius-3 justify-content-center fw-6 fs-14 flex-grow-1 animate-hover-btn"><span>Pesan</a>
                                 </div>
                             </form>
                         </div>

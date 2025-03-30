@@ -7,6 +7,7 @@ use App\Filament\Resources\TrainingResource\RelationManagers;
 use App\Models\Training;
 use Filament\Forms;
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -23,8 +24,8 @@ class TrainingResource extends Resource
 
     protected static ?string $pluralLabel = 'Pelatihan';
     protected static ?string $navigationLabel = 'Pelatihan';
-    protected static ?string $navigationGroup = 'Data Utama';
-    protected static ?int $navigationSort = 4;
+    protected static ?string $navigationGroup = 'Manajemen Pelatihan';
+    protected static ?int $navigationSort = 9;
     public static function form(Form $form): Form
     {
         return $form
@@ -50,6 +51,43 @@ class TrainingResource extends Resource
                         DatePicker::make('tanggal')
                             ->label('Bulan Pelatihan')
                             ->required(),
+                    ]),
+                Section::make('Harga Pelatihan')
+                    ->collapsible()
+                    ->schema([
+                        Repeater::make('trainingPrices')
+                            ->label('')
+                            ->relationship()
+                            ->addable(true)
+                            ->deletable(true)
+                            ->schema([
+                                Forms\Components\Select::make('city_id')
+                                    ->relationship('city', 'name')
+                                    ->label('Kota Pelatihan')
+                                    ->preload()
+                                    ->required()
+                                    ->searchable(),
+                                Forms\Components\Select::make('training_type_id')
+                                    ->relationship('trainingType', 'name')
+                                    ->label('Jenis Pelatihan')
+                                    ->preload()
+                                    ->required()
+                                    ->searchable(),
+                                Forms\Components\TextInput::make('price')
+                                    ->label('Harga Pelatihan')
+                                    ->prefix('Rp')
+                                    ->required()
+                                    ->numeric(),
+                                Forms\Components\TextInput::make('place')
+                                    ->label('Tempat Pelatihan')
+                                    ->required(),
+                                Forms\Components\DatePicker::make('start_date')
+                                    ->label('Tanggal Mulai Pelatihan')
+                                    ->required(),
+                                Forms\Components\DatePicker::make('end_date')
+                                    ->label('Tanggal Berakhir Pelatihan')
+                                    ->required(),
+                            ])
                     ]),
                 Section::make('Deskripsi Pelatihan')
                     ->collapsible()
