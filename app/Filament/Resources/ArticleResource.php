@@ -47,6 +47,8 @@ class ArticleResource extends Resource
                     ->collapsible()
                     ->schema([
                         TinyEditor::make('content')
+                            ->showMenuBar(1)
+                            ->toolbarSticky(1)
                             ->required()
                             ->label('')
                             ->columnSpanFull(),

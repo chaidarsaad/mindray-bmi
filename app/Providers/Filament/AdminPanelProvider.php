@@ -68,7 +68,12 @@ class AdminPanelProvider extends PanelProvider
                     ->icon('heroicon-o-home')
                     ->url('/', shouldOpenInNewTab: true)
             ])
-            // ->spa()
+            ->spa()
+            ->spaUrlExceptions(fn(): array => [
+                '*/admin/products/*',
+                '*/admin/articles/*',
+                '*/admin/trainings/*',
+            ])
             ->unsavedChangesAlerts()
             ->profile(isSimple: false)
             ->breadcrumbs(false)
