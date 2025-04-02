@@ -15,13 +15,9 @@ class Training extends Component
         $this->trainings = ModelsTraining::where('is_show', 1)
             ->orderBy('tanggal', 'desc')
             ->get();
-        $this->lastDateTraining = ModelsTraining::where('is_show', 1)
-            ->with('trainingPrices')
-            ->get();
     }
     public function render()
     {
-        // dd($this->lastDateTraining);
         return view('livewire.components.training');
     }
 }

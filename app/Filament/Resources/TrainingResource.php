@@ -10,6 +10,7 @@ use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
+use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -52,65 +53,65 @@ class TrainingResource extends Resource
                             ->label('Bulan Pelatihan')
                             ->required(),
                     ]),
-                Section::make('Harga Pelatihan')
-                    ->collapsible()
-                    ->schema([
-                        Repeater::make('trainingPrices')
-                            ->label('')
-                            ->relationship()
-                            ->addable(true)
-                            ->deletable(true)
-                            ->schema([
-                                Forms\Components\Select::make('city_id')
-                                    ->createOptionForm([
-                                        Section::make('Kota')
-                                            ->collapsible()
-                                            ->schema([
-                                                Forms\Components\TextInput::make('name')
-                                                    ->label('Kota Pelatihan')
-                                                    ->unique(ignoreRecord: true)
-                                                    ->required()
-                                                    ->maxLength(255),
-                                            ]),
-                                    ])
-                                    ->relationship('city', 'name')
-                                    ->label('Kota Pelatihan')
-                                    ->preload()
-                                    ->required()
-                                    ->searchable(),
-                                Forms\Components\Select::make('training_type_id')
-                                    ->createOptionForm([
-                                        Section::make('Jenis Pelatihan')
-                                            ->collapsible()
-                                            ->schema([
-                                                Forms\Components\TextInput::make('name')
-                                                    ->label('Jenis Pelatihan USG')
-                                                    ->unique(ignoreRecord: true)
-                                                    ->required()
-                                                    ->maxLength(255),
-                                            ]),
-                                    ])
-                                    ->relationship('trainingType', 'name')
-                                    ->label('Jenis Pelatihan')
-                                    ->preload()
-                                    ->required()
-                                    ->searchable(),
-                                Forms\Components\TextInput::make('price')
-                                    ->label('Harga Pelatihan')
-                                    ->prefix('Rp')
-                                    ->required()
-                                    ->numeric(),
-                                Forms\Components\TextInput::make('place')
-                                    ->label('Tempat Pelatihan')
-                                    ->required(),
-                                Forms\Components\DatePicker::make('start_date')
-                                    ->label('Tanggal Mulai Pelatihan')
-                                    ->required(),
-                                Forms\Components\DatePicker::make('end_date')
-                                    ->label('Tanggal Berakhir Pelatihan')
-                                    ->required(),
-                            ])
-                    ]),
+                // Section::make('Harga Pelatihan')
+                //     ->collapsible()
+                //     ->schema([
+                //         Repeater::make('trainingPrices')
+                //             ->label('')
+                //             ->relationship()
+                //             ->addable(true)
+                //             ->deletable(true)
+                //             ->schema([
+                //                 Forms\Components\Select::make('city_id')
+                //                     ->createOptionForm([
+                //                         Section::make('Kota')
+                //                             ->collapsible()
+                //                             ->schema([
+                //                                 Forms\Components\TextInput::make('name')
+                //                                     ->label('Kota Pelatihan')
+                //                                     ->unique(ignoreRecord: true)
+                //                                     ->required()
+                //                                     ->maxLength(255),
+                //                             ]),
+                //                     ])
+                //                     ->relationship('city', 'name')
+                //                     ->label('Kota Pelatihan')
+                //                     ->preload()
+                //                     ->required()
+                //                     ->searchable(),
+                //                 Forms\Components\Select::make('training_type_id')
+                //                     ->createOptionForm([
+                //                         Section::make('Jenis Pelatihan')
+                //                             ->collapsible()
+                //                             ->schema([
+                //                                 Forms\Components\TextInput::make('name')
+                //                                     ->label('Jenis Pelatihan USG')
+                //                                     ->unique(ignoreRecord: true)
+                //                                     ->required()
+                //                                     ->maxLength(255),
+                //                             ]),
+                //                     ])
+                //                     ->relationship('trainingType', 'name')
+                //                     ->label('Jenis Pelatihan')
+                //                     ->preload()
+                //                     ->required()
+                //                     ->searchable(),
+                //                 Forms\Components\TextInput::make('price')
+                //                     ->label('Harga Pelatihan')
+                //                     ->prefix('Rp')
+                //                     ->required()
+                //                     ->numeric(),
+                //                 Forms\Components\TextInput::make('place')
+                //                     ->label('Tempat Pelatihan')
+                //                     ->required(),
+                //                 Forms\Components\DatePicker::make('start_date')
+                //                     ->label('Tanggal Mulai Pelatihan')
+                //                     ->required(),
+                //                 Forms\Components\DatePicker::make('end_date')
+                //                     ->label('Tanggal Berakhir Pelatihan')
+                //                     ->required(),
+                //             ])
+                //     ]),
                 Section::make('Deskripsi Pelatihan')
                     ->collapsible()
                     ->schema([
@@ -162,7 +163,7 @@ class TrainingResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\TrainingPricesRelationManager::class,
         ];
     }
 
