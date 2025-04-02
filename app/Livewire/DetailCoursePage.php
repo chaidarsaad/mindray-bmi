@@ -19,10 +19,24 @@ class DetailCoursePage extends Component
             ->with('trainingPrices.city', 'trainingPrices.trainingType')  // Pastikan relasi sudah dimuat
             ->firstOrFail();
 
-        // Menghitung apakah tanggal pelatihan sudah lewat
-        $tanggal_training = strtotime($this->training->tanggal);
-        $tanggal_sekarang = time();
-        $this->isPastDate = ($tanggal_training < $tanggal_sekarang);
+        // Ambil trainingPrice terakhir untuk training ini berdasarkan 'start_date'
+        $lastTrainingPrice = $this->training->trainingPrices()
+            ->latest('start_date') // Mengurutkan berdasarkan 'start_date'
+            ->first(); // Mengambil trainingPrice terakhir
+
+        // Menyimpan end_date dari trainingPrice yang terakhir
+        if ($lastTrainingPrice) {
+            $this->training->last_end_date = $lastTrainingPrice->end_date;
+        } else {
+            $this->training->last_end_date = null; // Jika tidak ada data, set null
+        }
+
+        // Menghitung apakah tanggal pelatihan sudah lewat berdasarkan 'end_date' terakhir
+        if ($lastTrainingPrice) {
+            $endDate = strtotime($lastTrainingPrice->end_date);
+            $currentDate = time();
+            $this->isPastDate = ($endDate < $currentDate); // Menandakan apakah pelatihan sudah lewat
+        }
 
         // Mengelompokkan training prices berdasarkan tempat
         $this->groupTrainingPrices();
@@ -75,16 +89,6 @@ class DetailCoursePage extends Component
         }
     }
 
-
-
-
-
-
-
-
-
-
-
     public function groupTrainingPricesWithPrice()
     {
         $groupedPrices = $this->training->trainingPrices->groupBy('city');
@@ -121,7 +125,6 @@ class DetailCoursePage extends Component
             ];
         }
     }
-
 
 
     public function render()

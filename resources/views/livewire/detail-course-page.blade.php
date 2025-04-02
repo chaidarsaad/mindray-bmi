@@ -65,14 +65,6 @@
                             </div>
 
 
-
-
-
-
-
-
-
-
                             <hr>
                             <div class="desc article-content text-center">
                                 <strong style="font-size: 24px; color: #0105da;">INVESTASI :</strong><br><br>
