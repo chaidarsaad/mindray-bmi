@@ -7,6 +7,7 @@ use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -99,9 +100,22 @@ class TrainingPricesRelationManager extends RelationManager
                     ->sortable()
                     ->searchable()
                     ->money('IDR'),
+                Tables\Columns\TextColumn::make('start_date')
+                    ->label('Tanggal Mulai Pelatihan')
+                    ->sortable()
+                    ->dateTime('d M Y')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('end_date')
+                    ->label('Tanggal Selesai Pelatihan')
+                    ->sortable()
+                    ->dateTime('d M Y')
+                    ->searchable(),
             ])
             ->filters([
-                //
+                SelectFilter::make('Jenis Pelatihan')
+                    ->relationship('trainingType', 'name')
+                    ->preload()
+                    ->searchable(),
             ])
             ->headerActions([
                 Tables\Actions\CreateAction::make(),

@@ -16,7 +16,6 @@ class Training extends Model
         'image',
         'description',
         'is_show',
-        'tanggal',
     ];
 
     public function setJudulAttribute($value)

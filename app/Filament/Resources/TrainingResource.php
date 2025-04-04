@@ -49,9 +49,6 @@ class TrainingResource extends Resource
                         Forms\Components\Toggle::make('is_show')
                             ->label('Tampilkan Pelatihan?')
                             ->default(1),
-                        DatePicker::make('tanggal')
-                            ->label('Bulan Pelatihan')
-                            ->required(),
                     ]),
                 // Section::make('Harga Pelatihan')
                 //     ->collapsible()

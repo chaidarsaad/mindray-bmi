@@ -12,8 +12,15 @@ class Training extends Component
     public $lastDateTraining;
     public function mount()
     {
+        // $this->trainings = ModelsTraining::where('is_show', 1)
+        //     ->orderBy('tanggal', 'desc')
+        //     ->get();
+
         $this->trainings = ModelsTraining::where('is_show', 1)
-            ->orderBy('tanggal', 'desc')
+            ->join('training_prices', 'trainings.id', '=', 'training_prices.training_id')
+            ->orderByDesc('training_prices.start_date')
+            ->select('trainings.*') // Pilih kolom dari tabel trainings
+            ->distinct() // Menghindari duplikasi
             ->get();
     }
     public function render()

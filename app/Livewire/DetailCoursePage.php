@@ -19,13 +19,15 @@ class DetailCoursePage extends Component
             ->with('trainingPrices.city', 'trainingPrices.trainingType')  // Pastikan relasi sudah dimuat
             ->firstOrFail();
 
-        // Ambil trainingPrice terakhir untuk training ini berdasarkan 'start_date'
-        $lastTrainingPrice = $this->training->trainingPrices()
-            ->latest('start_date') // Mengurutkan berdasarkan 'start_date'
-            ->first(); // Mengambil trainingPrice terakhir
+        // Ambil semua trainingPrices untuk training ini
+        $trainingPrices = $this->training->trainingPrices;
 
-        // Menyimpan end_date dari trainingPrice yang terakhir
-        if ($lastTrainingPrice) {
+        // Periksa apakah ada trainingPrice yang ada
+        if ($trainingPrices->isNotEmpty()) {
+            // Ambil tanggal end_date yang paling terakhir dari semua trainingPrices
+            $lastTrainingPrice = $trainingPrices->sortByDesc('end_date')->first(); // Urutkan berdasarkan 'end_date' dan ambil yang terakhir
+
+            // Menyimpan end_date dari trainingPrice yang terakhir
             $this->training->last_end_date = $lastTrainingPrice->end_date;
         } else {
             $this->training->last_end_date = null; // Jika tidak ada data, set null
@@ -42,6 +44,7 @@ class DetailCoursePage extends Component
         $this->groupTrainingPrices();
         $this->groupTrainingPricesWithPrice(); // Tambahkan untuk harga
     }
+
 
     public function groupTrainingPrices()
     {

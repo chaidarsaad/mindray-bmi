@@ -13,6 +13,9 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->append(LogVisitor::class);
+        $middleware->alias([
+            'checkTrainingEndDate' => \App\Http\Middleware\CheckTrainingEndDate::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

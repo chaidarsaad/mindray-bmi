@@ -48,7 +48,14 @@
                                         <option value="">Pilih Pelatihan ANC</option>
                                         @foreach ($trainingPricesANC as $price)
                                             <option value="{{ $price->price }}">
-                                                {{ $price->city->name }} - Rp {{ number_format($price->price) }}
+                                                @php
+                                                    $startDate = \Carbon\Carbon::parse($price->start_date);
+                                                    $endDate = \Carbon\Carbon::parse($price->end_date);
+                                                @endphp
+                                                {{ $price->city->name }} Rp {{ number_format($price->price) }} -
+                                                Tanggal
+                                                {{ $startDate->locale('id')->format('d') }} s.d.
+                                                {{ $endDate->locale('id')->format('d F Y') }}
                                             </option>
                                         @endforeach
                                     </select>
@@ -61,7 +68,14 @@
                                         <option value="">Pilih Pelatihan ABDOMEN</option>
                                         @foreach ($trainingPricesAbdomen as $price)
                                             <option value="{{ $price->price }}">
-                                                {{ $price->city->name }} - Rp {{ number_format($price->price) }}
+                                                @php
+                                                    $startDate = \Carbon\Carbon::parse($price->start_date);
+                                                    $endDate = \Carbon\Carbon::parse($price->end_date);
+                                                @endphp
+                                                {{ $price->city->name }} Rp {{ number_format($price->price) }} -
+                                                Tanggal
+                                                {{ $startDate->locale('id')->format('d') }} s.d.
+                                                {{ $endDate->locale('id')->format('d F Y') }}
                                             </option>
                                         @endforeach
                                     </select>

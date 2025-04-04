@@ -27,13 +27,19 @@ class CheckoutTrainingPage extends Component
         $this->registrationTrainingData['email'] = Auth::user()->email;
         $this->training = Training::where('slug', $slug)->firstOrFail();
 
-        $this->trainingPricesANC = TrainingPrice::whereHas('trainingType', function ($query) {
-            $query->where('slug', 'anc');
-        })->with(['city', 'trainingType'])->get();
+        $this->trainingPricesANC = $this->training->trainingPrices()
+            ->whereHas('trainingType', function ($query) {
+                $query->where('slug', 'anc');
+            })
+            ->with(['city', 'trainingType'])
+            ->get();
 
-        $this->trainingPricesAbdomen = TrainingPrice::whereHas('trainingType', function ($query) {
-            $query->where('slug', 'abdomen');
-        })->with(['city', 'trainingType'])->get();
+        $this->trainingPricesAbdomen = $this->training->trainingPrices()
+            ->whereHas('trainingType', function ($query) {
+                $query->where('slug', 'abdomen');
+            })
+            ->with(['city', 'trainingType'])
+            ->get();
     }
 
     public function render()
