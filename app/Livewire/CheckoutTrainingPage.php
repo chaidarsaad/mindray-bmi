@@ -32,14 +32,24 @@ class CheckoutTrainingPage extends Component
                 $query->where('slug', 'anc');
             })
             ->with(['city', 'trainingType'])
-            ->get();
+            ->get()
+            ->map(function ($price) {
+                // Menambahkan flag untuk mengecek apakah start_date sudah lewat
+                $price->is_past = \Carbon\Carbon::parse($price->start_date)->isPast();
+                return $price;
+            });
 
         $this->trainingPricesAbdomen = $this->training->trainingPrices()
             ->whereHas('trainingType', function ($query) {
                 $query->where('slug', 'abdomen');
             })
             ->with(['city', 'trainingType'])
-            ->get();
+            ->get()
+            ->map(function ($price) {
+                // Menambahkan flag untuk mengecek apakah start_date sudah lewat
+                $price->is_past = \Carbon\Carbon::parse($price->start_date)->isPast();
+                return $price;
+            });
     }
 
     public function render()
