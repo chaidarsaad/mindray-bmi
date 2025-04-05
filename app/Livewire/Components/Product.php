@@ -17,7 +17,8 @@ class Product extends Component
             ->get()
             ->filter(function ($category) {
                 return $category->products->isNotEmpty();
-            });
+            })
+            ->values();
     }
     public function render()
     {
