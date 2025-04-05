@@ -20,7 +20,7 @@ class QuestionResource extends Resource
     protected static ?string $pluralLabel = 'Pertanyaan';
     protected static ?string $navigationLabel = 'Pertanyaan';
     protected static ?string $navigationGroup = 'Data Utama';
-    protected static ?int $navigationSort = 7;
+    protected static ?int $navigationSort = 8;
 
     public static function form(Form $form): Form
     {
@@ -65,7 +65,8 @@ class QuestionResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\DeleteAction::make()
+                    ->modalHeading(fn($record) => 'Hapus Pertanyaan: ' . $record->question),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

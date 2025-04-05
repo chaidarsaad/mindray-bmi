@@ -64,7 +64,8 @@ class CityResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make()
                     ->modalHeading('Ubah Kota'),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\DeleteAction::make()
+                    ->modalHeading(fn($record) => 'Hapus Kota: ' . $record->name),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

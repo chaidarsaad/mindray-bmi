@@ -22,7 +22,7 @@ class ArticleResource extends Resource
     protected static ?string $pluralLabel = 'Artikel';
     protected static ?string $navigationLabel = 'Artikel';
     protected static ?string $navigationGroup = 'Data Utama';
-    protected static ?int $navigationSort = 4;
+    protected static ?int $navigationSort = 5;
     public static function form(Form $form): Form
     {
         return $form
@@ -88,7 +88,9 @@ class ArticleResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\DeleteAction::make()
+                    ->modalHeading(fn($record) => 'Hapus Artikel: ' . $record->judul),
+
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

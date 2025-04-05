@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\PaymentMethod;
 use App\Models\Training;
 use Carbon\Carbon;
 use Livewire\Component;
@@ -9,12 +10,17 @@ use Livewire\Component;
 class DetailCoursePage extends Component
 {
     public $training;
+    public $paymentMethods;
+    public $accountName;
     public $isPastDate = false;
     public $trainingPricesGrouped = [];
     public $trainingPricesWithPrice = [];
 
     public function mount($slug)
     {
+        $this->paymentMethods = PaymentMethod::all();
+        $this->accountName = PaymentMethod::first();
+
         $this->training = Training::where('slug', $slug)
             ->with('trainingPrices.city', 'trainingPrices.trainingType')  // Pastikan relasi sudah dimuat
             ->firstOrFail();

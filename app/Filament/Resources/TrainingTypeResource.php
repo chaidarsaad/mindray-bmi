@@ -64,7 +64,8 @@ class TrainingTypeResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make()
                     ->modalHeading('Ubah Jenis Pelatihan'),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\DeleteAction::make()
+                    ->modalHeading(fn($record) => 'Hapus Jenis Pelatihan: ' . $record->name),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

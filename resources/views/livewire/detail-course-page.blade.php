@@ -84,6 +84,33 @@
                                 @endif
                             </div>
 
+                            <hr>
+                            <div class="desc article-content text-center">
+                                <strong style="font-size: 24px; color: #0105da;">REGISTRASI :</strong><br><br>
+
+                                @if ($paymentMethods)
+                                    @foreach ($paymentMethods as $data)
+                                        <p style="font-size:18px;">
+                                            <span style="font-weight: bold;">{{ $data->name }} :</span>
+                                            <span id="account-{{ $loop->index }}">{{ $data->account_number }}</span>
+
+                                            <button type="button"
+                                                onclick="copyToClipboard('account-{{ $loop->index }}')"
+                                                style="margin-left: 2px;background: none; border: none; cursor: pointer;"
+                                                title="Salin nomor rekening">
+                                                <i class="fa-regular fa-paste"
+                                                    style="color: #0105da; font-size: 16px;"></i>
+                                            </button>
+                                        </p>
+                                    @endforeach
+                                    <p style="font-size:18px;">
+                                        a.n. {{ $accountName->account_name }}
+                                    </p>
+                                @else
+                                    <p class="text-center">Tidak ada informasi harga yang tersedia.</p>
+                                @endif
+                            </div>
+
 
                             <div class="desc article-content">
                                 {!! $training->description !!}
@@ -139,3 +166,29 @@
     @livewire('components.sidebar-shopping-cart')
     <!-- /shoppingCart -->
 </div>
+
+@push('scripts')
+    <script>
+        function copyToClipboard(id) {
+            const element = document.getElementById(id);
+            const text = element.innerText;
+
+            navigator.clipboard.writeText(text).then(function() {
+                showToast("Nomor rekening berhasil disalin!");
+            }, function() {
+                showToast("Gagal menyalin.", "red");
+            });
+        }
+
+        function showToast(message, bgColor = "#4caf50") {
+            Toastify({
+                text: message,
+                duration: 3000,
+                gravity: "top",
+                position: "center",
+                backgroundColor: bgColor,
+                stopOnFocus: true,
+            }).showToast();
+        }
+    </script>
+@endpush

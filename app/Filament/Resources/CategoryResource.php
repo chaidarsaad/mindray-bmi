@@ -22,7 +22,7 @@ class CategoryResource extends Resource
     protected static ?string $pluralLabel = 'Kategori';
     protected static ?string $navigationLabel = 'Kategori';
     protected static ?string $navigationGroup = 'Data Utama';
-    protected static ?int $navigationSort = 2;
+    protected static ?int $navigationSort = 3;
 
     public static function form(Form $form): Form
     {
@@ -65,6 +65,7 @@ class CategoryResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make()
+                    ->modalHeading(fn($record) => 'Hapus Kategori: ' . $record->name)
                     ->action(function ($data, $record) {
                         if ($record->products()->count() > 0) {
                             Notification::make()

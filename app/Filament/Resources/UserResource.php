@@ -98,7 +98,8 @@ class UserResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\DeleteAction::make()
+                    ->modalHeading(fn($record) => 'Hapus Pengguna: ' . $record->name),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

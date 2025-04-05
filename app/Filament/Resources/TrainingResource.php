@@ -148,7 +148,8 @@ class TrainingResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\DeleteAction::make()
+                    ->modalHeading(fn($record) => 'Hapus Pelatihan: ' . $record->judul),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

@@ -25,7 +25,7 @@ class ProductResource extends Resource
     protected static ?string $pluralLabel = 'Produk USG';
     protected static ?string $navigationLabel = 'Produk USG';
     protected static ?string $navigationGroup = 'Data Utama';
-    protected static ?int $navigationSort = 3;
+    protected static ?int $navigationSort = 4;
 
     public static function form(Form $form): Form
     {
@@ -108,13 +108,13 @@ class ProductResource extends Resource
                     ->label('Foto')
                     ->stacked()
                     ->circular(),
+                Tables\Columns\TextColumn::make('name')
+                    ->label('Nama')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('category.name')
                     ->label('Kategori')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('name')
-                    ->label('Nama')
-                    ->searchable(),
                 Tables\Columns\TextColumn::make('subname')
                     ->label('Subnama')
                     ->searchable(),
@@ -136,7 +136,8 @@ class ProductResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\DeleteAction::make()
+                    ->modalHeading(fn($record) => 'Hapus Produk: ' . $record->name),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

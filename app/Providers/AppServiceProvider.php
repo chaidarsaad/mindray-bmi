@@ -6,12 +6,14 @@ use App\Models\About;
 use App\Models\Article;
 use App\Models\Carousel;
 use App\Models\Category;
+use App\Models\PaymentMethod;
 use App\Models\Product;
 use App\Models\Training;
 use App\Observers\AboutObserver;
 use App\Observers\ArticleObserver;
 use App\Observers\CarouselObserver;
 use App\Observers\CategoryObserver;
+use App\Observers\PaymentMethodObserver;
 use App\Observers\ProductObserver;
 use App\Observers\TrainingObserver;
 use Illuminate\Support\ServiceProvider;
@@ -37,5 +39,6 @@ class AppServiceProvider extends ServiceProvider
         Product::observe(ProductObserver::class);
         Training::observe(TrainingObserver::class);
         Article::observe(ArticleObserver::class);
+        PaymentMethod::observe(PaymentMethodObserver::class);
     }
 }
