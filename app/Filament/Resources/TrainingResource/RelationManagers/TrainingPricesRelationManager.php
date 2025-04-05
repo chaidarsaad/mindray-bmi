@@ -120,6 +120,7 @@ class TrainingPricesRelationManager extends RelationManager
                 SelectFilter::make('Kota Pelatihan')
                     ->relationship('city', 'name')
                     ->preload()
+                    ->multiple()
                     ->searchable(),
             ])
             ->headerActions([
