@@ -13,7 +13,11 @@ class Product extends Component
     {
         $this->categories = Category::with(['products' => function ($query) {
             $query->where('is_show', 1);
-        }])->get();
+        }])
+            ->get()
+            ->filter(function ($category) {
+                return $category->products->isNotEmpty();
+            });
     }
     public function render()
     {
