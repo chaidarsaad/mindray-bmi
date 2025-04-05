@@ -117,6 +117,10 @@ class TrainingPricesRelationManager extends RelationManager
                     ->relationship('trainingType', 'name')
                     ->preload()
                     ->searchable(),
+                SelectFilter::make('Kota Pelatihan')
+                    ->relationship('city', 'name')
+                    ->preload()
+                    ->searchable(),
             ])
             ->headerActions([
                 Tables\Actions\CreateAction::make(),
