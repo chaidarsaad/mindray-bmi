@@ -17,6 +17,20 @@
             box-sizing: border-box;
             /* Pastikan padding dan margin tidak menambah lebar elemen */
         }
+
+        .training-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .training-image {
+                max-width: 600px;
+                /* atau ukuran yang kamu inginkan */
+            }
+        }
     </style>
 @endpush
 
@@ -36,8 +50,9 @@
                             <div class="blog-detail-main-heading">
                                 <div class="title">{{ $training->judul }}</div>
                                 <div class="image">
-                                    <img class="" data-src="{{ Storage::url($training->image) }}"
+                                    <img class="training-image" data-src="{{ Storage::url($training->image) }}"
                                         src="{{ Storage::url($training->image) }}" alt="">
+
                                 </div>
                             </div>
 
