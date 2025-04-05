@@ -21,7 +21,10 @@ class StatsOverview extends BaseWidget
             Stat::make('Total Pelatihan', Training::count()),
             Stat::make('Total Artikel', Article::count()),
             Stat::make('Jumlah Customer Terdaftar', User::doesntHave('roles')->count()),
-            Stat::make('Jumlah Pengunjung', Visit::distinct('ip_address')->count()),
+            Stat::make('Jumlah Pengunjung Bulan Ini', Visit::whereMonth('created_at', now()->month)
+                ->whereYear('created_at', now()->year)
+                ->distinct('ip_address')
+                ->count('ip_address')),
         ];
     }
 }
