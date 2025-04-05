@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\TrainingResource\RelationManagers;
 
+use Filament\Tables\Actions\ReplicateAction;
 use Filament\Forms;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
@@ -121,6 +122,8 @@ class TrainingPricesRelationManager extends RelationManager
                 Tables\Actions\CreateAction::make(),
             ])
             ->actions([
+                ReplicateAction::make()
+                    ->modalHeading(fn($record) => 'Duplikat: ' . $record->city->name),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])
