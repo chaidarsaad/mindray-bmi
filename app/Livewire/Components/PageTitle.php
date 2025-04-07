@@ -15,6 +15,7 @@ class PageTitle extends Component
 
         $this->title = match ($routeName) {
             'checkout.training' => 'Daftar Pelatihan',
+            'detail.training.order' => 'Detail Pesanan Pelatihan',
             'usg.all' => 'Semua Produk USG Mindray',
             'training.all' => 'Semua Pelatihan',
             'article.all' => 'Semua Artikel',

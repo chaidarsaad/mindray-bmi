@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\PaymentMethod;
 use App\Models\Product;
 use App\Models\Training;
+use App\Models\TrainingOrder;
 use App\Observers\AboutObserver;
 use App\Observers\ArticleObserver;
 use App\Observers\CarouselObserver;

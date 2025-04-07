@@ -98,7 +98,8 @@ class RegisterPage extends Component
         Auth::login($user);
 
         // return redirect()->intended($isFirstUser ? '/admin' : route('home'));
-        return redirect()->route('home');
+        $this->redirectRoute('home');
+        // return redirect()->route('home');
     }
 
     public function togglePassword()

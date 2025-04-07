@@ -30,4 +30,9 @@ class TrainingOrder extends Model
     {
         return $this->hasMany(TrainingOrderDetail::class);
     }
+
+    public function getRouteKeyName()
+    {
+        return 'order_number';
+    }
 }

@@ -10,11 +10,13 @@ use App\Livewire\CheckoutTrainingPage;
 use App\Livewire\DetailArticlePage;
 use App\Livewire\DetailCategoryPage;
 use App\Livewire\DetailCoursePage;
+use App\Livewire\DetailOrderTrainingPage;
 use App\Livewire\DetailProductPage;
 use App\Livewire\HomePage;
 use App\Livewire\MyAccountPage;
 use App\Livewire\MyOrdersPage;
 use App\Livewire\TrainingPage;
+use App\Livewire\TrainingPaymentPage;
 use App\Livewire\UsgPage;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +40,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/pesanan-saya', MyOrdersPage::class)->name('dashboard.pesanan');
     Route::get('/akun-saya', AccountDetailPage::class)->name('dashboard.detail-account');
     Route::get('/proses-pesanan', CheckoutPage::class)->name('checkout');
+    Route::get('/detail-pesanan-pelatihan/{order:order_number}', DetailOrderTrainingPage::class)->name('detail.training.order');
 });
 
 Route::middleware(['auth', 'checkTrainingEndDate'])->group(function () {

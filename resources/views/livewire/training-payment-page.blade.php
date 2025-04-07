@@ -1,5 +1,5 @@
 @section('title')
-    BMI | Daftar Pelatihan
+    BMI | Pembayaran Pelatihan
 @endsection
 
 <div>
@@ -13,7 +13,7 @@
         <!-- /page-title -->
 
         {{-- checkout --}}
-        <section class="flat-spacing-11">
+        {{-- <section class="flat-spacing-11">
             <div class="container">
                 <div class="tf-page-cart-wrap layout-2">
                     <div class="tf-page-cart-item">
@@ -64,8 +64,7 @@
                                         onchange="calculateTotal()">
                                         <option value="">Pilih Pelatihan ABDOMEN</option>
                                         @foreach ($trainingPricesAbdomen as $price)
-                                            <option value="{{ $price->id }}" data-price="{{ $price->price }}"
-                                                @if ($price->is_past) disabled @endif>
+                                            <option value="{{ $price->id }}" data-price="{{ $price->price }}">
                                                 @php
                                                     $startDate = \Carbon\Carbon::parse($price->start_date);
                                                     $endDate = \Carbon\Carbon::parse($price->end_date);
@@ -74,9 +73,6 @@
                                                 Tanggal
                                                 {{ $startDate->locale('id')->format('d') }} s.d.
                                                 {{ $endDate->locale('id')->format('d F Y') }}
-                                                @if ($price->is_past)
-                                                    - <span class="text-muted">(Sudah Terselenggara)</span>
-                                                @endif
                                             </option>
                                         @endforeach
                                     </select>
@@ -103,18 +99,7 @@
 
                                 <div class="d-flex justify-content-between line pb_20">
                                     <h6 class="fw-5">Total</h6>
-                                    <h6 class="total fw-5" id="total_harga">
-                                        @if ($selected_anc && $selected_abdomen)
-                                            @php
-                                                $anc = $trainingPricesANC->firstWhere('id', $selected_anc);
-                                                $abdomen = $trainingPricesAbdomen->firstWhere('id', $selected_abdomen);
-                                                $total = $anc && $abdomen ? $anc->price + $abdomen->price : 0;
-                                            @endphp
-                                            Rp {{ number_format($total, 0, ',', '.') }}
-                                        @else
-                                            Rp 0
-                                        @endif
-                                    </h6>
+                                    <h6 class="total fw-5" id="total_harga">Rp 0</h6>
                                 </div>
                             </form>
                         </div>
@@ -143,7 +128,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
         {{-- /checkout --}}
 
         <!-- Footer -->
@@ -166,15 +151,18 @@
 
 @push('scripts')
     <script>
-        function calculateTotal() {
-            let ancSelect = document.getElementById("anc");
-            let ancPrice = ancSelect.options[ancSelect.selectedIndex]?.dataset.price || 0;
+        document.addEventListener("DOMContentLoaded", function() {
+            let message = @json(session('notify-success'));
 
-            let abdomenSelect = document.getElementById("abdomen");
-            let abdomenPrice = abdomenSelect.options[abdomenSelect.selectedIndex]?.dataset.price || 0;
-
-            let total = parseInt(ancPrice) + parseInt(abdomenPrice);
-            document.getElementById("total_harga").innerText = "Rp " + total.toLocaleString("id-ID");
-        }
+            if (message) {
+                Toastify({
+                    text: message,
+                    duration: 3000,
+                    gravity: "top",
+                    position: "center",
+                    backgroundColor: "green",
+                }).showToast();
+            }
+        });
     </script>
 @endpush
