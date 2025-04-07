@@ -177,4 +177,20 @@
             document.getElementById("total_harga").innerText = "Rp " + total.toLocaleString("id-ID");
         }
     </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            window.addEventListener("notify-error", event => {
+                const message = event.detail.message || "Terjadi kesalahan, coba lagi.";
+
+                Toastify({
+                    text: message,
+                    duration: 3000,
+                    gravity: "top",
+                    position: "center",
+                    backgroundColor: "red",
+                }).showToast();
+            });
+        });
+    </script>
 @endpush
