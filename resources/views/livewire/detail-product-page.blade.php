@@ -17,6 +17,45 @@
             box-sizing: border-box;
             /* Pastikan padding dan margin tidak menambah lebar elemen */
         }
+
+        /* .video-container {
+                                position: relative;
+                                width: 100%;
+                                padding-bottom: 56.25%;
+                                height: 0;
+                            }
+
+                            .video-container iframe {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 100%;
+                            } */
+
+        iframe {
+            position: relative;
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+        }
+
+        /* Membuat video responsif dengan rasio 16:9 */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            /* Rasio 16:9 */
+            height: 0;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
     </style>
 @endpush
 
@@ -258,6 +297,16 @@
                     tab.classList.add('active');
                     document.getElementById(tabId).classList.add('active');
                 });
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const iframes = document.querySelectorAll('iframe');
+            iframes.forEach(function(iframe) {
+                const wrapper = document.createElement('div');
+                wrapper.classList.add('video-container');
+                iframe.parentNode.insertBefore(wrapper, iframe);
+                wrapper.appendChild(iframe);
             });
         });
     </script>
