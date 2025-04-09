@@ -15,6 +15,10 @@ class DetailOrderTrainingPage extends Component
 
     public function mount(TrainingOrder $order)
     {
+        if ($order->user_id !== auth()->id()) {
+            return redirect()->route('home')->with('notify-error', 'Pesanan tidak ditemukan.');
+        }
+
         $this->paymentMethods = PaymentMethod::all();
 
         $order->load('orderDetails.trainingPrice.training', 'orderDetails.trainingPrice.trainingType', 'orderDetails.trainingPrice.city');
