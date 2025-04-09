@@ -1,5 +1,5 @@
 @section('title')
-    BMI | Daftar
+    USG Mindray | Daftar
 @endsection
 
 @push('styles')

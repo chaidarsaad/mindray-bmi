@@ -1,5 +1,5 @@
 @section('title')
-    BMI | Daftar Pelatihan
+    USG Mindray | Daftar Pelatihan
 @endsection
 
 <div>
@@ -30,7 +30,7 @@
                             </fieldset>
                             <fieldset class="box fieldset">
                                 <label for="phone">Nomor HP</label>
-                                <input wire:model="phone_number" type="number" id="phone">
+                                <input wire:model="phone_number" type="tel" id="phone">
                             </fieldset>
 
                             <fieldset class="box fieldset">

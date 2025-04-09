@@ -1,5 +1,5 @@
 @section('title')
-    BMI | Keranjang Belanja
+    USG Mindray | Keranjang Belanja
 @endsection
 
 <div>

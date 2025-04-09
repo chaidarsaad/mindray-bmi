@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Illuminate\Support\Str;
-
+use Carbon\Carbon;
 
 class CheckoutTrainingPage extends Component
 {
@@ -28,8 +28,8 @@ class CheckoutTrainingPage extends Component
         'name' => 'required|min:3',
         'email' => 'required|email',
         'phone_number' => 'required|numeric|digits_between:11,15',
-        'selected_anc' => 'required|exists:training_prices,id',
-        'selected_abdomen' => 'required|exists:training_prices,id'
+        'selected_anc' => 'nullable|exists:training_prices,id',
+        'selected_abdomen' => 'nullable|exists:training_prices,id',
     ];
 
     protected $messages = [
@@ -40,8 +40,8 @@ class CheckoutTrainingPage extends Component
         'phone_number.required' => 'Nomor HP wajib diisi',
         'phone_number.numeric' => 'Nomor HP harus berupa angka',
         'phone_number.digits_between' => 'Nomor HP harus memiliki 11-15 angka',
-        'selected_anc.required' => 'Pelatihan ANC wajib dipilih',
-        'selected_abdomen.required' => 'Pelatihan Abdomen wajib dipilih'
+        'selected_anc.exists' => 'Pelatihan ANC tidak valid',
+        'selected_abdomen.exists' => 'Pelatihan Abdomen tidak valid',
     ];
 
     public function checkout()
@@ -49,26 +49,44 @@ class CheckoutTrainingPage extends Component
         try {
             $validateData = $this->validate();
 
-            $anc = TrainingPrice::findOrFail($this->selected_anc);
-            $abdomen = TrainingPrice::findOrFail($this->selected_abdomen);
+            if (!$this->selected_anc && !$this->selected_abdomen) {
+                $this->dispatch('notify-error', message: 'Pilih minimal satu jenis pelatihan.');
+                return;
+            }
 
-            if (\Carbon\Carbon::parse($anc->start_date)->isPast()) {
+            $anc = !empty($this->selected_anc) ? TrainingPrice::findOrFail($this->selected_anc) : null;
+            $abdomen = !empty($this->selected_abdomen) ? TrainingPrice::findOrFail($this->selected_abdomen) : null;
+
+            if ($anc && Carbon::parse($anc->start_date)->isPast()) {
                 $this->dispatch('notify-error', message: 'Pelatihan ANC yang dipilih sudah terselenggara.');
                 return;
             }
 
-            if (\Carbon\Carbon::parse($abdomen->start_date)->isPast()) {
+            if ($abdomen && Carbon::parse($abdomen->start_date)->isPast()) {
                 $this->dispatch('notify-error', message: 'Pelatihan Abdomen yang dipilih sudah terselenggara.');
                 return;
             }
 
-            $this->total_harga = $anc->price + $abdomen->price;
+            $this->total_harga = 0;
+            $orderDetails = [];
+
+            if ($anc) {
+                $this->total_harga += $anc->price;
+                $orderDetails[] = ['training_price_id' => $anc->id];
+            }
+
+            if ($abdomen) {
+                $this->total_harga += $abdomen->price;
+                $orderDetails[] = ['training_price_id' => $abdomen->id];
+            }
+
             DB::beginTransaction();
             $user = Auth::user();
 
             if (empty($user->phone_number) || $user->phone_number !== $this->phone_number) {
                 $user->update(['phone_number' => $this->phone_number]);
             }
+
             $order = TrainingOrder::create([
                 'user_id' => auth()->id(),
                 'order_number' => 'ORD-' . strtoupper(Str::random(12)),
@@ -80,13 +98,9 @@ class CheckoutTrainingPage extends Component
                 'phone' => $this->phone_number,
             ]);
 
-            $order->orderDetails()->createMany([
-                ['training_price_id' => $anc->id],
-                ['training_price_id' => $abdomen->id],
-            ]);
+            $order->orderDetails()->createMany($orderDetails);
 
             DB::commit();
-            // session()->flash('notify-success', 'Pendaftaran berhasil! Silakan lanjut ke pembayaran.');
 
             $this->redirectRoute('detail.training.order', ['order' => $order]);
         } catch (\Illuminate\Validation\ValidationException $e) {
@@ -95,6 +109,9 @@ class CheckoutTrainingPage extends Component
             return;
         } catch (\Exception $e) {
             DB::rollBack();
+            \Log::error('Checkout Error: ' . $e->getMessage(), [
+                'trace' => $e->getTraceAsString(),
+            ]);
             report($e);
             $this->dispatch('notify-error', message: 'Terjadi kesalahan saat menyimpan data. Coba lagi.');
             return;

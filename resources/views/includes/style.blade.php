@@ -8,7 +8,7 @@
 
    <!-- Favicon and Touch Icons  -->
    <link rel="shortcut icon" href="{{ asset('assets/images/logo/favicon-bmi.png') }}" />
-   <link rel="apple-touch-icon-precomposed" href="{{ asset('assets/images/logo/favicon-bmi.png') }}" />
+   <link rel="apple-touch-icon-precomposed" href="{{ asset('assets/images/logo/logo USG MINDRAY BMI bulat.jpg') }}" />
 
    <!-- font awesome -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />

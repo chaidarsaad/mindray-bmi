@@ -1,5 +1,5 @@
 @section('title')
-    BMI | Detail Kategori
+    USG Mindray | Detail Kategori
 @endsection
 
 <div>

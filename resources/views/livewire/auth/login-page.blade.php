@@ -1,5 +1,5 @@
 @section('title')
-    BMI | Masuk
+    USG Mindray | Masuk
 @endsection
 
 <div id="wrapper">

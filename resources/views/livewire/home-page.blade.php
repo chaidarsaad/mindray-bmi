@@ -1,5 +1,5 @@
 @section('title')
-    BMI | Supplier alat USG Mindray dan Penyelenggara Pelatihan USG Abdomen & ANC
+    USG Mindray | Supplier alat USG Mindray dan Penyelenggara Pelatihan USG Abdomen & ANC
 @endsection
 
 <div>

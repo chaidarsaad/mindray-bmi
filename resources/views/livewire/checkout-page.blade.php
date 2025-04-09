@@ -1,5 +1,5 @@
 @section('title')
-    BMI | Proses Pesanan
+    USG Mindray | Proses Pesanan
 @endsection
 
 <div>

@@ -1,5 +1,5 @@
 @section('title')
-    BMI | Detail Pelatihan
+    USG Mindray | Detail Pelatihan
 @endsection
 
 @push('styles')

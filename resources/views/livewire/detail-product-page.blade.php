@@ -1,5 +1,5 @@
 @section('title')
-    BMI | Detail Produk
+    USG Mindray | Detail Produk
 @endsection
 
 @push('styles')

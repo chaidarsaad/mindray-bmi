@@ -1,5 +1,5 @@
 @section('title')
-    BMI | Semua Produk USG Mindray
+    USG Mindray | Semua Produk USG Mindray
 @endsection
 
 <div>

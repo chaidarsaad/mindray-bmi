@@ -1,5 +1,5 @@
 @section('title')
-    BMI | Detail Artikel
+    USG Mindray | Detail Artikel
 @endsection
 
 @push('styles')
