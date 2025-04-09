@@ -48,7 +48,7 @@
                         </div>
                         <div class="mb_20">
                             <button type="submit" wire:loading.attr="disabled"
-                                class="tf-btn w-100 radius-3 btn-fill animate-hover-btn justify-content-center">
+                                class="tf-btn tf-btn-process w-100 radius-3 btn-fill animate-hover-btn justify-content-center">
                                 Daftar
                             </button>
                         </div>

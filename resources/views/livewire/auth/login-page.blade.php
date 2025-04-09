@@ -32,7 +32,7 @@
 
                         <div class="mb_20">
                             <button type="submit"
-                                class="tf-btn w-100 radius-3 btn-fill animate-hover-btn justify-content-center">
+                                class="tf-btn w-100 tf-btn-process radius-3 btn-fill animate-hover-btn justify-content-center">
                                 Masuk
                             </button>
                         </div>

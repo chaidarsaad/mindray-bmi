@@ -65,7 +65,7 @@
                                     </div>
                                     <div class="mb_20">
                                         <button type="submit"
-                                            class="tf-btn w-100 radius-3 btn-fill animate-hover-btn justify-content-center">Simpan</button>
+                                            class="tf-btn tf-btn-process w-100 radius-3 btn-fill animate-hover-btn justify-content-center">Simpan</button>
                                     </div>
                                 </form>
                             </div>
