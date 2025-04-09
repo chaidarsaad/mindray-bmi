@@ -41,6 +41,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/akun-saya', AccountDetailPage::class)->name('dashboard.detail-account');
     Route::get('/proses-pesanan', CheckoutPage::class)->name('checkout');
     Route::get('/detail-pesanan-pelatihan/{order:order_number}', DetailOrderTrainingPage::class)->name('detail.training.order');
+    Route::get('/konfirmasi-pembayaran-pelatihan/{order:order_number}', TrainingPaymentPage::class)->name('payment.training.confirmation');
 });
 
 Route::middleware(['auth', 'checkTrainingEndDate'])->group(function () {

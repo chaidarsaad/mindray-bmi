@@ -4,15 +4,19 @@ namespace App\Livewire;
 
 use App\Models\TrainingOrder;
 use Livewire\Component;
+use App\Models\PaymentMethod;
 
 class DetailOrderTrainingPage extends Component
 {
     public TrainingOrder $order;
     public $firstTraining;
     public $orderDetailsFormatted = [];
+    public $paymentMethods;
 
     public function mount(TrainingOrder $order)
     {
+        $this->paymentMethods = PaymentMethod::all();
+
         $order->load('orderDetails.trainingPrice.training', 'orderDetails.trainingPrice.trainingType', 'orderDetails.trainingPrice.city');
 
         $this->order = $order;

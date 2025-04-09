@@ -14,6 +14,7 @@ class PageTitle extends Component
         $routeName = Route::currentRouteName();
 
         $this->title = match ($routeName) {
+            'payment.training.confirmation' => 'Konfirmasi Pembayaran',
             'checkout.training' => 'Daftar Pelatihan',
             'detail.training.order' => 'Detail Pesanan Pelatihan',
             'usg.all' => 'Semua Produk USG Mindray',
