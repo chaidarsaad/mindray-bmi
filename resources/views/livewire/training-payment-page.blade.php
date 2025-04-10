@@ -81,7 +81,7 @@
                             <div class="tf-sticky-atc-btns" style="width: 100%;">
                                 <a href="#"
                                     class="tf-btn tf-btn-process btn-fill radius-3 justify-content-center fw-6 fs-14 flex-grow-1 animate-hover-btn">
-                                    <span>Kirim Komfirmasi</span>
+                                    <span>Kirim Konfirmasi</span>
                                 </a>
                             </div>
                         </form>

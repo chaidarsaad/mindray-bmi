@@ -171,7 +171,7 @@
                             <div class="tf-sticky-atc-btns" style="width: 100%;">
                                 <a href="{{ route('payment.training.confirmation', $order->order_number) }}"
                                     class="tf-btn tf-btn-process btn-fill radius-3 justify-content-center fw-6 fs-14 flex-grow-1 animate-hover-btn">
-                                    <span>Komfirmasi Pembayaran</span>
+                                    <span>Konfirmasi Pembayaran</span>
                                 </a>
                             </div>
                         </form>
