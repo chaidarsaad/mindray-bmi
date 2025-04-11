@@ -98,6 +98,7 @@ class TrainingOrderResource extends Resource
         return $table
             ->paginationPageOptions([5, 25, 50, 100, 250])
             ->defaultPaginationPageOption(5)
+            ->defaultSort('id', direction: 'desc')
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->label('Nama Pemesan')
