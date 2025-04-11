@@ -52,7 +52,8 @@
                                                     $startDate = \Carbon\Carbon::parse($price->start_date);
                                                     $endDate = \Carbon\Carbon::parse($price->end_date);
                                                 @endphp
-                                                {{ $price->city->name }} Rp {{ number_format($price->price) }} -
+                                                {{ $price->city->name }} ({{ $price->place }}) Rp
+                                                {{ number_format($price->price) }} -
                                                 Tanggal {{ $startDate->locale('id')->format('d') }} s.d.
                                                 {{ $endDate->locale('id')->format('d F Y') }}
                                                 @if ($price->is_past)
@@ -76,7 +77,8 @@
                                                     $startDate = \Carbon\Carbon::parse($price->start_date);
                                                     $endDate = \Carbon\Carbon::parse($price->end_date);
                                                 @endphp
-                                                {{ $price->city->name }} Rp {{ number_format($price->price) }} -
+                                                {{ $price->city->name }} ({{ $price->place }}) Rp
+                                                {{ number_format($price->price) }} -
                                                 Tanggal
                                                 {{ $startDate->locale('id')->format('d') }} s.d.
                                                 {{ $endDate->locale('id')->format('d F Y') }}
