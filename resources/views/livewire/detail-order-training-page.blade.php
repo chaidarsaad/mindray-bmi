@@ -192,6 +192,20 @@
             }
         });
 
+        document.addEventListener("DOMContentLoaded", function() {
+            let message = @json(session('notify-error'));
+
+            if (message) {
+                Toastify({
+                    text: message,
+                    duration: 3000,
+                    gravity: "top",
+                    position: "center",
+                    backgroundColor: "green",
+                }).showToast();
+            }
+        });
+
         function copyToClipboard(id) {
             const element = document.getElementById(id);
             const text = element.innerText;
