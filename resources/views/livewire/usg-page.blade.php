@@ -94,8 +94,4 @@
     <!-- mobile menu -->
     @livewire('components.mobile-menu')
     <!-- /mobile menu -->
-
-    <!-- shoppingCart -->
-    @livewire('components.sidebar-shopping-cart')
-    <!-- /shoppingCart -->
 </div>
