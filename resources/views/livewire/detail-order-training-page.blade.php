@@ -12,170 +12,95 @@
         @livewire('components.page-title')
         <!-- /page-title -->
 
-        <section class="flat-spacing-17 pt_1 pb_0">
+        <section class="flat-spacing-17 py-4">
             <div class="container">
-                <div class="alert alert-{{ $statusInfo['color'] }} d-flex align-items-center p-3 rounded" role="alert"
-                    style="font-size: 20px;">
+                <div class="alert alert-{{ $statusInfo['color'] }} d-flex align-items-center p-3 rounded mb-4"
+                    role="alert" style="font-size: 18px;">
                     <i class="bi {{ $statusInfo['icon'] }} me-3 fs-4 text-{{ $statusInfo['color'] }}"></i>
                     <div>
-                        <p class="mb-1 text-{{ $statusInfo['color'] }}">{{ $statusInfo['title'] }}</p>
+                        <p class="mb-1 fw-bold text-{{ $statusInfo['color'] }}">{{ $statusInfo['title'] }}</p>
                         <p class="mb-0 small text-{{ $statusInfo['color'] }}">{{ $statusInfo['message'] }}</p>
                     </div>
                 </div>
-            </div>
-        </section>
 
-
-        {{-- detail order --}}
-        <section class="flat-spacing-17 pt_0">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="widget-tabs style-has-border rounded">
-                            </ul>
-                            <div class="widget-content-tab">
-                                <div class="widget-content-inner active" id="description" style="font-size: 18px;">
-                                    <div class="article-content d-flex justify-content-between">
-                                        <span>Detail Pesanan</span>
-                                        <span>{{ $order->order_number }}</span>
-                                    </div>
-                                    <div class="article-content d-flex justify-content-between">
-                                        <span>{{ $order->created_at->setTimezone('Asia/Jakarta')->locale('id')->translatedFormat('d F Y H:i') }}</span>
-                                    </div>
-                                    <hr>
-
-                                    <div class="article-content d-flex justify-content-between">
-                                        <span>Nama Pelatihan:</span>
-                                    </div>
-                                    <div class="article-content d-flex justify-content-between">
-                                        <span>{{ $firstTraining->judul ?? '-' }}</span>
-                                    </div>
-                                    <hr>
-
-                                    {{-- tampilkan pelatihan yang dipesan --}}
-                                    @foreach ($orderDetailsFormatted as $detail)
-                                        <div class="article-content d-flex justify-content-between">
-                                            <span>Jenis Pelatihan:</span>
-                                            <span>{{ $detail['jenis'] }}</span>
-                                        </div>
-                                        <div class="article-content d-flex justify-content-between">
-                                            <span>Kota:</span>
-                                            <span>{{ $detail['kota'] }}</span>
-                                        </div>
-                                        <div class="article-content d-flex justify-content-between">
-                                            <span>Tempat:</span>
-                                            <span>{{ $detail['tempat'] }}</span>
-                                        </div>
-                                        <div class="article-content d-flex justify-content-between">
-                                            <span>Jadwal:</span>
-                                            <span>{{ $detail['jadwal']['start'] }} -
-                                                {{ $detail['jadwal']['end'] }}</span>
-                                        </div>
-                                        <div class="article-content d-flex justify-content-between">
-                                            <span>Harga:</span>
-                                            <span>Rp{{ number_format($detail['harga'], 0, ',', '.') }}</span>
-                                        </div>
-                                        <hr>
-                                    @endforeach
-
-
-                                    <div class="article-content d-flex justify-content-between">
-                                        <span>Total</span>
-                                        <span>Rp {{ number_format($order->total_harga, 0, ',', '.') }}</span>
-                                    </div>
-
-                                </div>
-                            </div>
+                <div class="wd-form-order p-4 rounded shadow-sm bg-white">
+                    {{-- Order Header --}}
+                    <div class="d-flex align-items-center mb-4">
+                        <figure class="me-3 mb-0"
+                            style="width: 100px; height: 100px; border-radius: 8px; overflow: hidden;">
+                            <img src="{{ Storage::url($firstTraining->image) }}" alt="product"
+                                class="img-fluid w-100 h-100 object-fit-cover">
+                        </figure>
+                        <div>
+                            <span class="badge bg-{{ $statusInfo['color'] }} mb-2 text-capitalize fs-14">
+                                <i class="{{ $statusInfo['icon'] }} me-1"></i> {{ $statusInfo['title'] }}
+                            </span>
+                            <p class="mb-0 fs-16 fw-semibold text-dark">Nomor Pesanan: <br><span
+                                    class="text-secondary fs-18">{{ $order->order_number }}</span></p>
                         </div>
+                    </div>
+
+                    {{-- Order Details --}}
+                    <div class="row gy-4">
+                        <x-info-col label="Nama Pelatihan" :value="$firstTraining->judul" />
+                        <x-info-col label="Tanggal Pesan" :value="$order->created_at
+                            ->setTimezone('Asia/Jakarta')
+                            ->locale('id')
+                            ->translatedFormat('l, d F Y H:i')" />
+                        <x-info-col label="Nama Pemesan" :value="$order->name" />
+                        <x-info-col label="Email" :value="$order->email" />
+                        <x-info-col label="Nomor HP" :value="$order->phone" />
+
+                        @foreach ($orderDetailsFormatted as $detail)
+                            <hr>
+                            <x-info-col label="Jenis Pelatihan" :value="$detail['jenis']" />
+                            <x-info-col label="Kota" :value="$detail['kota']" />
+                            <x-info-col label="Tempat" :value="$detail['tempat']" />
+                            <x-info-col label="Jadwal" :value="$detail['jadwal']['start'] . ' - ' . $detail['jadwal']['end']" />
+                            <x-info-col label="Harga" :value="'Rp ' . number_format($detail['harga'], 0, ',', '.')" />
+                        @endforeach
+
+                        <hr>
+                        <x-info-col label="Total Harga" :value="'Rp ' . number_format($order->total_harga, 0, ',', '.')" />
                     </div>
                 </div>
             </div>
         </section>
-        {{-- /detail order --}}
 
-        {{-- informasi pemesan --}}
-        <section class="flat-spacing-17 pt_0">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="widget-tabs style-has-border rounded">
-                            </ul>
-                            <div class="widget-content-tab">
-                                <div class="widget-content-inner active" id="description" style="font-size: 18px;">
-                                    <div class="article-content d-flex justify-content-between">
-                                        <span>Data Pendaftar</span>
-                                    </div>
-                                    <hr>
-
-                                    <div class="article-content d-flex justify-content-between">
-                                        <span>Nama:</span>
-                                        <span>{{ $order->name }}</span>
-                                    </div>
-                                    <div class="article-content d-flex justify-content-between">
-                                        <span>Email:</span>
-                                        <span>{{ $order->email }}</span>
-                                    </div>
-                                    <div class="article-content d-flex justify-content-between">
-                                        <span>Nomor HP:</span>
-                                        <span>{{ $order->phone }}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         {{-- petunjuk pembarayan --}}
         <section class="flat-spacing-17 pt_0">
             <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="widget-tabs style-has-border rounded">
-                            </ul>
-                            <div class="widget-content-tab">
-                                <div class="widget-content-inner active" id="description" style="font-size: 18px;">
-                                    <div class="article-content d-flex justify-content-between">
-                                        <span>Petunjuk Pembayaran</span>
-                                    </div>
-                                    <hr>
+                <div class="widget-tabs rounded p-4 bg-white shadow-sm">
+                    <h5 class="fw-bold mb-3">Petunjuk Pembayaran</h5>
+                    <hr>
 
-                                    @foreach ($paymentMethods as $paymentMethods)
-                                        <div class="article-content d-flex justify-content-between">
-                                            <span>Nomor Rekening {{ $paymentMethods->name }}:</span>
-                                        </div>
-                                        <div class="article-content d-flex justify-content-between">
-                                            <span id="account-{{ $paymentMethods->account_number }}">
-                                                {{ $paymentMethods->account_number }}
-                                            </span>
-
-
-                                            <button type="button"
-                                                onclick="copyToClipboard('account-{{ $paymentMethods->account_number }}')"
-                                                style="margin-left: 2px;background: none; border: none; cursor: pointer;"
-                                                title="Salin nomor rekening">Salin
-                                                <i class="fa-regular fa-paste"
-                                                    style="color: #0105da; font-size: 16px;"></i>
-                                            </button>
-                                        </div>
-                                        <div class="article-content d-flex justify-content-between">
-                                            <span>a.n. {{ $paymentMethods->account_name }}</span>
-                                        </div>
-                                        <hr>
-                                    @endforeach
-                                    <div class="article-content">
-                                        <li>• Transfer sesuai dengan nominal yang tertera</li>
-                                        <li>• Simpan bukti pembayaran</li>
-                                        <li>• Upload bukti pembayaran setelah transfer</li>
-                                    </div>
-                                </div>
+                    @foreach ($paymentMethods as $method)
+                        <div class="mb-3 fs-16">
+                            <p class="mb-1">Bank: <strong>{{ $method->name }}</strong></p>
+                            <div class="d-flex align-items-center">
+                                <span id="account-{{ $method->account_number }}"
+                                    class="me-2">{{ $method->account_number }}</span>
+                                <button type="button"
+                                    onclick="copyToClipboard('account-{{ $method->account_number }}')"
+                                    class="btn btn-sm btn-outline-primary">
+                                    <i class="fa-regular fa-paste me-1"></i> Salin
+                                </button>
                             </div>
+                            <p class="mb-0 mt-1">a.n. <strong>{{ $method->account_name }}</strong></p>
                         </div>
-                    </div>
+                        <hr>
+                    @endforeach
+
+                    <ul class="mb-0 fs-16">
+                        <li>• Transfer sesuai dengan nominal yang tertera</li>
+                        <li>• Simpan bukti pembayaran</li>
+                        <li>• Upload bukti pembayaran setelah transfer</li>
+                    </ul>
                 </div>
             </div>
         </section>
+
 
         <div class="tf-sticky-btn-atc">
             <div class="container">

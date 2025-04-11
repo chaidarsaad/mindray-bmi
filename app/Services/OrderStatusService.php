@@ -62,7 +62,7 @@ class OrderStatusService
                 'color' => 'warning',
                 'title' => 'Menunggu Pembayaran',
                 'message' => $paymentDeadline
-                    ? 'Selesaikan pembayaran sebelum ' . Carbon::parse($paymentDeadline)->timezone($tz)->translatedFormat('d F Y H:i')
+                    ? 'Selesaikan pembayaran sebelum: ' . Carbon::parse($paymentDeadline)->timezone($tz)->translatedFormat('l, d F Y H:i')
                     : 'Selesaikan pembayaran secepatnya.'
             ],
             self::STATUS_PROCESSING => [
@@ -75,9 +75,7 @@ class OrderStatusService
                 'icon' => 'fas fa-check-circle',
                 'color' => 'success',
                 'title' => 'Pesanan Selesai',
-                'message' => $completedAt
-                    ? 'Pesanan telah diterima pada ' . Carbon::parse($completedAt)->timezone($tz)->translatedFormat('d F Y H:i')
-                    : 'Pesanan telah selesai.'
+                'message' => 'Pesanan telah selesai.'
             ],
             self::STATUS_CANCELLED => [
                 'icon' => 'fas fa-times-circle',
