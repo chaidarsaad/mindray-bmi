@@ -22,6 +22,7 @@ class OrderStatusService
     {
         return match ($status) {
             self::STATUS_PENDING => 'Menunggu Pembayaran',
+            self::PAYMENT_VERIFYING => 'Pembayaran Sedang Diverifikasi',
             self::STATUS_PROCESSING => 'Diproses',
             self::STATUS_COMPLETED => 'Selesai',
             self::STATUS_CANCELLED => 'Dibatalkan',
@@ -34,6 +35,7 @@ class OrderStatusService
         return match ($status) {
             self::STATUS_PENDING => 'text-warning',
             self::STATUS_PROCESSING => 'text-primary',
+            self::PAYMENT_VERIFYING => 'text-danger',
             self::STATUS_COMPLETED => 'text-success',
             self::STATUS_CANCELLED => 'text-danger',
             default => 'text-secondary'
