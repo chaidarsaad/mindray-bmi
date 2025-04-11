@@ -2,6 +2,16 @@
     USG Mindray | Pembayaran Pelatihan
 @endsection
 
+@push('styles')
+    <style>
+        .btn-outline-primary:hover {
+            background-color: #0105da;
+            color: #fff;
+            border-color: #0105da;
+        }
+    </style>
+@endpush
+
 <div>
     <div id="wrapper">
         <!-- Navbar -->
@@ -92,15 +102,17 @@
                     @foreach ($paymentMethods as $method)
                         <div class="mb-3 fs-16">
                             <p class="mb-1">Bank: <strong>{{ $method->name }}</strong></p>
-                            <div class="d-flex align-items-center">
-                                <span id="account-{{ $method->account_number }}"
-                                    class="me-2">{{ $method->account_number }}</span>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <span id="account-{{ $method->account_number }}">
+                                    {{ $method->account_number }}
+                                </span>
                                 <button type="button"
                                     onclick="copyToClipboard('account-{{ $method->account_number }}')"
                                     class="btn btn-sm btn-outline-primary">
                                     <i class="fa-regular fa-paste me-1"></i> Salin
                                 </button>
                             </div>
+
                             <p class="mb-0 mt-1">a.n. <strong>{{ $method->account_name }}</strong></p>
                         </div>
                         <hr>
