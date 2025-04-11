@@ -12,12 +12,26 @@
         @livewire('components.page-title')
         <!-- /page-title -->
 
+        <section class="flat-spacing-17 pt_1 pb_0">
+            <div class="container">
+                <div class="alert alert-{{ $statusInfo['color'] }} d-flex align-items-center p-3 rounded" role="alert"
+                    style="font-size: 20px;">
+                    <i class="bi {{ $statusInfo['icon'] }} me-3 fs-4 text-{{ $statusInfo['color'] }}"></i>
+                    <div>
+                        <p class="mb-1 text-{{ $statusInfo['color'] }}">{{ $statusInfo['title'] }}</p>
+                        <p class="mb-0 small text-{{ $statusInfo['color'] }}">{{ $statusInfo['message'] }}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
         {{-- detail order --}}
-        <section class="flat-spacing-17 pt_1">
+        <section class="flat-spacing-17 pt_0">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <div class="widget-tabs style-has-border">
+                        <div class="widget-tabs style-has-border rounded">
                             </ul>
                             <div class="widget-content-tab">
                                 <div class="widget-content-inner active" id="description" style="font-size: 18px;">
@@ -84,7 +98,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <div class="widget-tabs style-has-border">
+                        <div class="widget-tabs style-has-border rounded">
                             </ul>
                             <div class="widget-content-tab">
                                 <div class="widget-content-inner active" id="description" style="font-size: 18px;">
@@ -118,7 +132,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <div class="widget-tabs style-has-border">
+                        <div class="widget-tabs style-has-border rounded">
                             </ul>
                             <div class="widget-content-tab">
                                 <div class="widget-content-inner active" id="description" style="font-size: 18px;">

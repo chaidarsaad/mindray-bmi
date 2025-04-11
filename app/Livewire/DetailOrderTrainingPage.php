@@ -5,6 +5,8 @@ namespace App\Livewire;
 use App\Models\TrainingOrder;
 use Livewire\Component;
 use App\Models\PaymentMethod;
+use App\Services\OrderStatusService;
+use Carbon\Carbon;
 
 class DetailOrderTrainingPage extends Component
 {
@@ -12,12 +14,15 @@ class DetailOrderTrainingPage extends Component
     public $firstTraining;
     public $orderDetailsFormatted = [];
     public $paymentMethods;
+    public $paymentDeadline;
 
     public function mount(TrainingOrder $order)
     {
         if ($order->user_id !== auth()->id()) {
             return redirect()->route('home')->with('notify-error', 'Pesanan tidak ditemukan.');
         }
+
+        $this->paymentDeadline = Carbon::parse($this->order->created_at)->addHours(24);
 
         $this->paymentMethods = PaymentMethod::all();
 
@@ -46,8 +51,21 @@ class DetailOrderTrainingPage extends Component
         })->toArray();
     }
 
+    public function getStatusInfo()
+    {
+        return OrderStatusService::getStatusInfo(
+            $this->order->status,
+            $this->paymentDeadline,
+            $this->order->completed_at,
+        );
+    }
+
     public function render()
     {
-        return view('livewire.detail-order-training-page');
+        $statusInfo = $this->getStatusInfo();
+
+        return view('livewire.detail-order-training-page', [
+            'statusInfo' => $statusInfo,
+        ]);
     }
 }
