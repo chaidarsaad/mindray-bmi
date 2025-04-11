@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\App;
 
 class OrderStatusService
 {
@@ -51,41 +52,48 @@ class OrderStatusService
 
     public static function getStatusInfo($status, $paymentDeadline = null, $completedAt = null): array
     {
+        // Set locale dan timezone
+        Carbon::setLocale('id');
+        $tz = 'Asia/Jakarta';
+
         return match ($status) {
             self::STATUS_PENDING => [
-                'icon' => 'fas fa-hourglass-half', // ⏳
+                'icon' => 'fas fa-hourglass-half',
                 'color' => 'warning',
                 'title' => 'Menunggu Pembayaran',
                 'message' => $paymentDeadline
-                    ? 'Selesaikan pembayaran sebelum ' . $paymentDeadline->format('d M Y H:i')
+                    ? 'Selesaikan pembayaran sebelum ' . Carbon::parse($paymentDeadline)->timezone($tz)->translatedFormat('d F Y H:i')
                     : 'Selesaikan pembayaran secepatnya.'
             ],
             self::STATUS_PROCESSING => [
-                'icon' => 'fas fa-box-open', // 📦
+                'icon' => 'fas fa-box-open',
                 'color' => 'primary',
                 'title' => 'Pesanan Diproses',
                 'message' => 'Kami sedang menyiapkan pesanan Anda.'
             ],
             self::STATUS_COMPLETED => [
-                'icon' => 'fas fa-check-circle', // ✅
+                'icon' => 'fas fa-check-circle',
                 'color' => 'success',
                 'title' => 'Pesanan Selesai',
-                'message' => 'Pesanan telah selesai.'
+                'message' => $completedAt
+                    ? 'Pesanan telah diterima pada ' . Carbon::parse($completedAt)->timezone($tz)->translatedFormat('d F Y H:i')
+                    : 'Pesanan telah selesai.'
             ],
             self::STATUS_CANCELLED => [
-                'icon' => 'fas fa-times-circle', // ❌
+                'icon' => 'fas fa-times-circle',
                 'color' => 'danger',
                 'title' => 'Pesanan Dibatalkan',
                 'message' => 'Pesanan telah dibatalkan.'
             ],
             default => [
-                'icon' => 'fas fa-info-circle', // ℹ️
+                'icon' => 'fas fa-info-circle',
                 'color' => 'secondary',
                 'title' => 'Status Tidak Diketahui',
                 'message' => ''
             ]
         };
     }
+
 
 
     public static function getPaymentStatusLabel($status): string

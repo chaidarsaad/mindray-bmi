@@ -40,7 +40,7 @@
                                         <span>{{ $order->order_number }}</span>
                                     </div>
                                     <div class="article-content d-flex justify-content-between">
-                                        <span>{{ $order->created_at->setTimezone('Asia/Jakarta')->locale('id')->translatedFormat('d M Y H:i') }}</span>
+                                        <span>{{ $order->created_at->setTimezone('Asia/Jakarta')->locale('id')->translatedFormat('d F Y H:i') }}</span>
                                     </div>
                                     <hr>
 

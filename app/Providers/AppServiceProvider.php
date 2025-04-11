@@ -18,6 +18,7 @@ use App\Observers\PaymentMethodObserver;
 use App\Observers\ProductObserver;
 use App\Observers\TrainingObserver;
 use Illuminate\Support\ServiceProvider;
+use Carbon\Carbon;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -34,6 +35,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Carbon::setLocale('id');
+        date_default_timezone_set('Asia/Jakarta');
+
         Category::observe(CategoryObserver::class);
         Carousel::observe(CarouselObserver::class);
         About::observe(AboutObserver::class);
