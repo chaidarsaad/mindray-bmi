@@ -84,6 +84,7 @@ class TrainingOrderResource extends Resource
                             ->required()
                             ->native(false),
                         Forms\Components\FileUpload::make('payment_proof')
+                            ->label('Bukti Pembayaran')
                             ->openable()
                             ->downloadable(),
                     ]),
