@@ -23,7 +23,7 @@
                     </div>
                 </div>
 
-                <div class="wd-form-order p-4 rounded shadow-sm bg-white">
+                <div class="p-4 rounded shadow-sm bg-white">
                     {{-- Order Header --}}
                     <div class="d-flex align-items-center mb-4">
                         <figure class="me-3 mb-0"

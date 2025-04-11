@@ -12,30 +12,43 @@
         @livewire('components.page-title')
         <!-- /page-title -->
 
-        {{-- detail order --}}
-        <section class="flat-spacing-17 pt_1">
+        <section class="flat-spacing-17 py-4">
             <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="widget-tabs style-has-border">
-                            </ul>
-                            <div class="widget-content-tab">
-                                <div class="widget-content-inner active" id="description" style="font-size: 18px;">
-                                    <div class="article-content d-flex justify-content-between">
-                                        <span>Detail Pesanan</span>
-                                        <span>{{ $order->order_number }}</span>
-                                    </div>
-                                    <div class="article-content d-flex justify-content-between">
-                                        <span>{{ $order->created_at->setTimezone('Asia/Jakarta')->locale('id')->translatedFormat('d M Y H:i') }}</span>
-                                    </div>
-                                    <hr>
+                <div class="p-4 rounded shadow-sm bg-white">
+                    {{-- Order Details --}}
+                    <div class="row gy-4">
+                        <x-info-col label="Nomor Pesanan" :value="$order->order_number" />
+                        <x-info-col label="Tanggal Pesan" :value="$order->created_at
+                            ->setTimezone('Asia/Jakarta')
+                            ->locale('id')
+                            ->translatedFormat('l, d F Y H:i')" />
 
-                                    <div class="article-content d-flex justify-content-between">
-                                        <span>Total Pembayaran</span>
-                                        <span>Rp {{ number_format($order->total_harga, 0, ',', '.') }}</span>
-                                    </div>
+                        <hr>
+                        <x-info-col label="Total Pembayaran" :value="'Rp ' . number_format($order->total_harga, 0, ',', '.')" />
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        {{-- detail order --}}
+        <section class="flat-spacing-17 py-4">
+            <div class="container">
+                <div class="p-4 rounded shadow-sm bg-white">
+                    <div class="row gy-4">
+                        </ul>
+                        <div class="widget-content-tab">
+                            <div class="widget-content-inner active" id="description" style="font-size: 18px;">
+                                <div class="article-content d-flex justify-content-between">
+                                    <span>Bukti Transfer</span>
                                 </div>
+                                <hr>
+                                <form class="form-checkout" action="">
+
+                                    <fieldset class="box fieldset">
+                                        <label for="payment_proof">Upload Bukti Transfer</label>
+                                        <input accept="image/*" type="file" id="payment_proof">
+                                    </fieldset>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -44,34 +57,32 @@
         </section>
         {{-- /detail order --}}
 
-        {{-- detail order --}}
-        <section class="flat-spacing-17 pt_1">
+        {{-- petunjuk pembarayan --}}
+        <section class="flat-spacing-17 pt_0">
             <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="widget-tabs style-has-border">
-                            </ul>
-                            <div class="widget-content-tab">
-                                <div class="widget-content-inner active" id="description" style="font-size: 18px;">
-                                    <div class="article-content d-flex justify-content-between">
-                                        <span>Bukti Transfer</span>
-                                    </div>
-                                    <hr>
-                                    <form class="form-checkout" action="">
+                <div class="widget-tabs rounded p-4 bg-white shadow-sm">
+                    <h5 class="mb-3">Nomor Rekening</h5>
+                    <hr>
 
-                                        <fieldset class="box fieldset">
-                                            <label for="payment_proof">Upload Bukti Transfer</label>
-                                            <input accept="image/*" type="file" id="payment_proof">
-                                        </fieldset>
-                                    </form>
-                                </div>
+                    @foreach ($paymentMethods as $method)
+                        <div class="mb-3 fs-16">
+                            <p class="mb-1">Bank: <strong>{{ $method->name }}</strong></p>
+                            <div class="d-flex align-items-center">
+                                <span id="account-{{ $method->account_number }}"
+                                    class="me-2">{{ $method->account_number }}</span>
+                                <button type="button"
+                                    onclick="copyToClipboard('account-{{ $method->account_number }}')"
+                                    class="btn btn-sm btn-outline-primary">
+                                    <i class="fa-regular fa-paste me-1"></i> Salin
+                                </button>
                             </div>
+                            <p class="mb-0 mt-1">a.n. <strong>{{ $method->account_name }}</strong></p>
                         </div>
-                    </div>
+                        <hr>
+                    @endforeach
                 </div>
             </div>
         </section>
-        {{-- /detail order --}}
 
         <div class="tf-sticky-btn-atc">
             <div class="container">
@@ -123,5 +134,27 @@
                 }).showToast();
             }
         });
+
+        function copyToClipboard(id) {
+            const element = document.getElementById(id);
+            const text = element.innerText;
+
+            navigator.clipboard.writeText(text).then(function() {
+                showToast("Nomor rekening berhasil disalin!");
+            }, function() {
+                showToast("Gagal menyalin.", "red");
+            });
+        }
+
+        function showToast(message, bgColor = "#4caf50") {
+            Toastify({
+                text: message,
+                duration: 3000,
+                gravity: "top",
+                position: "center",
+                backgroundColor: bgColor,
+                stopOnFocus: true,
+            }).showToast();
+        }
     </script>
 @endpush
