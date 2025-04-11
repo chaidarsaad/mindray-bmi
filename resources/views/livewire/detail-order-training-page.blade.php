@@ -9,6 +9,31 @@
             color: #fff;
             border-color: #0105da;
         }
+
+        .training-image {
+            width: 100%;
+            max-width: 150px;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .training-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @media (max-width: 576px) {
+            .training-image {
+                max-width: 100%;
+            }
+
+            .training-image img {
+                object-fit: contain;
+                background-color: #f8f9fa;
+            }
+        }
     </style>
 @endpush
 
@@ -36,11 +61,10 @@
                 <div class="p-4 rounded shadow-sm bg-white">
                     {{-- Order Header --}}
                     <div class="d-flex align-items-center mb-4">
-                        <figure class="me-3 mb-0"
-                            style="width: 100px; height: 100px; border-radius: 8px; overflow: hidden;">
-                            <img src="{{ Storage::url($firstTraining->image) }}" alt="product"
-                                class="img-fluid w-100 h-100 object-fit-cover">
+                        <figure class="training-image me-3 mb-0">
+                            <img src="{{ Storage::url($firstTraining->image) }}" alt="product">
                         </figure>
+
                         <div>
                             <span class="badge bg-{{ $statusInfo['color'] }} mb-2 text-capitalize fs-14">
                                 <i class="{{ $statusInfo['icon'] }} me-1"></i> {{ $statusInfo['title'] }}
