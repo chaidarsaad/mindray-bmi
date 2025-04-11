@@ -132,7 +132,13 @@
                     <div class="tf-sticky-atc-infos" style="width: 100%;">
                         <form class="" style="width: 100%;">
                             <div class="tf-sticky-atc-btns" style="width: 100%;">
-                                @if ($order->payment_proof)
+                                @if ($order->status === 'cancelled')
+                                    <button
+                                        class="tf-btn tf-btn-process btn-fill radius-3 justify-content-center fw-6 fs-14 flex-grow-1 animate-hover-btn"
+                                        disabled>
+                                        <span>Pesanan Dibatalkan</span>
+                                    </button>
+                                @elseif ($order->payment_proof)
                                     <button
                                         class="tf-btn tf-btn-process btn-fill radius-3 justify-content-center fw-6 fs-14 flex-grow-1 animate-hover-btn"
                                         disabled>
@@ -144,13 +150,14 @@
                                         <span>Konfirmasi Pembayaran</span>
                                     </a>
                                 @endif
-
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
+
+
         <!-- Footer -->
         @livewire('components.footer')
         <!-- /Footer -->
