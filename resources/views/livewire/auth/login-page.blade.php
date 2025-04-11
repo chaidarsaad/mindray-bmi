@@ -13,7 +13,7 @@
         <div class="container">
             <div class="form-register-wrap">
                 <a href="{{ route('home') }}" style="width: 120px; display: block; margin: 0 auto; margin-bottom: 18px;">
-                    <img src="{{ asset('assets/images/logo/bmi.webp') }}" alt="logo" />
+                    <img src="{{ Storage::url($about->logo) }}" alt="logo" />
                 </a>
                 <h5 class="mb_18 text-center">Masuk</h5>
                 <div>

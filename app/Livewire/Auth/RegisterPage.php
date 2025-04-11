@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Auth;
 
+use App\Models\About;
 use App\Models\User;
 use Livewire\Component;
 use Illuminate\Auth\Events\Registered;
@@ -16,6 +17,8 @@ class RegisterPage extends Component
     public $password_confirmation = '';
     public $passwordConfirmationTouched = false;
     public $showPassword = false;
+
+    public $about;
 
     protected $rules = [
         'name' => 'required|min:3|unique:users,name|regex:/^(?! )[a-z\'’ ]+(?<! )$/',
@@ -38,6 +41,11 @@ class RegisterPage extends Component
         'password.confirmed' => 'Konfirmasi password tidak cocok',
         'name.regex' => 'Nama hanya boleh mengandung huruf kecil, spasi ditengah, dan tanda kutip',
     ];
+
+    public function mount()
+    {
+        $this->about = About::first();
+    }
 
     public function updated($propertyName)
     {

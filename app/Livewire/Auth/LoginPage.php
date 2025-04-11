@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Auth;
 
+use App\Models\About;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -10,6 +11,8 @@ class LoginPage extends Component
     public $name = '';
     public $password = '';
     public $showPassword = false;
+
+    public $about;
 
     protected $rules = [
         'name' => 'required|min:3|regex:/^(?! )[a-z\'’ ]+(?<! )$/',
@@ -23,6 +26,11 @@ class LoginPage extends Component
         'password.required' => 'Password wajib diisi',
         'password.min' => 'Password minimal 8 karakter'
     ];
+
+    public function mount()
+    {
+        $this->about = About::first();
+    }
 
     public function updated($propertyName)
     {
