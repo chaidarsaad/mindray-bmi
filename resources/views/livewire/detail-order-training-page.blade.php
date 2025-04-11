@@ -92,7 +92,7 @@
                         <hr>
                     @endforeach
 
-                    <ul class="mb-0 fs-16">
+                    <ul class="mb-0 fs-15">
                         <li>• Transfer sesuai dengan nominal yang tertera</li>
                         <li>• Simpan bukti pembayaran</li>
                         <li>• Upload bukti pembayaran setelah transfer</li>
