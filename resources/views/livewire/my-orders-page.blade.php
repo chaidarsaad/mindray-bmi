@@ -19,8 +19,8 @@
                     @livewire('components.sidebar-dashboard')
                     <div class="col-lg-9">
                         <div class="my-account-content account-order">
-                            <div class="wrap-account-order">
-                                <table>
+                            <div class="wrap-account-order" style="overflow-x: auto;">
+                                <table style="min-width: 600px;">
                                     <thead>
                                         <tr>
                                             <th class="fw-6">No Pesanan</th>
