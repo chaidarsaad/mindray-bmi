@@ -14,34 +14,34 @@ use Carbon\Carbon;
 class CheckoutTrainingPage extends Component
 {
     public $training;
-    public $trainingPricesANC = [];
+    public $trainingPricesANC     = [];
     public $trainingPricesAbdomen = [];
 
-    public $name = '';
-    public $email = '';
-    public $phone_number = '';
-    public $selected_anc = '';
+    public $name             = '';
+    public $email            = '';
+    public $phone_number     = '';
+    public $selected_anc     = '';
     public $selected_abdomen = '';
     public $total_harga;
 
     protected $rules = [
-        'name' => 'required|min:3',
-        'email' => 'required|email',
-        'phone_number' => 'required|numeric|digits_between:11,15',
-        'selected_anc' => 'nullable|exists:training_prices,id',
+        'name'             => 'required|min:3',
+        'email'            => 'required|email',
+        'phone_number'     => 'required|numeric|digits_between:11,15',
+        'selected_anc'     => 'nullable|exists:training_prices,id',
         'selected_abdomen' => 'nullable|exists:training_prices,id',
     ];
 
     protected $messages = [
-        'name.required' => 'Nama wajib diisi',
-        'name.min' => 'Nama minimal 3 karakter',
-        'email.required' => 'Email wajib diisi',
-        'email.email' => 'Format email tidak valid',
-        'phone_number.required' => 'Nomor HP wajib diisi',
-        'phone_number.numeric' => 'Nomor HP harus berupa angka',
+        'name.required'               => 'Nama wajib diisi',
+        'name.min'                    => 'Nama minimal 3 karakter',
+        'email.required'              => 'Email wajib diisi',
+        'email.email'                 => 'Format email tidak valid',
+        'phone_number.required'       => 'Nomor HP wajib diisi',
+        'phone_number.numeric'        => 'Nomor HP harus berupa angka',
         'phone_number.digits_between' => 'Nomor HP harus memiliki 11-15 angka',
-        'selected_anc.exists' => 'Pelatihan ANC tidak valid',
-        'selected_abdomen.exists' => 'Pelatihan Abdomen tidak valid',
+        'selected_anc.exists'         => 'Pelatihan ANC tidak valid',
+        'selected_abdomen.exists'     => 'Pelatihan Abdomen tidak valid',
     ];
 
     public function checkout()
@@ -88,14 +88,14 @@ class CheckoutTrainingPage extends Component
             }
 
             $order = TrainingOrder::create([
-                'user_id' => auth()->id(),
-                'order_number' => 'ORD-' . strtoupper(Str::random(12)),
-                'total_harga' => $this->total_harga,
-                'status' => 'pending',
+                'user_id'        => auth()->id(),
+                'order_number'   => 'ORD-' . strtoupper(Str::random(12)),
+                'total_harga'    => $this->total_harga,
+                'status'         => 'pending',
                 'payment_status' => 'unpaid',
-                'name' => $this->name,
-                'email' => $this->email,
-                'phone' => $this->phone_number,
+                'name'           => $this->name,
+                'email'          => $this->email,
+                'phone'          => $this->phone_number,
             ]);
 
             $order->orderDetails()->createMany($orderDetails);
@@ -120,10 +120,10 @@ class CheckoutTrainingPage extends Component
 
     public function mount($slug)
     {
-        $this->name = Auth::user()->name;
-        $this->email = Auth::user()->email;
+        $this->name         = Auth::user()->name;
+        $this->email        = Auth::user()->email;
         $this->phone_number = Auth::user()->phone_number ?? '';
-        $this->training = Training::where('slug', $slug)->firstOrFail();
+        $this->training     = Training::where('slug', $slug)->firstOrFail();
 
         $this->trainingPricesANC = $this->training->trainingPrices()
             ->whereHas('trainingType', function ($query) {

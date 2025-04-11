@@ -15,6 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->append(LogVisitor::class);
         $middleware->alias([
             'checkTrainingEndDate' => \App\Http\Middleware\CheckTrainingEndDate::class,
+            'prevent-if-paid'      => \App\Http\Middleware\PreventAccessIfPaymentProofUploaded::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

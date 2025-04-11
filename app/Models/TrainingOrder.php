@@ -15,6 +15,7 @@ class TrainingOrder extends Model
         'total_harga',
         'status',
         'payment_status',
+        'payment_proof',
         'name',
         'email',
         'phone',

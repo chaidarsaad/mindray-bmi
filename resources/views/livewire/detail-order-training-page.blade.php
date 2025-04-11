@@ -67,6 +67,20 @@
             </div>
         </section>
 
+        @if ($order->payment_proof)
+            <section class="flat-spacing-17 py-4">
+                <div class="container">
+                    <div class="p-4 rounded shadow-sm bg-white">
+                        <p class="mb-3 fs-16 fw-semibold text-dark">Bukti Pembayaran</p>
+                        <div class="space-y-3">
+                            <img src="{{ Storage::url($order->payment_proof) }}" alt="Bukti Pembayaran"
+                                class="w-full rounded" />
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+        @endif
 
         {{-- petunjuk pembarayan --}}
         <section class="flat-spacing-17 pt_0">
@@ -101,17 +115,25 @@
             </div>
         </section>
 
-
         <div class="tf-sticky-btn-atc">
             <div class="container">
                 <div class="tf-height-observer w-100 d-flex align-items-center">
                     <div class="tf-sticky-atc-infos" style="width: 100%;">
                         <form class="" style="width: 100%;">
                             <div class="tf-sticky-atc-btns" style="width: 100%;">
-                                <a href="{{ route('payment.training.confirmation', $order->order_number) }}"
-                                    class="tf-btn tf-btn-process btn-fill radius-3 justify-content-center fw-6 fs-14 flex-grow-1 animate-hover-btn">
-                                    <span>Konfirmasi Pembayaran</span>
-                                </a>
+                                @if ($order->payment_proof)
+                                    <button
+                                        class="tf-btn tf-btn-process btn-fill radius-3 justify-content-center fw-6 fs-14 flex-grow-1 animate-hover-btn"
+                                        disabled>
+                                        <span>Bukti Pembayaran Terkirim</span>
+                                    </button>
+                                @else
+                                    <a href="{{ route('payment.training.confirmation', $order->order_number) }}"
+                                        class="tf-btn tf-btn-process btn-fill radius-3 justify-content-center fw-6 fs-14 flex-grow-1 animate-hover-btn">
+                                        <span>Konfirmasi Pembayaran</span>
+                                    </a>
+                                @endif
+
                             </div>
                         </form>
                     </div>

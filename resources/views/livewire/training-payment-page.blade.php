@@ -2,6 +2,14 @@
     USG Mindray | Konfirmasi Pembayaran
 @endsection
 
+@push('styles')
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+    </style>
+@endpush
+
 <div id="wrapper">
 
     <!-- Navbar -->
@@ -38,12 +46,30 @@
                             <span><strong>Bukti Transfer</strong></span>
                         </div>
                         <hr>
-                        <form class="form-checkout" action="">
+                        <form wire:submit.prevent="submit" class="form-checkout" action="" x-data="{ isUploading: false, progress: 0 }"
+                            x-on:livewire-upload-start="isUploading = true"
+                            x-on:livewire-upload-finish="isUploading = false"
+                            x-on:livewire-upload-error="isUploading = false"
+                            x-on:livewire-upload-progress="progress = $event.detail.progress">
+
                             <fieldset class="box fieldset">
                                 <label for="payment_proof">Upload Bukti Transfer</label>
-                                <input type="file" id="payment_proof" class="form-control" accept="image/*">
+                                <input type="file" wire:model="payment_proof" id="payment_proof" class="form-control"
+                                    accept="image/*">
                             </fieldset>
+
+
+                            <!-- Progress Bar Bootstrap -->
+                            <div x-show="isUploading" x-cloak class="mt-3">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary"
+                                        role="progressbar" x-bind:style="'width: ' + progress + '%'"
+                                        x-text="progress + '%'">
+                                    </div>
+                                </div>
+                            </div>
                         </form>
+
                     </div>
                 </div>
             </div>
@@ -82,12 +108,12 @@
         <div class="container">
             <div class="tf-height-observer w-100 d-flex align-items-center">
                 <div class="tf-sticky-atc-infos w-100">
-                    <form>
+                    <form wire:submit.prevent="submit">
                         <div class="tf-sticky-atc-btns w-100">
-                            <a href="#"
+                            <button type="submit"
                                 class="tf-btn tf-btn-process btn-fill radius-3 justify-content-center fw-6 fs-14 flex-grow-1 animate-hover-btn">
                                 <span>Kirim Konfirmasi</span>
-                            </a>
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -112,17 +138,19 @@
 @push('scripts')
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            let message = @json(session('notify-success'));
-            if (message) {
+            window.addEventListener("notify-error", event => {
+                const message = event.detail.message || "Terjadi kesalahan, coba lagi.";
+
                 Toastify({
                     text: message,
                     duration: 3000,
                     gravity: "top",
                     position: "center",
-                    backgroundColor: "green",
+                    backgroundColor: "red",
                 }).showToast();
-            }
+            });
         });
+
 
         function copyToClipboard(id) {
             const element = document.getElementById(id);

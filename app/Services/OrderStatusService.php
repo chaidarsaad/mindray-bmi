@@ -9,6 +9,7 @@ class OrderStatusService
 {
     // Status Constants
     const STATUS_PENDING = 'pending';
+    const PAYMENT_VERIFYING = 'verifying';
     const STATUS_PROCESSING = 'processing';
     const STATUS_COMPLETED = 'completed';
     const STATUS_CANCELLED = 'cancelled';
@@ -65,6 +66,12 @@ class OrderStatusService
                     ? 'Selesaikan pembayaran sebelum: ' . Carbon::parse($paymentDeadline)->timezone($tz)->translatedFormat('l, d F Y H:i')
                     : 'Selesaikan pembayaran secepatnya.'
             ],
+            self::PAYMENT_VERIFYING => [
+                'icon' => 'fas fa-search-dollar',
+                'color' => 'warning',
+                'title' => 'Pembayaran Sedang Diverifikasi',
+                'message' => 'Kami sedang memverifikasi pembayaran Anda. Mohon tunggu beberapa saat.'
+            ],
             self::STATUS_PROCESSING => [
                 'icon' => 'fas fa-box-open',
                 'color' => 'primary',
@@ -99,24 +106,29 @@ class OrderStatusService
         return match ($status) {
             self::PAYMENT_UNPAID => 'Belum Dibayar',
             self::PAYMENT_PAID => 'Sudah Dibayar',
+            self::PAYMENT_VERIFYING => 'Pembayaran Sedang Diverifikasi',
             default => 'Status Pembayaran Tidak Diketahui'
         };
     }
+
 
     public static function getPaymentStatusColor($status): string
     {
         return match ($status) {
             self::PAYMENT_UNPAID => 'text-danger',
             self::PAYMENT_PAID => 'text-success',
+            self::PAYMENT_VERIFYING => 'text-warning',
             default => 'text-secondary'
         };
     }
+
 
     public static function getPaymentBadgeClass($status): string
     {
         return match ($status) {
             self::PAYMENT_UNPAID => 'badge bg-danger',
             self::PAYMENT_PAID => 'badge bg-success',
+            self::PAYMENT_VERIFYING => 'badge bg-warning text-dark',
             default => 'badge bg-secondary'
         };
     }
