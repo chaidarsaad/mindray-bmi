@@ -27,6 +27,12 @@ class PreventAccessIfPaymentProofUploaded
                 ->with('notify-success', 'Anda sudah mengunggah bukti pembayaran.');
         }
 
+        // Cek jika status pesanan cancelled
+        if ($order->status === 'cancelled') {
+            return redirect()
+                ->route('detail.training.order', ['order' => $order->order_number])
+                ->with('notify-error', 'Pesanan ini telah dibatalkan.');
+        }
 
         return $next($request);
     }
