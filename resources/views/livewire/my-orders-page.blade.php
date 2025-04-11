@@ -31,68 +31,28 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="tf-order-item">
-                                            <td>
-                                                #123
-                                            </td>
-                                            <td>
-                                                August 1, 2024
-                                            </td>
-                                            <td>
-                                                On hold
-                                            </td>
-                                            <td>
-                                                $200.0 for 1 items
-                                            </td>
-                                            <td>
-                                                <a href="#"
-                                                    class="tf-btn btn-fill animate-hover-btn rounded-0 justify-content-center">
-                                                    <span>View</span>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr class="tf-order-item">
-                                            <td>
-                                                #345
-                                            </td>
-                                            <td>
-                                                August 2, 2024
-                                            </td>
-                                            <td>
-                                                On hold
-                                            </td>
-                                            <td>
-                                                $300.0 for 1 items
-                                            </td>
-                                            <td>
-                                                <a href="#"
-                                                    class="tf-btn btn-fill animate-hover-btn rounded-0 justify-content-center">
-                                                    <span>View</span>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr class="tf-order-item">
-                                            <td>
-                                                #567
-                                            </td>
-                                            <td>
-                                                August 3, 2024
-                                            </td>
-                                            <td>
-                                                On hold
-                                            </td>
-                                            <td>
-                                                $400.0 for 1 items
-                                            </td>
-                                            <td>
-                                                <a href="#"
-                                                    class="tf-btn btn-fill animate-hover-btn rounded-0 justify-content-center">
-                                                    <span>View</span>
-                                                </a>
-                                            </td>
-                                        </tr>
-
+                                        @forelse ($this->orders as $order)
+                                            <tr class="tf-order-item">
+                                                <td>{{ $order->order_number }}</td>
+                                                <td>{{ $order->created_at->translatedFormat('l, d F Y') }}</td>
+                                                <td>{{ ucfirst($order->status_title) }}</td>
+                                                {{-- <td>Rp{{ number_format($order->total_harga, 0, ',', '.') }} untuk
+                                                    {{ $order->order_details_count }} item</td> --}}
+                                                <td>Rp {{ number_format($order->total_harga, 0, ',', '.') }}</td>
+                                                <td>
+                                                    <a href="{{ route('detail.training.order', $order->order_number) }}"
+                                                        class="tf-btn btn-fill tf-btn-process animate-hover-btn rounded-0 justify-content-center">
+                                                        <span>Lihat</span>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td colspan="5" class="text-center">Belum ada pesanan.</td>
+                                            </tr>
+                                        @endforelse
                                     </tbody>
+
                                 </table>
                             </div>
                         </div>

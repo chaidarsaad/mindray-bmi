@@ -7,6 +7,12 @@
         [x-cloak] {
             display: none !important;
         }
+
+        .btn-outline-primary:hover {
+            background-color: #0105da;
+            color: #fff;
+            border-color: #0105da;
+        }
     </style>
 @endpush
 
@@ -86,8 +92,8 @@
                 @foreach ($paymentMethods as $method)
                     <div class="mb-3 fs-16">
                         <p class="mb-1">Bank: <strong>{{ $method->name }}</strong></p>
-                        <div class="d-flex align-items-center">
-                            <span id="account-{{ $method->account_number }}" class="me-2">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <span id="account-{{ $method->account_number }}">
                                 {{ $method->account_number }}
                             </span>
                             <button type="button" onclick="copyToClipboard('account-{{ $method->account_number }}')"

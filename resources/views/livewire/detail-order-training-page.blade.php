@@ -82,10 +82,9 @@
                 <div class="container">
                     <div class="p-4 rounded shadow-sm bg-white">
                         <p class="mb-3 fs-16 fw-semibold text-dark">Bukti Pembayaran</p>
-                        <div class="space-y-3">
+                        <div class="d-flex justify-content-center">
                             <img src="{{ Storage::url($order->payment_proof) }}" alt="Bukti Pembayaran"
-                                class="w-full rounded" />
-
+                                class="img-fluid rounded" style="max-width: 100%; height: auto;" />
                         </div>
                     </div>
                 </div>

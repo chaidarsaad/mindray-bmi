@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Services\OrderStatusService;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -21,6 +22,11 @@ class TrainingOrder extends Model
         'phone',
         'notes',
     ];
+
+    public function getStatusTitleAttribute()
+    {
+        return OrderStatusService::getStatusInfo($this->status)['title'];
+    }
 
     public function user()
     {
