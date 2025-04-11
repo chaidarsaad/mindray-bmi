@@ -33,6 +33,12 @@
                                 <input wire:model="phone_number" type="tel" id="phone">
                             </fieldset>
 
+                            <hr>
+                            <div class="alert alert-info py-2 px-3 mb-4">
+                                <strong>Catatan:</strong> Pelatihan di bawah ini dapat dipilih <u>salah satu</u> atau
+                                <u>keduanya</u>, sesuai kebutuhan Anda.
+                            </div>
+
                             <fieldset class="box fieldset">
                                 <label for="anc">Pelatihan ANC</label>
                                 <div class="select-custom">
@@ -82,6 +88,8 @@
                                     </select>
                                 </div>
                             </fieldset>
+                            <hr>
+
                         </form>
                     </div>
                     <div class="tf-page-cart-footer">

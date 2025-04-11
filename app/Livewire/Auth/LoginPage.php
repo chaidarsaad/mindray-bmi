@@ -29,6 +29,10 @@ class LoginPage extends Component
 
     public function mount()
     {
+        if (Auth::check()) {
+            $this->redirectRoute('home');
+        }
+
         $this->about = About::first();
     }
 
