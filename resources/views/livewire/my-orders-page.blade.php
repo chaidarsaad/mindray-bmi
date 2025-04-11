@@ -31,13 +31,11 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse ($this->orders as $order)
+                                        @forelse ($orders as $order)
                                             <tr class="tf-order-item">
                                                 <td>{{ $order->order_number }}</td>
                                                 <td>{{ $order->created_at->translatedFormat('l, d F Y H:i') }}</td>
                                                 <td>{{ ucfirst($order->status_title) }}</td>
-                                                {{-- <td>Rp{{ number_format($order->total_harga, 0, ',', '.') }} untuk
-                                                    {{ $order->order_details_count }} item</td> --}}
                                                 <td>Rp {{ number_format($order->total_harga, 0, ',', '.') }}</td>
                                                 <td>
                                                     <a href="{{ route('detail.training.order', $order->order_number) }}"
@@ -52,10 +50,14 @@
                                             </tr>
                                         @endforelse
                                     </tbody>
-
                                 </table>
                             </div>
+
+                            <div class="mt-3 d-flex justify-content-center">
+                                {{ $orders->links('pagination::bootstrap-4') }}
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>

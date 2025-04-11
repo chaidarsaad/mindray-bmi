@@ -5,19 +5,23 @@ namespace App\Livewire;
 use App\Models\TrainingOrder;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class MyOrdersPage extends Component
 {
-    public $orders;
+    use WithPagination;
 
-    public function mount()
-    {
-        $this->orders = TrainingOrder::withCount('orderDetails')
-            ->where('user_id', Auth::id())
-            ->get();
-    }
+    public $perPage = 5;
+
     public function render()
     {
-        return view('livewire.my-orders-page');
+        $orders = TrainingOrder::withCount('orderDetails')
+            ->where('user_id', Auth::id())
+            ->latest()
+            ->paginate($this->perPage);
+
+        return view('livewire.my-orders-page', [
+            'orders' => $orders
+        ]);
     }
 }
