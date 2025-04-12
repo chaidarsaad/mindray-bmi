@@ -19,8 +19,9 @@ class Training extends Component
         $this->trainings = ModelsTraining::where('is_show', 1)
             ->join('training_prices', 'trainings.id', '=', 'training_prices.training_id')
             ->orderByDesc('training_prices.start_date')
-            ->select('trainings.*') // Pilih kolom dari tabel trainings
-            ->distinct() // Menghindari duplikasi
+            ->select('trainings.*')
+            ->distinct()
+            ->take(4) // Ambil 4 data terbaru
             ->get();
     }
     public function render()
