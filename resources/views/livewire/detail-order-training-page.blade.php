@@ -74,14 +74,12 @@
 
                 {{-- header --}}
                 <div class="p-4 rounded shadow-sm bg-white mb-4 card-prominent">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <div class="text-primary fw-bold fs-16">📌 Detail Pesanan</div>
-                        <span class="text-secondary fs-16">
-                            {{ $order->created_at->setTimezone('Asia/Jakarta')->locale('id')->translatedFormat('l, d F Y H:i') }}
-                        </span>
+                    <div class="text-primary fw-bold fs-16">📌 Detail Pesanan</div>
+                    <div class="text-secondary fs-16">
+                        {{ $order->created_at->setTimezone('Asia/Jakarta')->locale('id')->translatedFormat('l, d F Y H:i') }}
                     </div>
 
-                    <span class="fs-18">{{ $order->order_number }}</span>
+                    <span class="fs-18">No Pesanan: {{ $order->order_number }}</span>
                     <hr>
                     {{-- Order Header --}}
                     <div class="d-flex align-items-center">
