@@ -3,9 +3,10 @@
         .whatsapp-popup {
             display: flex;
             flex-direction: column;
-            /* Menyusun elemen secara vertikal */
             align-items: center;
-            /* Menyelaraskan elemen di tengah */
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
 
         .whatsapp-popup p {
@@ -13,10 +14,15 @@
             text-align: center;
             font-size: 16px;
             font-weight: bold;
-            /* Memberikan jarak antara tulisan dan ikon */
+            margin-bottom: 0.5rem;
+        }
+
+        .whatsapp-popup-fa {
+            font-size: 2rem;
         }
     </style>
 @endpush
+
 
 <div>
     @if (!empty($about->phone_number))
