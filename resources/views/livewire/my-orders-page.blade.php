@@ -77,3 +77,18 @@
     @livewire('components.mobile-menu')
     <!-- /mobile menu -->
 </div>
+
+@push('scripts')
+    <script>
+        document.addEventListener('livewire:navigated', () => {
+            const el = document.querySelector('.account-order');
+            if (el) {
+                setTimeout(() => {
+                    el.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }, 50);
+            }
+        });
+    </script>
+@endpush
