@@ -22,7 +22,7 @@
                             <div class="mb_60">
                                 <h5 class="fw-5 mb_20">Halo {{ Auth::user()->name }}</h5>
                                 <p>
-                                    Dari dasboard akun Anda, Anda dapat melihat
+                                    Dari dashboard akun Anda, Anda dapat melihat
                                     <a class="text_primary" href="{{ route('dashboard.pesanan') }}">pesanan terbaru</a>,
                                     mengubah
                                     {{-- <a class="text_primary"

@@ -13,6 +13,45 @@
             color: #fff;
             border-color: #0105da;
         }
+
+        .bg-light-primary {
+            background-color: #e7f1ff;
+        }
+
+        .text-primary {
+            color: #0105da !important;
+        }
+
+        .card-prominent {
+            border: 2px solid #0105da;
+        }
+
+        .drag-drop-area {
+            border: 2px dashed #0105da;
+            background-color: #f8f9ff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .drag-drop-area.dragging {
+            background-color: #e0e7ff;
+            border-color: #0044cc;
+        }
+
+        .drag-drop-area .file-name {
+            display: block;
+            margin-top: 8px;
+            font-size: 16px;
+            color: #6c757d;
+        }
+
+        .preview-wrapper img {
+            max-width: 100%;
+            object-fit: contain;
+        }
     </style>
 @endpush
 
@@ -27,7 +66,7 @@
     <!-- Order Summary -->
     <section class="flat-spacing-17 py-4">
         <div class="container">
-            <div class="p-4 rounded shadow-sm bg-white">
+            <div class="p-4 rounded shadow-sm bg-white card-prominent">
                 <div class="row gy-4">
                     {{-- Detail Pesanan --}}
                     <x-info-col label="Nomor Pesanan" :value="$order->order_number" />
@@ -36,16 +75,23 @@
                         ->locale('id')
                         ->translatedFormat('l, d F Y H:i')" />
                     <hr>
-                    <x-info-col label="Total Pembayaran" :value="'Rp ' . number_format($order->total_harga, 0, ',', '.')" />
+                    {{-- <x-info-col label="Total Pembayaran" :value="'Rp ' . number_format($order->total_harga, 0, ',', '.')" /> --}}
+                    <div class="col-12">
+                        <div class="bg-light-primary border border-primary rounded p-3">
+                            <div class="text-primary fw-bold fs-20 mb-1">Total Pembayaran</div>
+                            <div class="fw-bold fs-20 text-primary">Rp
+                                {{ number_format($order->total_harga, 0, ',', '.') }}</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Upload Bukti Transfer -->
-    <section class="flat-spacing-17 py-4">
+    <section class="flat-spacing-17 pt_0">
         <div class="container">
-            <div class="p-4 rounded shadow-sm bg-white">
+            <div class="p-4 rounded shadow-sm bg-white card-prominent">
                 <div class="row gy-4">
                     <div class="widget-content-inner active" id="description" style="font-size: 18px;">
                         <div class="d-flex justify-content-between mb-3">
@@ -58,12 +104,46 @@
                             x-on:livewire-upload-error="isUploading = false"
                             x-on:livewire-upload-progress="progress = $event.detail.progress">
 
-                            <fieldset class="box fieldset">
-                                <label for="payment_proof">Upload Bukti Transfer</label>
-                                <input type="file" wire:model="payment_proof" id="payment_proof" class="form-control"
-                                    accept="image/*">
-                            </fieldset>
+                            <fieldset class="box fieldset" x-data="{
+                                fileName: '',
+                                isDragging: false,
+                                previewUrl: null
+                            }">
 
+                                <label for="payment_proof" class="form-label">Upload Bukti Transfer</label>
+
+                                <div class="drag-drop-area" :class="{ 'dragging': isDragging }"
+                                    @dragover.prevent="isDragging = true" @dragleave.prevent="isDragging = false"
+                                    @drop.prevent="
+            isDragging = false;
+            const file = $event.dataTransfer.files[0];
+            fileName = file.name;
+            $refs.input.files = $event.dataTransfer.files;
+            previewUrl = URL.createObjectURL(file);
+            $dispatch('input');
+        "
+                                    @click="$refs.input.click()">
+                                    <span class="text-primary fw-semibold">Klik atau seret berkas ke sini</span>
+                                    <span class="file-name text-secondary mt-2"
+                                        x-text="fileName || 'Belum ada file dipilih'"></span>
+                                    <input type="file" wire:model="payment_proof" id="payment_proof" accept="image/*"
+                                        class="d-none" x-ref="input"
+                                        @change="
+                fileName = $refs.input.files[0]?.name;
+                previewUrl = URL.createObjectURL($refs.input.files[0]);
+            " />
+                                </div>
+
+                                <!-- Preview -->
+                                <template x-if="previewUrl">
+                                    <div class="preview-wrapper mt-3 text-center">
+                                        <p class="text-secondary mb-2">Pratinjau Gambar:</p>
+                                        <img :src="previewUrl" alt="Preview" class="img-fluid rounded border"
+                                            style="max-height: 300px;">
+                                    </div>
+                                </template>
+
+                            </fieldset>
 
                             <!-- Progress Bar Bootstrap -->
                             <div x-show="isUploading" x-cloak class="mt-3">
@@ -82,11 +162,11 @@
         </div>
     </section>
 
-    <!-- Petunjuk Pembayaran -->
+    {{-- petunjuk pembarayan --}}
     <section class="flat-spacing-17 pt_0">
         <div class="container">
-            <div class="widget-tabs rounded p-4 bg-white shadow-sm">
-                <h5 class="mb-3">Nomor Rekening</h5>
+            <div class="widget-tabs rounded p-4 bg-white shadow-sm card-prominent">
+                <h5 class="fw-bold mb-3">Petunjuk Pembayaran</h5>
                 <hr>
 
                 @foreach ($paymentMethods as $method)
@@ -101,10 +181,17 @@
                                 <i class="fa-regular fa-paste me-1"></i> Salin
                             </button>
                         </div>
+
                         <p class="mb-0 mt-1">a.n. <strong>{{ $method->account_name }}</strong></p>
                     </div>
                     <hr>
                 @endforeach
+
+                <ul class="mb-0 fs-15">
+                    <li>• Transfer sesuai dengan nominal yang tertera</li>
+                    <li>• Simpan bukti pembayaran</li>
+                    <li>• Upload bukti pembayaran setelah transfer</li>
+                </ul>
             </div>
         </div>
     </section>

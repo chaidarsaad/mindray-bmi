@@ -34,6 +34,18 @@
                 background-color: #f8f9fa;
             }
         }
+
+        .bg-light-primary {
+            background-color: #e7f1ff;
+        }
+
+        .text-primary {
+            color: #0105da !important;
+        }
+
+        .card-prominent {
+            border: 2px solid #0105da;
+        }
     </style>
 @endpush
 
@@ -49,6 +61,8 @@
 
         <section class="flat-spacing-17 py-4">
             <div class="container">
+
+                {{-- status pesanan --}}
                 <div class="alert alert-{{ $statusInfo['color'] }} d-flex align-items-center p-3 rounded mb-4"
                     role="alert" style="font-size: 18px;">
                     <i class="bi {{ $statusInfo['icon'] }} me-3 fs-4 text-{{ $statusInfo['color'] }}"></i>
@@ -58,10 +72,56 @@
                     </div>
                 </div>
 
-                <div class="p-4 rounded shadow-sm bg-white">
+                {{-- header --}}
+                <div class="p-4 rounded shadow-sm bg-white mb-4 card-prominent">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="text-primary fw-bold fs-16">📌 Detail Pesanan</div>
+                        <span class="text-secondary fs-16">
+                            {{ $order->created_at->setTimezone('Asia/Jakarta')->locale('id')->translatedFormat('l, d F Y H:i') }}
+                        </span>
+                    </div>
+
+                    <span class="fs-18">{{ $order->order_number }}</span>
+                    <hr>
                     {{-- Order Header --}}
-                    <div class="d-flex align-items-center mb-4">
-                        <figure class="training-image me-3 mb-0">
+                    <div class="d-flex align-items-center">
+                        <figure class="training-image me-3">
+                            <img src="{{ Storage::url($firstTraining->image) }}" alt="product">
+                        </figure>
+
+                        <div>
+                            <p class="mb-0 fs-16 fw-semibold text-dark">Nama Pelatihan: <br><span
+                                    class="text-secondary fs-18">{{ $firstTraining->judul }}</span></p>
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div class="row gy-4">
+                        @foreach ($orderDetailsFormatted as $detail)
+                            <x-info-col label="Jenis Pelatihan" :value="$detail['jenis']" />
+                            <x-info-col label="Kota" :value="$detail['kota']" />
+                            <x-info-col label="Tempat" :value="$detail['tempat']" />
+                            <x-info-col label="Jadwal" :value="$detail['jadwal']['start'] . ' - ' . $detail['jadwal']['end']" />
+                            <x-info-col label="Harga" :value="'Rp ' . number_format($detail['harga'], 0, ',', '.')" />
+                            <hr>
+                        @endforeach
+
+                        <div class="col-12">
+                            <div class="bg-light-primary border border-primary rounded p-3">
+                                <div class="text-primary fw-bold fs-20 mb-1">Total Harga</div>
+                                <div class="fw-bold fs-20 text-primary">Rp
+                                    {{ number_format($order->total_harga, 0, ',', '.') }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {{-- header --}}
+                {{-- <div class="p-4 rounded shadow-sm bg-white mb-4 card-prominent">
+                    <div class="mb-2 text-primary fw-bold fs-16">📌 Info Pesanan</div>
+                    <hr>
+                    <div class="d-flex align-items-center">
+                        <figure class="training-image me-3 mb-4">
                             <img src="{{ Storage::url($firstTraining->image) }}" alt="product">
                         </figure>
 
@@ -74,7 +134,6 @@
                         </div>
                     </div>
 
-                    {{-- Order Details --}}
                     <div class="row gy-4">
                         <x-info-col label="Nama Pelatihan" :value="$firstTraining->judul" />
                         <x-info-col label="Tanggal Pesan" :value="$order->created_at
@@ -84,22 +143,23 @@
                         <x-info-col label="Nama Pemesan" :value="$order->name" />
                         <x-info-col label="Email" :value="$order->email" />
                         <x-info-col label="Nomor HP" :value="$order->phone" />
+                    </div>
+                </div> --}}
 
-                        @foreach ($orderDetailsFormatted as $detail)
-                            <hr>
-                            <x-info-col label="Jenis Pelatihan" :value="$detail['jenis']" />
-                            <x-info-col label="Kota" :value="$detail['kota']" />
-                            <x-info-col label="Tempat" :value="$detail['tempat']" />
-                            <x-info-col label="Jadwal" :value="$detail['jadwal']['start'] . ' - ' . $detail['jadwal']['end']" />
-                            <x-info-col label="Harga" :value="'Rp ' . number_format($detail['harga'], 0, ',', '.')" />
-                        @endforeach
+                {{-- Order Details --}}
+                <div class="p-4 rounded shadow-sm bg-white card-prominent">
+                    <div class="text-primary fw-bold fs-16">📌 Informasi Pemesan</div>
+                    <hr>
+                    <div class="row gy-4">
+                        <x-info-col label="Nama Pemesan" :value="$order->name" />
+                        <x-info-col label="Email" :value="$order->email" />
+                        <x-info-col label="Nomor HP" :value="$order->phone" />
 
-                        <hr>
-                        <x-info-col label="Total Harga" :value="'Rp ' . number_format($order->total_harga, 0, ',', '.')" />
                     </div>
                 </div>
             </div>
         </section>
+
 
         @if ($order->payment_proof)
             <section class="flat-spacing-17 py-4">
@@ -114,41 +174,6 @@
                 </div>
             </section>
         @endif
-
-        {{-- petunjuk pembarayan --}}
-        <section class="flat-spacing-17 pt_0">
-            <div class="container">
-                <div class="widget-tabs rounded p-4 bg-white shadow-sm">
-                    <h5 class="fw-bold mb-3">Petunjuk Pembayaran</h5>
-                    <hr>
-
-                    @foreach ($paymentMethods as $method)
-                        <div class="mb-3 fs-16">
-                            <p class="mb-1">Bank: <strong>{{ $method->name }}</strong></p>
-                            <div class="d-flex align-items-center justify-content-between">
-                                <span id="account-{{ $method->account_number }}">
-                                    {{ $method->account_number }}
-                                </span>
-                                <button type="button"
-                                    onclick="copyToClipboard('account-{{ $method->account_number }}')"
-                                    class="btn btn-sm btn-outline-primary">
-                                    <i class="fa-regular fa-paste me-1"></i> Salin
-                                </button>
-                            </div>
-
-                            <p class="mb-0 mt-1">a.n. <strong>{{ $method->account_name }}</strong></p>
-                        </div>
-                        <hr>
-                    @endforeach
-
-                    <ul class="mb-0 fs-15">
-                        <li>• Transfer sesuai dengan nominal yang tertera</li>
-                        <li>• Simpan bukti pembayaran</li>
-                        <li>• Upload bukti pembayaran setelah transfer</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
 
         <div class="tf-sticky-btn-atc">
             <div class="container">
