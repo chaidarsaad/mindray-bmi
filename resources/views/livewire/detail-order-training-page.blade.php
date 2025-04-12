@@ -160,9 +160,9 @@
 
 
         @if ($order->payment_proof)
-            <section class="flat-spacing-17 py-4">
+            <section class="flat-spacing-17 pt_0">
                 <div class="container">
-                    <div class="p-4 rounded shadow-sm bg-white">
+                    <div class="p-4 rounded shadow-sm bg-white card-prominent">
                         <p class="mb-3 fs-16 fw-semibold text-dark">Bukti Pembayaran</p>
                         <div class="d-flex justify-content-center">
                             <img src="{{ Storage::url($order->payment_proof) }}" alt="Bukti Pembayaran"
