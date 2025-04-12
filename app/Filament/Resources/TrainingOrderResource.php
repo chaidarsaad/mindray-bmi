@@ -14,6 +14,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class TrainingOrderResource extends Resource
@@ -56,6 +57,9 @@ class TrainingOrderResource extends Resource
                             ->tel()
                             ->required()
                             ->maxLength(255),
+                        Forms\Components\TextInput::make('created_at')
+                            ->label('Tanggal Pesan')
+                            ->formatStateUsing(fn($state) => Carbon::parse($state)->format('d M Y H:i')),
                     ]),
                 Section::make('Informasi Pembayaran')
                     ->collapsible()
@@ -100,6 +104,12 @@ class TrainingOrderResource extends Resource
             ->defaultPaginationPageOption(5)
             ->defaultSort('id', direction: 'desc')
             ->columns([
+                Tables\Columns\TextColumn::make('created_at')
+                    ->label('Tanggal')
+                    ->dateTime('d M Y H:i')
+                    ->timezone('Asia/Jakarta')
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('name')
                     ->label('Nama Pemesan')
                     ->searchable(),
@@ -129,13 +139,11 @@ class TrainingOrderResource extends Resource
                     })
                     ->formatStateUsing(fn($state) => OrderStatusService::getPaymentStatusLabel($state)),
                 Tables\Columns\TextColumn::make('email')
-                    ->searchable(),
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('phone')
                     ->label('Nomor HP')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
+                    ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
@@ -163,7 +171,6 @@ class TrainingOrderResource extends Resource
         ];
     }
 
-    // canCreate false
     public static function canCreate(): bool
     {
         return false;
