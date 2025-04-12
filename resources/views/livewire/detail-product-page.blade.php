@@ -19,19 +19,19 @@
         }
 
         /* .video-container {
-                                position: relative;
-                                width: 100%;
-                                padding-bottom: 56.25%;
-                                height: 0;
-                            }
+                                    position: relative;
+                                    width: 100%;
+                                    padding-bottom: 56.25%;
+                                    height: 0;
+                                }
 
-                            .video-container iframe {
-                                position: absolute;
-                                top: 0;
-                                left: 0;
-                                width: 100%;
-                                height: 100%;
-                            } */
+                                .video-container iframe {
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    width: 100%;
+                                    height: 100%;
+                                } */
 
         iframe {
             position: relative;
@@ -240,7 +240,7 @@
                                             </div>
                                             <div class="card-product-info">
                                                 <a href="{{ route('detail.product', $item->slug) }}"
-                                                    class="title link">{{ $item->name }}</a>
+                                                    class="title text-center link">{{ $item->name }}</a>
                                             </div>
                                         </div>
                                     </div>
