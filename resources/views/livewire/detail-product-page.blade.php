@@ -19,19 +19,19 @@
         }
 
         /* .video-container {
-                                    position: relative;
-                                    width: 100%;
-                                    padding-bottom: 56.25%;
-                                    height: 0;
-                                }
+                                                            position: relative;
+                                                            width: 100%;
+                                                            padding-bottom: 56.25%;
+                                                            height: 0;
+                                                        }
 
-                                .video-container iframe {
-                                    position: absolute;
-                                    top: 0;
-                                    left: 0;
-                                    width: 100%;
-                                    height: 100%;
-                                } */
+                                                        .video-container iframe {
+                                                            position: absolute;
+                                                            top: 0;
+                                                            left: 0;
+                                                            width: 100%;
+                                                            height: 100%;
+                                                        } */
 
         iframe {
             position: relative;
@@ -55,6 +55,38 @@
             left: 0;
             width: 100%;
             height: 100%;
+        }
+
+        .widget-menu-tab {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            gap: 10px;
+        }
+
+        .widget-menu-tab::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .widget-menu-tab::-webkit-scrollbar-thumb {
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 3px;
+        }
+
+        /* Scroll hint */
+        .scroll-hint-deskripsi {
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+            margin-top: 10px;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .scroll-hint-deskripsi {
+                display: block;
+            }
         }
     </style>
 @endpush
@@ -182,6 +214,10 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="widget-tabs style-has-border">
+                            <div class="scroll-hint-deskripsi">
+                                Geser ke kanan untuk melihat deskripsi lainnya →
+                            </div>
+
                             <ul class="widget-menu-tab">
                                 <!-- Tab untuk Deskripsi Tambahan Produk -->
                                 @foreach ($productDescriptions as $index => $productDescription)
