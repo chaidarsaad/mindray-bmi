@@ -127,7 +127,7 @@ class TrainingResource extends Resource
         return $table
             ->paginationPageOptions([5, 25, 50, 100, 250])
             ->defaultPaginationPageOption(5)
-            ->defaultSort('id', direction: 'asc')
+            ->defaultSort('id', direction: 'desc')
             ->columns([
                 Tables\Columns\TextColumn::make('judul')
                     ->label('Judul Pelatihan')
