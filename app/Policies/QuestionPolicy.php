@@ -95,7 +95,7 @@ class QuestionPolicy
      */
     public function replicate(User $user, Question $question): bool
     {
-        return $user->can('{{ Replicate }}');
+        return $user->can('replicate_question');
     }
 
     /**
@@ -103,6 +103,6 @@ class QuestionPolicy
      */
     public function reorder(User $user): bool
     {
-        return $user->can('{{ Reorder }}');
+        return $user->can('reorder_question');
     }
 }

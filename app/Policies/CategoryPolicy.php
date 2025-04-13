@@ -95,7 +95,7 @@ class CategoryPolicy
      */
     public function replicate(User $user, Category $category): bool
     {
-        return $user->can('{{ Replicate }}');
+        return $user->can('replicate_category');
     }
 
     /**
@@ -103,6 +103,6 @@ class CategoryPolicy
      */
     public function reorder(User $user): bool
     {
-        return $user->can('{{ Reorder }}');
+        return $user->can('reorder_category');
     }
 }

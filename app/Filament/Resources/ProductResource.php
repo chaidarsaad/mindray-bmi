@@ -15,8 +15,10 @@ use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
+use Illuminate\Support\Str;
 
 class ProductResource extends Resource
 {
@@ -62,38 +64,38 @@ class ProductResource extends Resource
                             ->label('Tampilkan produk?')
                             ->required(),
                         Forms\Components\FileUpload::make('images')
-                            ->helperText('Untuk menjaga performa website disarankan gambar berformat .webp dengan ukuran lebar 720 pixels, tinggi 1005 pixels.')
+                            ->helperText('Untuk menjaga performa website disarankan gambar berformat .webp dengan ukuran lebar 720 pixels, tinggi 1005 pixels, Disarankan lebih dari 1 foto.')
                             ->getUploadedFileNameForStorageUsing(
                                 fn(TemporaryUploadedFile $file): string => 'produk-usg-' . $file->hashName()
                             )
-                            ->label('Foto Produk, Disarankan lebih dari 1 foto')
+                            ->label('Foto Produk')
                             ->multiple()
                             ->reorderable()
                             ->required()
                             ->image(),
 
                     ]),
-                Section::make('Deskripsi Produk')
-                    ->collapsible()
-                    ->schema([
-                        Repeater::make('descriptions')
-                            ->label('')
-                            ->addable(true)
-                            ->deletable(true)
-                            ->relationship()
-                            ->schema([
-                                Forms\Components\TextInput::make('judul_deskripsi')
-                                    ->label('Nama Deskripsi')
-                                    ->required()
-                                    ->maxLength(255),
-                                TinyEditor::make('description')
-                                    ->showMenuBar(1)
-                                    ->toolbarSticky(1)
-                                    ->required()
-                                    ->label('Deskripsi')
-                                    ->columnSpanFull(),
-                            ])
-                    ]),
+                // Section::make('Deskripsi Produk')
+                //     ->collapsible()
+                //     ->schema([
+                //         Repeater::make('descriptions')
+                //             ->label('')
+                //             ->addable(true)
+                //             ->deletable(true)
+                //             ->relationship()
+                //             ->schema([
+                //                 Forms\Components\TextInput::make('judul_deskripsi')
+                //                     ->label('Nama Deskripsi')
+                //                     ->required()
+                //                     ->maxLength(255),
+                //                 TinyEditor::make('description')
+                //                     ->showMenuBar(1)
+                //                     ->toolbarSticky(1)
+                //                     ->required()
+                //                     ->label('Deskripsi')
+                //                     ->columnSpanFull(),
+                //             ])
+                //     ]),
             ]);
     }
 
@@ -136,6 +138,25 @@ class ProductResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\ReplicateAction::make()
+                    ->modalHeading(fn($record) => 'Duplikat Produk: ' . $record->name)
+                    ->excludeAttributes(['slug', 'images']) // kita override images manual
+                    ->beforeReplicaSaved(function (Product $replica, Product $original) {
+                        $baseName = $original->name;
+                        $copyCount = Product::where('name', 'LIKE', $baseName . ' copy%')->count();
+                        $nextCopyNumber = $copyCount + 1;
+
+                        $replica->name = $baseName . ' copy ' . $nextCopyNumber;
+
+                        $baseSubname = $original->subname;
+                        $replica->subname = $baseSubname . ' copy' . $nextCopyNumber;
+
+                        $replica->slug = null;
+                        $replica->is_show = false;
+                        $replica->images = [
+                            'https://placehold.co/720x1005'
+                        ];
+                    }),
                 Tables\Actions\DeleteAction::make()
                     ->modalHeading(fn($record) => 'Hapus Produk: ' . $record->name),
             ])

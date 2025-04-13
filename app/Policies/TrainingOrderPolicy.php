@@ -95,7 +95,7 @@ class TrainingOrderPolicy
      */
     public function replicate(User $user, TrainingOrder $trainingOrder): bool
     {
-        return $user->can('{{ Replicate }}');
+        return $user->can('replicate_training::order');
     }
 
     /**
@@ -103,6 +103,6 @@ class TrainingOrderPolicy
      */
     public function reorder(User $user): bool
     {
-        return $user->can('{{ Reorder }}');
+        return $user->can('reorder_training::order');
     }
 }

@@ -95,7 +95,7 @@ class TestimonialPolicy
      */
     public function replicate(User $user, Testimonial $testimonial): bool
     {
-        return $user->can('{{ Replicate }}');
+        return $user->can('replicate_testimonial');
     }
 
     /**
@@ -103,6 +103,6 @@ class TestimonialPolicy
      */
     public function reorder(User $user): bool
     {
-        return $user->can('{{ Reorder }}');
+        return $user->can('reorder_testimonial');
     }
 }

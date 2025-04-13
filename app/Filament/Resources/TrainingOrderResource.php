@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\TrainingOrderResource\Pages;
 use App\Filament\Resources\TrainingOrderResource\RelationManagers;
 use App\Models\TrainingOrder;
+use App\Models\TrainingPrice;
 use App\Services\OrderStatusService;
 use Filament\Forms;
 use Filament\Forms\Components\Section;
@@ -15,6 +16,8 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Carbon\Carbon;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Select;
 use Illuminate\Support\Facades\Auth;
 
 class TrainingOrderResource extends Resource
@@ -92,8 +95,57 @@ class TrainingOrderResource extends Resource
                             ->openable()
                             ->downloadable(),
                     ]),
-                // Forms\Components\Textarea::make('notes')
-                //     ->columnSpanFull(),
+                Section::make('Pelatihan Dipesan')
+                    ->collapsible()
+                    ->schema([
+                        Repeater::make('orderDetails')
+                            ->label('Detail Pelatihan')
+                            ->relationship()
+                            ->live()
+                            ->maxItems(1)
+                            // ->afterStateUpdated(function (Forms\Get $get, Forms\Set $set) {
+                            //     self::updateTotalPrice($get, $set);
+                            // })
+                            ->schema([
+                                Select::make('training_price_id')
+                                    ->label('Pilih Pelatihan')
+                                    ->options(function () {
+                                        return \App\Models\TrainingPrice::with('training')
+                                            ->get()
+                                            ->mapWithKeys(function ($item) {
+                                                $label = $item->training->judul;
+                                                return [$item->id => $label];
+                                            });
+                                    })
+                                    ->searchable()
+                                    ->required(),
+                                Select::make('training_price_id')
+                                    ->label('Pilih Pelatihan ANC')
+                                    ->options(function () {
+                                        return \App\Models\TrainingPrice::with('city', 'trainingType')
+                                            ->get()
+                                            ->mapWithKeys(function ($item) {
+                                                $label = $item->trainingType->name . ' kota ' . $item->city->name;
+                                                return [$item->id => $label];
+                                            });
+                                    })
+                                    ->searchable()
+                                    ->required(),
+
+                                Select::make('training_price_id')
+                                    ->label('Pilih Pelatihan ABDOMEN')
+                                    ->options(function () {
+                                        return \App\Models\TrainingPrice::with('city', 'trainingType')
+                                            ->get()
+                                            ->mapWithKeys(function ($item) {
+                                                $label = $item->trainingType->name . ' kota ' . $item->city->name;
+                                                return [$item->id => $label];
+                                            });
+                                    })
+                                    ->searchable()
+                                    ->required(),
+                            ]),
+                    ]),
             ]);
     }
 
@@ -155,7 +207,8 @@ class TrainingOrderResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\DeleteAction::make()
+                    ->modalHeading(fn($record) => 'Hapus Pesanan Pelatihan: ' . $record->order_number),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

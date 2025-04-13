@@ -15,4 +15,9 @@ class CreateProduct extends CreateRecord
     {
         return 'Buat Produk';
     }
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
 }

@@ -21,7 +21,7 @@ class Training extends Component
             ->orderByDesc('training_prices.start_date')
             ->select('trainings.*')
             ->distinct()
-            ->take(4) // Ambil 4 data terbaru
+            ->take(4)
             ->get();
     }
     public function render()

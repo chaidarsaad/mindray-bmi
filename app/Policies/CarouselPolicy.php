@@ -95,7 +95,7 @@ class CarouselPolicy
      */
     public function replicate(User $user, Carousel $carousel): bool
     {
-        return $user->can('{{ Replicate }}');
+        return $user->can('replicate_carousel');
     }
 
     /**
@@ -103,6 +103,6 @@ class CarouselPolicy
      */
     public function reorder(User $user): bool
     {
-        return $user->can('{{ Reorder }}');
+        return $user->can('reorder_carousel');
     }
 }

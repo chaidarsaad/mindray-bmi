@@ -95,7 +95,7 @@ class AboutPolicy
      */
     public function replicate(User $user, About $about): bool
     {
-        return $user->can('{{ Replicate }}');
+        return $user->can('replicate_about');
     }
 
     /**
@@ -103,6 +103,6 @@ class AboutPolicy
      */
     public function reorder(User $user): bool
     {
-        return $user->can('{{ Reorder }}');
+        return $user->can('reorder_about');
     }
 }
