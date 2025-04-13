@@ -54,9 +54,9 @@
                             <div class="tab-pane fade {{ $index == 0 ? 'show active' : '' }}" id="{{ $category->slug }}"
                                 role="tabpanel" aria-labelledby="{{ $category->slug }}-tab">
 
-                                <div class="grid-layout loadmore-item" data-grid="grid-4">
+                                <div class="grid-layout" data-grid="grid-4">
                                     @forelse ($category->products as $product)
-                                        <div class="card-product fl-item">
+                                        <div class="card-product">
                                             <div class="card-product-wrapper">
                                                 <a href="{{ route('detail.product', $product->slug) }}"
                                                     class="product-img">
