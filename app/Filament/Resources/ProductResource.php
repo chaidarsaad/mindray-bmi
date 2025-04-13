@@ -75,27 +75,27 @@ class ProductResource extends Resource
                             ->image(),
 
                     ]),
-                // Section::make('Deskripsi Produk')
-                //     ->collapsible()
-                //     ->schema([
-                //         Repeater::make('descriptions')
-                //             ->label('')
-                //             ->addable(true)
-                //             ->deletable(true)
-                //             ->relationship()
-                //             ->schema([
-                //                 Forms\Components\TextInput::make('judul_deskripsi')
-                //                     ->label('Nama Deskripsi')
-                //                     ->required()
-                //                     ->maxLength(255),
-                //                 TinyEditor::make('description')
-                //                     ->showMenuBar(1)
-                //                     ->toolbarSticky(1)
-                //                     ->required()
-                //                     ->label('Deskripsi')
-                //                     ->columnSpanFull(),
-                //             ])
-                //     ]),
+                Section::make('Deskripsi Produk')
+                    ->collapsible()
+                    ->schema([
+                        Repeater::make('descriptions')
+                            ->label('')
+                            ->addable(true)
+                            ->deletable(true)
+                            ->relationship()
+                            ->schema([
+                                Forms\Components\TextInput::make('judul_deskripsi')
+                                    ->label('Nama Deskripsi')
+                                    ->required()
+                                    ->maxLength(255),
+                                TinyEditor::make('description')
+                                    ->showMenuBar(1)
+                                    ->toolbarSticky(1)
+                                    ->required()
+                                    ->label('Deskripsi')
+                                    ->columnSpanFull(),
+                            ])
+                    ]),
             ]);
     }
 
