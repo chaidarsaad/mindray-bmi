@@ -114,35 +114,7 @@
                     </div>
                 </div>
 
-                {{-- header --}}
-                {{-- <div class="p-4 rounded shadow-sm bg-white mb-4 card-prominent">
-                    <div class="mb-2 text-primary fw-bold fs-16">📌 Info Pesanan</div>
-                    <hr>
-                    <div class="d-flex align-items-center">
-                        <figure class="training-image me-3 mb-4">
-                            <img src="{{ Storage::url($firstTraining->image) }}" alt="product">
-                        </figure>
 
-                        <div>
-                            <span class="badge bg-{{ $statusInfo['color'] }} mb-2 text-capitalize fs-14">
-                                <i class="{{ $statusInfo['icon'] }} me-1"></i> {{ $statusInfo['title'] }}
-                            </span>
-                            <p class="mb-0 fs-16 fw-semibold text-dark">Nomor Pesanan: <br><span
-                                    class="text-secondary fs-18">{{ $order->order_number }}</span></p>
-                        </div>
-                    </div>
-
-                    <div class="row gy-4">
-                        <x-info-col label="Nama Pelatihan" :value="$firstTraining->judul" />
-                        <x-info-col label="Tanggal Pesan" :value="$order->created_at
-                            ->setTimezone('Asia/Jakarta')
-                            ->locale('id')
-                            ->translatedFormat('l, d F Y H:i')" />
-                        <x-info-col label="Nama Pemesan" :value="$order->name" />
-                        <x-info-col label="Email" :value="$order->email" />
-                        <x-info-col label="Nomor HP" :value="$order->phone" />
-                    </div>
-                </div> --}}
 
                 {{-- Order Details --}}
                 <div class="p-4 rounded shadow-sm bg-white card-prominent">

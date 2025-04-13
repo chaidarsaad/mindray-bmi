@@ -147,15 +147,20 @@ class ProductResource extends Resource
                         $nextCopyNumber = $copyCount + 1;
 
                         $replica->name = $baseName . ' copy ' . $nextCopyNumber;
-
-                        $baseSubname = $original->subname;
-                        $replica->subname = $baseSubname . ' copy' . $nextCopyNumber;
-
+                        $replica->subname = $original->subname . ' copy' . $nextCopyNumber;
                         $replica->slug = null;
                         $replica->is_show = false;
                         $replica->images = [
                             'https://placehold.co/720x1005'
                         ];
+                    })
+                    ->afterReplicaSaved(function (Product $replica, Product $original) {
+                        foreach ($original->descriptions as $desc) {
+                            $replica->descriptions()->create([
+                                'judul_deskripsi' => $desc->judul_deskripsi,
+                                'description' => $desc->description,
+                            ]);
+                        }
                     }),
                 Tables\Actions\DeleteAction::make()
                     ->modalHeading(fn($record) => 'Hapus Produk: ' . $record->name),
