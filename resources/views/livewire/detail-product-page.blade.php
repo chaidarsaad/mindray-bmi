@@ -19,19 +19,19 @@
         }
 
         /* .video-container {
-                                                            position: relative;
-                                                            width: 100%;
-                                                            padding-bottom: 56.25%;
-                                                            height: 0;
-                                                        }
+                                                                position: relative;
+                                                                width: 100%;
+                                                                padding-bottom: 56.25%;
+                                                                height: 0;
+                                                            }
 
-                                                        .video-container iframe {
-                                                            position: absolute;
-                                                            top: 0;
-                                                            left: 0;
-                                                            width: 100%;
-                                                            height: 100%;
-                                                        } */
+                                                            .video-container iframe {
+                                                                position: absolute;
+                                                                top: 0;
+                                                                left: 0;
+                                                                width: 100%;
+                                                                height: 100%;
+                                                            } */
 
         iframe {
             position: relative;
@@ -215,7 +215,7 @@
                     <div class="col-12">
                         <div class="widget-tabs style-has-border">
                             <div class="scroll-hint-deskripsi">
-                                Geser ke kanan untuk melihat deskripsi lainnya →
+                                Geser kesamping untuk melihat deskripsi lainnya →
                             </div>
 
                             <ul class="widget-menu-tab">
