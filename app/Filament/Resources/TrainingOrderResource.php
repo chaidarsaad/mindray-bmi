@@ -19,6 +19,7 @@ use Carbon\Carbon;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class TrainingOrderResource extends Resource
 {
@@ -46,9 +47,10 @@ class TrainingOrderResource extends Resource
                         Forms\Components\TextInput::make('order_number')
                             ->label('Nomor Pesanan')
                             ->required()
-                            ->maxLength(255),
+                            ->maxLength(255)
+                            ->default(fn() => 'ORD-' . strtoupper(Str::random(12))),
                         Forms\Components\TextInput::make('name')
-                            ->label('Nama Pesanan')
+                            ->label('Nama Pemesan')
                             ->required()
                             ->maxLength(255),
                         Forms\Components\TextInput::make('email')
