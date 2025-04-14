@@ -19,19 +19,19 @@
         }
 
         /* .video-container {
-                                                                position: relative;
-                                                                width: 100%;
-                                                                padding-bottom: 56.25%;
-                                                                height: 0;
-                                                            }
+                                                                    position: relative;
+                                                                    width: 100%;
+                                                                    padding-bottom: 56.25%;
+                                                                    height: 0;
+                                                                }
 
-                                                            .video-container iframe {
-                                                                position: absolute;
-                                                                top: 0;
-                                                                left: 0;
-                                                                width: 100%;
-                                                                height: 100%;
-                                                            } */
+                                                                .video-container iframe {
+                                                                    position: absolute;
+                                                                    top: 0;
+                                                                    left: 0;
+                                                                    width: 100%;
+                                                                    height: 100%;
+                                                                } */
 
         iframe {
             position: relative;
@@ -83,10 +83,8 @@
             display: none;
         }
 
-        @media (max-width: 768px) {
-            .scroll-hint-deskripsi {
-                display: block;
-            }
+        .scroll-hint-deskripsi {
+            display: block;
         }
     </style>
 @endpush
