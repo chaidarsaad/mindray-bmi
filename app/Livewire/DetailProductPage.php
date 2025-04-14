@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\About;
 use App\Models\Product;
 use Livewire\Component;
 
@@ -10,12 +11,15 @@ class DetailProductPage extends Component
     public $product;
     public $otherProducts;
     public $productDescriptions;
+    public $about;
 
     public function mount($slug)
     {
         $this->product = Product::where('slug', $slug)->firstOrFail();
         $this->otherProducts = Product::where('id', '!=', $this->product->id)->get();
         $this->productDescriptions = $this->product->descriptions;
+
+        $this->about = About::first();
     }
     public function render()
     {

@@ -19,19 +19,19 @@
         }
 
         /* .video-container {
-                                                                    position: relative;
-                                                                    width: 100%;
-                                                                    padding-bottom: 56.25%;
-                                                                    height: 0;
-                                                                }
+                                                                                        position: relative;
+                                                                                        width: 100%;
+                                                                                        padding-bottom: 56.25%;
+                                                                                        height: 0;
+                                                                                    }
 
-                                                                .video-container iframe {
-                                                                    position: absolute;
-                                                                    top: 0;
-                                                                    left: 0;
-                                                                    width: 100%;
-                                                                    height: 100%;
-                                                                } */
+                                                                                    .video-container iframe {
+                                                                                        position: absolute;
+                                                                                        top: 0;
+                                                                                        left: 0;
+                                                                                        width: 100%;
+                                                                                        height: 100%;
+                                                                                    } */
 
         iframe {
             position: relative;
@@ -195,8 +195,29 @@
                                             <span class="btn-quantity plus-btn">+</span>
                                         </div>
                                     </div> --}}
-                                    <a href="#"
-                                        class="tf-btn tf-btn-process btn-fill radius-3 justify-content-center fw-6 fs-14 flex-grow-1 animate-hover-btn"><span>Pesan</a>
+                                    @auth
+                                        @php
+                                            $whatsappMessage =
+                                                "Halo admin, saya ingin memesan alat USG {$product->name}%0A" .
+                                                'Nama: ' .
+                                                Auth::user()->name .
+                                                '%0A' .
+                                                'Email: ' .
+                                                Auth::user()->email;
+                                        @endphp
+
+                                        <a href="https://wa.me/{{ '+62' . $about->phone_number }}?text={{ $whatsappMessage }}"
+                                            target="_blank"
+                                            class="tf-btn tf-btn-process btn-fill radius-3 justify-content-center fw-6 fs-14 flex-grow-1 animate-hover-btn">
+                                            <span>Pesan</span>
+                                        </a>
+                                    @else
+                                        <a href="{{ route('login') }}"
+                                            class="tf-btn tf-btn-process btn-fill radius-3 justify-content-center fw-6 fs-14 flex-grow-1 animate-hover-btn"
+                                            onclick="return confirm('Silakan login terlebih dahulu untuk memesan produk ini.')">
+                                            <span>Pesan</span>
+                                        </a>
+                                    @endauth
                                 </div>
                             </form>
                         </div>
