@@ -40,6 +40,7 @@ class TrainingOrderResource extends Resource
                     ->schema([
                         Forms\Components\Select::make('user_id')
                             ->label('Akun Pengguna')
+                            ->required()
                             ->helperText('Hanya pengguna yang telah mendaftar yang bisa dipilih')
                             ->relationship('user', 'name')
                             ->preload()
@@ -86,25 +87,33 @@ class TrainingOrderResource extends Resource
                             ->label('Tanggal Pesan')
                             ->formatStateUsing(fn($state) => Carbon::parse($state)->format('d M Y H:i')),
                     ]),
-                // Section::make('Detail Pelatihan')
-                //     ->collapsible()
-                //     ->schema([
-                //         Select::make('training_price_id')
-                //             ->label('Harga')
-                //             ->options(
-                //                 fn(callable $get) =>
-                //                 \App\Models\TrainingPrice::where('training_id', $get('training_id'))
-                //                     ->whereHas('trainingType', fn($q) => $q->where('slug', 'anc'))
-                //                     ->with('city')
-                //                     ->get()
-                //                     ->filter(fn($item) => $item->city) // pastikan relasi ada
-                //                     ->mapWithKeys(fn($item) => [
-                //                         $item->id => "{$item->city->name} ({$item->start_date} - {$item->end_date})"
-                //                     ])
-                //                     ->toArray()
-                //             )
+                Section::make('Detail Pelatihan')
+                    ->collapsible()
+                    ->schema([
+                        Forms\Components\Select::make('training_price_ids')
+                            ->label('Pilih Pelatihan')
+                            ->multiple()
+                            ->options(function () {
+                                return TrainingPrice::with(['trainingType', 'city', 'training'])
+                                    ->get()
+                                    ->mapWithKeys(function ($item) {
+                                        return [
+                                            $item->id => "{$item->training->judul} {$item->trainingType->name} - {$item->city->name} ("
+                                                . \Carbon\Carbon::parse($item->start_date)->format('d M Y') . ") - Rp" . number_format($item->price, 0, ',', '.'),
+                                        ];
+                                    })
+                                    ->toArray();
+                            })
+                            ->required()
+                            ->reactive()
+                            ->afterStateUpdated(function ($state, callable $set) {
+                                $total = TrainingPrice::whereIn('id', $state)->sum('price');
+                                $set('total_harga', $total);
+                            })
+                            ->helperText('Pilih minimal satu pelatihan'),
 
-                //     ]),
+
+                    ]),
                 Section::make('Informasi Pembayaran')
                     ->collapsible()
                     ->schema([
