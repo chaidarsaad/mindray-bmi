@@ -19,19 +19,19 @@
         }
 
         /* .video-container {
-                                                                                        position: relative;
-                                                                                        width: 100%;
-                                                                                        padding-bottom: 56.25%;
-                                                                                        height: 0;
-                                                                                    }
+                                                                                            position: relative;
+                                                                                            width: 100%;
+                                                                                            padding-bottom: 56.25%;
+                                                                                            height: 0;
+                                                                                        }
 
-                                                                                    .video-container iframe {
-                                                                                        position: absolute;
-                                                                                        top: 0;
-                                                                                        left: 0;
-                                                                                        width: 100%;
-                                                                                        height: 100%;
-                                                                                    } */
+                                                                                        .video-container iframe {
+                                                                                            position: absolute;
+                                                                                            top: 0;
+                                                                                            left: 0;
+                                                                                            width: 100%;
+                                                                                            height: 100%;
+                                                                                        } */
 
         iframe {
             position: relative;
@@ -198,12 +198,17 @@
                                     @auth
                                         @php
                                             $whatsappMessage =
-                                                "Halo admin, saya ingin memesan alat USG {$product->name}%0A" .
-                                                'Nama: ' .
+                                                'Halo admin 👋,%0A%0A' .
+                                                'Saya tertarik untuk memesan alat USG berikut:%0A%0A' .
+                                                "🛒 Nama Produk: {$product->name}%0A%0A" .
+                                                'Berikut data saya:%0A' .
+                                                '👤 Nama: ' .
                                                 Auth::user()->name .
                                                 '%0A' .
-                                                'Email: ' .
-                                                Auth::user()->email;
+                                                '📧 Email: ' .
+                                                Auth::user()->email .
+                                                '%0A%0A' .
+                                                'Mohon informasi lebih lanjut, terima kasih 🙏';
                                         @endphp
 
                                         <a href="https://wa.me/{{ '+62' . $about->phone_number }}?text={{ $whatsappMessage }}"
