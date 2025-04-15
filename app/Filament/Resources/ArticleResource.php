@@ -33,7 +33,7 @@ class ArticleResource extends Resource
                         Forms\Components\Select::make('user_id')
                             ->relationship('user', 'name')
                             ->label('Penulis')
-                            ->required()
+                            ->helperText('Jika dikosongkan, maka penulis akan tampil sebagai admin')
                             ->searchable()
                             ->default(auth()->user()->id)
                             ->preload(),
