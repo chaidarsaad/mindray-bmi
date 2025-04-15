@@ -54,8 +54,8 @@
                                                 @endphp
                                                 {{ $price->city->name }} ({{ $price->place }}) Rp
                                                 {{ number_format($price->price) }} -
-                                                Tanggal {{ $startDate->locale('id')->format('d') }} s.d.
-                                                {{ $endDate->locale('id')->format('d F Y') }}
+                                                {{ $startDate->locale('id')->translatedFormat('l, d') }} s.d.
+                                                {{ $endDate->locale('id')->translatedFormat('l, d F Y') }}
                                                 @if ($price->is_past)
                                                     - <span class="text-muted">(Sudah Terselenggara)</span>
                                                 @endif
@@ -79,9 +79,8 @@
                                                 @endphp
                                                 {{ $price->city->name }} ({{ $price->place }}) Rp
                                                 {{ number_format($price->price) }} -
-                                                Tanggal
-                                                {{ $startDate->locale('id')->format('d') }} s.d.
-                                                {{ $endDate->locale('id')->format('d F Y') }}
+                                                {{ $startDate->locale('id')->translatedFormat('l, d') }} s.d.
+                                                {{ $endDate->locale('id')->translatedFormat('l, d F Y') }}
                                                 @if ($price->is_past)
                                                     - <span class="text-muted">(Sudah Terselenggara)</span>
                                                 @endif

@@ -43,8 +43,8 @@ class DetailOrderTrainingPage extends Component
                 'kota'      => $price->city->name ?? '-',
                 'tempat'    => $price->place ?? '-',
                 'jadwal'    => [
-                    'start' => \Carbon\Carbon::parse($price->start_date)->format('d'),
-                    'end'   => \Carbon\Carbon::parse($price->end_date)->format('d F Y'),
+                    'start' => \Carbon\Carbon::parse($price->start_date)->translatedFormat('l, d'),
+                    'end'   => \Carbon\Carbon::parse($price->end_date)->translatedFormat('l, d F Y'),
                 ],
                 'harga'     => $price->price ?? 0,
             ];

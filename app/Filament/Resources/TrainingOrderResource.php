@@ -110,8 +110,8 @@ class TrainingOrderResource extends Resource
                                                             '%s (%s) - %s s.d. %s - Rp %s',
                                                             $item->city->name,
                                                             $item->trainingType->name,
-                                                            optional($item->start_date)->format('d'),
-                                                            optional($item->end_date)->format('d M Y'),
+                                                            optional($item->start_date)->translatedFormat('l, d'),
+                                                            optional($item->end_date)->translatedFormat('l, d F Y'),
                                                             number_format($item->price, 0, ',', '.')
                                                         )];
                                                     })->toArray(),
