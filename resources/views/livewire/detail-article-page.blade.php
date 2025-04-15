@@ -6,16 +6,16 @@
     <style>
         /* Menambahkan aturan untuk konten yang lebih responsif */
         .article-content {
-            word-wrap: break-word;
-            /* Memecah kata yang terlalu panjang */
+            /* Kata tidak dipotong sembarangan */
+            word-break: normal;
             overflow-wrap: break-word;
-            /* Menambahkan kompatibilitas browser */
-            word-break: break-all;
-            /* Memastikan kata panjang dipecah jika perlu */
+            hyphens: auto;
+
+            /* Tata letak tetap rapi */
             max-width: 100%;
-            /* Membatasi lebar konten */
             box-sizing: border-box;
-            /* Pastikan padding dan margin tidak menambah lebar elemen */
+        }
+
         }
     </style>
 @endpush
