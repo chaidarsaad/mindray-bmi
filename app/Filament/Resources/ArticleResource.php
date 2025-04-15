@@ -30,6 +30,13 @@ class ArticleResource extends Resource
                 Section::make('Artikel')
                     ->collapsible()
                     ->schema([
+                        Forms\Components\Select::make('user_id')
+                            ->relationship('user', 'name')
+                            ->label('Penulis')
+                            ->required()
+                            ->searchable()
+                            ->default(auth()->user()->id)
+                            ->preload(),
                         Forms\Components\Toggle::make('is_show')
                             ->default(1)
                             ->label('Tampilkan Artikel?'),

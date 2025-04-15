@@ -11,6 +11,7 @@ class Article extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'slug',
         'judul',
         'image',
@@ -33,5 +34,10 @@ class Article extends Model
     public function incrementViews()
     {
         $this->increment('views');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

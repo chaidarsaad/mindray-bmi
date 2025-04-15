@@ -38,7 +38,7 @@
                                 <div class="meta">
                                     {{ $article->created_at->locale('id')->isoFormat('dddd, D MMMM YYYY') }}
                                 </div>
-                                <div class="meta">oleh <span>admin</span>
+                                <div class="meta">ditulis oleh <span>{{ $article->user->name }}</span>
                                     <span>{{ $article->created_at->diffForHumans() }}</span>
                                 </div>
                                 <div class="image">
