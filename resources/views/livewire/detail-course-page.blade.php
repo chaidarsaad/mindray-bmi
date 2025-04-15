@@ -6,17 +6,16 @@
     <style>
         /* Menambahkan aturan untuk konten yang lebih responsif */
         .article-content {
-            word-wrap: break-word;
-            /* Memecah kata yang terlalu panjang */
+            /* Lebih aman untuk semua bahasa (termasuk Indonesia) */
+            word-break: normal;
             overflow-wrap: break-word;
-            /* Menambahkan kompatibilitas browser */
-            word-break: break-all;
-            /* Memastikan kata panjang dipecah jika perlu */
+            hyphens: auto;
+
+            /* Layout tetap responsif */
             max-width: 100%;
-            /* Membatasi lebar konten */
             box-sizing: border-box;
-            /* Pastikan padding dan margin tidak menambah lebar elemen */
         }
+
 
         .training-image {
             max-width: 100%;

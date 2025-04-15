@@ -6,32 +6,31 @@
     <style>
         /* Menambahkan aturan untuk konten yang lebih responsif */
         .article-content {
-            word-wrap: break-word;
-            /* Memecah kata yang terlalu panjang */
+            /* Lebih aman untuk semua bahasa (termasuk Indonesia) */
+            word-break: normal;
             overflow-wrap: break-word;
-            /* Menambahkan kompatibilitas browser */
-            word-break: break-all;
-            /* Memastikan kata panjang dipecah jika perlu */
+            hyphens: auto;
+
+            /* Layout tetap responsif */
             max-width: 100%;
-            /* Membatasi lebar konten */
             box-sizing: border-box;
-            /* Pastikan padding dan margin tidak menambah lebar elemen */
         }
 
-        /* .video-container {
-                                                                                                    position: relative;
-                                                                                                    width: 100%;
-                                                                                                    padding-bottom: 56.25%;
-                                                                                                    height: 0;
-                                                                                                }
 
-                                                                                                .video-container iframe {
-                                                                                                    position: absolute;
-                                                                                                    top: 0;
-                                                                                                    left: 0;
-                                                                                                    width: 100%;
-                                                                                                    height: 100%;
-                                                                                                } */
+        /* .video-container {
+                                                                                                        position: relative;
+                                                                                                        width: 100%;
+                                                                                                        padding-bottom: 56.25%;
+                                                                                                        height: 0;
+                                                                                                    }
+
+                                                                                                    .video-container iframe {
+                                                                                                        position: absolute;
+                                                                                                        top: 0;
+                                                                                                        left: 0;
+                                                                                                        width: 100%;
+                                                                                                        height: 100%;
+                                                                                                    } */
 
         iframe {
             position: relative;
