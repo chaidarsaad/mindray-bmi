@@ -14,18 +14,19 @@ class PageTitle extends Component
         $routeName = Route::currentRouteName();
 
         $this->title = match ($routeName) {
-            'payment.training.confirmation' => 'Konfirmasi Pembayaran',
+            'payment.training.confirmation' => 'Konfirmasi Pembayaran Pelatihan',
+            'payment.product.confirmation' => 'Konfirmasi Pembayaran Produk USG',
             'checkout.training' => 'Daftar Pelatihan',
             'detail.training.order' => 'Detail Pesanan Pelatihan',
+            'detail.product.order' => 'Detail Pesanan Produk USG',
             'usg.all' => 'Semua Produk USG Mindray',
             'training.all' => 'Semua Pelatihan',
             'article.all' => 'Semua Artikel',
-            'checkout' => 'Proses Pesanan',
             'dashboard' => 'Dashboard',
             'detail.category' => 'Kategori',
             'dashboard.detail-account' => 'Detail Akun',
-            'dashboard.pesanan' => 'Pesanan',
-            'cart' => 'Keranjang Belanja',
+            'dashboard.pesanan.pelatihan' => 'Pesanan Pelatihan',
+            'dashboard.pesanan.produk' => 'Pesanan Produk USG',
             default => 'Halaman Tidak Diketahui',
         };
     }

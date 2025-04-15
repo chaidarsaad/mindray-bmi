@@ -5,8 +5,14 @@
                 class="my-account-nav-item {{ request()->routeIs('dashboard') ? 'active' : '' }}">Dashboard</a>
         </li>
         <li>
-            <a href="{{ route('dashboard.pesanan') }}"
-                class="my-account-nav-item {{ request()->routeIs('dashboard.pesanan') ? 'active' : '' }}">Pesanan</a>
+            <a href="{{ route('dashboard.pesanan.produk') }}"
+                class="my-account-nav-item {{ request()->routeIs('dashboard.pesanan.produk') ? 'active' : '' }}">Pesanan
+                Produk USG</a>
+        </li>
+        <li>
+            <a href="{{ route('dashboard.pesanan.pelatihan') }}"
+                class="my-account-nav-item {{ request()->routeIs('dashboard.pesanan.pelatihan') ? 'active' : '' }}">Pesanan
+                Pelatihan</a>
         </li>
         <li>
             <a href="{{ route('dashboard.detail-account') }}"

@@ -3,21 +3,18 @@
 namespace App\Livewire;
 
 use App\Models\PaymentMethod;
-use App\Models\TrainingOrder;
+use App\Models\ProductOrder;
 use App\Services\OrderStatusService;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Storage;
 
-class TrainingPaymentPage extends Component
+class ProductPaymentPage extends Component
 {
-    public TrainingOrder $order;
+    public ProductOrder $order;
     public $paymentMethods;
     use WithFileUploads;
     public $payment_proof;
-    public $firstTraining;
-    public $orderDetailsFormatted = [];
 
     protected $rules = [
         'payment_proof' => 'required|image|mimes:jpg,jpeg,png|max:2048',
@@ -29,7 +26,6 @@ class TrainingPaymentPage extends Component
         'payment_proof.mimes'    => 'Format gambar harus jpg, jpeg, atau png',
         'payment_proof.max'      => 'Ukuran file maksimal 2MB',
     ];
-
 
     public function updatedPaymentProof()
     {
@@ -68,42 +64,21 @@ class TrainingPaymentPage extends Component
 
         session()->flash('notify-success', 'Bukti pembayaran berhasil diunggah.');
 
-        $this->redirectRoute('detail.training.order', ['order' => $this->order]);
+        $this->redirectRoute('detail.product.order', ['order' => $this->order]);
     }
 
-    public function mount(TrainingOrder $order)
+    public function mount(ProductOrder $order)
     {
         if ($order->user_id !== auth()->id()) {
             return redirect()->route('home')->with('notify-error', 'Pesanan tidak ditemukan.');
         }
         $this->paymentMethods = PaymentMethod::all();
 
-        $order->load('orderDetails.trainingPrice.training', 'orderDetails.trainingPrice.trainingType', 'orderDetails.trainingPrice.city');
-
         $this->order = $order;
-
-        $firstDetail = $order->orderDetails->first();
-        if ($firstDetail && $firstDetail->trainingPrice && $firstDetail->trainingPrice->training) {
-            $this->firstTraining = $firstDetail->trainingPrice->training;
-        }
-
-        // Format detail untuk dipakai langsung di Blade
-        $this->orderDetailsFormatted = $order->orderDetails->map(function ($detail) {
-            $price = $detail->trainingPrice;
-            return [
-                'jenis'  => $price->trainingType->name ?? '-',
-                'kota'   => $price->city->name ?? '-',
-                'tempat' => $price->place ?? '-',
-                'jadwal' => [
-                    'start' => \Carbon\Carbon::parse($price->start_date)->format('d'),
-                    'end'   => \Carbon\Carbon::parse($price->end_date)->format('d M Y'),
-                ],
-                'harga'     => $price->price ?? 0,
-            ];
-        })->toArray();
     }
+
     public function render()
     {
-        return view('livewire.training-payment-page');
+        return view('livewire.product-payment-page');
     }
 }

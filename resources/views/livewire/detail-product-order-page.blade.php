@@ -1,5 +1,5 @@
 @section('title')
-    USG Mindray | Detail Pesanan Pelatihan
+    USG Mindray | Detail Pesanan Produk USG
 @endsection
 
 @push('styles')
@@ -84,32 +84,12 @@
                     {{-- Order Header --}}
                     <div class="d-flex align-items-center">
                         <figure class="training-image me-3">
-                            <img src="{{ Storage::url($firstTraining->image) }}" alt="product">
+                            <img src="{{ Storage::url($order->product->images[0]) }}" alt="product">
                         </figure>
 
                         <div>
-                            <p class="mb-0 fs-16 fw-semibold text-dark">Nama Pelatihan: <br><span
-                                    class="text-secondary fs-18">{{ $firstTraining->judul }}</span></p>
-                        </div>
-                    </div>
-                    <hr>
-
-                    <div class="row gy-4">
-                        @foreach ($orderDetailsFormatted as $detail)
-                            <x-info-col label="Jenis Pelatihan" :value="$detail['jenis']" />
-                            <x-info-col label="Kota" :value="$detail['kota']" />
-                            <x-info-col label="Tempat" :value="$detail['tempat']" />
-                            <x-info-col label="Jadwal" :value="$detail['jadwal']['start'] . ' - ' . $detail['jadwal']['end']" />
-                            <x-info-col label="Harga" :value="'Rp ' . number_format($detail['harga'], 0, ',', '.')" />
-                            <hr>
-                        @endforeach
-
-                        <div class="col-12">
-                            <div class="bg-light-primary border border-primary rounded p-3">
-                                <div class="text-primary fw-bold fs-20 mb-1">Total Harga</div>
-                                <div class="fw-bold fs-20 text-primary">Rp
-                                    {{ number_format($order->total_harga, 0, ',', '.') }}</div>
-                            </div>
+                            <p class="mb-0 fs-16 fw-semibold text-dark">Nama Produk: <br><span
+                                    class="text-secondary fs-18">{{ $order->product->name }}</span></p>
                         </div>
                     </div>
                 </div>
@@ -124,6 +104,7 @@
                         <x-info-col label="Nama Pemesan" :value="$order->name" />
                         <x-info-col label="Email" :value="$order->email" />
                         <x-info-col label="Nomor HP" :value="$order->phone" />
+                        <x-info-col label="Alamat" :value="$order->address ?? 'Tidak ada alamat'" />
 
                     </div>
                 </div>
@@ -164,7 +145,7 @@
                                         <span>Bukti Pembayaran Terkirim</span>
                                     </button>
                                 @else
-                                    <a href="{{ route('payment.training.confirmation', $order->order_number) }}"
+                                    <a href="{{ route('payment.product.confirmation', $order->order_number) }}"
                                         class="tf-btn tf-btn-process btn-fill radius-3 justify-content-center fw-6 fs-14 flex-grow-1 animate-hover-btn">
                                         <span>Konfirmasi Pembayaran</span>
                                     </a>
@@ -190,6 +171,7 @@
     @livewire('components.mobile-menu')
     <!-- /mobile menu -->
 </div>
+
 
 @push('scripts')
     <script>

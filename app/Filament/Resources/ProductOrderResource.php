@@ -79,6 +79,10 @@ class ProductOrderResource extends Resource
                             ->required()
                             ->maxLength(255)
                             ->reactive(),
+                        Forms\Components\Textarea::make('address')
+                            ->label('Alamat Pengiriman')
+                            ->helperText('Kosongkan jika produk tidak perlu dikirim')
+                            ->rows(3),
                         Forms\Components\TextInput::make('created_at')
                             ->readOnly()
                             ->label('Tanggal Pesan')

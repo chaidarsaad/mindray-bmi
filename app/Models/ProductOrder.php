@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Services\OrderStatusService;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -16,12 +17,18 @@ class ProductOrder extends Model
         'name',
         'email',
         'phone',
+        'address',
         'notes',
         'status',
         'payment_status',
         'payment_proof',
         'total_harga',
     ];
+
+    public function getStatusTitleAttribute()
+    {
+        return OrderStatusService::getStatusInfo($this->status)['title'];
+    }
 
     public function getRouteKeyName()
     {

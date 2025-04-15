@@ -12,9 +12,9 @@ class DetailOrderTrainingPage extends Component
 {
     public TrainingOrder $order;
     public $firstTraining;
-    public $orderDetailsFormatted = [];
     public $paymentMethods;
     public $paymentDeadline;
+    public $orderDetailsFormatted = [];
 
     public function mount(TrainingOrder $order)
     {

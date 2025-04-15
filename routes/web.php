@@ -4,17 +4,18 @@ use App\Livewire\AccountDetailPage;
 use App\Livewire\ArticlePage;
 use App\Livewire\Auth\LoginPage;
 use App\Livewire\Auth\RegisterPage;
-use App\Livewire\CartPage;
-use App\Livewire\CheckoutPage;
 use App\Livewire\CheckoutTrainingPage;
 use App\Livewire\DetailArticlePage;
 use App\Livewire\DetailCategoryPage;
 use App\Livewire\DetailCoursePage;
 use App\Livewire\DetailOrderTrainingPage;
+use App\Livewire\DetailProductOrderPage;
 use App\Livewire\DetailProductPage;
 use App\Livewire\HomePage;
 use App\Livewire\MyAccountPage;
 use App\Livewire\MyOrdersPage;
+use App\Livewire\MyProductOrderPage;
+use App\Livewire\ProductPaymentPage;
 use App\Livewire\TrainingPage;
 use App\Livewire\TrainingPaymentPage;
 use App\Livewire\UsgPage;
@@ -35,17 +36,24 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/keranjang', CartPage::class)->name('cart');
     Route::get('/dashboard', MyAccountPage::class)->name('dashboard');
-    Route::get('/pesanan-saya', MyOrdersPage::class)->name('dashboard.pesanan');
     Route::get('/akun-saya', AccountDetailPage::class)->name('dashboard.detail-account');
-    Route::get('/proses-pesanan', CheckoutPage::class)->name('checkout');
+
+    Route::get('/pesanan-produk-usg', MyProductOrderPage::class)->name('dashboard.pesanan.produk');
+    Route::get('/detail-pesanan-produk-usg/{order:order_number}', DetailProductOrderPage::class)->name('detail.product.order');
+
+    Route::get('/pesanan-pelatihan', MyOrdersPage::class)->name('dashboard.pesanan.pelatihan');
     Route::get('/detail-pesanan-pelatihan/{order:order_number}', DetailOrderTrainingPage::class)->name('detail.training.order');
 });
 
-Route::get('/konfirmasi-pembayaran-pelatihan/{order:order_number}', TrainingPaymentPage::class)
-    ->middleware(['auth', 'prevent-if-paid'])
-    ->name('payment.training.confirmation');
+
+Route::middleware(['auth', 'prevent-if-paid'])->group(function () {
+    Route::get('/konfirmasi-pembayaran-pelatihan/{order:order_number}', TrainingPaymentPage::class)
+        ->name('payment.training.confirmation');
+    Route::get('/konfirmasi-pembayaran-produk-usg/{order:order_number}', ProductPaymentPage::class)
+        ->name('payment.product.confirmation');
+});
+
 
 
 Route::middleware(['auth', 'checkTrainingEndDate'])->group(function () {

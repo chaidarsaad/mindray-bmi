@@ -23,7 +23,10 @@
                                 <h5 class="fw-5 mb_20">Halo {{ Auth::user()->name }}</h5>
                                 <p>
                                     Dari dashboard akun Anda, Anda dapat melihat
-                                    <a class="text_primary" href="{{ route('dashboard.pesanan') }}">pesanan terbaru</a>,
+                                    <a class="text_primary" href="{{ route('dashboard.pesanan.produk') }}">pesanan
+                                        produk usg</a>,
+                                    <a class="text_primary" href="{{ route('dashboard.pesanan.pelatihan') }}">pesanan
+                                        pelatihan</a>,
                                     mengubah
                                     {{-- <a class="text_primary"
                                         href="">alamat</a>, dan --}}

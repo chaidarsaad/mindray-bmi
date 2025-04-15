@@ -1,5 +1,5 @@
 @section('title')
-    USG Mindray | Pesanan Pelatihan
+    USG Mindray | Pesanan Produk USG
 @endsection
 
 @push('styles')
@@ -55,7 +55,7 @@
                                                 <td>{{ ucfirst($order->status_title) }}</td>
                                                 <td>Rp {{ number_format($order->total_harga, 0, ',', '.') }}</td>
                                                 <td>
-                                                    <a href="{{ route('detail.training.order', $order->order_number) }}"
+                                                    <a href="{{ route('detail.product.order', $order->order_number) }}"
                                                         class="tf-btn btn-fill tf-btn-process animate-hover-btn rounded-0 justify-content-center">
                                                         <span>Lihat</span>
                                                     </a>
@@ -68,7 +68,6 @@
                                         @endforelse
                                     </tbody>
                                 </table>
-
                             </div>
                             <div class="scroll-hint-deskripsi">
                                 Geser kesamping untuk melihat detail pesanan →
