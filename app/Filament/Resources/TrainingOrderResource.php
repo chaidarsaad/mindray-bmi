@@ -106,19 +106,24 @@ class TrainingOrderResource extends Resource
                                             ->mapWithKeys(function ($group, $judul) {
                                                 return [
                                                     $judul => $group->mapWithKeys(function ($item) {
+                                                        $isExpired = optional($item->start_date)->isPast();
                                                         return [$item->id => sprintf(
-                                                            '%s (%s) - %s s.d. %s - Rp %s',
+                                                            '%s (%s) - %s s.d. %s - Rp %s%s',
                                                             $item->city->name,
                                                             $item->trainingType->name,
                                                             optional($item->start_date)->translatedFormat('l, d'),
                                                             optional($item->end_date)->translatedFormat('l, d F Y'),
-                                                            number_format($item->price, 0, ',', '.')
+                                                            number_format($item->price, 0, ',', '.'),
+                                                            $isExpired ? ' (Sudah Terselenggara)' : ''
                                                         )];
                                                     })->toArray(),
                                                 ];
                                             })->toArray();
                                     })
-
+                                    ->disableOptionWhen(function (string $value): bool {
+                                        $price = \App\Models\TrainingPrice::find($value);
+                                        return optional($price?->start_date)->isPast();
+                                    })
                                     ->reactive()
                                     ->preload()
                                     ->searchable()
