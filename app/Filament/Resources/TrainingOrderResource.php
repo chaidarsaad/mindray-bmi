@@ -90,29 +90,53 @@ class TrainingOrderResource extends Resource
                 Section::make('Detail Pelatihan')
                     ->collapsible()
                     ->schema([
-                        Forms\Components\Select::make('training_price_ids')
-                            ->label('Pilih Pelatihan')
-                            ->multiple()
-                            ->options(function () {
-                                return TrainingPrice::with(['trainingType', 'city', 'training'])
-                                    ->get()
-                                    ->mapWithKeys(function ($item) {
-                                        return [
-                                            $item->id => "{$item->training->judul} {$item->trainingType->name} - {$item->city->name} ("
-                                                . \Carbon\Carbon::parse($item->start_date)->format('d M Y') . ") - Rp" . number_format($item->price, 0, ',', '.'),
-                                        ];
+                        Forms\Components\Repeater::make('orderDetails')
+                            ->relationship()
+                            ->label('Pelatihan yang dipesan')
+                            ->schema([
+                                Forms\Components\Select::make('training_price_id')
+                                    ->label('Pilihan Pelatihan')
+                                    ->required()
+                                    ->helperText('Pastikan memilih ANC dan ABDOMEN di pelatihan yang sama')
+                                    ->disableOptionsWhenSelectedInSiblingRepeaterItems()
+                                    ->options(function () {
+                                        return \App\Models\TrainingPrice::with(['training', 'city', 'trainingType'])
+                                            ->get()
+                                            ->groupBy(fn($item) => $item->training->judul)
+                                            ->mapWithKeys(function ($group, $judul) {
+                                                return [
+                                                    $judul => $group->mapWithKeys(function ($item) {
+                                                        return [$item->id => sprintf(
+                                                            '%s (%s) - %s s.d. %s - Rp %s',
+                                                            $item->city->name,
+                                                            $item->trainingType->name,
+                                                            optional($item->start_date)->format('d'),
+                                                            optional($item->end_date)->format('d M Y'),
+                                                            number_format($item->price, 0, ',', '.')
+                                                        )];
+                                                    })->toArray(),
+                                                ];
+                                            })->toArray();
                                     })
-                                    ->toArray();
-                            })
-                            ->required()
-                            ->reactive()
-                            ->afterStateUpdated(function ($state, callable $set) {
-                                $total = TrainingPrice::whereIn('id', $state)->sum('price');
-                                $set('total_harga', $total);
-                            })
-                            ->helperText('Pilih minimal satu pelatihan'),
 
-
+                                    ->reactive()
+                                    ->preload()
+                                    ->searchable()
+                                    ->afterStateUpdated(function ($state, Forms\Set $set, Forms\Get $get) {
+                                        self::updateTotalHarga($get, $set);
+                                    }),
+                            ])
+                            ->defaultItems(1)
+                            ->maxItems(2)
+                            ->columns(1)
+                            ->columnSpanFull()
+                            ->addActionLabel('Tambah Pelatihan')
+                            ->deleteAction(
+                                fn(Forms\Components\Actions\Action $action) => $action->requiresConfirmation(),
+                            )
+                            ->afterStateUpdated(function (callable $get, callable $set) {
+                                self::updateTotalHarga($get, $set);
+                            }),
                     ]),
                 Section::make('Informasi Pembayaran')
                     ->collapsible()
@@ -218,6 +242,26 @@ class TrainingOrderResource extends Resource
             ]);
     }
 
+    protected static function updateTotalHarga(Forms\Get $get, Forms\Set $set): void
+    {
+        $orderDetails = $get('orderDetails');
+
+        $total = 0;
+
+        if (is_array($orderDetails)) {
+            foreach ($orderDetails as $detail) {
+                if (isset($detail['training_price_id'])) {
+                    $trainingPrice = \App\Models\TrainingPrice::find($detail['training_price_id']);
+                    if ($trainingPrice) {
+                        $total += $trainingPrice->price;
+                    }
+                }
+            }
+        }
+
+        $set('total_harga', $total);
+    }
+
     public static function getRelations(): array
     {
         return [
@@ -227,7 +271,7 @@ class TrainingOrderResource extends Resource
 
     public static function canCreate(): bool
     {
-        return false;
+        return true;
     }
 
     public static function getPages(): array

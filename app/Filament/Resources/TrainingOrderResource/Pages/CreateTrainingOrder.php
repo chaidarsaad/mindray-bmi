@@ -16,26 +16,8 @@ class CreateTrainingOrder extends CreateRecord
     {
         return 'Buat Pesanan Pelatihan';
     }
-    protected function getRedirectUrl(): string
-    {
-        return $this->getResource()::getUrl('index');
-    }
-
-    protected function mutateFormDataBeforeCreate(array $data): array
-    {
-        $this->trainingPriceIds = $data['training_price_ids'] ?? [];
-        unset($data['training_price_ids']);
-
-        return $data;
-    }
-
-    protected function afterCreate(): void
-    {
-        foreach ($this->trainingPriceIds as $priceId) {
-            $this->record->orderDetails()->create([
-                'training_price_id' => $priceId,
-                // tambahkan field lain jika perlu
-            ]);
-        }
-    }
+    // protected function getRedirectUrl(): string
+    // {
+    //     return $this->getResource()::getUrl('index');
+    // }
 }

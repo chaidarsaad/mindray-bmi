@@ -20,6 +20,12 @@ class TrainingPrice extends Model
         'end_date',
     ];
 
+    protected $casts = [
+        'start_date' => 'datetime',
+        'end_date' => 'datetime',
+    ];
+
+
     public function training()
     {
         return $this->belongsTo(Training::class);
