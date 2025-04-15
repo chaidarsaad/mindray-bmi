@@ -84,6 +84,22 @@ class ProductOrderResource extends Resource
                             ->label('Tanggal Pesan')
                             ->formatStateUsing(fn($state) => Carbon::parse($state)->translatedFormat('d F Y H:i')),
                     ]),
+                Section::make('Produk Dipesan')
+                    ->collapsible()
+                    ->schema([
+                        Forms\Components\Select::make('product_id')
+                            ->label('Produk yang Dipesan')
+                            ->relationship('product', 'name')
+                            ->searchable()
+                            ->required()
+                            ->preload()
+                            ->options(
+                                \App\Models\Product::all()->mapWithKeys(fn($product) => [
+                                    $product->id => $product->name . ($product->subname ? " ({$product->subname})" : ''),
+                                ])
+                            ),
+
+                    ]),
                 Section::make('Informasi Pembayaran')
                     ->collapsible()
                     ->schema([
@@ -97,6 +113,7 @@ class ProductOrderResource extends Resource
                                 OrderStatusService::STATUS_PENDING => OrderStatusService::getStatusLabel(OrderStatusService::STATUS_PENDING),
                                 OrderStatusService::PAYMENT_VERIFYING => OrderStatusService::getStatusLabel(OrderStatusService::PAYMENT_VERIFYING),
                                 OrderStatusService::STATUS_PROCESSING => OrderStatusService::getStatusLabel(OrderStatusService::STATUS_PROCESSING),
+                                OrderStatusService::STATUS_DELIVERING => OrderStatusService::getStatusLabel(OrderStatusService::STATUS_DELIVERING),
                                 OrderStatusService::STATUS_COMPLETED => OrderStatusService::getStatusLabel(OrderStatusService::STATUS_COMPLETED),
                                 OrderStatusService::STATUS_CANCELLED => OrderStatusService::getStatusLabel(OrderStatusService::STATUS_CANCELLED),
                             ])
@@ -140,11 +157,28 @@ class ProductOrderResource extends Resource
                     ->label('Nama Pemesan')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('total_harga')
-                    ->numeric()
+                    ->money('IDR')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('status')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('payment_status'),
+                    ->label('Status')
+                    ->badge()
+                    ->color(fn(string $state): string => match ($state) {
+                        OrderStatusService::STATUS_PENDING => 'warning',
+                        OrderStatusService::STATUS_PROCESSING => 'info',
+                        OrderStatusService::STATUS_DELIVERING => 'info',
+                        OrderStatusService::PAYMENT_VERIFYING => 'denger',
+                        OrderStatusService::STATUS_COMPLETED => 'success',
+                        OrderStatusService::STATUS_CANCELLED => 'danger',
+                    })
+                    ->formatStateUsing(fn($state) => OrderStatusService::getStatusLabel($state)),
+                Tables\Columns\TextColumn::make('payment_status')
+                    ->label('Status Pembayaran')
+                    ->badge()
+                    ->color(fn(string $state): string => match ($state) {
+                        OrderStatusService::PAYMENT_UNPAID => 'danger',
+                        OrderStatusService::PAYMENT_PAID => 'success',
+                    })
+                    ->formatStateUsing(fn($state) => OrderStatusService::getPaymentStatusLabel($state)),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),

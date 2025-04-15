@@ -20,4 +20,15 @@ class CreateProductOrder extends CreateRecord
     // {
     //     return $this->getResource()::getUrl('index');
     // }
+
+    protected function mutateFormDataBeforeCreate(array $data): array
+    {
+        $user = \App\Models\User::find($data['user_id']);
+        if ($user && !empty($data['phone'])) {
+            $user->phone_number = $data['phone'];
+            $user->save();
+        }
+
+        return $data;
+    }
 }
