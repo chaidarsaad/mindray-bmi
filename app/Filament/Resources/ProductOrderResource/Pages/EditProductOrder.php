@@ -1,19 +1,18 @@
 <?php
 
-namespace App\Filament\Resources\TrainingOrderResource\Pages;
+namespace App\Filament\Resources\ProductOrderResource\Pages;
 
-use App\Filament\Resources\TrainingOrderResource;
+use App\Filament\Resources\ProductOrderResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
-use Illuminate\Contracts\Support\Htmlable;
 
-class EditTrainingOrder extends EditRecord
+class EditProductOrder extends EditRecord
 {
-    protected static string $resource = TrainingOrderResource::class;
+    protected static string $resource = ProductOrderResource::class;
 
     public function getTitle(): string|\Illuminate\Support\HtmlString
     {
-        return 'Ubah Pesanan Pelatihan';
+        return 'Ubah Pesanan Produk USG';
     }
 
     protected function getHeaderActions(): array

@@ -71,4 +71,14 @@ class User extends Authenticatable implements FilamentUser
     {
         return $this->roles->isNotEmpty();
     }
+
+    public function trainingOrders()
+    {
+        return $this->hasMany(TrainingOrder::class);
+    }
+
+    public function productOrders()
+    {
+        return $this->hasMany(ProductOrder::class);
+    }
 }

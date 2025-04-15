@@ -2,11 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\TrainingOrderResource\Pages;
-use App\Filament\Resources\TrainingOrderResource\RelationManagers;
-use App\Models\Training;
-use App\Models\TrainingOrder;
-use App\Models\TrainingPrice;
+use App\Filament\Resources\ProductOrderResource\Pages;
+use App\Filament\Resources\ProductOrderResource\RelationManagers;
+use App\Models\ProductOrder;
 use App\Services\OrderStatusService;
 use Filament\Forms;
 use Filament\Forms\Components\Section;
@@ -16,26 +14,23 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Carbon\Carbon;
-use Filament\Forms\Components\Repeater;
-use Filament\Forms\Components\Select;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 
-class TrainingOrderResource extends Resource
+class ProductOrderResource extends Resource
 {
-    protected static ?string $model = TrainingOrder::class;
+    protected static ?string $model = ProductOrder::class;
 
-    protected static ?string $pluralLabel = 'Pesanan Pelatihan';
-    protected static ?string $navigationLabel = 'Pesanan Pelatihan';
-    protected static ?string $navigationGroup = 'Manajemen Pelatihan';
-    protected static ?int $navigationSort = 13;
+    protected static ?string $pluralLabel = 'Pesanan Produk USG';
+    protected static ?string $navigationLabel = 'Pesanan Produk USG';
+    protected static ?string $navigationGroup = 'Manajemen Produk';
+    protected static ?int $navigationSort = 9;
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Section::make('Informasi Pesanan Pelatihan')
+                Section::make('Informasi Pesanan Produk USG')
                     ->collapsible()
                     ->schema([
                         Forms\Components\Select::make('user_id')
@@ -65,7 +60,7 @@ class TrainingOrderResource extends Resource
                             ->readOnly()
                             ->required()
                             ->maxLength(255)
-                            ->default(fn() => 'PEL-' . strtoupper(Str::random(12))),
+                            ->default(fn() => 'USG-' . strtoupper(Str::random(12))),
                         Forms\Components\TextInput::make('name')
                             ->label('Nama Pemesan')
                             ->readOnly()
@@ -88,62 +83,6 @@ class TrainingOrderResource extends Resource
                             ->readOnly()
                             ->label('Tanggal Pesan')
                             ->formatStateUsing(fn($state) => Carbon::parse($state)->translatedFormat('d F Y H:i')),
-                    ]),
-                Section::make('Detail Pelatihan')
-                    ->collapsible()
-                    ->schema([
-                        Forms\Components\Repeater::make('orderDetails')
-                            ->relationship()
-                            ->label('Pelatihan yang dipesan')
-                            ->schema([
-                                Forms\Components\Select::make('training_price_id')
-                                    ->label('Pilihan Pelatihan')
-                                    ->required()
-                                    ->helperText('Pastikan memilih ANC dan ABDOMEN di pelatihan yang sama')
-                                    ->disableOptionsWhenSelectedInSiblingRepeaterItems()
-                                    ->options(function () {
-                                        return \App\Models\TrainingPrice::with(['training', 'city', 'trainingType'])
-                                            ->get()
-                                            ->groupBy(fn($item) => $item->training->judul)
-                                            ->mapWithKeys(function ($group, $judul) {
-                                                return [
-                                                    $judul => $group->mapWithKeys(function ($item) {
-                                                        $isExpired = optional($item->start_date)->isPast();
-                                                        return [$item->id => sprintf(
-                                                            '%s (%s) - %s s.d. %s - Rp %s%s',
-                                                            $item->city->name,
-                                                            $item->trainingType->name,
-                                                            optional($item->start_date)->translatedFormat('l, d'),
-                                                            optional($item->end_date)->translatedFormat('l, d F Y'),
-                                                            number_format($item->price, 0, ',', '.'),
-                                                            $isExpired ? ' (Sudah Terselenggara)' : ''
-                                                        )];
-                                                    })->toArray(),
-                                                ];
-                                            })->toArray();
-                                    })
-                                    ->disableOptionWhen(function (string $value): bool {
-                                        $price = \App\Models\TrainingPrice::find($value);
-                                        return optional($price?->start_date)->isPast();
-                                    })
-                                    ->reactive()
-                                    ->preload()
-                                    ->searchable()
-                                    ->afterStateUpdated(function ($state, Forms\Set $set, Forms\Get $get) {
-                                        self::updateTotalHarga($get, $set);
-                                    }),
-                            ])
-                            ->defaultItems(1)
-                            ->maxItems(2)
-                            ->columns(1)
-                            ->columnSpanFull()
-                            ->addActionLabel('Tambah Pelatihan')
-                            ->deleteAction(
-                                fn(Forms\Components\Actions\Action $action) => $action->requiresConfirmation(),
-                            )
-                            ->afterStateUpdated(function (callable $get, callable $set) {
-                                self::updateTotalHarga($get, $set);
-                            }),
                     ]),
                 Section::make('Informasi Pembayaran')
                     ->collapsible()
@@ -201,27 +140,11 @@ class TrainingOrderResource extends Resource
                     ->label('Nama Pemesan')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('total_harga')
-                    ->money('IDR')
+                    ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('status')
-                    ->label('Status')
-                    ->badge()
-                    ->color(fn(string $state): string => match ($state) {
-                        OrderStatusService::STATUS_PENDING => 'warning',
-                        OrderStatusService::STATUS_PROCESSING => 'info',
-                        OrderStatusService::PAYMENT_VERIFYING => 'denger',
-                        OrderStatusService::STATUS_COMPLETED => 'success',
-                        OrderStatusService::STATUS_CANCELLED => 'danger',
-                    })
-                    ->formatStateUsing(fn($state) => OrderStatusService::getStatusLabel($state)),
-                Tables\Columns\TextColumn::make('payment_status')
-                    ->label('Status Pembayaran')
-                    ->badge()
-                    ->color(fn(string $state): string => match ($state) {
-                        OrderStatusService::PAYMENT_UNPAID => 'danger',
-                        OrderStatusService::PAYMENT_PAID => 'success',
-                    })
-                    ->formatStateUsing(fn($state) => OrderStatusService::getPaymentStatusLabel($state)),
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('payment_status'),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -240,33 +163,13 @@ class TrainingOrderResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make()
-                    ->modalHeading(fn($record) => 'Hapus Pesanan Pelatihan: ' . $record->order_number),
+                    ->modalHeading(fn($record) => 'Hapus Pesanan Produk USG: ' . $record->order_number),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
-    }
-
-    protected static function updateTotalHarga(Forms\Get $get, Forms\Set $set): void
-    {
-        $orderDetails = $get('orderDetails');
-
-        $total = 0;
-
-        if (is_array($orderDetails)) {
-            foreach ($orderDetails as $detail) {
-                if (isset($detail['training_price_id'])) {
-                    $trainingPrice = \App\Models\TrainingPrice::find($detail['training_price_id']);
-                    if ($trainingPrice) {
-                        $total += $trainingPrice->price;
-                    }
-                }
-            }
-        }
-
-        $set('total_harga', $total);
     }
 
     public static function getRelations(): array
@@ -276,17 +179,12 @@ class TrainingOrderResource extends Resource
         ];
     }
 
-    public static function canCreate(): bool
-    {
-        return true;
-    }
-
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListTrainingOrders::route('/'),
-            'create' => Pages\CreateTrainingOrder::route('/create'),
-            'edit' => Pages\EditTrainingOrder::route('/{record}/edit'),
+            'index' => Pages\ListProductOrders::route('/'),
+            'create' => Pages\CreateProductOrder::route('/create'),
+            'edit' => Pages\EditProductOrder::route('/{record}/edit'),
         ];
     }
 }
