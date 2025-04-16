@@ -41,7 +41,7 @@
                             </div>
                         </div>
                         <!-- pagination -->
-                        <ul class="tf-pagination-wrap tf-pagination-list">
+                        {{-- <ul class="tf-pagination-wrap tf-pagination-list">
                             <li class="active">
                                 <a href="#" class="pagination-link">1</a>
                             </li>
@@ -59,7 +59,7 @@
                                     <span class="icon icon-arrow-right"></span>
                                 </a>
                             </li>
-                        </ul>
+                        </ul> --}}
                         {{-- <div class="tf-pagination-wrap view-more-button text-center">
                             <button class="tf-btn-loading tf-loading-default style-2 btn-loadmore">
                                 <span class="text"> Tampilkan Lainnya </span>

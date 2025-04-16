@@ -57,7 +57,7 @@
         <!-- /blog-detail -->
 
         <!-- Related Articles -->
-        @if ($otherArticle->isNotEmpty())
+        {{-- @if ($otherArticle->isNotEmpty())
             <section class="mb_30">
                 <div class="container">
                     <div class="flat-title">
@@ -108,15 +108,15 @@
                                 </div>
                             </div>
                         </div>
-                        {{-- <div class="nav-sw nav-next-slider nav-next-recent box-icon w_46 round"><span
+                        <div class="nav-sw nav-next-slider nav-next-recent box-icon w_46 round"><span
                                 class="icon icon-arrow-left"></span></div>
                         <div class="nav-sw nav-prev-slider nav-prev-recent box-icon w_46 round"><span
                                 class="icon icon-arrow-right"></span></div>
-                        <div class="sw-dots d-flex style-2 sw-pagination-recent justify-content-center"></div> --}}
+                        <div class="sw-dots d-flex style-2 sw-pagination-recent justify-content-center"></div>
                     </div>
                 </div>
             </section>
-        @endif
+        @endif --}}
         <!-- /Related Articles -->
 
         {{-- /page --}}
