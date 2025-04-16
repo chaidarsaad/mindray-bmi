@@ -40,7 +40,7 @@
                                 @endforeach
                             </div>
                         </div>
-                        <div class="mt-3 d-flex justify-content-center">
+                        <div class="mt-0 d-flex justify-content-center">
                             {{ $articles->links('pagination::bootstrap-4') }}
                         </div>
                         <!-- pagination -->
