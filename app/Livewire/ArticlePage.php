@@ -9,7 +9,7 @@ use Livewire\WithPagination;
 class ArticlePage extends Component
 {
     use WithPagination;
-    public $perPage = 1;
+    public $perPage = 8;
 
     public function render()
     {

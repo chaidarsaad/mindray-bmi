@@ -49,6 +49,12 @@
                                         <label class="tf-field-label fw-4 text_black-2" for="property3">Email</label>
                                     </div>
 
+                                    <div class="tf-field style-1 mb_15">
+                                        <input wire:model="phone_number" class="tf-field-input tf-input" placeholder=" "
+                                            type="tel" id="property2">
+                                        <label class="tf-field-label fw-4 text_black-2" for="property3">Nomor HP</label>
+                                    </div>
+
                                     <span>(kosongkan password jika tidak ingin diubah)</span>
                                     <div class="tf-field style-1 mb_30">
                                         <input wire:model.lazy="password" class="tf-field-input tf-input" placeholder=""

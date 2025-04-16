@@ -20,7 +20,7 @@ class AccountDetailPage extends Component
         return [
             'name' => 'required|min:3|unique:users,name,' . Auth::id() . '|regex:/^(?! )[a-z\'’ ]+(?<! )$/',
             'email' => 'required|email|unique:users,email,' . Auth::id(),
-            // 'phone_number' => 'required|numeric',
+            'phone_number' => 'required|numeric|digits_between:11,15',
             'password' => 'nullable|min:8|confirmed',
             'password_confirmation' => 'nullable|min:8'
         ];
@@ -34,8 +34,9 @@ class AccountDetailPage extends Component
         'email.required' => 'Email wajib diisi',
         'email.email' => 'Format email tidak valid',
         'email.unique' => 'Gagal, coba email lain',
-        // 'phone_number.required' => 'Nomor HP wajib diisi',
-        // 'phone_number.numeric' => 'Nomor HP harus berupa angka',
+        'phone_number.required' => 'Nomor HP wajib diisi',
+        'phone_number.numeric' => 'Nomor HP harus berupa angka',
+        'phone_number.digits_between' => 'Nomor HP harus memiliki 11-15 angka',
         'password.min' => 'Password minimal 8 karakter',
         'password.confirmed' => 'Konfirmasi password tidak cocok',
         'password_confirmation.min' => 'Konfirmasi Password minimal 8 karakter',
@@ -46,7 +47,7 @@ class AccountDetailPage extends Component
         $user = Auth::user();
         $this->name = $user->name;
         $this->email = $user->email;
-        // $this->phone_number = $user->phone_number;
+        $this->phone_number = $user->phone_number;
         $this->password = '';
         $this->password_confirmation = '';
     }
@@ -64,7 +65,7 @@ class AccountDetailPage extends Component
         $user = Auth::user();
         $user->name = $this->name;
         $user->email = $this->email;
-        // $user->phone_number = $this->phone_number;
+        $user->phone_number = $this->phone_number;
 
         if (!empty($this->password)) {
             $user->password = Hash::make($this->password);
