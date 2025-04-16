@@ -1,5 +1,5 @@
 @section('title')
-    USG Mindray | Artikel {{ $article->judul }}
+    {{ $article->judul }} | USG Mindray
 @endsection
 
 @push('styles')
