@@ -80,6 +80,7 @@ class ArticleResource extends Resource
             ->defaultSort('id', direction: 'desc')
             ->columns([
                 Tables\Columns\TextColumn::make('judul')
+                    ->limit(30)
                     ->searchable(),
                 Tables\Columns\ImageColumn::make('image')
                     ->label('Thumbnail'),
