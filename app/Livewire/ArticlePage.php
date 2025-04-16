@@ -11,8 +11,6 @@ class ArticlePage extends Component
     use WithPagination;
     public $perPage = 6;
 
-    public $articles;
-
     public function render()
     {
         $articles = Article::where('is_show', 1)

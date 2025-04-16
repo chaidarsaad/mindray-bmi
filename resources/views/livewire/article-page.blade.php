@@ -14,7 +14,7 @@
 
         <!-- Artikel -->
         <div>
-            @if ($articles->isNotEmpty())
+            @if ($articles->count())
                 <section class="flat-spacing-6 pb_0">
                     <div class="blog-grid-main">
                         <div class="container">
