@@ -34,7 +34,7 @@
                     <div class="col-12">
                         <div class="blog-detail-main">
                             <div class="blog-detail-main-heading">
-                                <div class="title" style="margin-bottom: 7px;">{{ $article->judul }}</div>
+                                <div class="title" style="margin-bottom: 5px;">{{ $article->judul }}</div>
                                 <div class="title">{{ $article->sub_judul }}</div>
                                 <div class="meta" style="margin-bottom: 7px;">ditulis oleh
                                     <span>{{ $article->user->name ?? 'admin' }}</span>
