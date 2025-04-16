@@ -44,6 +44,10 @@ class ArticleResource extends Resource
                             ->label('Judul')
                             ->required()
                             ->maxLength(255),
+                        Forms\Components\TextInput::make('sub_judul')
+                            ->label('Sub Judul')
+                            ->helperText('Boleh kosong')
+                            ->maxLength(255),
                         Forms\Components\FileUpload::make('image')
                             ->helperText('Untuk menjaga performa website disarankan gambar berformat .webp dengan ukuran lebar 1366 pixels, tinggi 768 pixels.')
                             ->label('Thumbnail')

@@ -14,6 +14,7 @@ class Article extends Model
         'user_id',
         'slug',
         'judul',
+        'sub_judul',
         'image',
         'content',
         'views',
