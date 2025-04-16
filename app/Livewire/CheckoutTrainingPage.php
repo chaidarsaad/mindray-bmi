@@ -5,11 +5,14 @@ namespace App\Livewire;
 use App\Models\Training;
 use App\Models\TrainingOrder;
 use App\Models\TrainingPrice;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
+use Filament\Notifications\Notification;
+use Filament\Notifications\Actions\Action;
 
 class CheckoutTrainingPage extends Component
 {
@@ -103,6 +106,23 @@ class CheckoutTrainingPage extends Component
             DB::commit();
 
             $this->redirectRoute('detail.training.order', ['order' => $order]);
+
+            $admin = User::role(['super_admin', 'owner'])->get();
+            $title = 'Ada pesanan pelatihan baru dari : ' . $order->name;
+            $body = "Email: {$order->email}<br>Nomor Hp: {$order->phone}";
+
+
+            Notification::make()
+                ->title($title)
+                ->body($body)
+                ->actions([
+                    Action::make('view')
+                        ->label('Lihat')
+                        ->url(route('filament.admin.resources.training-orders.edit', $order))
+                        ->button()
+                        ->markAsRead(),
+                ])
+                ->sendToDatabase($admin);
         } catch (\Illuminate\Validation\ValidationException $e) {
             $errorMessage = collect($e->validator->errors()->all())->first();
             $this->dispatch('notify-error', message: $errorMessage);
