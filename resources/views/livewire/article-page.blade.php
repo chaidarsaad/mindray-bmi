@@ -40,6 +40,9 @@
                                 @endforeach
                             </div>
                         </div>
+                        <div class="mt-3 d-flex justify-content-center">
+                            {{ $articles->links('pagination::bootstrap-4') }}
+                        </div>
                         <!-- pagination -->
                         {{-- <ul class="tf-pagination-wrap tf-pagination-list">
                             <li class="active">

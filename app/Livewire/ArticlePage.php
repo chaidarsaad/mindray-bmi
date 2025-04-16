@@ -4,16 +4,23 @@ namespace App\Livewire;
 
 use App\Models\Article;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class ArticlePage extends Component
 {
+    use WithPagination;
+    public $perPage = 6;
+
     public $articles;
-    public function mount()
-    {
-        $this->articles = Article::where('is_show', 1)->get();
-    }
+
     public function render()
     {
-        return view('livewire.article-page');
+        $articles = Article::where('is_show', 1)
+            ->latest()
+            ->paginate($this->perPage);
+
+        return view('livewire.article-page', [
+            'articles' => $articles
+        ]);
     }
 }

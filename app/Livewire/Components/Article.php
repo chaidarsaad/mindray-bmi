@@ -12,6 +12,7 @@ class Article extends Component
     {
         $this->articles = ModelsArticle::where('is_show', 1)
             ->latest()
+            ->take(6)
             ->get();
     }
     public function render()
