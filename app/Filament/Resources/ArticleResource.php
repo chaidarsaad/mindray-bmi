@@ -13,6 +13,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 
 class ArticleResource extends Resource
@@ -51,6 +52,9 @@ class ArticleResource extends Resource
                         Forms\Components\FileUpload::make('image')
                             ->helperText('Untuk menjaga performa website disarankan gambar berformat .webp dengan ukuran lebar 1366 pixels, tinggi 768 pixels.')
                             ->label('Thumbnail')
+                            ->getUploadedFileNameForStorageUsing(
+                                fn(TemporaryUploadedFile $file): string => 'artikel-' . $file->hashName()
+                            )
                             ->image()
                             ->required(),
                     ]),
