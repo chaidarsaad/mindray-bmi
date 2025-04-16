@@ -111,7 +111,6 @@ class CheckoutTrainingPage extends Component
             $title = 'Ada pesanan pelatihan baru dari : ' . $order->name;
             $body = "Email: {$order->email}<br>Nomor Hp: {$order->phone}";
 
-
             Notification::make()
                 ->title($title)
                 ->body($body)
