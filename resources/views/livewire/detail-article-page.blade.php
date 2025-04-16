@@ -35,11 +35,11 @@
                         <div class="blog-detail-main">
                             <div class="blog-detail-main-heading">
                                 <div class="title">{{ $article->judul }}</div>
+                                <div class="meta" style="margin-bottom: 7px;">ditulis oleh
+                                    <span>{{ $article->user->name ?? 'admin' }}</span>
+                                </div>
                                 <div class="meta">
                                     {{ $article->created_at->locale('id')->isoFormat('dddd, D MMMM YYYY') }}
-                                </div>
-                                <div class="meta">ditulis oleh <span>{{ $article->user->name ?? 'admin' }}</span>
-                                    <span>{{ $article->created_at->diffForHumans() }}</span>
                                 </div>
                                 <div class="image">
                                     <img class="" data-src="{{ Storage::url($article->image) }}"
