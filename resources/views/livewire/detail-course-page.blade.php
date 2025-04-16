@@ -1,5 +1,5 @@
 @section('title')
-    USG Mindray | Detail Pelatihan
+    Pelatihan {{ $training->judul }} | USG Mindray
 @endsection
 
 @push('styles')

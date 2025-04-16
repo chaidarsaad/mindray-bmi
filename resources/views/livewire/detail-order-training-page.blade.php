@@ -1,5 +1,5 @@
 @section('title')
-    USG Mindray | Detail Pesanan Pelatihan
+    Detail Pesanan Pelatihan | USG Mindray
 @endsection
 
 @push('styles')

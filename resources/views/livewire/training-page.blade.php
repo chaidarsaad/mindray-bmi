@@ -1,5 +1,5 @@
 @section('title')
-    USG Mindray | Semua Pelatihan
+    Semua Pelatihan | USG Mindray
 @endsection
 
 <div>

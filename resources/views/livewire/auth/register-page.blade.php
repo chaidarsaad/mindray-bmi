@@ -1,5 +1,5 @@
 @section('title')
-    USG Mindray | Daftar
+    Daftar | USG Mindray
 @endsection
 
 @push('styles')

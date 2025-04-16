@@ -1,5 +1,5 @@
 @section('title')
-    USG Mindray | Konfirmasi Pembayaran
+    Konfirmasi Pembayaran | USG Mindray
 @endsection
 
 @push('styles')

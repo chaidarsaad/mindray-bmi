@@ -1,5 +1,5 @@
 @section('title')
-    USG Mindray | Supplier alat USG Mindray dan Penyelenggara Pelatihan USG Abdomen & ANC
+    Supplier alat USG Mindray dan Penyelenggara Pelatihan USG Abdomen & ANC | USG Mindray
 @endsection
 
 <div>

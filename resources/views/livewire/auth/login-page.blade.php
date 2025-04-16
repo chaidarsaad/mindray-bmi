@@ -1,5 +1,5 @@
 @section('title')
-    USG Mindray | Masuk
+    Masuk | USG Mindray
 @endsection
 
 <div id="wrapper">

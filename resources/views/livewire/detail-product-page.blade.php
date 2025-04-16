@@ -1,5 +1,5 @@
 @section('title')
-    USG Mindray | Detail Produk
+    Produk {{ $product->subname }} | USG Mindray
 @endsection
 
 @push('styles')
@@ -18,19 +18,19 @@
 
 
         /* .video-container {
-                                                                                                        position: relative;
-                                                                                                        width: 100%;
-                                                                                                        padding-bottom: 56.25%;
-                                                                                                        height: 0;
-                                                                                                    }
+                                                                                                                position: relative;
+                                                                                                                width: 100%;
+                                                                                                                padding-bottom: 56.25%;
+                                                                                                                height: 0;
+                                                                                                            }
 
-                                                                                                    .video-container iframe {
-                                                                                                        position: absolute;
-                                                                                                        top: 0;
-                                                                                                        left: 0;
-                                                                                                        width: 100%;
-                                                                                                        height: 100%;
-                                                                                                    } */
+                                                                                                            .video-container iframe {
+                                                                                                                position: absolute;
+                                                                                                                top: 0;
+                                                                                                                left: 0;
+                                                                                                                width: 100%;
+                                                                                                                height: 100%;
+                                                                                                            } */
 
         iframe {
             position: relative;
