@@ -59,3 +59,9 @@ Route::middleware(['auth', 'prevent-if-paid'])->group(function () {
 Route::middleware(['auth', 'checkTrainingEndDate'])->group(function () {
     Route::get('/daftar-pelatihan/{slug}', CheckoutTrainingPage::class)->name('checkout.training');
 });
+
+Route::get('/check-session', function () {
+    return response()->json([
+        'active' => auth()->check() || session()->has('_token')
+    ]);
+});

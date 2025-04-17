@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <meta name="robots" content="index, follow">
     @stack('meta-seo')
@@ -21,6 +22,19 @@
     @livewireScripts
     @include('includes.script')
     @stack('scripts')
+
+    <script>
+        setInterval(() => {
+            fetch('/check-session')
+                .then(res => res.json())
+                .then(data => {
+                    if (!data.active) {
+                        location.reload();
+                    }
+                });
+        }, 2 * 60 * 1000);
+    </script>
+
 </body>
 
 </html>
