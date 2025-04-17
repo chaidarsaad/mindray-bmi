@@ -1,3 +1,17 @@
+@push('meta-seo')
+    <meta name="description"
+        content="Supplier alat USG Mindray dan Penyelenggara Pelatihan USG Abdomen & ANC. Dapatkan informasi lengkap tentang produk dan pelatihan kami di sini.">
+    <meta name="keywords"
+        content="usg, mindray, pelatihan, abdomen, anc, alat kesehatan, usg mindray, pelatihan usg, alat usg, usg bandung, pelatihan anc dan abdomen">
+    <meta name="author" content="USG Mindray">
+
+    <meta property="og:title" content="Alat USG {{ $product->subname }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:site_name" content="USG Mindray">
+    <meta property="og:description" content="Alat USG {{ $product->subname }}">
+    <meta property="og:image" content="{{ asset('assets/images/logo/logo USG MINDRAY BMI bulat.jpg') }}">
+@endpush
+
 @section('title')
     Produk {{ $product->subname }} | USG Mindray
 @endsection
@@ -18,19 +32,19 @@
 
 
         /* .video-container {
-                                                                                                                position: relative;
-                                                                                                                width: 100%;
-                                                                                                                padding-bottom: 56.25%;
-                                                                                                                height: 0;
-                                                                                                            }
+                                                                                                                            position: relative;
+                                                                                                                            width: 100%;
+                                                                                                                            padding-bottom: 56.25%;
+                                                                                                                            height: 0;
+                                                                                                                        }
 
-                                                                                                            .video-container iframe {
-                                                                                                                position: absolute;
-                                                                                                                top: 0;
-                                                                                                                left: 0;
-                                                                                                                width: 100%;
-                                                                                                                height: 100%;
-                                                                                                            } */
+                                                                                                                        .video-container iframe {
+                                                                                                                            position: absolute;
+                                                                                                                            top: 0;
+                                                                                                                            left: 0;
+                                                                                                                            width: 100%;
+                                                                                                                            height: 100%;
+                                                                                                                        } */
 
         iframe {
             position: relative;
@@ -262,9 +276,9 @@
                         <span class="title">Alat USG Lainnya</span>
                     </div>
                     <div class="hover-sw-nav hover-sw-2">
-                        <div class="swiper tf-sw-recent wrap-sw-over" data-preview="4" data-tablet="3" data-mobile="2"
-                            data-space-lg="30" data-space-md="30" data-space="15" data-pagination="1"
-                            data-pagination-md="1" data-pagination-lg="1">
+                        <div class="swiper tf-sw-recent wrap-sw-over" data-preview="4" data-tablet="3"
+                            data-mobile="2" data-space-lg="30" data-space-md="30" data-space="15"
+                            data-pagination="1" data-pagination-md="1" data-pagination-lg="1">
                             <div class="swiper-wrapper">
                                 {{-- 1 --}}
                                 @foreach ($otherProducts as $item)

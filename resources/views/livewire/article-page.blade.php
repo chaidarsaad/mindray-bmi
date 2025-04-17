@@ -1,3 +1,17 @@
+@push('meta-seo')
+    <meta name="description"
+        content="Supplier alat USG Mindray dan Penyelenggara Pelatihan USG Abdomen & ANC. Dapatkan informasi lengkap tentang produk dan pelatihan kami di sini.">
+    <meta name="keywords"
+        content="usg, mindray, pelatihan, abdomen, anc, alat kesehatan, usg mindray, pelatihan usg, alat usg, usg bandung, pelatihan anc dan abdomen, produk usg mindray">
+    <meta name="author" content="USG Mindray">
+
+    <meta property="og:title" content="Artikel">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:site_name" content="USG Mindray">
+    <meta property="og:description" content="Semua Artikel">
+    <meta property="og:image" content="{{ asset('assets/images/logo/logo USG MINDRAY BMI bulat.jpg') }}">
+@endpush
+
 @section('title')
     Semua Artikel | USG Mindray
 @endsection
