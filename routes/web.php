@@ -61,12 +61,17 @@ Route::middleware(['auth', 'checkTrainingEndDate'])->group(function () {
     Route::get('/daftar-pelatihan/{slug}', CheckoutTrainingPage::class)->name('checkout.training');
 });
 
-Route::get('/check-session', function () {
+Route::middleware('throttle:10,1')->get('/check-session', function () {
     return response()->json(['active' => auth()->check() || session()->has('_token')]);
 });
 
-Route::get('/refresh-csrf', function () {
-    return response()->json(['csrf' => csrf_token()]);
+Route::middleware(['web', 'throttle:10,1'])->get('/refresh-csrf', function () {
+    if (!request()->ajax()) {
+        abort(403, 'Forbidden');
+    }
+
+    return response()->json(['active' => auth()->check()]);
 });
+
 
 Route::get('/sitemap.xml', [SitemapController::class, 'index']);
