@@ -143,16 +143,16 @@
                                 @if ($isPastDate)
                                     <span
                                         class="tf-btn tf-btn-process btn-fill radius-3 justify-content-center fw-6 fs-14 flex-grow-1 animate-hover-btn"
-                                        style="pointer-events: none;">
+                                        style="pointer-events: none; cursor: not-allowed;">
                                         Sudah Terselenggara
                                     </span>
                                 @else
-                                    <!-- Jika belum lewat, tombol tetap aktif -->
                                     <a href="{{ route('checkout.training', $training->slug) }}"
                                         class="tf-btn tf-btn-process btn-fill radius-3 justify-content-center fw-6 fs-14 flex-grow-1 animate-hover-btn">
                                         <span>Pesan</span>
                                     </a>
                                 @endif
+
                             </div>
                         </form>
                     </div>

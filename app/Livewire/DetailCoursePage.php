@@ -12,7 +12,7 @@ class DetailCoursePage extends Component
     public $training;
     public $paymentMethods;
     public $accountName;
-    public $isPastDate = false;
+    public $isPastDate = true;
     public $trainingPricesGrouped = [];
     public $trainingPricesWithPrice = [];
 
@@ -30,9 +30,16 @@ class DetailCoursePage extends Component
         // ✅ Inisialisasi dulu biar tidak undefined
         $lastTrainingPrice = null;
 
+
         if ($trainingPrices->isNotEmpty()) {
             $lastTrainingPrice = $trainingPrices->sortByDesc('end_date')->first();
             $this->training->last_end_date = $lastTrainingPrice->end_date;
+
+            $endDate = strtotime($lastTrainingPrice->end_date);
+            $currentDate = time();
+
+            // Hanya jika end_date lebih dari hari ini, maka belum lewat
+            $this->isPastDate = ($endDate < $currentDate);
         } else {
             $this->training->last_end_date = null;
         }
