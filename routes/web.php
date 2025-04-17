@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SitemapController;
 use App\Livewire\AccountDetailPage;
 use App\Livewire\ArticlePage;
 use App\Livewire\Auth\LoginPage;
@@ -61,7 +62,11 @@ Route::middleware(['auth', 'checkTrainingEndDate'])->group(function () {
 });
 
 Route::get('/check-session', function () {
-    return response()->json([
-        'active' => auth()->check() || session()->has('_token')
-    ]);
+    return response()->json(['active' => auth()->check() || session()->has('_token')]);
 });
+
+Route::get('/refresh-csrf', function () {
+    return response()->json(['csrf' => csrf_token()]);
+});
+
+Route::get('/sitemap.xml', [SitemapController::class, 'index']);

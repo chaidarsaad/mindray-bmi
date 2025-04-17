@@ -30,11 +30,20 @@
                 .then(data => {
                     if (!data.active) {
                         location.reload();
+                    } else {
+                        fetch('/refresh-csrf')
+                            .then(res => res.json())
+                            .then(csrfData => {
+                                document.querySelector('meta[name="csrf-token"]').setAttribute('content',
+                                    csrfData.csrf);
+                            });
                     }
+                })
+                .catch(error => {
+                    console.error('Error checking session or refreshing CSRF:', error);
                 });
         }, 2 * 60 * 1000);
     </script>
-
 </body>
 
 </html>
