@@ -25,7 +25,7 @@ Route::get('/', HomePage::class)->name('home');
 Route::get('/kategori', DetailCategoryPage::class)->name('detail.category');
 Route::get('/produk/{slug}', DetailProductPage::class)->name('detail.product');
 Route::get('/artikel/{slug}', DetailArticlePage::class)->name('detail.article');
-Route::get('/pelatihan/{slug}', DetailCoursePage::class)->name('detail.training');
+Route::get('/detail-pelatihan/{slug}', DetailCoursePage::class)->name('detail.training');
 Route::get('/semua-produk', UsgPage::class)->name('usg.all');
 Route::get('/semua-pelatihan', TrainingPage::class)->name('training.all');
 Route::get('/semua-artikel', ArticlePage::class)->name('article.all');
