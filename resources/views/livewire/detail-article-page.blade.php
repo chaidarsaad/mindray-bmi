@@ -8,7 +8,7 @@
     <meta property="og:title" content="Artikel {{ $article->judul }}">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:site_name" content="USG Mindray">
-    <meta property="og:description" content="Artikel {{ $article->judul }}">
+    <meta property="og:description" content="Artikel {{ Str::limit(strip_tags($article->content), 150, '...') }}">
     <meta property="og:image" content="{{ asset('assets/images/logo/logo USG MINDRAY BMI bulat.jpg') }}">
 @endpush
 
