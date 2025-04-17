@@ -5,9 +5,9 @@
         content="usg, mindray, pelatihan, abdomen, anc, alat kesehatan, usg mindray, pelatihan usg, alat usg, usg bandung, pelatihan anc dan abdomen">
     <meta name="author" content="USG Mindray">
 
-    <meta property="og:site_name" content="USG Mindray">
-    <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:title" content="Supplier alat USG Mindray dan Penyelenggara Pelatihan USG Abdomen & ANC">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:site_name" content="USG Mindray">
     <meta property="og:description"
         content="Supplier alat USG Mindray dan Penyelenggara Pelatihan USG Abdomen & ANC. Dapatkan informasi lengkap tentang produk dan pelatihan kami di sini.">
     <meta property="og:image" content="{{ asset('assets/images/logo/logo USG MINDRAY BMI bulat.jpg') }}">
