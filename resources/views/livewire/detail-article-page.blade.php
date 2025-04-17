@@ -5,6 +5,7 @@
         content="usg, mindray, pelatihan, abdomen, anc, alat kesehatan, usg mindray, pelatihan usg, alat usg, usg bandung, pelatihan anc dan abdomen, produk usg mindray">
     <meta name="author" content="USG Mindray">
 
+    <meta property="og:type" content="Artikel">
     <meta property="og:title" content="Artikel {{ $article->judul }}">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:site_name" content="USG Mindray">

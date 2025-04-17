@@ -5,6 +5,7 @@
         content="usg, mindray, pelatihan, abdomen, anc, alat kesehatan, usg mindray, pelatihan usg, alat usg, usg bandung, pelatihan anc dan abdomen">
     <meta name="author" content="USG Mindray">
 
+    <meta property="og:type" content="Alat USG">
     <meta property="og:title" content="Alat USG {{ $product->subname }}">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:site_name" content="USG Mindray">
@@ -32,19 +33,19 @@
 
 
         /* .video-container {
-                                                                                                                            position: relative;
-                                                                                                                            width: 100%;
-                                                                                                                            padding-bottom: 56.25%;
-                                                                                                                            height: 0;
-                                                                                                                        }
+                                                                                                                                position: relative;
+                                                                                                                                width: 100%;
+                                                                                                                                padding-bottom: 56.25%;
+                                                                                                                                height: 0;
+                                                                                                                            }
 
-                                                                                                                        .video-container iframe {
-                                                                                                                            position: absolute;
-                                                                                                                            top: 0;
-                                                                                                                            left: 0;
-                                                                                                                            width: 100%;
-                                                                                                                            height: 100%;
-                                                                                                                        } */
+                                                                                                                            .video-container iframe {
+                                                                                                                                position: absolute;
+                                                                                                                                top: 0;
+                                                                                                                                left: 0;
+                                                                                                                                width: 100%;
+                                                                                                                                height: 100%;
+                                                                                                                            } */
 
         iframe {
             position: relative;
