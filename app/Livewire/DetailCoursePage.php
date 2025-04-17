@@ -22,34 +22,32 @@ class DetailCoursePage extends Component
         $this->accountName = PaymentMethod::first();
 
         $this->training = Training::where('slug', $slug)
-            ->with('trainingPrices.city', 'trainingPrices.trainingType')  // Pastikan relasi sudah dimuat
+            ->with('trainingPrices.city', 'trainingPrices.trainingType')
             ->firstOrFail();
 
-        // Ambil semua trainingPrices untuk training ini
         $trainingPrices = $this->training->trainingPrices;
 
-        // Periksa apakah ada trainingPrice yang ada
-        if ($trainingPrices->isNotEmpty()) {
-            // Ambil tanggal end_date yang paling terakhir dari semua trainingPrices
-            $lastTrainingPrice = $trainingPrices->sortByDesc('end_date')->first(); // Urutkan berdasarkan 'end_date' dan ambil yang terakhir
+        // ✅ Inisialisasi dulu biar tidak undefined
+        $lastTrainingPrice = null;
 
-            // Menyimpan end_date dari trainingPrice yang terakhir
+        if ($trainingPrices->isNotEmpty()) {
+            $lastTrainingPrice = $trainingPrices->sortByDesc('end_date')->first();
             $this->training->last_end_date = $lastTrainingPrice->end_date;
         } else {
-            $this->training->last_end_date = null; // Jika tidak ada data, set null
+            $this->training->last_end_date = null;
         }
 
-        // Menghitung apakah tanggal pelatihan sudah lewat berdasarkan 'end_date' terakhir
+        // ✅ Hanya jalankan ini jika $lastTrainingPrice tidak null
         if ($lastTrainingPrice) {
             $endDate = strtotime($lastTrainingPrice->end_date);
             $currentDate = time();
-            $this->isPastDate = ($endDate < $currentDate); // Menandakan apakah pelatihan sudah lewat
+            $this->isPastDate = ($endDate < $currentDate);
         }
 
-        // Mengelompokkan training prices berdasarkan tempat
         $this->groupTrainingPrices();
-        $this->groupTrainingPricesWithPrice(); // Tambahkan untuk harga
+        $this->groupTrainingPricesWithPrice();
     }
+
 
 
     public function groupTrainingPrices()
