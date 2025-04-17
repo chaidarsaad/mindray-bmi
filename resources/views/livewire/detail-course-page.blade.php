@@ -224,5 +224,15 @@
                 stopOnFocus: true,
             }).showToast();
         }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const iframes = document.querySelectorAll('iframe');
+            iframes.forEach(function(iframe) {
+                const wrapper = document.createElement('div');
+                wrapper.classList.add('video-container');
+                iframe.parentNode.insertBefore(wrapper, iframe);
+                wrapper.appendChild(iframe);
+            });
+        });
     </script>
 @endpush
