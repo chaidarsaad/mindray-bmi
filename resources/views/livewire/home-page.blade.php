@@ -1,14 +1,16 @@
 @push('meta-seo')
     <meta name="description"
-        value="Supplier alat USG Mindray dan Penyelenggara Pelatihan USG Abdomen & ANC. Dapatkan informasi lengkap tentang produk dan pelatihan kami di sini.">
+        content="Supplier alat USG Mindray dan Penyelenggara Pelatihan USG Abdomen & ANC. Dapatkan informasi lengkap tentang produk dan pelatihan kami di sini.">
     <meta name="keywords"
-        value="usg, mindray, pelatihan, abdomen, anc, alat kesehatan, usg mindray, pelatihan usg, alat usg, usg bandung, pelatihan anc dan abdomen">
-    <meta name="author" value="USG Mindray">
-    <meta property="og:title" value="Supplier alat USG Mindray dan Penyelenggara Pelatihan USG Abdomen & ANC">
+        content="usg, mindray, pelatihan, abdomen, anc, alat kesehatan, usg mindray, pelatihan usg, alat usg, usg bandung, pelatihan anc dan abdomen">
+    <meta name="author" content="USG Mindray">
+
+    <meta property="og:site_name" content="USG Mindray">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:title" content="Supplier alat USG Mindray dan Penyelenggara Pelatihan USG Abdomen & ANC">
     <meta property="og:description"
-        value="Supplier alat USG Mindray dan Penyelenggara Pelatihan USG Abdomen & ANC. Dapatkan informasi lengkap tentang produk dan pelatihan kami di sini.">
-    <meta property="og:image" value="{{ asset('assets/images/logo/logo USG MINDRAY BMI bulat.jpg') }}">
-    <meta property="og:url" value="{{ url()->current() }}">
+        content="Supplier alat USG Mindray dan Penyelenggara Pelatihan USG Abdomen & ANC. Dapatkan informasi lengkap tentang produk dan pelatihan kami di sini.">
+    <meta property="og:image" content="{{ asset('assets/images/logo/logo USG MINDRAY BMI bulat.jpg') }}">
 @endpush
 
 @section('title')
