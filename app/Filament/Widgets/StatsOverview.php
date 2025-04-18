@@ -43,16 +43,26 @@ class StatsOverview extends BaseWidget
         }
 
         $pengeluaran = $expenseQuery->sum('amount');
+        $pengunjung = Visit::query()
+            ->when($startDate && $endDate, function ($query) use ($startDate, $endDate) {
+                $query->whereBetween('created_at', [$startDate, $endDate]);
+            })
+            ->distinct('ip_address')
+            ->count('ip_address');
+        $jumlahCustomer = User::query()
+            ->doesntHave('roles')
+            ->when($startDate && $endDate, function ($query) use ($startDate, $endDate) {
+                $query->whereBetween('created_at', [$startDate, $endDate]);
+            })
+            ->count();
+
 
         return [
             Stat::make('Total Produk USG', Product::count()),
             Stat::make('Total Pelatihan', Training::count()),
             Stat::make('Total Artikel', Article::count()),
-            Stat::make('Jumlah Customer Terdaftar', User::doesntHave('roles')->count()),
-            Stat::make('Jumlah Pengunjung Bulan Ini', Visit::whereMonth('created_at', now()->month)
-                ->whereYear('created_at', now()->year)
-                ->distinct('ip_address')
-                ->count('ip_address')),
+            Stat::make('Jumlah Customer Terdaftar', $jumlahCustomer),
+            Stat::make('Jumlah Pengunjung', $pengunjung),
             Stat::make('Total Pengeluaran', 'Rp ' . number_format($pengeluaran, 0, ",", ",")),
         ];
     }
