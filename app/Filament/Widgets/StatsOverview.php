@@ -61,7 +61,7 @@ class StatsOverview extends BaseWidget
             Stat::make('Total Produk USG', Product::count()),
             Stat::make('Total Pelatihan', Training::count()),
             Stat::make('Total Artikel', Article::count()),
-            Stat::make('Jumlah Customer Terdaftar', User::doesntHave('roles')->count()),
+            Stat::make('Jumlah Customer Terdaftar', $jumlahCustomer),
             Stat::make('Jumlah Pengunjung', $pengunjung),
             Stat::make('Total Pengeluaran', 'Rp ' . number_format($pengeluaran, 0, ",", ",")),
         ];
