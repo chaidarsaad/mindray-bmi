@@ -28,8 +28,8 @@ class TrainingOrderResource extends Resource
 
     protected static ?string $pluralLabel = 'Pesanan Pelatihan';
     protected static ?string $navigationLabel = 'Pesanan Pelatihan';
-    protected static ?string $navigationGroup = 'Manajemen Pelatihan';
-    protected static ?int $navigationSort = 13;
+    protected static ?string $navigationGroup = 'Manajemen Pemasukan';
+    protected static ?int $navigationSort = 8;
 
     public static function form(Form $form): Form
     {
@@ -87,7 +87,7 @@ class TrainingOrderResource extends Resource
                         Forms\Components\TextInput::make('created_at')
                             ->readOnly()
                             ->label('Tanggal Pesan')
-                            ->formatStateUsing(fn($state) => Carbon::parse($state)->translatedFormat('d F Y H:i')),
+                            ->formatStateUsing(fn($state) => Carbon::parse($state)->translatedFormat('l, d F Y H:i')),
                     ]),
                 Section::make('Detail Pelatihan')
                     ->collapsible()

@@ -21,7 +21,7 @@ class TrainingTypeResource extends Resource
     protected static ?string $pluralLabel = 'Jenis Pelatihan USG';
     protected static ?string $navigationLabel = 'Jenis Pelatihan USG';
     protected static ?string $navigationGroup = 'Manajemen Pelatihan';
-    protected static ?int $navigationSort = 11;
+    protected static ?int $navigationSort = 13;
 
 
     public static function form(Form $form): Form

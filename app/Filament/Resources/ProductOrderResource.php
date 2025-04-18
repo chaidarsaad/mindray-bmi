@@ -23,8 +23,8 @@ class ProductOrderResource extends Resource
 
     protected static ?string $pluralLabel = 'Pesanan Produk USG';
     protected static ?string $navigationLabel = 'Pesanan Produk USG';
-    protected static ?string $navigationGroup = 'Manajemen Produk';
-    protected static ?int $navigationSort = 9;
+    protected static ?string $navigationGroup = 'Manajemen Pemasukan';
+    protected static ?int $navigationSort = 7;
 
     public static function form(Form $form): Form
     {
@@ -86,7 +86,7 @@ class ProductOrderResource extends Resource
                         Forms\Components\TextInput::make('created_at')
                             ->readOnly()
                             ->label('Tanggal Pesan')
-                            ->formatStateUsing(fn($state) => Carbon::parse($state)->translatedFormat('d F Y H:i')),
+                            ->formatStateUsing(fn($state) => Carbon::parse($state)->translatedFormat('l, d F Y H:i')),
                     ]),
                 Section::make('Produk Dipesan')
                     ->collapsible()
@@ -150,7 +150,7 @@ class ProductOrderResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Tanggal')
-                    ->dateTime('d M Y H:i')
+                    ->dateTime('l, d F Y H:i')
                     ->timezone('Asia/Jakarta')
                     ->searchable()
                     ->sortable(),
