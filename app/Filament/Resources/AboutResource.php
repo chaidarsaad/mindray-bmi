@@ -49,7 +49,7 @@ class AboutResource extends Resource
                             ->required()
                             ->maxLength(255),
                         Forms\Components\Textarea::make('address')
-                            ->rows(6)
+                            ->rows(10)
                             ->label('Alamat CV')
                             ->required()
                             ->maxLength(255),
@@ -70,7 +70,7 @@ class AboutResource extends Resource
                     ->collapsible()
                     ->schema([
                         Forms\Components\Textarea::make('trusted')
-                            ->rows(6)
+                            ->rows(10)
                             ->label('Kalimat Footer'),
                         Forms\Components\TextInput::make('instagram')
                             ->url()
