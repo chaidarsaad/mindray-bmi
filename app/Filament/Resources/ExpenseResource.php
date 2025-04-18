@@ -9,10 +9,12 @@ use Filament\Forms;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Support\RawJs;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class ExpenseResource extends Resource
 {
@@ -36,8 +38,18 @@ class ExpenseResource extends Resource
                             ->maxLength(255),
                         Forms\Components\TextInput::make('amount')
                             ->label('Jumlah Pengeluaran')
-                            ->prefix('Rp')
                             ->required()
+                            ->prefix('Rp')
+                            ->mask(
+                                RawJs::make(<<<'JS'
+                                    $input => {
+                                        let number = $input.replace(/[^\d]/g, '');
+                                        if (number === '') return '0';
+                                        return new Intl.NumberFormat('id-ID').format(Number(number));
+                                    }
+                                JS)
+                            )
+                            ->stripCharacters([',', '.'])
                             ->numeric(),
                         Forms\Components\DateTimePicker::make('date_expense')
                             ->default(now())
@@ -52,6 +64,16 @@ class ExpenseResource extends Resource
                             ->rows(3)
                             ->helperText('Opsional')
                             ->columnSpanFull(),
+                        Forms\Components\FileUpload::make('payment_proofs')
+                            ->label('Bukti Pembayaran')
+                            ->getUploadedFileNameForStorageUsing(
+                                fn(TemporaryUploadedFile $file): string => 'bukti-pengeluaran-' . $file->hashName()
+                            )
+                            ->image()
+                            ->multiple()
+                            ->openable()
+                            ->downloadable()
+                            ->helperText('Bisa lebih dari 1 Bukti Pembayaran & Tidak wajib diisi'),
                     ]),
             ]);
     }

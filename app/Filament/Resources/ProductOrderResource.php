@@ -10,12 +10,14 @@ use Filament\Forms;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Support\RawJs;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class ProductOrderResource extends Resource
 {
@@ -109,7 +111,17 @@ class ProductOrderResource extends Resource
                     ->schema([
                         Forms\Components\TextInput::make('total_harga')
                             ->prefix('Rp')
-                            ->required()
+                            ->prefix('Rp')
+                            ->mask(
+                                RawJs::make(<<<'JS'
+                                    $input => {
+                                        let number = $input.replace(/[^\d]/g, '');
+                                        if (number === '') return '0';
+                                        return new Intl.NumberFormat('id-ID').format(Number(number));
+                                    }
+                                JS)
+                            )
+                            ->stripCharacters([',', '.'])
                             ->numeric(),
                         Forms\Components\Select::make('status')
                             ->label('Status')
@@ -135,6 +147,9 @@ class ProductOrderResource extends Resource
                             ->native(false),
                         Forms\Components\FileUpload::make('payment_proof')
                             ->label('Bukti Pembayaran')
+                            ->getUploadedFileNameForStorageUsing(
+                                fn(TemporaryUploadedFile $file): string => 'bukti-transfer-alat-usg' . $file->hashName()
+                            )
                             ->openable()
                             ->downloadable(),
                     ]),

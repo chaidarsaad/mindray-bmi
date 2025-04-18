@@ -6,6 +6,7 @@ use App\Models\About;
 use App\Models\Article;
 use App\Models\Carousel;
 use App\Models\Category;
+use App\Models\Expense;
 use App\Models\PaymentMethod;
 use App\Models\Product;
 use App\Models\Training;
@@ -14,6 +15,7 @@ use App\Observers\AboutObserver;
 use App\Observers\ArticleObserver;
 use App\Observers\CarouselObserver;
 use App\Observers\CategoryObserver;
+use App\Observers\ExpenseObserver;
 use App\Observers\PaymentMethodObserver;
 use App\Observers\ProductObserver;
 use App\Observers\TrainingObserver;
@@ -45,5 +47,6 @@ class AppServiceProvider extends ServiceProvider
         Training::observe(TrainingObserver::class);
         Article::observe(ArticleObserver::class);
         PaymentMethod::observe(PaymentMethodObserver::class);
+        Expense::observe(ExpenseObserver::class);
     }
 }

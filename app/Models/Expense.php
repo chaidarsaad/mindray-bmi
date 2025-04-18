@@ -12,6 +12,11 @@ class Expense extends Model
         'amount',
         'date_expense',
         'note',
+        'payment_proofs',
+    ];
+
+    protected $casts = [
+        'payment_proofs' => 'array',
     ];
 
     public function getRouteKeyName()

@@ -7,6 +7,7 @@ use Filament\Forms;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
+use Filament\Support\RawJs;
 use Filament\Tables;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
@@ -66,7 +67,16 @@ class TrainingPricesRelationManager extends RelationManager
                         Forms\Components\TextInput::make('price')
                             ->label('Harga Pelatihan')
                             ->prefix('Rp')
-                            ->required()
+                            ->mask(
+                                RawJs::make(<<<'JS'
+                                    $input => {
+                                        let number = $input.replace(/[^\d]/g, '');
+                                        if (number === '') return '0';
+                                        return new Intl.NumberFormat('id-ID').format(Number(number));
+                                    }
+                                JS)
+                            )
+                            ->stripCharacters([',', '.'])
                             ->numeric(),
                         Forms\Components\TextInput::make('place')
                             ->label('Tempat Pelatihan')
