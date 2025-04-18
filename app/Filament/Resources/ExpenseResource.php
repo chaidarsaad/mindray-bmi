@@ -65,7 +65,7 @@ class ExpenseResource extends Resource
                             ->helperText('Opsional')
                             ->columnSpanFull(),
                         Forms\Components\FileUpload::make('payment_proofs')
-                            ->label('Bukti Pembayaran')
+                            ->label('Bukti Pengeluaran')
                             ->getUploadedFileNameForStorageUsing(
                                 fn(TemporaryUploadedFile $file): string => 'bukti-pengeluaran-' . $file->hashName()
                             )
