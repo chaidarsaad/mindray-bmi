@@ -59,15 +59,19 @@ class StatsOverview extends BaseWidget
 
         return [
             Stat::make('Total Produk USG', Product::count())
-                ->url(route('filament.admin.resources.products.index')),
+                ->url(route('filament.admin.resources.products.index'))
+                ->description('klik untuk melihat semua produk'),
             Stat::make('Total Pelatihan', Training::count())
-                ->url(route('filament.admin.resources.trainings.index')),
+                ->url(route('filament.admin.resources.trainings.index'))
+                ->description('klik untuk melihat semua pelatihan'),
             Stat::make('Total Artikel', Article::count())
-                ->url(route('filament.admin.resources.articles.index')),
+                ->url(route('filament.admin.resources.articles.index'))
+                ->description('klik untuk melihat semua artikel'),
             Stat::make('Jumlah Customer Terdaftar', $jumlahCustomer),
             Stat::make('Jumlah Pengunjung', $pengunjung),
             Stat::make('Total Pengeluaran', 'Rp ' . number_format($pengeluaran, 0, ",", ","))
-                ->url(route('filament.admin.resources.expenses.index')),
+                ->url(route('filament.admin.resources.expenses.index'))
+                ->description('klik untuk melihat semua pengeluaran'),
         ];
     }
 }
