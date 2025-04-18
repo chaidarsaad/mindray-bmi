@@ -32,7 +32,8 @@ class ExpenseResource extends Resource
                 Section::make('Pengeluaran')
                     ->collapsible()
                     ->schema([
-                        Forms\Components\TextInput::make('name')
+                        Forms\Components\Textarea::make('name')
+                            ->rows(3)
                             ->label('Nama Pengeluaran')
                             ->required()
                             ->maxLength(255),
