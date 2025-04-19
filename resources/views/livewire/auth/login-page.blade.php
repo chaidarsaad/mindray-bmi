@@ -2,6 +2,30 @@
     Masuk | USG Mindray
 @endsection
 
+@push('styles')
+    <style>
+        .link-row-centered {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            margin-top: 1rem;
+        }
+
+        .back-link {
+            font-size: 14px;
+            color: #888;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+            color: #555;
+        }
+    </style>
+@endpush
+
+
 <div id="wrapper">
     <section class="flat-spacing-10"
         style="
@@ -36,12 +60,12 @@
                                 Masuk
                             </button>
                         </div>
-                        <div class="text-center">
-                            <a href="{{ route('register') }}" class="tf-btn btn-line">Belum punya
-                                akun?
-                                daftar
+                        <div class="link-row-centered mt_20">
+                            <a href="{{ route('register') }}" class="tf-btn btn-line">Belum punya akun? daftar
                                 disini</a>
+                            <a href="{{ route('home') }}" class="tf-btn btn-line">Kembali ke Beranda</a>
                         </div>
+
                     </form>
                 </div>
             </div>

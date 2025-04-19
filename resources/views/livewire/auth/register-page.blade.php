@@ -3,6 +3,26 @@
 @endsection
 
 @push('styles')
+    <style>
+        .link-row-centered {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            margin-top: 1rem;
+        }
+
+        .back-link {
+            font-size: 14px;
+            color: #888;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+            color: #555;
+        }
+    </style>
 @endpush
 
 <div id="wrapper">
@@ -52,10 +72,11 @@
                                 Daftar
                             </button>
                         </div>
-                        <div class="text-center">
+                        <div class="link-row-centered mt_20">
                             <a href="{{ route('login') }}" class="tf-btn btn-line">Sudah punya
                                 akun? masuk
                                 disini<i class="icon icon-arrow1-top-left"></i></a>
+                            <a href="{{ route('home') }}" class="tf-btn btn-line">Kembali ke Beranda</a>
                         </div>
                     </form>
                 </div>
