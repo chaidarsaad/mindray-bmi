@@ -54,7 +54,8 @@ class TopArticles extends BaseWidget
                     ->label('Jumlah Dilihat'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Dibuat')
-                    ->date('l, d F Y'),
+                    ->date('l, d F Y')
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->actions([
                 Tables\Actions\ViewAction::make()
