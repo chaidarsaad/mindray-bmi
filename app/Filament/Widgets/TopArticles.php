@@ -45,17 +45,11 @@ class TopArticles extends BaseWidget
             ->columns([
                 Tables\Columns\TextColumn::make('judul')
                     ->label('Judul')
-                    ->searchable()
                     ->limit(20),
                 Tables\Columns\TextColumn::make('user.name')
-                    ->searchable()
                     ->label('Penulis'),
                 Tables\Columns\TextColumn::make('views')
                     ->label('Jumlah Dilihat'),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->label('Dibuat')
-                    ->date('l, d F Y')
-                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->actions([
                 Tables\Actions\ViewAction::make()

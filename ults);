@@ -1,0 +1,24 @@
+[90m= [39m[
+    {#7353
+      +"[1morder_number[22m": "[32mPEL-6HB4OZ9SESO9[39m",
+      +"[1mname[22m": "[32mchaidar[39m",
+      +"[1mtotal_harga[22m": [35m5700000[39m,
+      +"[1mcreated_at[22m": "[32m2025-04-19 10:50:04[39m",
+      +"[1mtype[22m": "[32mtraining[39m",
+    },
+    {#7350
+      +"[1morder_number[22m": "[32mUSG-TWVXXESVC2B3[39m",
+      +"[1mname[22m": "[32mchaidar[39m",
+      +"[1mtotal_harga[22m": [35m1000000[39m,
+      +"[1mcreated_at[22m": "[32m2025-04-19 10:36:13[39m",
+      +"[1mtype[22m": "[32mproduct[39m",
+    },
+    {#7349
+      +"[1morder_number[22m": "[32mUSG-GTN6QLEZV8A9[39m",
+      +"[1mname[22m": "[32mrizal[39m",
+      +"[1mtotal_harga[22m": [35m6000000[39m,
+      +"[1mcreated_at[22m": "[32m2025-04-19 22:09:03[39m",
+      +"[1mtype[22m": "[32mproduct[39m",
+    },
+  ]
+

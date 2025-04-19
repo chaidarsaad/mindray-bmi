@@ -92,7 +92,7 @@ class CheckoutTrainingPage extends Component
 
             $order = TrainingOrder::create([
                 'user_id'        => auth()->id(),
-                'order_number'   => 'ORD-' . strtoupper(Str::random(12)),
+                'order_number'   => 'PEL-' . strtoupper(Str::random(12)),
                 'total_harga'    => $this->total_harga,
                 'status'         => 'pending',
                 'payment_status' => 'unpaid',
