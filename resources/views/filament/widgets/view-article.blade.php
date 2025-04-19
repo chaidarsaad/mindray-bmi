@@ -13,9 +13,9 @@
 
 <script>
     setTimeout(() => {
-        const modal = document.querySelector('[data-modal-container]');
-        if (modal) {
-            modal.scrollTop = 0;
-        }
+        (document.querySelector('[data-modal-container]') ?? window).scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     }, 100);
 </script>
