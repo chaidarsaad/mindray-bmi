@@ -74,7 +74,7 @@ class OrderBiggest extends BaseWidget
                 Tables\Columns\TextColumn::make('name')
                     ->label('Nama Pemesan'),
                 Tables\Columns\TextColumn::make('total_harga')
-                    ->label('Jumlah')
+                    ->label('Total')
                     ->money('IDR'),
                 Tables\Columns\TextColumn::make('type')
                     ->label('Pesanan')

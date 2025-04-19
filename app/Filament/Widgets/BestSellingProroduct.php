@@ -57,7 +57,7 @@ class BestSellingProroduct extends BaseWidget
                 Tables\Columns\TextColumn::make('total')
                     ->label('Jumlah Terjual'),
                 Tables\Columns\TextColumn::make('total_revenue')
-                    ->label('Total Pendapatan')
+                    ->label('Total')
                     ->money('IDR', true),
             ]);
     }
