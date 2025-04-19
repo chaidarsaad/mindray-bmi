@@ -5,6 +5,8 @@ namespace App\Filament\Widgets;
 use App\Models\ProductOrder;
 use BezhanSalleh\FilamentShield\Traits\HasWidgetShield;
 use Filament\Tables;
+use Filament\Tables\Columns\Summarizers\Range;
+use Filament\Tables\Columns\Summarizers\Sum;
 use Filament\Tables\Table;
 use Filament\Widgets\Concerns\InteractsWithPageFilters;
 use Filament\Widgets\TableWidget as BaseWidget;
@@ -45,7 +47,7 @@ class BestSellingProroduct extends BaseWidget
                         $query->whereBetween('created_at', [$startDate, $endDate]);
                     })
                     ->where('payment_status', 'paid')  // Hanya memilih yang status pembayaran "paid"
-                    ->selectRaw('product_id, count(*) as total, sum(total_harga) as total_revenue')  // Menghitung jumlah produk dan total pendapatan
+                    ->selectRaw('product_id, count(*) as total, sum(total_harga) as Total_Pemasukan')  // Menghitung jumlah produk dan total pendapatan
                     ->groupBy('product_id')  // Mengelompokkan berdasarkan product_id
                     ->with(['product'])  // Memuat relasi produk
                     ->orderByDesc('total');
@@ -56,9 +58,22 @@ class BestSellingProroduct extends BaseWidget
                     ->limit(20),
                 Tables\Columns\TextColumn::make('total')
                     ->label('Jumlah Terjual'),
-                Tables\Columns\TextColumn::make('total_revenue')
+                Tables\Columns\TextColumn::make('Total_Pemasukan')
                     ->label('Total')
-                    ->money('IDR', true),
+                    ->formatStateUsing(fn($state) => 'Rp ' . number_format($state ?? 0, 2, ',', '.'))
+                    ->summarize(
+                        Sum::make()
+                            ->label('Total Pemasukan')
+                            ->formatStateUsing(fn($state) => 'Rp ' . number_format($state ?? 0, 2, ',', '.'))
+                    ),
+                Tables\Columns\TextColumn::make('total')
+                    ->label('Jumlah Terjual')
+                    ->formatStateUsing(fn($state) => number_format($state ?? 0, 0, ',', '.'))
+                    ->summarize(
+                        Sum::make()
+                            ->label('Total Produk USG Terjual')
+                            ->formatStateUsing(fn($state) => number_format($state ?? 0, 0, ',', '.'))
+                    ),
             ]);
     }
 }
