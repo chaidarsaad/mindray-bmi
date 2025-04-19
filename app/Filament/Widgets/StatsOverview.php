@@ -91,8 +91,9 @@ class StatsOverview extends BaseWidget
                 ->url(route('filament.admin.resources.expenses.index'))
                 ->description('klik untuk melihat semua pengeluaran'),
             Stat::make('Total Pemasukan', 'Rp ' . number_format($totalPemasukan, 0, ",", ","))
-                ->description('total pemasukan dari pelatihan dan produk'),
+                ->description('total pemasukan dari pelatihan dan produk USG'),
             Stat::make('Total Laba', 'Rp ' . number_format($totalLaba, 0, ",", ","))
+                ->description('total laba bersih dari pelatihan dan produk USG'),
         ];
     }
 }
