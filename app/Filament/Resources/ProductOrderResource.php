@@ -112,6 +112,7 @@ class ProductOrderResource extends Resource
                         Forms\Components\TextInput::make('total_harga')
                             ->prefix('Rp')
                             ->prefix('Rp')
+                            ->required()
                             ->mask(
                                 RawJs::make(<<<'JS'
                                     $input => {

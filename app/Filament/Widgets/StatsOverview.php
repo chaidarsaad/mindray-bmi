@@ -5,7 +5,9 @@ namespace App\Filament\Widgets;
 use App\Models\Article;
 use App\Models\Expense;
 use App\Models\Product;
+use App\Models\ProductOrder;
 use App\Models\Training;
+use App\Models\TrainingOrder;
 use App\Models\User;
 use App\Models\Visit;
 use BezhanSalleh\FilamentShield\Traits\HasWidgetShield;
@@ -56,6 +58,20 @@ class StatsOverview extends BaseWidget
             })
             ->count();
 
+        $totalPemasukan = TrainingOrder::query()
+            ->where('payment_status', 'paid')
+            ->when($startDate && $endDate, function ($query) use ($startDate, $endDate) {
+                $query->whereBetween('created_at', [$startDate, $endDate]);
+            })
+            ->sum('total_harga');
+
+        $totalPemasukan += ProductOrder::query()
+            ->where('payment_status', 'paid')
+            ->when($startDate && $endDate, function ($query) use ($startDate, $endDate) {
+                $query->whereBetween('created_at', [$startDate, $endDate]);
+            })
+            ->sum('total_harga');
+
 
         return [
             Stat::make('Total Produk USG', Product::count())
@@ -72,6 +88,8 @@ class StatsOverview extends BaseWidget
             Stat::make('Total Pengeluaran', 'Rp ' . number_format($pengeluaran, 0, ",", ","))
                 ->url(route('filament.admin.resources.expenses.index'))
                 ->description('klik untuk melihat semua pengeluaran'),
+            Stat::make('Total Pemasukan', 'Rp ' . number_format($totalPemasukan, 0, ",", ","))
+                ->description('total pemasukan dari pelatihan dan produk'),
         ];
     }
 }

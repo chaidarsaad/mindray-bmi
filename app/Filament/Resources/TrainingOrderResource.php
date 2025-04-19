@@ -190,7 +190,7 @@ class TrainingOrderResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Tanggal')
-                    ->dateTime('d M Y H:i')
+                    ->dateTime('l, d F Y H:i')
                     ->timezone('Asia/Jakarta')
                     ->searchable()
                     ->sortable(),
