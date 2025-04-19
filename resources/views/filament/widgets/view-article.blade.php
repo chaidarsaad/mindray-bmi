@@ -12,14 +12,12 @@
 </div>
 
 <script>
-    function scrollModalToTop() {
-        const modal = document.querySelector('[data-modal-container]');
-        if (modal) {
-            modal.scrollTop = 0;
-        } else {
-            requestAnimationFrame(scrollModalToTop);
-        }
-    }
-
-    requestAnimationFrame(scrollModalToTop);
+    document.addEventListener('livewire:load', () => {
+        Livewire.hook('message.processed', (message, component) => {
+            const modal = document.querySelector('[data-modal-container]');
+            if (modal) {
+                modal.scrollTop = 0;
+            }
+        });
+    });
 </script>
