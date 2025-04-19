@@ -46,7 +46,7 @@ class TopArticles extends BaseWidget
                 Tables\Columns\TextColumn::make('judul')
                     ->label('Judul')
                     ->searchable()
-                    ->limit(40),
+                    ->limit(20),
                 Tables\Columns\TextColumn::make('user.name')
                     ->searchable()
                     ->label('Penulis'),
