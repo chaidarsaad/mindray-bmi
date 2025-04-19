@@ -10,20 +10,3 @@
         {!! $record->content !!}
     </div>
 </div>
-
-<script>
-    document.addEventListener('livewire:load', () => {
-        Livewire.hook('message.processed', (message, component) => {
-            const modal = document.querySelector('.fi-modal');
-
-            if (modal) {
-                modal.scrollTop = 0;
-
-                // Kadang ada container dalam .fi-modal juga, kita bantu paksa semuanya
-                modal.querySelectorAll('[data-modal-container], .fi-modal').forEach((el) => {
-                    el.scrollTop = 0;
-                });
-            }
-        });
-    });
-</script>
