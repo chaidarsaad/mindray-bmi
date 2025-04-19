@@ -12,10 +12,14 @@
 </div>
 
 <script>
-    setTimeout(() => {
-        (document.querySelector('[data-modal-container]') ?? window).scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    }, 100);
+    function scrollModalToTop() {
+        const modal = document.querySelector('[data-modal-container]');
+        if (modal) {
+            modal.scrollTop = 0;
+        } else {
+            requestAnimationFrame(scrollModalToTop);
+        }
+    }
+
+    requestAnimationFrame(scrollModalToTop);
 </script>
