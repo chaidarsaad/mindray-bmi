@@ -1,4 +1,4 @@
-<div class="max-h-[70vh] overflow-y-auto px-4 py-2">
+<div>
     <div class="text-sm mb-2">
         Ditulis oleh: {{ optional($record->user)->name ?? 'Admin' }} |
         {{ $record->created_at->translatedFormat('l, d F Y') }}
@@ -10,3 +10,12 @@
         {!! $record->content !!}
     </div>
 </div>
+
+<script>
+    setTimeout(() => {
+        const modal = document.querySelector('[data-modal-container]');
+        if (modal) {
+            modal.scrollTop = 0;
+        }
+    }, 100);
+</script>
