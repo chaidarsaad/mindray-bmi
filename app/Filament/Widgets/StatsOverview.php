@@ -72,6 +72,8 @@ class StatsOverview extends BaseWidget
             })
             ->sum('total_harga');
 
+        $totalLaba = $totalPemasukan - $pengeluaran;
+
 
         return [
             Stat::make('Total Produk USG', Product::count())
@@ -90,6 +92,7 @@ class StatsOverview extends BaseWidget
                 ->description('klik untuk melihat semua pengeluaran'),
             Stat::make('Total Pemasukan', 'Rp ' . number_format($totalPemasukan, 0, ",", ","))
                 ->description('total pemasukan dari pelatihan dan produk'),
+            Stat::make('Total Laba', 'Rp ' . number_format($totalLaba, 0, ",", ","))
         ];
     }
 }
