@@ -57,7 +57,7 @@
                                                 {{ $startDate->locale('id')->translatedFormat('l, d') }} s.d.
                                                 {{ $endDate->locale('id')->translatedFormat('l, d F Y') }}
                                                 @if ($price->is_past)
-                                                    - <span class="text-muted">(Sudah Terselenggara)</span>
+                                                    - (Sudah Terselenggara)
                                                 @endif
                                             </option>
                                         @endforeach
@@ -82,7 +82,7 @@
                                                 {{ $startDate->locale('id')->translatedFormat('l, d') }} s.d.
                                                 {{ $endDate->locale('id')->translatedFormat('l, d F Y') }}
                                                 @if ($price->is_past)
-                                                    - <span class="text-muted">(Sudah Terselenggara)</span>
+                                                    - (Sudah Terselenggara)
                                                 @endif
                                             </option>
                                         @endforeach
