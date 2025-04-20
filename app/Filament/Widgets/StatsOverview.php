@@ -73,16 +73,28 @@ class StatsOverview extends BaseWidget
             ->sum('total_harga');
 
         $totalLaba = $totalPemasukan - $pengeluaran;
+        $totalProducts = Product::count();
+        $totalTrainings = Training::count();
+        $totalArticles = Article::count();
+        $totalPesertaPelatihan = TrainingOrder::query()
+            ->where('payment_status', 'paid')
+            ->when($startDate && $endDate, function ($query) use ($startDate, $endDate) {
+                $query->whereBetween('created_at', [$startDate, $endDate]);
+            })
+            ->distinct('user_id')
+            ->count('user_id');
 
 
         return [
-            Stat::make('Total Produk USG', Product::count())
+            Stat::make('Total Produk USG', $totalProducts)
                 ->url(route('filament.admin.resources.products.index'))
                 ->description('klik untuk melihat semua produk'),
-            Stat::make('Total Pelatihan', Training::count())
+            Stat::make('Total Pelatihan', $totalTrainings)
                 ->url(route('filament.admin.resources.trainings.index'))
                 ->description('klik untuk melihat semua pelatihan'),
-            Stat::make('Total Artikel', Article::count())
+            Stat::make('Total Peserta Pelatihan', $totalPesertaPelatihan)
+                ->description('jumlah orang yang mengikuti pelatihan'),
+            Stat::make('Total Artikel', $totalArticles)
                 ->url(route('filament.admin.resources.articles.index'))
                 ->description('klik untuk melihat semua artikel'),
             Stat::make('Jumlah Customer Terdaftar', $jumlahCustomer),
