@@ -19,7 +19,6 @@ class Dashboard extends BaseDashboard
         $this->filters['endDate'] ??= now()->toDateString();
     }
 
-
     public function filtersForm(Form $form): Form
     {
         return $form
