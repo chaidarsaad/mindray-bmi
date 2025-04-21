@@ -18,19 +18,27 @@
                 <strong>Tempat:</strong> {{ $price->place }}
             </div>
 
-            <h4 class="font-semibold mt-4 mb-2">Pendaftar:</h4>
-            @if ($price->orderDetails->count())
+            @php
+                $jumlahPendaftar = $price->orderDetails->filter(fn($detail) => $detail->trainingOrder?->user)->count();
+            @endphp
+
+            <h4 class="font-semibold mt-4 mb-1">
+                Pendaftar ({{ $jumlahPendaftar }})
+            </h4>
+
+            @if ($jumlahPendaftar > 0)
                 <ul class="list-disc list-inside text-base">
                     @foreach ($price->orderDetails as $detail)
                         @php $user = $detail->trainingOrder->user ?? null; @endphp
                         @if ($user)
-                            <li>{{ $user->name }} ({{ $user->email }}, {{ $user->phone }})</li>
+                            <li>{{ $user->name }} ({{ $user->email }}, {{ $user->phone_number }})</li>
                         @endif
                     @endforeach
                 </ul>
             @else
-                <p class="text-gray-500 dark:text-gray-300 text-sm">Belum ada pendaftar.</p>
+                <p>Belum ada pendaftar.</p>
             @endif
+
         </div>
     @endforeach
 </div>

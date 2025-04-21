@@ -90,12 +90,13 @@ class TrainingResource extends Resource
             ])
             ->actions([
                 Tables\Actions\Action::make('lihat_detail')
-                    ->label('Lihat Detail')
+                    ->label('Lihat Pendaftar')
                     ->icon('heroicon-o-eye')
-                    ->modalHeading(fn($record) => 'Detail Pelatihan: ' . $record->judul)
+                    ->color('success')
+                    ->modalHeading(fn($record) => 'Pelatihan: ' . $record->judul)
                     ->modalSubmitAction(false)
                     ->modalCancelActionLabel('Tutup')
-                    ->action(fn() => null) // No-op
+                    ->action(fn() => null)
                     ->modalContent(function ($record) {
                         $record->load([
                             'trainingPrices.city',
