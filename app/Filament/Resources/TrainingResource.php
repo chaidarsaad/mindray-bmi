@@ -89,6 +89,24 @@ class TrainingResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\Action::make('lihat_detail')
+                    ->label('Lihat Detail')
+                    ->icon('heroicon-o-eye')
+                    ->modalHeading(fn($record) => 'Detail Pelatihan: ' . $record->judul)
+                    ->modalSubmitAction(false)
+                    ->modalCancelActionLabel('Tutup')
+                    ->action(fn() => null) // No-op
+                    ->modalContent(function ($record) {
+                        $record->load([
+                            'trainingPrices.city',
+                            'trainingPrices.trainingType',
+                            'trainingPrices.orderDetails.trainingOrder.user',
+                        ]);
+
+                        return view('filament.resources.training-resource.modals.training-detail', [
+                            'training' => $record,
+                        ]);
+                    }),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make()
                     ->modalHeading(fn($record) => 'Hapus Pelatihan: ' . $record->judul),
@@ -113,6 +131,7 @@ class TrainingResource extends Resource
             'index' => Pages\ListTrainings::route('/'),
             'create' => Pages\CreateTraining::route('/create'),
             'edit' => Pages\EditTraining::route('/{record}/edit'),
+            'view' => Pages\ViewTraining::route('/{record}/view'),
         ];
     }
 }

@@ -40,4 +40,9 @@ class TrainingPrice extends Model
     {
         return $this->belongsTo(TrainingType::class);
     }
+
+    public function orderDetails()
+    {
+        return $this->hasMany(TrainingOrderDetail::class);
+    }
 }
