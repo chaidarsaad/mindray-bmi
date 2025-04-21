@@ -101,7 +101,10 @@ class TrainingResource extends Resource
                         $record->load([
                             'trainingPrices.city',
                             'trainingPrices.trainingType',
-                            'trainingPrices.orderDetails.trainingOrder.user',
+                            'trainingPrices.orderDetails' => fn($query) =>
+                            $query->whereHas('trainingOrder', function ($q) {
+                                $q->where('payment_status', 'paid');
+                            })->with('trainingOrder.user'),
                         ]);
 
                         return view('filament.resources.training-resource.modals.training-detail', [
