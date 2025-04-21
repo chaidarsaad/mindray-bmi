@@ -152,7 +152,6 @@ class ProductOrderResource extends Resource
                                 fn(TemporaryUploadedFile $file): string => 'bukti-transfer-alat-usg' . $file->hashName()
                             )
                             ->openable()
-                            ->required()
                             ->image()
                             ->downloadable(),
                     ]),
