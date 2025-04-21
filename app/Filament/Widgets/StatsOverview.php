@@ -93,7 +93,7 @@ class StatsOverview extends BaseWidget
                 ->url(route('filament.admin.resources.trainings.index'))
                 ->description('klik untuk melihat semua pelatihan'),
             Stat::make('Total Peserta Pelatihan', $totalPesertaPelatihan)
-                ->description('jumlah orang yang mengikuti pelatihan, klik untuk melihat pendaftar')
+                ->description('jumlah orang yang mengikuti pelatihan, klik untuk melihat peserta')
                 ->url(route('filament.admin.resources.trainings.index')),
             Stat::make('Total Artikel', $totalArticles)
                 ->url(route('filament.admin.resources.articles.index'))

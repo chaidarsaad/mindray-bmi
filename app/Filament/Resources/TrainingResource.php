@@ -90,7 +90,7 @@ class TrainingResource extends Resource
             ])
             ->actions([
                 Tables\Actions\Action::make('lihat_detail')
-                    ->label('Lihat Pendaftar')
+                    ->label('Lihat Peserta')
                     ->icon('heroicon-o-eye')
                     ->color('success')
                     ->modalHeading(fn($record) => 'Pelatihan: ' . $record->judul)
