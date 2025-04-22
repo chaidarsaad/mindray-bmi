@@ -82,7 +82,7 @@
             @endauth
             @if (Auth::check() && Auth::user()->roles->isNotEmpty())
                 <a href="{{ route('filament.admin.pages.dashboard') }}" class="site-nav-icon">
-                    <i class="icon icon-home"></i>Admin
+                    <i class="icon icon-home"></i>Akses CMS
                 </a>
             @endif
 
