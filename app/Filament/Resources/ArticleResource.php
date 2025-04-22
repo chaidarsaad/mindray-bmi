@@ -125,7 +125,6 @@ class ArticleResource extends Resource
     public static function getPages(): array
     {
         return [
-            'view' => Pages\ViewArticle::route('/{record}'),
             'index' => Pages\ListArticles::route('/'),
             'create' => Pages\CreateArticle::route('/create'),
             'edit' => Pages\EditArticle::route('/{record}/edit'),
