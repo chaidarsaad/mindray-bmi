@@ -107,7 +107,7 @@ class CheckoutTrainingPage extends Component
 
             $this->redirectRoute('detail.training.order', ['order' => $order]);
 
-            $admin = User::role(['super_admin', 'owner'])->get();
+            $admin = User::role(['pengelola_web', 'owner'])->get();
             $title = 'Ada pesanan pelatihan baru dari : ' . $order->name;
             $body = "Email: {$order->email}<br>Nomor Hp: {$order->phone}";
 

@@ -56,7 +56,7 @@
                                         @if ($article->user->avatar)
                                             <img src="{{ Storage::url($article->user->avatar) }}"
                                                 alt="{{ $article->user->name }}"
-                                                style="width: 30px; height: 30px; border-radius: 50%; margin-right: 5px;">
+                                                style="width: 60px; height: 60px; border-radius: 50%; margin-right: 10px;">
                                         @endif
                                         ditulis oleh <span>{{ $article->user->name ?? 'admin' }}</span>
                                     </div>
