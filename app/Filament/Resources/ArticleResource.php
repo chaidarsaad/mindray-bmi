@@ -49,6 +49,19 @@ class ArticleResource extends Resource
                             ->label('Sub Judul')
                             ->helperText('Boleh kosong')
                             ->maxLength(255),
+                        Forms\Components\Select::make('tags')
+                            ->createOptionForm([
+                                Forms\Components\TextInput::make('name')
+                                    ->label('Hastag')
+                                    ->unique(ignoreRecord: true)
+                                    ->required()
+                                    ->maxLength(255),
+                            ])
+                            ->label('Tags')
+                            ->multiple()
+                            ->relationship('tags', 'name')
+                            ->preload()
+                            ->searchable(),
                         Forms\Components\FileUpload::make('image')
                             ->helperText('Untuk menjaga performa website disarankan gambar berformat .webp dengan ukuran lebar 1366 pixels, tinggi 768 pixels.')
                             ->label('Thumbnail')

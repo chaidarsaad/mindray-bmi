@@ -14,9 +14,9 @@ class Tag extends Model
         return $this->belongsToMany(Article::class);
     }
 
-    public function setQuestionAttribute($value)
+    public function setNameAttribute($value)
     {
-        $this->attributes['question'] = $value;
+        $this->attributes['name'] = $value;
         $this->attributes['slug'] = Str::slug($value);
     }
 
