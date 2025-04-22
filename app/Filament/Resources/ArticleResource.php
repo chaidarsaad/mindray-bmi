@@ -22,8 +22,8 @@ class ArticleResource extends Resource
 
     protected static ?string $pluralLabel = 'Artikel';
     protected static ?string $navigationLabel = 'Artikel';
-    protected static ?string $navigationGroup = 'Data Utama';
-    protected static ?int $navigationSort = 3;
+    protected static ?string $navigationGroup = 'Manajemen Artikel';
+    protected static ?int $navigationSort = 16;
     public static function form(Form $form): Form
     {
         return $form
