@@ -15,7 +15,7 @@ class Dashboard extends BaseDashboard
 
     public function mount(): void
     {
-        $this->filters['startDate'] ??= now()->startOfMonth()->toDateString();
+        $this->filters['startDate'] ??= null;
         $this->filters['endDate'] ??= now()->toDateString();
     }
 
@@ -29,8 +29,8 @@ class Dashboard extends BaseDashboard
                             ->label('Tanggal Mulai')
                             ->native(false)
                             ->displayFormat('l, d F Y')
-                            ->maxDate(fn(Get $get) => $get('endDate') ?: now())
-                            ->default(now()->startOfMonth()),
+                            ->placeholder('Pilih Tanggal')
+                            ->maxDate(fn(Get $get) => $get('endDate') ?: now()),
 
                         DatePicker::make('endDate')
                             ->label('Tanggal Akhir')
