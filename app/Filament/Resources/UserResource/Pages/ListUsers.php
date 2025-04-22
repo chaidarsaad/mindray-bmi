@@ -28,7 +28,7 @@ class ListUsers extends ListRecords
             'Owner' => Tab::make()
                 ->modifyQueryUsing(fn(Builder $query) => $query->whereHas('roles', fn($q) => $q->where('name', 'owner')))
                 ->badge(User::whereHas('roles', fn($q) => $q->where('name', 'owner'))->count()),
-            'Admin' => Tab::make()
+            'Pengelola Web' => Tab::make()
                 ->modifyQueryUsing(fn(Builder $query) => $query->whereHas('roles', fn($q) => $q->where('name', 'pengelola_web')))
                 ->badge(User::whereHas('roles', fn($q) => $q->where('name', 'pengelola_web'))->count()),
             'Penulis' => Tab::make()
