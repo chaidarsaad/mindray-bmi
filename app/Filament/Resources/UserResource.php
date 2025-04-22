@@ -82,6 +82,7 @@ class UserResource extends Resource
                             ->required(fn(string $operation): bool => $operation === 'create')
                             ->minLength(8),
                         Forms\Components\Select::make('roles')
+                            ->label('Peran')
                             ->relationship('roles', 'name')
                             ->multiple()
                             ->preload()
