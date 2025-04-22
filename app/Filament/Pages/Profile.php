@@ -17,6 +17,8 @@ class Profile extends EditProfile
                 Forms\Components\Section::make()
                     ->schema([
                         Forms\Components\FileUpload::make('avatar')
+                            ->label('Foto')
+                            ->circleCropper()
                             ->image()
                             ->imageEditor()
                             ->circleCropper()
@@ -30,6 +32,14 @@ class Profile extends EditProfile
                                 $oldAvatar = auth()->user()->avatar;
                                 if ($oldAvatar && Storage::exists($oldAvatar)) {
                                     Storage::delete($oldAvatar);
+                                }
+                            })
+                            ->deleteUploadedFileUsing(function ($file, $record) {
+                                if (
+                                    $record?->avatar &&
+                                    Storage::disk('public')->exists($record->avatar)
+                                ) {
+                                    Storage::disk('public')->delete($record->avatar);
                                 }
                             }),
                         $this->getNameFormComponent(),

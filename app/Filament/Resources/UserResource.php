@@ -14,7 +14,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class UserResource extends Resource
 {
@@ -32,8 +34,32 @@ class UserResource extends Resource
                 Section::make('Pengguna')
                     ->collapsible()
                     ->schema([
-                        // image avatar
-                        Forms\Components\FileUpload::make('avatar'),
+                        Forms\Components\FileUpload::make('avatar')
+                            ->label('Foto')
+                            ->circleCropper()
+                            ->image()
+                            ->imageEditor()
+                            ->circleCropper()
+                            ->directory('avatars')
+                            ->moveFiles()
+                            ->columnSpanFull()
+                            ->afterStateUpdated(function ($state) {
+                                if (! $state instanceof TemporaryUploadedFile) return;
+
+                                // Delete old avatar if exists
+                                $oldAvatar = auth()->user()->avatar;
+                                if ($oldAvatar && Storage::exists($oldAvatar)) {
+                                    Storage::delete($oldAvatar);
+                                }
+                            })
+                            ->deleteUploadedFileUsing(function ($file, $record) {
+                                if (
+                                    $record?->avatar &&
+                                    Storage::disk('public')->exists($record->avatar)
+                                ) {
+                                    Storage::disk('public')->delete($record->avatar);
+                                }
+                            }),
                         Forms\Components\TextInput::make('name')
                             ->label('Nama')
                             ->unique(ignoreRecord: true)
