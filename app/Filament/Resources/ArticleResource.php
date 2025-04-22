@@ -52,7 +52,7 @@ class ArticleResource extends Resource
                         Forms\Components\Select::make('tags')
                             ->createOptionForm([
                                 Forms\Components\TextInput::make('name')
-                                    ->label('Hastag')
+                                    ->label('Tag')
                                     ->unique(ignoreRecord: true)
                                     ->required()
                                     ->maxLength(255),
