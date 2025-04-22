@@ -91,8 +91,10 @@ class User extends Authenticatable implements FilamentUser
 
     public function getFilamentAvatarUrl(): string
     {
-        return $this->avatar
-            ? Storage::url($this->avatar)
-            : 'https://ui-avatars.com/api/?name=' . urlencode($this->name) . '&color=FFFFFF&background=111827';
+        if (!empty($this->avatar) && Storage::disk('public')->exists($this->avatar)) {
+            return Storage::disk('public')->url($this->avatar);
+        }
+
+        return 'https://ui-avatars.com/api/?name=' . urlencode($this->name) . '&color=FFFFFF&background=111827';
     }
 }

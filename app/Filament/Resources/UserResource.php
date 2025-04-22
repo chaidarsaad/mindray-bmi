@@ -75,7 +75,7 @@ class UserResource extends Resource
                 Tables\Columns\ImageColumn::make('avatar')
                     ->label('Foto')
                     ->circular()
-                    ->url(fn($record) => $record->getFilamentAvatarUrl()),
+                    ->getStateUsing(fn($record) => $record->getFilamentAvatarUrl()),
                 Tables\Columns\TextColumn::make('name')
                     ->label('Nama')
                     ->searchable(),
