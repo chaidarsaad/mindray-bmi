@@ -2,6 +2,8 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\AvatarProviders\GetAvatarProvider;
+use App\Filament\Pages\Profile;
 use App\Http\Middleware\RedirectIfNotFilamentAdmin;
 use App\Livewire\Auth\LoginPage;
 use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
@@ -68,6 +70,7 @@ class AdminPanelProvider extends PanelProvider
                     ->icon('heroicon-o-home')
                     ->url('/', shouldOpenInNewTab: true)
             ])
+            ->defaultAvatarProvider(GetAvatarProvider::class)
             // ->spa()
             // ->spaUrlExceptions(fn(): array => [
             //     '*/admin/products/*',
@@ -75,7 +78,7 @@ class AdminPanelProvider extends PanelProvider
             //     '*/admin/trainings/*',
             // ])
             ->unsavedChangesAlerts()
-            ->profile(isSimple: false)
+            ->profile(Profile::class, isSimple: false)
             ->breadcrumbs(false)
             ->databaseNotifications()
         ;

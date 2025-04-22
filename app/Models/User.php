@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 use Filament\Panel;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable implements FilamentUser
 {
@@ -26,6 +27,7 @@ class User extends Authenticatable implements FilamentUser
         'email',
         'password',
         'phone_number',
+        'avatar',
     ];
 
     /**
@@ -85,5 +87,12 @@ class User extends Authenticatable implements FilamentUser
     public function articles()
     {
         return $this->hasMany(Article::class);
+    }
+
+    public function getFilamentAvatarUrl(): string
+    {
+        return $this->avatar
+            ? Storage::url($this->avatar)
+            : 'https://ui-avatars.com/api/?name=' . urlencode($this->name) . '&color=FFFFFF&background=111827';
     }
 }

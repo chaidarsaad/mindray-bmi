@@ -32,6 +32,8 @@ class UserResource extends Resource
                 Section::make('Pengguna')
                     ->collapsible()
                     ->schema([
+                        // image avatar
+                        Forms\Components\FileUpload::make('avatar'),
                         Forms\Components\TextInput::make('name')
                             ->label('Nama')
                             ->unique(ignoreRecord: true)
@@ -70,6 +72,10 @@ class UserResource extends Resource
             ->defaultPaginationPageOption(5)
             ->defaultSort('id', direction: 'desc')
             ->columns([
+                Tables\Columns\ImageColumn::make('avatar')
+                    ->label('Foto')
+                    ->circular()
+                    ->url(fn($record) => $record->getFilamentAvatarUrl()),
                 Tables\Columns\TextColumn::make('name')
                     ->label('Nama')
                     ->searchable(),
