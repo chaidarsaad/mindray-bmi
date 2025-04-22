@@ -51,9 +51,17 @@
                             <div class="blog-detail-main-heading">
                                 <div class="title" style="margin-bottom: 5px;">{{ $article->judul }}</div>
                                 <div class="title">{{ $article->sub_judul }}</div>
-                                <div class="meta" style="margin-bottom: 7px;">ditulis oleh
-                                    <span>{{ $article->user->name ?? 'admin' }}</span>
+                                <div class="meta" style="margin-bottom: 10px;">
+                                    <div class="author">
+                                        @if ($article->user->avatar)
+                                            <img src="{{ Storage::url($article->user->avatar) }}"
+                                                alt="{{ $article->user->name }}"
+                                                style="width: 30px; height: 30px; border-radius: 50%; margin-right: 5px;">
+                                        @endif
+                                        ditulis oleh <span>{{ $article->user->name ?? 'admin' }}</span>
+                                    </div>
                                 </div>
+
                                 <div class="meta">
                                     {{ $article->created_at->locale('id')->isoFormat('dddd, D MMMM YYYY') }}
                                 </div>

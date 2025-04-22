@@ -62,6 +62,12 @@ class User extends Authenticatable implements FilamentUser
         static::saving(function (User $model) {
             $model->uid = (string) str()->uuid();
         });
+
+        static::deleting(function (User $user) {
+            if ($user->avatar && Storage::disk('public')->exists($user->avatar)) {
+                Storage::disk('public')->delete($user->avatar);
+            }
+        });
     }
 
     public function getRouteKeyName(): string
