@@ -4,7 +4,7 @@
         {{ $record->created_at->translatedFormat('l, d F Y') }}
     </div>
 
-    <img src="{{ asset('storage/' . $record->image) }}" alt="{{ $record->judul }}" class="w-full h-auto rounded mb-4">
+    <img src="{{ Storage::url($record->image) }}" alt="{{ $record->judul }}" class="w-full h-auto rounded mb-4">
 
     <div class="max-w-none">
         {!! $record->content !!}
