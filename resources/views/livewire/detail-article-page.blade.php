@@ -42,31 +42,38 @@
         .article-content h1 {
             font-size: 40px;
             font-weight: bold;
+            line-height: 48px;
+            /* bisa disesuaikan, misalnya 44px kalau mau lebih rapat */
         }
 
         .article-content h2 {
             font-size: 32px;
             font-weight: bold;
+            line-height: 40px;
         }
 
         .article-content h3 {
             font-size: 28px;
             font-weight: bold;
+            line-height: 36px;
         }
 
         .article-content h4 {
             font-size: 24px;
             font-weight: bold;
+            line-height: 32px;
         }
 
         .article-content h5 {
             font-size: 20px;
             font-weight: bold;
+            line-height: 28px;
         }
 
         .article-content h6 {
             font-size: 18px;
             font-weight: bold;
+            line-height: 24px;
         }
     </style>
 @endpush
