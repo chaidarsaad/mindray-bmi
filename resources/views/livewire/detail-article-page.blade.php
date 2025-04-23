@@ -40,45 +40,33 @@
 
         /* Style untuk heading */
         .article-content h1 {
-            font-size: 2.5rem;
+            font-size: 40px;
             font-weight: bold;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
         }
 
         .article-content h2 {
-            font-size: 2rem;
+            font-size: 32px;
             font-weight: bold;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
         }
 
         .article-content h3 {
-            font-size: 1.75rem;
+            font-size: 28px;
             font-weight: bold;
-            margin-top: 1.5rem;
-            margin-bottom: 1rem;
         }
 
         .article-content h4 {
-            font-size: 1.5rem;
+            font-size: 24px;
             font-weight: bold;
-            margin-top: 1.5rem;
-            margin-bottom: 0.75rem;
         }
 
         .article-content h5 {
-            font-size: 1.25rem;
+            font-size: 20px;
             font-weight: bold;
-            margin-top: 1rem;
-            margin-bottom: 0.5rem;
         }
 
         .article-content h6 {
-            font-size: 1rem;
+            font-size: 18px;
             font-weight: bold;
-            margin-top: 1rem;
-            margin-bottom: 0.5rem;
         }
     </style>
 @endpush
