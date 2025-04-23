@@ -31,6 +31,12 @@
             box-sizing: border-box;
         }
 
+        .article-content img {
+            border-radius: 10px;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            /* margin: 1rem 0; */
         }
     </style>
 @endpush
@@ -79,69 +85,6 @@
             </div>
         </div>
         <!-- /blog-detail -->
-
-        <!-- Related Articles -->
-        {{-- @if ($otherArticle->isNotEmpty())
-            <section class="mb_30">
-                <div class="container">
-                    <div class="flat-title">
-                        <h5 class="">Related Articles</h5>
-                    </div>
-                    <div class="hover-sw-nav view-default hover-sw-5">
-                        <div class="swiper tf-sw-recent" data-preview="3" data-tablet="2" data-mobile="1"
-                            data-space-lg="30" data-space-md="30" data-space="15" data-pagination="1"
-                            data-pagination-md="1" data-pagination-lg="1">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide" lazy="true">
-                                    <div class="blog-article-item">
-                                        <div class="article-thumb radius-10">
-                                            <a href="{{ route('detail.article') }}">
-                                                <img class=""
-                                                    data-src="{{ asset('assets/images/blog/wxp.webp') }}"
-                                                    src="{{ asset('assets/images/blog/wxp.webp') }}" alt="img-blog">
-                                            </a>
-                                        </div>
-                                        <div class="article-content">
-                                            <div class="article-title">
-                                                <a style="text-align: center;" href="{{ route('detail.article') }}"
-                                                    class="">The
-                                                    next generation of leather
-                                                    alternatives</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide" lazy="true">
-                                    <div class="blog-article-item">
-                                        <div class="article-thumb radius-10">
-                                            <a href="{{ route('detail.article') }}">
-                                                <img class=""
-                                                    data-src="{{ asset('assets/images/blog/wxp.webp') }}"
-                                                    src="{{ asset('assets/images/blog/wxp.webp') }}" alt="img-blog">
-                                            </a>
-                                        </div>
-                                        <div class="article-content">
-                                            <div class="article-title">
-                                                <a style="text-align: center;" href="{{ route('detail.article') }}"
-                                                    class="">The
-                                                    next generation of leather
-                                                    alternatives</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="nav-sw nav-next-slider nav-next-recent box-icon w_46 round"><span
-                                class="icon icon-arrow-left"></span></div>
-                        <div class="nav-sw nav-prev-slider nav-prev-recent box-icon w_46 round"><span
-                                class="icon icon-arrow-right"></span></div>
-                        <div class="sw-dots d-flex style-2 sw-pagination-recent justify-content-center"></div>
-                    </div>
-                </div>
-            </section>
-        @endif --}}
-        <!-- /Related Articles -->
 
         {{-- /page --}}
 
