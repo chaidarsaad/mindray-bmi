@@ -19,14 +19,10 @@
 
 @push('styles')
     <style>
-        /* Menambahkan aturan untuk konten yang lebih responsif */
         .article-content {
-            /* Kata tidak dipotong sembarangan */
             word-break: normal;
             overflow-wrap: break-word;
             hyphens: auto;
-
-            /* Tata letak tetap rapi */
             max-width: 100%;
             box-sizing: border-box;
         }
@@ -36,18 +32,57 @@
             max-width: 100%;
             height: auto;
             display: block;
-            /* margin: 1rem 0; */
-
             width: 100%;
             max-width: 720px;
-        }
-
-        .article-content img {
             margin-left: auto;
             margin-right: auto;
         }
+
+        /* Style untuk heading */
+        .article-content h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-content h2 {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-content h3 {
+            font-size: 1.75rem;
+            font-weight: bold;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-content h4 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .article-content h5 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .article-content h6 {
+            font-size: 1rem;
+            font-weight: bold;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
     </style>
 @endpush
+
 
 <div>
     <div id="wrapper">
@@ -55,7 +90,6 @@
         @livewire('components.navbar')
         <!-- /Navbar -->
 
-        {{-- page --}}
         <!-- blog-detail -->
         <div class="blog-detail">
             <div class="container">
@@ -81,7 +115,7 @@
                                 </div>
                                 <div class="image">
                                     <img class="" data-src="{{ Storage::url($article->image) }}"
-                                        src="{{ Storage::url($article->image) }}" alt=""
+                                        src="{{ Storage::url($article->image) }}" alt="{{ $article->judul }}"
                                         style="width:100%; max-width: 720px; margin-left: auto; margin-right:auto; display: block;">
                                 </div>
                             </div>
