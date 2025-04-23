@@ -40,40 +40,51 @@
 
         /* Style untuk heading */
         .article-content h1 {
-            font-size: 40px;
-            font-weight: bold;
-            line-height: 48px;
-            /* bisa disesuaikan, misalnya 44px kalau mau lebih rapat */
+            font-size: 40px !important;
+            font-weight: bold !important;
+            line-height: 48px !important;
         }
 
         .article-content h2 {
-            font-size: 32px;
-            font-weight: bold;
-            line-height: 40px;
+            font-size: 32px !important;
+            font-weight: bold !important;
+            line-height: 40px !important;
         }
 
         .article-content h3 {
-            font-size: 28px;
-            font-weight: bold;
-            line-height: 36px;
+            font-size: 28px !important;
+            font-weight: bold !important;
+            line-height: 36px !important;
         }
 
         .article-content h4 {
-            font-size: 24px;
-            font-weight: bold;
-            line-height: 32px;
+            font-size: 24px !important;
+            font-weight: bold !important;
+            line-height: 32px !important;
         }
 
         .article-content h5 {
-            font-size: 20px;
-            font-weight: bold;
-            line-height: 28px;
+            font-size: 20px !important;
+            font-weight: bold !important;
+            line-height: 28px !important;
         }
 
         .article-content h6 {
-            font-size: 18px;
-            font-weight: bold;
-            line-height: 24px;
+            font-size: 18px !important;
+            font-weight: bold !important;
+            line-height: 24px !important;
+        }
+
+        .article-content h1 span,
+        .article-content h2 span,
+        .article-content h3 span,
+        .article-content h4 span,
+        .article-content h5 span,
+        .article-content h6 span {
+            font-size: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+            /* color: inherit !important; */
         }
     </style>
 @endpush

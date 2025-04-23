@@ -16,8 +16,8 @@ class CreateArticle extends CreateRecord
         return 'Buat Artikel';
     }
 
-    protected function getRedirectUrl(): string
-    {
-        return $this->getResource()::getUrl('index');
-    }
+    // protected function getRedirectUrl(): string
+    // {
+    //     return $this->getResource()::getUrl('index');
+    // }
 }

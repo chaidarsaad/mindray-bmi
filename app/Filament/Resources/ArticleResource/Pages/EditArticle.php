@@ -16,10 +16,10 @@ class EditArticle extends EditRecord
         return 'Ubah Artikel';
     }
 
-    protected function getRedirectUrl(): string
-    {
-        return $this->getResource()::getUrl('index');
-    }
+    // protected function getRedirectUrl(): string
+    // {
+    //     return $this->getResource()::getUrl('index');
+    // }
 
     protected function getHeaderActions(): array
     {
