@@ -129,12 +129,13 @@
                                 <div class="title">{{ $article->sub_judul }}</div>
                                 <div class="meta" style="margin-bottom: 10px;">
                                     <div class="author">
-                                        @if ($article->user->avatar)
+                                        @if ($article->user && $article->user->avatar)
                                             <img src="{{ Storage::url($article->user->avatar) }}"
                                                 alt="{{ $article->user->name }}"
                                                 style="width: 60px; height: 60px; border-radius: 50%; margin-right: 10px;">
                                         @endif
                                         ditulis oleh <span>{{ $article->user->name ?? 'admin' }}</span>
+
                                     </div>
                                 </div>
 
