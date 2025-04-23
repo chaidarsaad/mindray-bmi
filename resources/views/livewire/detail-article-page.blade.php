@@ -88,25 +88,21 @@
         }
 
         /* bullet */
-        /* Untuk memastikan hanya ul dalam artikel yang memakai bullet */
         .article-content ul {
             list-style-type: disc !important;
-            padding-left: 20px !important;
-            margin: 0 !important;
+            list-style-position: outside !important;
+            padding-left: 1.5em !important;
+            margin: 0 0 1em 0 !important;
             text-align: left !important;
         }
 
-        /* Mengatur item li di artikel */
-        .article-content li {
-            list-style-position: outside !important;
-            font-size: inherit !important;
-            display: list-item !important;
-            margin-bottom: 5px !important;
-        }
-
-        .article-content ul,
         .article-content li {
             list-style: disc !important;
+            display: list-item !important;
+            font-size: inherit !important;
+            margin-bottom: 5px !important;
+            line-height: 1.8em !important;
+            vertical-align: baseline !important;
         }
     </style>
 @endpush
