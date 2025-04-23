@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class Article extends Model
@@ -45,5 +46,49 @@ class Article extends Model
     public function tags()
     {
         return $this->belongsToMany(Tag::class);
+    }
+
+    protected static function booted()
+    {
+        // Saat artikel dihapus
+        static::deleting(function ($article) {
+            self::deleteImagesFromContent($article->content);
+        });
+
+        // Saat artikel diperbarui
+        static::updating(function ($article) {
+            $oldContent = $article->getOriginal('content');
+            $newContent = $article->content;
+
+            $oldImages = self::extractImagePaths($oldContent);
+            $newImages = self::extractImagePaths($newContent);
+
+            $deletedImages = array_diff($oldImages, $newImages);
+
+            foreach ($deletedImages as $path) {
+                if (Storage::disk('public')->exists($path)) {
+                    Storage::disk('public')->delete($path);
+                }
+            }
+        });
+    }
+
+    protected static function deleteImagesFromContent($html)
+    {
+        foreach (self::extractImagePaths($html) as $path) {
+            if (Storage::disk('public')->exists($path)) {
+                Storage::disk('public')->delete($path);
+            }
+        }
+    }
+
+    protected static function extractImagePaths($html)
+    {
+        preg_match_all('/<img[^>]+src="([^">]+)"/i', $html, $matches);
+        $urls = $matches[1] ?? [];
+
+        return collect($urls)->map(function ($url) {
+            return str_replace(asset('storage') . '/', '', $url);
+        })->toArray();
     }
 }
