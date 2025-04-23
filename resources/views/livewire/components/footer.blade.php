@@ -1,3 +1,21 @@
+@push('styles')
+    <style>
+        /* Menghilangkan bullet di footer */
+        footer ul,
+        footer li {
+            list-style: none !important;
+            padding-left: 0 !important;
+        }
+
+
+        /* Pastikan tidak ada bullet di dalam footer ul yang digunakan di footer */
+        footer .footer-infor ul {
+            list-style-type: none !important;
+            padding-left: 0 !important;
+        }
+    </style>
+@endpush
+
 <footer id="footer" class="footer py-4">
     <div class="footer-wrap">
         <div class="footer-body">

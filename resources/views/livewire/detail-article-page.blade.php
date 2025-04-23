@@ -86,6 +86,28 @@
             line-height: inherit !important;
             /* color: inherit !important; */
         }
+
+        /* bullet */
+        /* Untuk memastikan hanya ul dalam artikel yang memakai bullet */
+        .article-content ul {
+            list-style-type: disc !important;
+            padding-left: 20px !important;
+            margin: 0 !important;
+            text-align: left !important;
+        }
+
+        /* Mengatur item li di artikel */
+        .article-content li {
+            list-style-position: outside !important;
+            font-size: inherit !important;
+            display: list-item !important;
+            margin-bottom: 5px !important;
+        }
+
+        .article-content ul,
+        .article-content li {
+            list-style: disc !important;
+        }
     </style>
 @endpush
 
