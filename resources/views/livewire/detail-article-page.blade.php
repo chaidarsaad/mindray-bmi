@@ -37,6 +37,14 @@
             height: auto;
             display: block;
             /* margin: 1rem 0; */
+
+            width: 100%;
+            max-width: 720px;
+        }
+
+        .article-content img {
+            margin-left: auto;
+            margin-right: auto;
         }
     </style>
 @endpush
@@ -73,7 +81,8 @@
                                 </div>
                                 <div class="image">
                                     <img class="" data-src="{{ Storage::url($article->image) }}"
-                                        src="{{ Storage::url($article->image) }}" alt="">
+                                        src="{{ Storage::url($article->image) }}" alt=""
+                                        style="width:100%; max-width: 720px; margin-left: auto; margin-right:auto; display: block;">
                                 </div>
                             </div>
                             <div class="desc article-content">
