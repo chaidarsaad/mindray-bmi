@@ -50,12 +50,10 @@ class Article extends Model
 
     protected static function booted()
     {
-        // Saat artikel dihapus
         static::deleting(function ($article) {
             self::deleteImagesFromContent($article->content);
         });
 
-        // Saat artikel diperbarui
         static::updating(function ($article) {
             $oldContent = $article->getOriginal('content');
             $newContent = $article->content;

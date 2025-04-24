@@ -13,7 +13,9 @@ class DetailArticlePage extends Component
 
     public function mount($slug)
     {
-        $this->article = Article::where('slug', $slug)->firstOrFail();
+        $this->article = Article::with('tags')
+            ->where('slug', $slug)
+            ->firstOrFail();
         $this->otherArticle = Article::where('id', '!=', $this->article->id)->get();
 
         $sessionKey = 'article_viewed_' . $this->article->id;

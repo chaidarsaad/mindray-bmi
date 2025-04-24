@@ -25,22 +25,15 @@
 
     <script>
         setInterval(() => {
-            fetch('/check-session')
-                .then(res => res.json())
-                .then(data => {
-                    if (!data.active) {
-                        location.reload();
-                    } else {
-                        fetch('/refresh-csrf')
-                            .then(res => res.json())
-                            .then(csrfData => {
-                                document.querySelector('meta[name="csrf-token"]').setAttribute('content',
-                                    csrfData.csrf);
-                            });
+            fetch('/refresh-csrf', {
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
                     }
                 })
-                .catch(error => {
-                    console.error('Error checking session or refreshing CSRF:', error);
+                .then(res => res.json())
+                .then(csrfData => {
+                    document.querySelector('meta[name="csrf-token"]').setAttribute('content',
+                        csrfData.csrf);
                 });
         }, 2 * 60 * 1000);
     </script>

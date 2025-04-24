@@ -2,7 +2,7 @@
     <meta name="description"
         content="Supplier alat USG Mindray dan Penyelenggara Pelatihan USG Abdomen & ANC. Dapatkan informasi lengkap tentang produk dan pelatihan kami di sini.">
     <meta name="keywords"
-        content="usg, mindray, pelatihan, abdomen, anc, alat kesehatan, usg mindray, pelatihan usg, alat usg, usg bandung, pelatihan anc dan abdomen, produk usg mindray">
+        content="usg, mindray, pelatihan, abdomen, anc, alat kesehatan, usg mindray, pelatihan usg, alat usg, usg bandung, pelatihan anc dan abdomen, produk usg mindray, {{ $article->tags->pluck('name')->implode(', ') }}">
     <meta name="author" content="USG Mindray">
 
     <meta property="og:type" content="Artikel">

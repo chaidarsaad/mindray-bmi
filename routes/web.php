@@ -69,8 +69,12 @@ Route::middleware(['web', 'throttle:10,1'])->get('/refresh-csrf', function () {
         abort(403, 'Forbidden');
     }
 
-    return response()->json(['active' => auth()->check()]);
+    return response()->json([
+        'active' => auth()->check(),
+        'csrf' => csrf_token()
+    ]);
 });
+
 
 
 Route::get('/sitemap.xml', [SitemapController::class, 'index']);
