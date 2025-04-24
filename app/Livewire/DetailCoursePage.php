@@ -83,7 +83,7 @@ class DetailCoursePage extends Component
                     return [
                         'start' => $startDate,
                         'end' => $endDate,
-                        'formatted' => $startDate->locale('id')->format('d') . ' - ' . $endDate->locale('id')->format('d F Y')
+                        'formatted' => $startDate->isoFormat('D') . ' - ' . $endDate->isoFormat('D MMMM YYYY')
                     ];
                 });
 
