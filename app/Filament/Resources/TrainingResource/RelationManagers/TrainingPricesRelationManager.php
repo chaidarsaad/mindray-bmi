@@ -83,9 +83,17 @@ class TrainingPricesRelationManager extends RelationManager
                             ->required(),
                         Forms\Components\DatePicker::make('start_date')
                             ->label('Tanggal Mulai Pelatihan')
+                            ->timezone('Asia/Jakarta')
+                            ->locale('id')
+                            ->native(false)
+                            ->displayFormat('l, d F Y')
                             ->required(),
                         Forms\Components\DatePicker::make('end_date')
                             ->label('Tanggal Berakhir Pelatihan')
+                            ->timezone('Asia/Jakarta')
+                            ->locale('id')
+                            ->native(false)
+                            ->displayFormat('l, d F Y')
                             ->required(),
                     ])
             ]);
@@ -114,12 +122,12 @@ class TrainingPricesRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('start_date')
                     ->label('Tanggal Mulai Pelatihan')
                     ->sortable()
-                    ->dateTime('d M Y')
+                    ->dateTime('l, d F Y')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('end_date')
                     ->label('Tanggal Selesai Pelatihan')
                     ->sortable()
-                    ->dateTime('d M Y')
+                    ->dateTime('l, d F Y')
                     ->searchable(),
             ])
             ->filters([
