@@ -86,12 +86,14 @@ class TrainingPricesRelationManager extends RelationManager
                             ->timezone('Asia/Jakarta')
                             ->locale('id')
                             ->native(false)
+                            ->closeOnDateSelection()
                             ->displayFormat('l, d F Y')
                             ->required(),
                         Forms\Components\DatePicker::make('end_date')
                             ->label('Tanggal Berakhir Pelatihan')
                             ->timezone('Asia/Jakarta')
                             ->locale('id')
+                            ->closeOnDateSelection()
                             ->native(false)
                             ->displayFormat('l, d F Y')
                             ->required(),
