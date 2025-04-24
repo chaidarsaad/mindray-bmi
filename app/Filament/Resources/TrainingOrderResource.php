@@ -19,6 +19,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Carbon\Carbon;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
+use Filament\Support\RawJs;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
@@ -151,6 +152,16 @@ class TrainingOrderResource extends Resource
                         Forms\Components\TextInput::make('total_harga')
                             ->prefix('Rp')
                             ->required()
+                            ->mask(
+                                RawJs::make(<<<'JS'
+                                    $input => {
+                                        let number = $input.replace(/[^\d]/g, '');
+                                        if (number === '') return '0';
+                                        return new Intl.NumberFormat('id-ID').format(Number(number));
+                                    }
+                                JS)
+                            )
+                            ->stripCharacters([',', '.'])
                             ->numeric(),
                         Forms\Components\Select::make('status')
                             ->label('Status')
