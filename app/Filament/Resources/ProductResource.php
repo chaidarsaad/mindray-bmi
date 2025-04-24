@@ -64,10 +64,11 @@ class ProductResource extends Resource
                             ->label('Tampilkan produk?')
                             ->required(),
                         Forms\Components\FileUpload::make('images')
-                            ->helperText('Untuk menjaga performa website disarankan gambar berformat .webp dengan ukuran lebar 720 pixels, tinggi 1005 pixels, Disarankan lebih dari 1 foto.')
+                            ->helperText('Untuk menjaga performa website disarankan gambar berformat .webp dengan ukuran lebar 720 pixels, tinggi 1005 pixels, Disarankan lebih dari 1 foto, ukuran maksimal 1 mb.')
                             ->getUploadedFileNameForStorageUsing(
                                 fn(TemporaryUploadedFile $file): string => 'produk-usg-' . $file->hashName()
                             )
+                            ->maxSize(1024)
                             ->label('Foto Produk')
                             ->multiple()
                             ->reorderable()
