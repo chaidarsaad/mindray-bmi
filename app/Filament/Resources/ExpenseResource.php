@@ -57,6 +57,7 @@ class ExpenseResource extends Resource
                             ->timezone('Asia/Jakarta')
                             ->locale('id')
                             ->native(false)
+                            ->closeOnDateSelection()
                             ->displayFormat('l, d F Y H:i')
                             ->label('Tanggal Pengeluaran')
                             ->required(),
