@@ -84,7 +84,7 @@
                     {{-- Order Header --}}
                     <div class="d-flex align-items-center">
                         <figure class="training-image me-3">
-                            <img src="{{ Storage::url($firstTraining->image) }}" alt="product">
+                            <img src="{{ Storage::url($firstTraining->image) }}" alt="{{ $firstTraining->judul }}">
                         </figure>
 
                         <div>

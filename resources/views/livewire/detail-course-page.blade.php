@@ -89,7 +89,7 @@
                                 <div class="title">{{ $training->judul }}</div>
                                 <div class="image">
                                     <img class="training-image" data-src="{{ Storage::url($training->image) }}"
-                                        src="{{ Storage::url($training->image) }}" alt="">
+                                        src="{{ Storage::url($training->image) }}" alt="{{ $training->judul }}">
 
                                 </div>
                             </div>

@@ -39,7 +39,8 @@
                                             <div class="article-thumb">
                                                 <a href="{{ route('detail.training', $training->slug) }}">
                                                     <img class="" data-src="{{ Storage::url($training->image) }}"
-                                                        src="{{ Storage::url($training->image) }}" alt="img-blog" />
+                                                        src="{{ Storage::url($training->image) }}"
+                                                        alt="{{ $training->judul }}" />
                                                 </a>
                                             </div>
                                             <div class="article-content">

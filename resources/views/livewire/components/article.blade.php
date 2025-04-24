@@ -18,7 +18,8 @@
                                     <div class="article-thumb">
                                         <a href="{{ route('detail.article', $article->slug) }}">
                                             <img class="" data-src="{{ Storage::url($article->image) }}"
-                                                src="{{ Storage::url($article->image) }}" alt="img-article" />
+                                                src="{{ Storage::url($article->image) }}"
+                                                alt="{{ $article->judul }}e" />
                                         </a>
                                     </div>
                                     <div class="article-content">

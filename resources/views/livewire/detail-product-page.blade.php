@@ -33,19 +33,19 @@
 
 
         /* .video-container {
-                                                                                                                                position: relative;
-                                                                                                                                width: 100%;
-                                                                                                                                padding-bottom: 56.25%;
-                                                                                                                                height: 0;
-                                                                                                                            }
+                                                                                                                                                position: relative;
+                                                                                                                                                width: 100%;
+                                                                                                                                                padding-bottom: 56.25%;
+                                                                                                                                                height: 0;
+                                                                                                                                            }
 
-                                                                                                                            .video-container iframe {
-                                                                                                                                position: absolute;
-                                                                                                                                top: 0;
-                                                                                                                                left: 0;
-                                                                                                                                width: 100%;
-                                                                                                                                height: 100%;
-                                                                                                                            } */
+                                                                                                                                            .video-container iframe {
+                                                                                                                                                position: absolute;
+                                                                                                                                                top: 0;
+                                                                                                                                                left: 0;
+                                                                                                                                                width: 100%;
+                                                                                                                                                height: 100%;
+                                                                                                                                            } */
 
         iframe {
             position: relative;
@@ -194,7 +194,7 @@
                     <div class="tf-height-observer w-100 d-flex align-items-center">
                         <div class="tf-sticky-atc-product d-flex align-items-center">
                             <div class="tf-sticky-atc-img">
-                                <img class="ed" data-src="{{ Storage::url($image) }}" alt=""
+                                <img class="ed" data-src="{{ Storage::url($image) }}" alt="{{ $product->name }}"
                                     src="{{ Storage::url($image) }}">
                             </div>
                             <div class="tf-sticky-atc-title fw-5 d-xl-block d-none">{{ $product->subname }}</div>

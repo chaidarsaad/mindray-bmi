@@ -18,7 +18,8 @@
                                 <div class="blog-article-item">
                                     <div class="article-thumb">
                                         <a href="{{ route('detail.training', $training->slug) }}">
-                                            <img src="{{ Storage::url($training->image) }}" alt="img-training" />
+                                            <img src="{{ Storage::url($training->image) }}"
+                                                alt="{{ $training->judul }}" />
 
                                         </a>
                                     </div>

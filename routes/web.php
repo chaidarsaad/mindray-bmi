@@ -23,7 +23,6 @@ use App\Livewire\UsgPage;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomePage::class)->name('home');
-Route::get('/kategori', DetailCategoryPage::class)->name('detail.category');
 Route::get('/produk/{slug}', DetailProductPage::class)->name('detail.product');
 Route::get('/artikel/{slug}', DetailArticlePage::class)->name('detail.article');
 Route::get('/detail-pelatihan/{slug}', DetailCoursePage::class)->name('detail.training');

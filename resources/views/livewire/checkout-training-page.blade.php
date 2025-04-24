@@ -100,7 +100,8 @@
                                 <ul class="wrap-checkout-product">
                                     <li class="checkout-product-item">
                                         <figure class="img-product">
-                                            <img src="{{ Storage::url($training->image) }}" alt="product">
+                                            <img src="{{ Storage::url($training->image) }}"
+                                                alt="{{ $training->judul }}">
                                         </figure>
                                         <div class="content">
                                             <div class="info">
@@ -135,7 +136,7 @@
                     <div class="tf-height-observer w-100 d-flex align-items-center">
                         <div class="tf-sticky-atc-product d-flex align-items-center">
                             <div class="tf-sticky-atc-img">
-                                <img class="ed" data-src="" alt=""
+                                <img class="" data-src="" alt="{{ $training->judul }}"
                                     src="{{ Storage::url($training->image) }}">
                             </div>
                             <div class="tf-sticky-atc-title fw-5 d-xl-block d-none">{{ $training->judul }}</div>
