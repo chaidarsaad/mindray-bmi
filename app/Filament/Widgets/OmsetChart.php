@@ -13,7 +13,7 @@ use Flowframe\Trend\TrendValue;
 class OmsetChart extends ChartWidget
 {
     protected static ?string $heading = 'Pemasukan';
-    protected static ?int $sort = 4;
+    protected static ?int $sort = 5;
     public ?string $filter = 'today';
     protected static string $color = 'success';
 
