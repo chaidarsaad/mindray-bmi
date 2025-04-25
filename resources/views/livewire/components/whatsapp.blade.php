@@ -24,6 +24,13 @@
             font-size: 1.25rem;
             text-decoration: none;
         }
+
+        @media (min-width: 768px) {
+            .whatsapp-chat {
+                bottom: 120px;
+                right: 30px;
+            }
+        }
     </style>
 @endpush
 
