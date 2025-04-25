@@ -47,16 +47,13 @@
                                         <option value="">Pilih Pelatihan ANC</option>
                                         @foreach ($trainingPricesANC as $price)
                                             <option value="{{ $price->id }}" data-price="{{ $price->price }}"
-                                                @if ($price->is_past) disabled @endif>
-                                                @php
-                                                    $startDate = \Carbon\Carbon::parse($price->start_date);
-                                                    $endDate = \Carbon\Carbon::parse($price->end_date);
-                                                @endphp
-                                                {{ $price->city->name }} ({{ $price->place }}) Rp
-                                                {{ number_format($price->price) }} -
-                                                {{ $startDate->locale('id')->translatedFormat('l, d') }} s.d.
-                                                {{ $endDate->locale('id')->translatedFormat('l, d F Y') }}
-                                                @if ($price->is_past)
+                                                @if (\Carbon\Carbon::parse($price->start_date)->isPast()) disabled @endif>
+                                                {{ $price->city->name }} ({{ $price->place }})
+                                                Rp {{ number_format($price->price) }} -
+                                                {{ \Carbon\Carbon::parse($price->start_date)->locale('id')->translatedFormat('l, d') }}
+                                                s.d.
+                                                {{ \Carbon\Carbon::parse($price->end_date)->locale('id')->translatedFormat('l, d F Y') }}
+                                                @if (\Carbon\Carbon::parse($price->start_date)->isPast())
                                                     - (Sudah Terselenggara)
                                                 @endif
                                             </option>
@@ -72,16 +69,13 @@
                                         <option value="">Pilih Pelatihan ABDOMEN</option>
                                         @foreach ($trainingPricesAbdomen as $price)
                                             <option value="{{ $price->id }}" data-price="{{ $price->price }}"
-                                                @if ($price->is_past) disabled @endif>
-                                                @php
-                                                    $startDate = \Carbon\Carbon::parse($price->start_date);
-                                                    $endDate = \Carbon\Carbon::parse($price->end_date);
-                                                @endphp
-                                                {{ $price->city->name }} ({{ $price->place }}) Rp
-                                                {{ number_format($price->price) }} -
-                                                {{ $startDate->locale('id')->translatedFormat('l, d') }} s.d.
-                                                {{ $endDate->locale('id')->translatedFormat('l, d F Y') }}
-                                                @if ($price->is_past)
+                                                @if (\Carbon\Carbon::parse($price->start_date)->isPast()) disabled @endif>
+                                                {{ $price->city->name }} ({{ $price->place }})
+                                                Rp {{ number_format($price->price) }} -
+                                                {{ \Carbon\Carbon::parse($price->start_date)->locale('id')->translatedFormat('l, d') }}
+                                                s.d.
+                                                {{ \Carbon\Carbon::parse($price->end_date)->locale('id')->translatedFormat('l, d F Y') }}
+                                                @if (\Carbon\Carbon::parse($price->start_date)->isPast())
                                                     - (Sudah Terselenggara)
                                                 @endif
                                             </option>
