@@ -28,8 +28,8 @@
 
         <!-- Pelatihan -->
         <div>
-            @if ($trainings->isNotEmpty())
-                <section class="flat-spacing-6 pb_0">
+            @if ($trainings->count())
+                <section class="flat-spacing-6 pb_0 training-scroll">
                     <div class="blog-grid-main">
                         <div class="container">
                             <div class="row">
@@ -55,32 +55,9 @@
                                 @endforeach
                             </div>
                         </div>
-                        <!-- pagination -->
-                        {{-- <ul class="tf-pagination-wrap tf-pagination-list">
-                        <li class="active">
-                            <a href="#" class="pagination-link">1</a>
-                        </li>
-                        <li>
-                            <a href="#" class="pagination-link animate-hover-btn">2</a>
-                        </li>
-                        <li>
-                            <a href="#" class="pagination-link animate-hover-btn">3</a>
-                        </li>
-                        <li>
-                            <a href="#" class="pagination-link animate-hover-btn">4</a>
-                        </li>
-                        <li>
-                            <a href="#" class="pagination-link animate-hover-btn">
-                                <span class="icon icon-arrow-right"></span>
-                            </a>
-                        </li>
-                    </ul> --}}
-                        {{-- <div class="tf-pagination-wrap view-more-button text-center">
-                            <button class="tf-btn-loading tf-loading-default style-2 btn-loadmore">
-                                <span class="text"> Tampilkan Lainnya </span>
-                            </button>
-                        </div> --}}
-                    </div>
+                        <div class="mt-0 d-flex justify-content-center">
+                            {{ $trainings->links('pagination::bootstrap-4') }}
+                        </div>
                 </section>
             @endif
         </div>
@@ -107,3 +84,18 @@
     @livewire('components.mobile-menu')
     <!-- /mobile menu -->
 </div>
+
+@push('scripts')
+    <script>
+        document.addEventListener('livewire:navigated', () => {
+            const el = document.querySelector('.training-scroll');
+            if (el) {
+                setTimeout(() => {
+                    el.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }, 50);
+            }
+        });
+    </script>
+@endpush

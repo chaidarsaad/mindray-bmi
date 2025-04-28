@@ -29,7 +29,7 @@
         <!-- Artikel -->
         <div>
             @if ($articles->count())
-                <section class="flat-spacing-6 pb_0">
+                <section class="flat-spacing-6 pb_0 article-scroll">
                     <div class="blog-grid-main">
                         <div class="container">
                             <div class="row">
@@ -110,3 +110,18 @@
     @livewire('components.mobile-menu')
     <!-- /mobile menu -->
 </div>
+
+@push('scripts')
+    <script>
+        document.addEventListener('livewire:navigated', () => {
+            const el = document.querySelector('.article-scroll');
+            if (el) {
+                setTimeout(() => {
+                    el.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }, 50);
+            }
+        });
+    </script>
+@endpush
