@@ -88,13 +88,23 @@
 @push('scripts')
     <script>
         document.addEventListener('livewire:navigated', () => {
-            const el = document.querySelector('.training-scroll');
-            if (el) {
-                setTimeout(() => {
-                    el.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }, 50);
+            if (sessionStorage.getItem('paginationScroll') === 'true') {
+                const el = document.querySelector('.training-scroll');
+                if (el) {
+                    setTimeout(() => {
+                        el.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }, 50);
+                }
+                sessionStorage.removeItem('paginationScroll');
+            }
+        });
+
+        document.addEventListener('click', function(e) {
+            const target = e.target.closest('a');
+            if (target && target.closest('.pagination')) {
+                sessionStorage.setItem('paginationScroll', 'true');
             }
         });
     </script>
