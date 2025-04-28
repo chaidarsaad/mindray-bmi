@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\About;
 use App\Models\Article;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -10,6 +11,12 @@ class ArticlePage extends Component
 {
     use WithPagination;
     public $perPage = 8;
+    public $about;
+
+    public function mount()
+    {
+        $this->about = About::first();
+    }
 
     public function render()
     {

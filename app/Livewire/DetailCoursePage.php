@@ -6,6 +6,7 @@ use App\Models\PaymentMethod;
 use App\Models\Training;
 use Carbon\Carbon;
 use Livewire\Component;
+use App\Models\About;
 
 class DetailCoursePage extends Component
 {
@@ -15,9 +16,12 @@ class DetailCoursePage extends Component
     public $isPastDate = true;
     public $trainingPricesGrouped = [];
     public $trainingPricesWithPrice = [];
+    public $about;
 
     public function mount($slug)
     {
+        $this->about = About::first();
+
         $this->paymentMethods = PaymentMethod::all();
         $this->accountName = PaymentMethod::first();
 

@@ -10,7 +10,7 @@
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:site_name" content="USG Mindray">
     <meta property="og:description" content="Alat USG {{ $product->subname }}">
-    <meta property="og:image" content="{{ asset('assets/images/logo/logo USG MINDRAY BMI bulat.jpg') }}">
+    <meta property="og:image" content="{{ Storage::url($about->logo) }}">
 @endpush
 
 @section('title')
@@ -33,19 +33,19 @@
 
 
         /* .video-container {
-                                                                                                                                                position: relative;
-                                                                                                                                                width: 100%;
-                                                                                                                                                padding-bottom: 56.25%;
-                                                                                                                                                height: 0;
-                                                                                                                                            }
+                                                                                                                                                    position: relative;
+                                                                                                                                                    width: 100%;
+                                                                                                                                                    padding-bottom: 56.25%;
+                                                                                                                                                    height: 0;
+                                                                                                                                                }
 
-                                                                                                                                            .video-container iframe {
-                                                                                                                                                position: absolute;
-                                                                                                                                                top: 0;
-                                                                                                                                                left: 0;
-                                                                                                                                                width: 100%;
-                                                                                                                                                height: 100%;
-                                                                                                                                            } */
+                                                                                                                                                .video-container iframe {
+                                                                                                                                                    position: absolute;
+                                                                                                                                                    top: 0;
+                                                                                                                                                    left: 0;
+                                                                                                                                                    width: 100%;
+                                                                                                                                                    height: 100%;
+                                                                                                                                                } */
 
         iframe {
             position: relative;

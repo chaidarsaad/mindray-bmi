@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\About;
 use App\Models\Article;
 use App\Models\PaymentMethod;
 use Livewire\Component;
@@ -10,9 +11,12 @@ class DetailArticlePage extends Component
 {
     public $article;
     public $otherArticle;
+    public $about;
 
     public function mount($slug)
     {
+        $this->about = About::first();
+
         $this->article = Article::with('tags')
             ->where('slug', $slug)
             ->firstOrFail();
