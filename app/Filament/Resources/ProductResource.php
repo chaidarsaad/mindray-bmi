@@ -68,7 +68,9 @@ class ProductResource extends Resource
                             ->getUploadedFileNameForStorageUsing(
                                 fn(TemporaryUploadedFile $file): string => 'produk-usg-' . $file->hashName()
                             )
-                            ->maxSize(1024)
+                            ->maxSize(500)
+                            ->downloadable()
+                            ->openable()
                             ->label('Foto Produk')
                             ->multiple()
                             ->reorderable()

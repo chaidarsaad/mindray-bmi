@@ -46,8 +46,9 @@ class TrainingResource extends Resource
                             ->helperText('Untuk menjaga performa website disarankan gambar berformat .webp dengan ukuran lebar 1600 pixels, tinggi 1600 pixels, ukuran maksimal 1 mb.')
                             ->label('Poster Pelatihan')
                             ->image()
-                            ->maxSize(1024)
-                            ->required(),
+                            ->maxSize(500)
+                            ->downloadable()
+                            ->openable()->required(),
                         Forms\Components\Toggle::make('is_show')
                             ->label('Tampilkan Pelatihan?')
                             ->default(1),

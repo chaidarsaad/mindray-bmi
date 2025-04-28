@@ -47,7 +47,10 @@ class PaymentMethodResource extends Resource
                             ->getUploadedFileNameForStorageUsing(
                                 fn(TemporaryUploadedFile $file): string => 'logo-bank-' . $file->hashName()
                             )
-                            ->image(),
+                            ->image()
+                            ->maxSize(500)
+                            ->downloadable()
+                            ->openable(),
                     ]),
             ]);
     }

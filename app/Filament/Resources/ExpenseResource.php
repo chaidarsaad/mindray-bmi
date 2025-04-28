@@ -71,6 +71,9 @@ class ExpenseResource extends Resource
                             ->getUploadedFileNameForStorageUsing(
                                 fn(TemporaryUploadedFile $file): string => 'bukti-pengeluaran-' . $file->hashName()
                             )
+                            ->maxSize(500)
+                            ->downloadable()
+                            ->openable()
                             ->image()
                             ->multiple()
                             ->openable()

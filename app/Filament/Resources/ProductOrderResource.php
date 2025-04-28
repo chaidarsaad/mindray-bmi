@@ -151,9 +151,10 @@ class ProductOrderResource extends Resource
                             ->getUploadedFileNameForStorageUsing(
                                 fn(TemporaryUploadedFile $file): string => 'bukti-transfer-alat-usg' . $file->hashName()
                             )
-                            ->openable()
                             ->image()
-                            ->downloadable(),
+                            ->maxSize(500)
+                            ->downloadable()
+                            ->openable(),
                     ]),
             ]);
     }

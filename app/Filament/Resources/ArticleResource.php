@@ -68,7 +68,10 @@ class ArticleResource extends Resource
                             ->getUploadedFileNameForStorageUsing(
                                 fn(TemporaryUploadedFile $file): string => 'artikel-' . $file->hashName()
                             )
-                            ->maxSize(1024)
+                            ->image()
+                            ->maxSize(500)
+                            ->downloadable()
+                            ->openable()
                             ->image()
                             ->required(),
                     ]),

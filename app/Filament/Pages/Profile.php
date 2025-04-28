@@ -24,6 +24,9 @@ class Profile extends EditProfile
                             ->circleCropper()
                             ->directory('avatars')
                             ->moveFiles()
+                            ->maxSize(500)
+                            ->downloadable()
+                            ->openable()
                             ->columnSpanFull()
                             ->afterStateUpdated(function ($state) {
                                 if (! $state instanceof TemporaryUploadedFile) return;

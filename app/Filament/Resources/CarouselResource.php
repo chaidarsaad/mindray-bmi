@@ -36,6 +36,9 @@ class CarouselResource extends Resource
                             )
                             ->label('Gambar')
                             ->image()
+                            ->maxSize(500)
+                            ->downloadable()
+                            ->openable()
                             ->required()
                             ->helperText('Untuk menjaga performa website disarankan gambar berformat .webp dengan ukuran lebar 2000 pixels, tinggi 1125 pixels.'),
                         Forms\Components\TextInput::make('url')

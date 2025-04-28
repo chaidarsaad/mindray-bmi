@@ -24,7 +24,8 @@ class Dashboard extends BaseDashboard
     {
         return $form
             ->schema([
-                Section::make()
+                Section::make('Filter berdasarkan tanggal')
+                    ->collapsible()
                     ->schema([
                         DatePicker::make('startDate')
                             ->label('Tanggal Mulai')

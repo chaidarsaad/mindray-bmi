@@ -64,6 +64,9 @@ class AboutResource extends Resource
                             ->label('')
                             ->helperText('Untuk menjaga performa website, disarankan format gambar .webp')
                             ->image()
+                            ->maxSize(500)
+                            ->downloadable()
+                            ->openable()
                             ->required(),
                     ]),
                 Section::make('Footer')
