@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\TrainingResource\Pages;
 use App\Filament\Resources\TrainingResource\RelationManagers;
 use App\Models\Training;
+use Filament\Actions\Action;
 use Filament\Forms;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Repeater;
@@ -39,6 +40,13 @@ class TrainingResource extends Resource
     {
         return [
             'Judul Pelatihan' => $record->judul,
+        ];
+    }
+    public static function getGlobalSearchResultActions(Model $record): array
+    {
+        return [
+            Action::make('lihat')
+                ->url(static::getUrl('edit', ['record' => $record])),
         ];
     }
 

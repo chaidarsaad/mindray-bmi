@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\ExpenseResource\Pages;
 use App\Filament\Resources\ExpenseResource\RelationManagers;
 use App\Models\Expense;
+use Filament\Actions\Action;
 use Filament\Forms;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
@@ -37,6 +38,13 @@ class ExpenseResource extends Resource
         return [
             'Pengeluaran' => $record->name,
             'Jumlah Pengeluaran' => 'Rp ' . number_format($record->amount, 0, ",", ","),
+        ];
+    }
+    public static function getGlobalSearchResultActions(Model $record): array
+    {
+        return [
+            Action::make('lihat')
+                ->url(static::getUrl('edit', ['record' => $record])),
         ];
     }
 

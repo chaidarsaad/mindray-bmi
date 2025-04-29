@@ -17,6 +17,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Carbon\Carbon;
+use Filament\Actions\Action;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Support\RawJs;
@@ -46,6 +47,13 @@ class TrainingOrderResource extends Resource
             'Nama Pemesan' => $record->name,
             'Email Pemesan' => $record->email,
             'Nomor HP Pemesan' => $record->phone,
+        ];
+    }
+    public static function getGlobalSearchResultActions(Model $record): array
+    {
+        return [
+            Action::make('lihat')
+                ->url(static::getUrl('edit', ['record' => $record])),
         ];
     }
 

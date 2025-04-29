@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\ProductResource\Pages;
 use App\Filament\Resources\ProductResource\RelationManagers;
 use App\Models\Product;
+use Filament\Actions\Action;
 use Filament\Forms;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
@@ -41,6 +42,13 @@ class ProductResource extends Resource
         return [
             'Nama Produk USG' => $record->name,
             'Kategori' => $record->category->name,
+        ];
+    }
+    public static function getGlobalSearchResultActions(Model $record): array
+    {
+        return [
+            Action::make('lihat')
+                ->url(static::getUrl('edit', ['record' => $record])),
         ];
     }
 

@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\ArticleResource\Pages;
 use App\Filament\Resources\ArticleResource\RelationManagers;
 use App\Models\Article;
+use Filament\Actions\Action;
 use Filament\Forms;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
@@ -37,6 +38,14 @@ class ArticleResource extends Resource
         return [
             'Judul Artikel' => $record->judul,
             'Penulis Artikel' => $record->user->name,
+        ];
+    }
+
+    public static function getGlobalSearchResultActions(Model $record): array
+    {
+        return [
+            Action::make('lihat')
+                ->url(static::getUrl('edit', ['record' => $record])),
         ];
     }
 

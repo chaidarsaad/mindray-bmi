@@ -6,6 +6,7 @@ use App\Filament\Resources\ProductOrderResource\Pages;
 use App\Filament\Resources\ProductOrderResource\RelationManagers;
 use App\Models\ProductOrder;
 use App\Services\OrderStatusService;
+use Filament\Actions\Action;
 use Filament\Forms;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
@@ -44,6 +45,13 @@ class ProductOrderResource extends Resource
             'Email Pemesan' => $record->email,
             'Nomor HP Pemesan' => $record->phone,
             'Alamat Pemesan' => $record->address,
+        ];
+    }
+    public static function getGlobalSearchResultActions(Model $record): array
+    {
+        return [
+            Action::make('lihat')
+                ->url(static::getUrl('edit', ['record' => $record])),
         ];
     }
 

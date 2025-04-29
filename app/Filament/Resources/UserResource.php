@@ -44,6 +44,13 @@ class UserResource extends Resource
             'Email' => $record->email,
         ];
     }
+    public static function getGlobalSearchResultActions(Model $record): array
+    {
+        return [
+            Action::make('lihat')
+                ->url(static::getUrl('edit', ['record' => $record])),
+        ];
+    }
 
     public static function form(Form $form): Form
     {
