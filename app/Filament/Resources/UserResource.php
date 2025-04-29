@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
+use Filament\GlobalSearch\Actions\Action;
+use Illuminate\Database\Eloquent\Model;
 
 class UserResource extends Resource
 {
@@ -26,6 +28,22 @@ class UserResource extends Resource
     protected static ?string $navigationLabel = 'Pengguna';
     protected static ?string $navigationGroup = 'Manajemen Pengguna';
     protected static ?int $navigationSort = 20;
+
+    protected static ?string $label = '';
+
+
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['name', 'email'];
+    }
+
+    public static function getGlobalSearchResultDetails(Model $record): array
+    {
+        return [
+            'Nama' => $record->name,
+            'Email' => $record->email,
+        ];
+    }
 
     public static function form(Form $form): Form
     {

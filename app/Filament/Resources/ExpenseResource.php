@@ -13,6 +13,7 @@ use Filament\Support\RawJs;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
@@ -24,6 +25,20 @@ class ExpenseResource extends Resource
     protected static ?string $navigationLabel = 'Pengeluaran';
     protected static ?string $navigationGroup = 'Manajemen Pengeluaran';
     protected static ?int $navigationSort = 9;
+
+    protected static ?string $label = '';
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['name'];
+    }
+
+    public static function getGlobalSearchResultDetails(Model $record): array
+    {
+        return [
+            'Pengeluaran' => $record->name,
+            'Jumlah Pengeluaran' => 'Rp ' . number_format($record->amount, 0, ",", ","),
+        ];
+    }
 
     public static function form(Form $form): Form
     {

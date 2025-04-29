@@ -20,6 +20,7 @@ use Carbon\Carbon;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Support\RawJs;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
@@ -31,6 +32,22 @@ class TrainingOrderResource extends Resource
     protected static ?string $navigationLabel = 'Pesanan Pelatihan';
     protected static ?string $navigationGroup = 'Manajemen Pemasukan';
     protected static ?int $navigationSort = 8;
+
+    protected static ?string $label = '';
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['order_number', 'name', 'email', 'phone'];
+    }
+
+    public static function getGlobalSearchResultDetails(Model $record): array
+    {
+        return [
+            'Nomor Pesanan' => $record->order_number,
+            'Nama Pemesan' => $record->name,
+            'Email Pemesan' => $record->email,
+            'Nomor HP Pemesan' => $record->phone,
+        ];
+    }
 
     public static function form(Form $form): Form
     {

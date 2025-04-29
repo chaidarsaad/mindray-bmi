@@ -14,6 +14,7 @@ use Filament\Tables;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
@@ -28,6 +29,20 @@ class ProductResource extends Resource
     protected static ?string $navigationLabel = 'Produk USG';
     protected static ?string $navigationGroup = 'Manajemen Produk';
     protected static ?int $navigationSort = 11;
+
+    protected static ?string $label = '';
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['name', 'category.name'];
+    }
+
+    public static function getGlobalSearchResultDetails(Model $record): array
+    {
+        return [
+            'Nama Produk USG' => $record->name,
+            'Kategori' => $record->category->name,
+        ];
+    }
 
     public static function form(Form $form): Form
     {

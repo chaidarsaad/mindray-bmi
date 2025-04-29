@@ -14,6 +14,7 @@ use Filament\Support\RawJs;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
@@ -23,10 +24,28 @@ class ProductOrderResource extends Resource
 {
     protected static ?string $model = ProductOrder::class;
 
+
     protected static ?string $pluralLabel = 'Pesanan Produk USG';
     protected static ?string $navigationLabel = 'Pesanan Produk USG';
     protected static ?string $navigationGroup = 'Manajemen Pemasukan';
     protected static ?int $navigationSort = 7;
+
+    protected static ?string $label = '';
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['order_number', 'name', 'email', 'phone', 'address'];
+    }
+
+    public static function getGlobalSearchResultDetails(Model $record): array
+    {
+        return [
+            'Nomor Pesanan' => $record->order_number,
+            'Nama Pemesan' => $record->name,
+            'Email Pemesan' => $record->email,
+            'Nomor HP Pemesan' => $record->phone,
+            'Alamat Pemesan' => $record->address,
+        ];
+    }
 
     public static function form(Form $form): Form
     {

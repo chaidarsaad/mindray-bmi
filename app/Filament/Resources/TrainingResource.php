@@ -15,6 +15,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
@@ -27,6 +28,19 @@ class TrainingResource extends Resource
     protected static ?string $navigationLabel = 'Pelatihan';
     protected static ?string $navigationGroup = 'Manajemen Pelatihan';
     protected static ?int $navigationSort = 14;
+
+    protected static ?string $label = '';
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['judul'];
+    }
+
+    public static function getGlobalSearchResultDetails(Model $record): array
+    {
+        return [
+            'Judul Pelatihan' => $record->judul,
+        ];
+    }
 
     public static function form(Form $form): Form
     {

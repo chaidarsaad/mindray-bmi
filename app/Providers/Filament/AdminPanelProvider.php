@@ -23,6 +23,7 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Filament\Support\Enums\Platform;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -81,6 +82,13 @@ class AdminPanelProvider extends PanelProvider
             ->profile(Profile::class, isSimple: false)
             ->breadcrumbs(false)
             ->databaseNotifications()
+            ->globalSearchKeyBindings(['command+k', 'ctrl+k'])
+            ->globalSearchDebounce('750ms')
+            ->globalSearchFieldSuffix(fn(): ?string => match (Platform::detect()) {
+                Platform::Windows, Platform::Linux => 'CTRL+K',
+                Platform::Mac => '⌘K',
+                default => null,
+            })
         ;
     }
 }

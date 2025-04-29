@@ -12,6 +12,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
@@ -24,6 +25,21 @@ class ArticleResource extends Resource
     protected static ?string $navigationLabel = 'Artikel';
     protected static ?string $navigationGroup = 'Manajemen Artikel';
     protected static ?int $navigationSort = 16;
+
+    protected static ?string $label = '';
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['judul', 'user.name'];
+    }
+
+    public static function getGlobalSearchResultDetails(Model $record): array
+    {
+        return [
+            'Judul Artikel' => $record->judul,
+            'Penulis Artikel' => $record->user->name,
+        ];
+    }
+
     public static function form(Form $form): Form
     {
         return $form
