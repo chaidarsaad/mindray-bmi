@@ -114,7 +114,8 @@ class UserResource extends Resource
                             ->relationship('roles', 'name')
                             ->multiple()
                             ->preload()
-                            ->searchable(),
+                            ->searchable()
+                            ->getOptionLabelFromRecordUsing(fn($record) => Str::headline($record->name)),
                     ]),
             ]);
     }
