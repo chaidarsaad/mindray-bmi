@@ -24,10 +24,10 @@ class Training extends Model
         $this->attributes['slug'] = Str::slug($value);
     }
 
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
+    // public function getRouteKeyName()
+    // {
+    //     return 'slug';
+    // }
 
     public function trainingPrices()
     {
