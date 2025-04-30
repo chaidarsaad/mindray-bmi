@@ -27,7 +27,7 @@ class PageTitle extends Component
             'dashboard.detail-account' => 'Detail Akun',
             'dashboard.pesanan.pelatihan' => 'Pesanan Pelatihan',
             'dashboard.pesanan.produk' => 'Pesanan Produk USG',
-            default => 'Halaman Tidak Diketahui',
+            default => 'Halaman Tidak Ditemukan',
         };
     }
     public function render()
