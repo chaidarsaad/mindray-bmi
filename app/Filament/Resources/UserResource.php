@@ -117,7 +117,7 @@ class UserResource extends Resource
                             ->preload()
                             ->searchable()
                             ->getOptionLabelFromRecordUsing(fn($record) => Str::headline($record->name))
-                            ->hidden(fn($record) => !$record->hasRole('pengelola_web')),
+                            ->hidden(fn() => !auth()->user()?->hasRole('pengelola_web')),
                     ]),
             ]);
     }
