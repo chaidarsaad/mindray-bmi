@@ -19,6 +19,7 @@ use Illuminate\Support\Str;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Filament\GlobalSearch\Actions\Action;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Permission\Models\Role;
 
 class UserResource extends Resource
 {
@@ -115,7 +116,8 @@ class UserResource extends Resource
                             ->multiple()
                             ->preload()
                             ->searchable()
-                            ->getOptionLabelFromRecordUsing(fn($record) => Str::headline($record->name)),
+                            ->getOptionLabelFromRecordUsing(fn($record) => Str::headline($record->name))
+                            ->hidden(fn($record) => !$record->hasRole('pengelola_web')),
                     ]),
             ]);
     }
