@@ -31,6 +31,13 @@
                 right: 30px;
             }
         }
+
+        @media (min-width: 1150px) {
+            .whatsapp-chat {
+                bottom: 120px;
+                right: 50px;
+            }
+        }
     </style>
 @endpush
 
