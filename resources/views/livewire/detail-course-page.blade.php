@@ -19,16 +19,78 @@
 
 @push('styles')
     <style>
-        /* Menambahkan aturan untuk konten yang lebih responsif */
         .article-content {
-            /* Lebih aman untuk semua bahasa (termasuk Indonesia) */
             word-break: normal;
             overflow-wrap: break-word;
             hyphens: auto;
-
-            /* Layout tetap responsif */
             max-width: 100%;
             box-sizing: border-box;
+        }
+
+        .article-content h1 {
+            font-size: 40px !important;
+            font-weight: bold !important;
+            line-height: 48px !important;
+        }
+
+        .article-content h2 {
+            font-size: 32px !important;
+            font-weight: bold !important;
+            line-height: 40px !important;
+        }
+
+        .article-content h3 {
+            font-size: 28px !important;
+            font-weight: bold !important;
+            line-height: 36px !important;
+        }
+
+        .article-content h4 {
+            font-size: 24px !important;
+            font-weight: bold !important;
+            line-height: 32px !important;
+        }
+
+        .article-content h5 {
+            font-size: 20px !important;
+            font-weight: bold !important;
+            line-height: 28px !important;
+        }
+
+        .article-content h6 {
+            font-size: 18px !important;
+            font-weight: bold !important;
+            line-height: 24px !important;
+        }
+
+        .article-content h1 span,
+        .article-content h2 span,
+        .article-content h3 span,
+        .article-content h4 span,
+        .article-content h5 span,
+        .article-content h6 span {
+            font-size: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+            /* color: inherit !important; */
+        }
+
+        /* bullet */
+        .article-content ul {
+            list-style-type: disc !important;
+            list-style-position: outside !important;
+            padding-left: 1.5em !important;
+            margin: 0 0 1em 0 !important;
+            text-align: left !important;
+        }
+
+        .article-content li {
+            list-style: disc !important;
+            display: list-item !important;
+            font-size: inherit !important;
+            margin-bottom: 5px !important;
+            line-height: 1.8em !important;
+            vertical-align: baseline !important;
         }
 
         iframe {
