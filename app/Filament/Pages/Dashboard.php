@@ -33,15 +33,15 @@ class Dashboard extends BaseDashboard
                             ->displayFormat('l, d F Y')
                             ->placeholder('Pilih Tanggal')
                             ->maxDate(fn(Get $get) => $get('endDate') ?: now()),
-
                         DatePicker::make('endDate')
                             ->label('Tanggal Akhir')
                             ->placeholder('Pilih Tanggal')
-                            ->default(now())
                             ->native(false)
                             ->displayFormat('l, d F Y')
                             ->minDate(fn(Get $get) => $get('startDate') ?: now()->startOfMonth())
-                            ->maxDate(now()),
+                            ->maxDate(now())
+                            ->default(fn() => now()->endOfDay())
+                            ->required(),
                     ])
                     ->columns(2),
             ]);
