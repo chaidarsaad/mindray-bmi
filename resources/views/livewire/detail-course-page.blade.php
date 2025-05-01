@@ -9,7 +9,7 @@
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:site_name" content="USG Mindray">
     <meta property="og:description" content="Pelatihan USG ANC & ABDOMEN {{ $training->judul }}">
-    <meta property="og:image" content="{{ Storage::url($training->image) }}">
+    <meta property="og:image" content="{{ url(Storage::url($training->image)) }}">
 @endpush
 
 
