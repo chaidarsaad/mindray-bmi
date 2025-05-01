@@ -25,15 +25,13 @@ class OrderBiggest extends BaseWidget
             ->paginationPageOptions([5, 10, 25, 50, 100, 250])
             ->defaultPaginationPageOption(5)
             ->query(function (): Builder {
-                // Ambil tanggal dari filter atau default ke awal bulan sampai akhir hari ini
                 $startDate = !empty($this->filters['startDate'])
                     ? \Carbon\Carbon::parse($this->filters['startDate'])->startOfDay()
-                    : \Carbon\Carbon::create(2000, 1, 1); // default dari tahun 2000, atau ubah sesuai kebutuhan
+                    : \Carbon\Carbon::create(2000, 1, 1); // fallback default
 
                 $endDate = !empty($this->filters['endDate'])
                     ? \Carbon\Carbon::parse($this->filters['endDate'])->endOfDay()
                     : now()->endOfDay();
-
 
                 // Query untuk TrainingOrder
                 $trainingOrders = TrainingOrder::select(
@@ -42,7 +40,7 @@ class OrderBiggest extends BaseWidget
                     'total_harga',
                     'created_at',
                     DB::raw("'Pelatihan' as type"),
-                    'id' // Pastikan ada ID untuk setiap record
+                    'id'
                 )
                     ->where('payment_status', 'paid')
                     ->whereBetween('created_at', [$startDate, $endDate]);
@@ -54,17 +52,15 @@ class OrderBiggest extends BaseWidget
                     'total_harga',
                     'created_at',
                     DB::raw("'Alat USG' as type"),
-                    'id' // Pastikan ada ID untuk setiap record
+                    'id'
                 )
                     ->where('payment_status', 'paid')
                     ->whereBetween('created_at', [$startDate, $endDate]);
 
-                // Gabungkan kedua query dengan UNION ALL
-                $combinedOrders = $trainingOrders->unionAll($productOrders);
-
-                // Gunakan Eloquent Builder untuk subquery (using `fromSub`)
-                return ProductOrder::fromSub($combinedOrders, 'combined_orders')
-                    ->orderByDesc('total_harga');
+                return ProductOrder::fromSub(
+                    $trainingOrders->unionAll($productOrders),
+                    'combined_orders'
+                )->orderByDesc('total_harga');
             })
             ->columns([
                 Tables\Columns\TextColumn::make('order_number')
