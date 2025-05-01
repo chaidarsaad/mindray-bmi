@@ -26,4 +26,5 @@
    <link rel="apple-touch-icon-precomposed" href="{{ asset('assets/images/logo/logo USG MINDRAY BMI bulat.jpg') }}" />
 
    <!-- font awesome -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+   <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.all.min.css') }}" />
+   {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" /> --}}
