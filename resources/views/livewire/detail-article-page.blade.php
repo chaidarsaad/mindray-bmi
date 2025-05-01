@@ -102,6 +102,12 @@
             line-height: 1.8em !important;
             vertical-align: baseline !important;
         }
+
+        .share-buttons a:hover {
+            opacity: 0.8;
+            transform: scale(1.1);
+            transition: 0.2s;
+        }
     </style>
 @endpush
 
@@ -136,6 +142,40 @@
                                 <div class="meta">
                                     {{ $article->created_at->locale('id')->isoFormat('dddd, D MMMM YYYY') }}
                                 </div>
+
+                                <div class="share-buttons"
+                                    style="margin: 20px 0; display: flex; gap: 15px; align-items: center; justify-content: center;">
+                                    <span>Bagikan:</span>
+
+                                    {{-- WhatsApp --}}
+                                    <a href="https://api.whatsapp.com/send?text={{ urlencode($article->judul . ' ' . url()->current()) }}"
+                                        target="_blank" rel="noopener" title="Bagikan ke WhatsApp"
+                                        style="color: #25D366;">
+                                        <i class="fab fa-whatsapp fa-lg"></i>
+                                    </a>
+
+                                    {{-- Facebook --}}
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current()) }}"
+                                        target="_blank" rel="noopener" title="Bagikan ke Facebook"
+                                        style="color: #3b5998;">
+                                        <i class="fab fa-facebook fa-lg"></i>
+                                    </a>
+
+                                    {{-- Twitter (opsional) --}}
+                                    <a href="https://twitter.com/intent/tweet?url={{ urlencode(url()->current()) }}&text={{ urlencode($article->judul) }}"
+                                        target="_blank" rel="noopener" title="Bagikan ke Twitter"
+                                        style="color: #1DA1F2;">
+                                        <i class="fab fa-twitter fa-lg"></i>
+                                    </a>
+
+                                    {{-- Copy Link --}}
+                                    <a href="javascript:void(0);" onclick="copyArticleLink()" title="Salin tautan"
+                                        style="color: #333;">
+                                        <i class="fas fa-link fa-lg"></i>
+                                    </a>
+                                </div>
+
+
                                 <div class="image">
                                     <img class="" data-src="{{ Storage::url($article->image) }}"
                                         src="{{ Storage::url($article->image) }}" alt="{{ $article->judul }}"
@@ -167,3 +207,13 @@
     @livewire('components.mobile-menu')
     <!-- /mobile menu -->
 </div>
+
+@push('scripts')
+    <script>
+        function copyArticleLink() {
+            navigator.clipboard.writeText("{{ url()->current() }}")
+                .then(() => alert("Tautan berhasil disalin!"))
+                .catch(err => console.error("Gagal menyalin tautan:", err));
+        }
+    </script>
+@endpush
