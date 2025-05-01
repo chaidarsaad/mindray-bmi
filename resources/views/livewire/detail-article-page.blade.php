@@ -10,7 +10,7 @@
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:site_name" content="USG Mindray">
     <meta property="og:description" content="Artikel {{ Str::limit(strip_tags($article->content), 150, '...') }}">
-    <meta property="og:image" content="{{ Storage::url($about->logo) }}">
+    <meta property="og:image" content="{{ url(Storage::url($about->logo)) }}">
 @endpush
 
 @section('title')
