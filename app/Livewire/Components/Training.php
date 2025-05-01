@@ -23,7 +23,7 @@ class Training extends Component
             ->join(DB::raw('(SELECT training_id, MAX(start_date) as latest_date FROM training_prices GROUP BY training_id) as tp'), 'trainings.id', '=', 'tp.training_id')
             ->orderByDesc('tp.latest_date')
             ->select('trainings.*', 'tp.latest_date')
-            ->take(4)
+            ->take(6)
             ->get();
     }
     public function render()
