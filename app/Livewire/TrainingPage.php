@@ -10,7 +10,7 @@ use Livewire\WithPagination;
 
 class TrainingPage extends Component
 {
-    public $perPage = 8;
+    public $perPage = 6;
     public $about;
 
     public function mount()
