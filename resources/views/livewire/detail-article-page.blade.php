@@ -1,16 +1,14 @@
 @push('meta-seo')
-    <meta name="description"
-        content="Supplier alat USG Mindray dan Penyelenggara Pelatihan USG Abdomen & ANC. Dapatkan informasi lengkap tentang produk dan pelatihan kami di sini.">
-    <meta name="keywords"
-        content="usg, mindray, pelatihan, abdomen, anc, alat kesehatan, usg mindray, pelatihan usg, alat usg, usg bandung, pelatihan anc dan abdomen, produk usg mindray, {{ $article->tags->pluck('name')->implode(', ') }}">
+    <meta name="description" content="{{ Str::limit(strip_tags($article->content), 150, '...') }}">
+    <meta name="keywords" content="{{ $article->tags->pluck('name')->implode(', ') }}">
     <meta name="author" content="USG Mindray">
 
-    <meta property="og:type" content="Artikel">
-    <meta property="og:title" content="Artikel {{ $article->judul }}">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{{ $article->judul }}">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:site_name" content="USG Mindray">
-    <meta property="og:description" content="Artikel {{ Str::limit(strip_tags($article->content), 150, '...') }}">
-    <meta property="og:image" content="{{ url(Storage::url($about->logo)) }}">
+    <meta property="og:description" content="{{ Str::limit(strip_tags($article->content), 150, '...') }}">
+    <meta property="og:image" content="{{ url(Storage::url($article->thumbnail)) }}">
 @endpush
 
 @section('title')
