@@ -16,6 +16,25 @@
     Semua Pelatihan | USG Mindray
 @endsection
 
+@push('styles')
+    <style>
+        .page-link {
+            color: #0105da;
+        }
+
+        .page-link:hover {
+            color: #0105da;
+            background-color: #e6e9ff;
+        }
+
+        .page-item.active .page-link {
+            background-color: #0105da;
+            border-color: #0105da;
+            color: #fff;
+        }
+    </style>
+@endpush
+
 <div>
     <div id="wrapper">
         <!-- Navbar -->
