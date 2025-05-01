@@ -3,23 +3,23 @@
 
    <link rel="stylesheet" href="{{ asset('assets/fonts/font-icons.css') }}" />
 
-   {{-- <link rel="stylesheet" href="{{ asset('assets/css/bootstrapext2.min.css') }}" /> --}}
-   <link rel="stylesheet" href="https://usgmindray-css.vercel.app/css/bootstrapext2.min.css" />
+   <link rel="stylesheet" href="{{ asset('assets/css/bootstrapext2.min.css') }}" />
+   {{-- <link rel="stylesheet" href="https://usgmindray-css.vercel.app/css/bootstrapext2.min.css" /> --}}
 
-   <link rel="stylesheet" href="https://usgmindray-css.vercel.app/css/bootstrap-select.min.css" />
+   {{-- <link rel="stylesheet" href="https://usgmindray-css.vercel.app/css/bootstrap-select.min.css" /> --}}
 
-   {{-- <link rel="stylesheet" href="{{ asset('assets/css/swiper-bundle.min.css') }}" /> --}}
-   <link rel="stylesheet" href="https://usgmindray-css.vercel.app/css/swiper-bundle.min.css" />
+   <link rel="stylesheet" href="{{ asset('assets/css/swiper-bundle.min.css') }}" />
+   {{-- <link rel="stylesheet" href="https://usgmindray-css.vercel.app/css/swiper-bundle.min.css" /> --}}
 
-   {{-- <link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}" /> --}}
-   <link rel="stylesheet" href="https://usgmindray-css.vercel.app/css/animate.css" />
+   <link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}" />
+   {{-- <link rel="stylesheet" href="https://usgmindray-css.vercel.app/css/animate.css" /> --}}
 
    {{-- toastify --}}
-   {{-- <link rel="stylesheet" href="{{ asset('assets/css/toastify.css') }}" /> --}}
-   <link rel="stylesheet" href="https://usgmindray-css.vercel.app/css/toastify.css" />
+   <link rel="stylesheet" href="{{ asset('assets/css/toastify.css') }}" />
+   {{-- <link rel="stylesheet" href="https://usgmindray-css.vercel.app/css/toastify.css" /> --}}
 
-   {{-- <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/main5.css') }}" /> --}}
-   <link rel="stylesheet" type="text/css" href="https://usgmindray-css.vercel.app/css/style.css" />
+   <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/main5.css') }}" />
+   {{-- <link rel="stylesheet" type="text/css" href="https://usgmindray-css.vercel.app/css/style.css" /> --}}
 
    <!-- Favicon and Touch Icons  -->
    <link rel="shortcut icon" href="{{ asset('assets/images/logo/logo USG MINDRAY BMI bulat.jpg') }}" />
