@@ -26,7 +26,7 @@ class OrderBiggest extends BaseWidget
             ->defaultPaginationPageOption(5)
             ->query(function (): Builder {
                 // Ambil tanggal dari filter atau default ke awal bulan sampai akhir hari ini
-                $startDate = now()->startOfMonth();
+                $startDate = null;
                 $endDate = now()->endOfDay();
 
                 if (!empty($this->filters['startDate'])) {

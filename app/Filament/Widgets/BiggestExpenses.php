@@ -25,7 +25,7 @@ class BiggestExpenses extends BaseWidget
             ->paginationPageOptions([5, 10, 25, 50, 100, 250])
             ->defaultPaginationPageOption(5)
             ->query(function (): Builder {
-                $startDate = now()->startOfMonth();
+                $startDate = null;
                 $endDate = now()->endOfDay();
 
                 if (!empty($this->filters['startDate'])) {

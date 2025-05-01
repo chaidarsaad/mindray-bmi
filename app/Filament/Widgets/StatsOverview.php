@@ -24,7 +24,7 @@ class StatsOverview extends BaseWidget
     use HasWidgetShield, InteractsWithPageFilters;
     protected function getStats(): array
     {
-        $startDate = now()->startOfMonth();
+        $startDate = null;
         $endDate = now()->endOfDay();
 
         if (!empty($this->filters['startDate'])) {
