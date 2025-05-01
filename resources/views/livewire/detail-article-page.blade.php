@@ -148,7 +148,7 @@
                                     <span>Bagikan:</span>
 
                                     {{-- WhatsApp --}}
-                                    <a href="https://api.whatsapp.com/send?text={{ urlencode($article->judul . ' ' . url()->current()) }}"
+                                    <a href="https://api.whatsapp.com/send?text={{ urlencode($article->judul . "\n" . url()->current()) }}"
                                         target="_blank" rel="noopener" title="Bagikan ke WhatsApp"
                                         style="color: #25D366;">
                                         <i class="fab fa-whatsapp fa-lg"></i>
@@ -161,11 +161,18 @@
                                         <i class="fab fa-facebook fa-lg"></i>
                                     </a>
 
-                                    {{-- Twitter (opsional) --}}
-                                    <a href="https://twitter.com/intent/tweet?url={{ urlencode(url()->current()) }}&text={{ urlencode($article->judul) }}"
+                                    {{-- Twitter --}}
+                                    <a href="https://twitter.com/intent/tweet?text={{ urlencode($article->judul . "\n" . url()->current()) }}"
                                         target="_blank" rel="noopener" title="Bagikan ke Twitter"
                                         style="color: #1DA1F2;">
                                         <i class="fab fa-twitter fa-lg"></i>
+                                    </a>
+
+                                    {{-- Telegram --}}
+                                    <a href="https://t.me/share/url?url={{ urlencode(url()->current()) }}&text={{ urlencode($article->judul) }}"
+                                        target="_blank" rel="noopener" title="Bagikan ke Telegram"
+                                        style="color: #0088cc;">
+                                        <i class="fab fa-telegram fa-lg"></i>
                                     </a>
 
                                     {{-- Copy Link --}}
