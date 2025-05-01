@@ -36,6 +36,7 @@ class Dashboard extends BaseDashboard
 
                         DatePicker::make('endDate')
                             ->label('Tanggal Akhir')
+                            ->placeholder('Pilih Tanggal')
                             ->default(now())
                             ->native(false)
                             ->displayFormat('l, d F Y')
