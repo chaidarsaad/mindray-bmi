@@ -26,16 +26,14 @@ class OrderBiggest extends BaseWidget
             ->defaultPaginationPageOption(5)
             ->query(function (): Builder {
                 // Ambil tanggal dari filter atau default ke awal bulan sampai akhir hari ini
-                $startDate = null;
-                $endDate = now()->endOfDay();
+                $startDate = !empty($this->filters['startDate'])
+                    ? \Carbon\Carbon::parse($this->filters['startDate'])->startOfDay()
+                    : \Carbon\Carbon::create(2000, 1, 1); // default dari tahun 2000, atau ubah sesuai kebutuhan
 
-                if (!empty($this->filters['startDate'])) {
-                    $startDate = \Carbon\Carbon::parse($this->filters['startDate']);
-                }
+                $endDate = !empty($this->filters['endDate'])
+                    ? \Carbon\Carbon::parse($this->filters['endDate'])->endOfDay()
+                    : now()->endOfDay();
 
-                if (!empty($this->filters['endDate'])) {
-                    $endDate = \Carbon\Carbon::parse($this->filters['endDate'])->endOfDay();
-                }
 
                 // Query untuk TrainingOrder
                 $trainingOrders = TrainingOrder::select(
