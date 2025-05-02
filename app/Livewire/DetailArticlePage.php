@@ -6,12 +6,14 @@ use App\Models\About;
 use App\Models\Article;
 use App\Models\PaymentMethod;
 use Livewire\Component;
+use Illuminate\Http\RedirectResponse;
 
 class DetailArticlePage extends Component
 {
     public $article;
     public $otherArticle;
     public $about;
+    public $shouldRedirect = false;
 
     public function mount($slug)
     {
@@ -20,6 +22,9 @@ class DetailArticlePage extends Component
         $this->article = Article::with('tags')
             ->where('slug', $slug)
             ->firstOrFail();
+        if ($this->article->is_show == 0) {
+            return redirect()->route('home');
+        }
         $this->otherArticle = Article::where('id', '!=', $this->article->id)->get();
 
         $sessionKey = 'article_viewed_' . $this->article->id;
