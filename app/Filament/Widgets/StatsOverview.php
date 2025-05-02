@@ -24,16 +24,13 @@ class StatsOverview extends BaseWidget
     use HasWidgetShield, InteractsWithPageFilters;
     protected function getStats(): array
     {
-        $startDate = null;
-        $endDate = now()->endOfDay();
+        $startDate = !empty($this->filters['startDate'])
+            ? \Carbon\Carbon::parse($this->filters['startDate'])->startOfDay()
+            : \Carbon\Carbon::create(2025, 1, 1);
 
-        if (!empty($this->filters['startDate'])) {
-            $startDate = Carbon::parse($this->filters['startDate']);
-        }
-
-        if (!empty($this->filters['endDate'])) {
-            $endDate = Carbon::parse($this->filters['endDate'])->endOfDay();
-        }
+        $endDate = !empty($this->filters['endDate'])
+            ? \Carbon\Carbon::parse($this->filters['endDate'])->endOfDay()
+            : now()->endOfDay();
 
         $expenseQuery = Expense::query();
         if ($startDate && $endDate) {

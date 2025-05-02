@@ -27,7 +27,7 @@ class OrderBiggest extends BaseWidget
             ->query(function (): Builder {
                 $startDate = !empty($this->filters['startDate'])
                     ? \Carbon\Carbon::parse($this->filters['startDate'])->startOfDay()
-                    : \Carbon\Carbon::create(2000, 1, 1); // fallback default
+                    : \Carbon\Carbon::create(2025, 1, 1);
 
                 $endDate = !empty($this->filters['endDate'])
                     ? \Carbon\Carbon::parse($this->filters['endDate'])->endOfDay()

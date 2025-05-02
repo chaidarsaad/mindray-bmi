@@ -25,16 +25,13 @@ class BiggestExpenses extends BaseWidget
             ->paginationPageOptions([5, 10, 25, 50, 100, 250])
             ->defaultPaginationPageOption(5)
             ->query(function (): Builder {
-                $startDate = null;
-                $endDate = now()->endOfDay();
+                $startDate = !empty($this->filters['startDate'])
+                    ? \Carbon\Carbon::parse($this->filters['startDate'])->startOfDay()
+                    : \Carbon\Carbon::create(2025, 1, 1);
 
-                if (!empty($this->filters['startDate'])) {
-                    $startDate = \Carbon\Carbon::parse($this->filters['startDate']);
-                }
-
-                if (!empty($this->filters['endDate'])) {
-                    $endDate = \Carbon\Carbon::parse($this->filters['endDate'])->endOfDay();
-                }
+                $endDate = !empty($this->filters['endDate'])
+                    ? \Carbon\Carbon::parse($this->filters['endDate'])->endOfDay()
+                    : now()->endOfDay();
 
                 return Expense::query()
                     ->when($startDate && $endDate, function ($query) use ($startDate, $endDate) {
