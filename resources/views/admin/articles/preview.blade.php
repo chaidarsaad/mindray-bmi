@@ -211,7 +211,6 @@
         function copyArticleLink() {
             navigator.clipboard.writeText("{{ url()->current() }}")
                 .then(() => alert("Tautan berhasil disalin!"))
-                .catch(err => console.error("Gagal menyalin tautan:", err));
         }
     </script>
 @endpush
