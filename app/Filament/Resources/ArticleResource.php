@@ -145,6 +145,10 @@ class ArticleResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\ViewAction::make('preview')
+                    ->label('Preview')
+                    ->url(fn($record) => route('admin.articles.preview', $record))
+                    ->openUrlInNewTab(),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make()
                     ->modalHeading(fn($record) => 'Hapus Artikel: ' . $record->judul),

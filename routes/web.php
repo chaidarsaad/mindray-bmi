@@ -60,6 +60,10 @@ Route::middleware(['auth', 'checkTrainingEndDate'])->group(function () {
     Route::get('/daftar-pelatihan/{slug}', CheckoutTrainingPage::class)->name('checkout.training');
 });
 
+Route::get('/admin/articles/{article}/preview', [\App\Http\Controllers\Admin\ArticlePreviewController::class, 'show'])
+    ->middleware('auth')
+    ->name('admin.articles.preview');
+
 Route::middleware('throttle:10,1')->get('/check-session', function () {
     return response()->json(['active' => auth()->check() || session()->has('_token')]);
 });

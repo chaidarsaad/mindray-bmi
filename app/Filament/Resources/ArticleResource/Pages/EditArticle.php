@@ -24,7 +24,11 @@ class EditArticle extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            // Actions\DeleteAction::make(),
+            Actions\ViewAction::make('preview')
+                ->color('primary')
+                ->label('Preview')
+                ->url(fn($record) => route('admin.articles.preview', $record))
+                ->openUrlInNewTab(),
         ];
     }
 }

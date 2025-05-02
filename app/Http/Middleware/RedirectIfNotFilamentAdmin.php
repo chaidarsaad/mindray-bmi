@@ -30,7 +30,6 @@ class RedirectIfNotFilamentAdmin extends Middleware
 
         if ($user->roles->isEmpty()) {
             session()->flash('notify-error', 'Anda tidak memiliki izin untuk mengakses halaman ini.');
-            // abort(redirect()->to(route('home')));
             return redirect(route('home'))->send();
         }
 
