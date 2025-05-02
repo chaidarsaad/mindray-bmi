@@ -88,7 +88,7 @@ class ArticleResource extends Resource
                             ->preload()
                             ->searchable(),
                         Forms\Components\FileUpload::make('image')
-                            ->helperText('Untuk menjaga performa website disarankan gambar berformat .webp dengan ukuran lebar 1366 pixels, tinggi 768 pixels, ukuran maksimal 1 mb')
+                            ->helperText('Untuk menjaga performa website disarankan gambar berformat .webp dengan ukuran lebar 1366 pixels, tinggi 768 pixels, ukuran maksimal 500 kb')
                             ->label('Thumbnail')
                             ->getUploadedFileNameForStorageUsing(
                                 fn(TemporaryUploadedFile $file): string => 'artikel-' . $file->hashName()
