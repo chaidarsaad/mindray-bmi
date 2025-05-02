@@ -52,13 +52,10 @@ class TopArticles extends BaseWidget
                     ->label('Jumlah Dilihat'),
             ])
             ->actions([
-                Tables\Actions\ViewAction::make()
-                    ->modalHeading(fn($record) => $record->judul)
-                    ->modalContent(function ($record) {
-                        return view('filament.widgets.view-article', [
-                            'record' => $record,
-                        ]);
-                    }),
+                Tables\Actions\ViewAction::make('preview')
+                    ->label('Preview')
+                    ->url(fn($record) => route('admin.articles.preview', $record))
+                    ->openUrlInNewTab(),
                 Tables\Actions\EditAction::make()
                     ->url(fn($record) => route('filament.admin.resources.articles.edit', ['record' => $record])),
             ]);
