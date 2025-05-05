@@ -30,11 +30,13 @@ class Dashboard extends BaseDashboard
                         DatePicker::make('startDate')
                             ->label('Tanggal Mulai')
                             ->native(false)
+                            ->closeOnDateSelection()
                             ->displayFormat('l, d F Y')
                             ->placeholder('Pilih Tanggal')
                             ->maxDate(fn(Get $get) => $get('endDate') ?: now()),
                         DatePicker::make('endDate')
                             ->label('Tanggal Akhir')
+                            ->closeOnDateSelection()
                             ->placeholder('Pilih Tanggal')
                             ->native(false)
                             ->displayFormat('l, d F Y')
