@@ -21,7 +21,6 @@ class BestSellingProroduct extends BaseWidget
 
     public function getTableRecordKey($record): string
     {
-        // Menggunakan product_id sebagai kunci unik
         return (string) $record->product_id;
     }
 
@@ -43,20 +42,18 @@ class BestSellingProroduct extends BaseWidget
                     ->when($startDate && $endDate, function ($query) use ($startDate, $endDate) {
                         $query->whereBetween('created_at', [$startDate, $endDate]);
                     })
-                    ->where('payment_status', 'paid')  // Hanya memilih yang status pembayaran "paid"
-                    ->selectRaw('product_id, count(*) as total, sum(total_harga) as Total_Pemasukan')  // Menghitung jumlah produk dan total pendapatan
-                    ->groupBy('product_id')  // Mengelompokkan berdasarkan product_id
-                    ->with(['product'])  // Memuat relasi produk
+                    ->where('payment_status', 'paid')
+                    ->selectRaw('product_id, count(*) as total, sum(total_harga) as Total_Pemasukan')
+                    ->groupBy('product_id')
+                    ->with(['product'])
                     ->orderByDesc('total');
             })
             ->columns([
                 Tables\Columns\TextColumn::make('product.name')
                     ->label('Nama Produk')
                     ->limit(20),
-                Tables\Columns\TextColumn::make('total')
-                    ->label('Jumlah Terjual'),
                 Tables\Columns\TextColumn::make('Total_Pemasukan')
-                    ->label('Total')
+                    ->label('Total Pemasukan')
                     ->formatStateUsing(fn($state) => 'Rp ' . number_format($state ?? 0, 2, ',', '.'))
                     ->summarize(
                         Sum::make()
