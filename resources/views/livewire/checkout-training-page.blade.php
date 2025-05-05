@@ -50,7 +50,7 @@
                                                 @if (\Carbon\Carbon::parse($price->start_date)->isPast()) disabled @endif>
                                                 {{ $price->city->name }} ({{ $price->place }})
                                                 Rp {{ number_format($price->price) }} -
-                                                {{ \Carbon\Carbon::parse($price->start_date)->locale('id')->translatedFormat('l, d') }}
+                                                {{ \Carbon\Carbon::parse($price->start_date)->locale('id')->translatedFormat('l, d F Y') }}
                                                 s.d.
                                                 {{ \Carbon\Carbon::parse($price->end_date)->locale('id')->translatedFormat('l, d F Y') }}
                                                 @if (\Carbon\Carbon::parse($price->start_date)->isPast())
