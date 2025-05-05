@@ -12,6 +12,7 @@ use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Navigation\MenuItem;
+use Filament\Navigation\NavigationItem;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -89,6 +90,12 @@ class AdminPanelProvider extends PanelProvider
                 Platform::Mac => '⌘K',
                 default => null,
             })
+            ->navigationItems([
+                NavigationItem::make('Ubah Profil')
+                    ->sort(20)
+                    ->url(fn() => route('filament.admin.auth.profile', absolute: false))
+                    ->icon('heroicon-o-user'),
+            ])
         ;
     }
 }
