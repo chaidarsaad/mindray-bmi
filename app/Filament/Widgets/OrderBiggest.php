@@ -18,6 +18,7 @@ class OrderBiggest extends BaseWidget
 
     protected static ?string $heading = 'Sumber Pemasukan';
     protected static ?int $sort = 2;
+    protected static bool $isLazy = false;
 
     public function table(Table $table): Table
     {

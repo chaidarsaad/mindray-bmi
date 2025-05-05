@@ -16,6 +16,7 @@ class OmsetChart extends ChartWidget
     protected static ?int $sort = 5;
     public ?string $filter = 'today';
     protected static string $color = 'success';
+    protected static bool $isLazy = false;
 
     use HasWidgetShield;
 

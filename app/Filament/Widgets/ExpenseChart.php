@@ -17,6 +17,7 @@ class ExpenseChart extends ChartWidget
     public ?string $filter = 'today';
     protected static string $color = 'danger';
     use HasWidgetShield;
+    protected static bool $isLazy = false;
 
     protected function getData(): array
     {

@@ -18,6 +18,7 @@ class BiggestExpenses extends BaseWidget
     protected static ?int $sort = 5;
     protected static string $color = 'danger';
     protected int | string | array $columnSpan = 'full';
+    protected static bool $isLazy = false;
 
     public function table(Table $table): Table
     {

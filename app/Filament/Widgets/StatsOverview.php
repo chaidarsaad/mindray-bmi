@@ -21,6 +21,7 @@ class StatsOverview extends BaseWidget
     protected ?string $heading = 'Statistik';
     protected static ?int $sort = 0;
 
+    protected static bool $isLazy = false;
     use HasWidgetShield, InteractsWithPageFilters;
     protected function getStats(): array
     {

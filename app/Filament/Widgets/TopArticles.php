@@ -18,6 +18,7 @@ class TopArticles extends BaseWidget
     protected static ?string $description = 'Artikel yang paling banyak dibaca';
     protected static ?int $sort = 3;
     protected int | string | array $columnSpan = 'full';
+    protected static bool $isLazy = false;
 
     public function table(Table $table): Table
     {

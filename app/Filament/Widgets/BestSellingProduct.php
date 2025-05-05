@@ -18,6 +18,7 @@ class BestSellingProduct extends BaseWidget
 
     protected static ?string $heading = 'Alat USG Terjual';
     protected static ?int $sort = 1;
+    protected static bool $isLazy = false;
     public function getTableRecordKey($record): string
     {
         return (string) $record->product_id;
