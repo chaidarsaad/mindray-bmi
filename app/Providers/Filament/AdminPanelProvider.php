@@ -93,7 +93,8 @@ class AdminPanelProvider extends PanelProvider
             ->navigationItems([
                 NavigationItem::make('Ubah Profil')
                     ->sort(20)
-                    ->url(fn() => route('filament.admin.auth.profile', absolute: false))
+                    ->isActiveWhen(fn() => request()->routeIs('filament.admin.auth.profile'))
+                    ->url(fn() => route('filament.admin.auth.profile', absolute: true))
                     ->icon('heroicon-o-user'),
             ])
         ;
