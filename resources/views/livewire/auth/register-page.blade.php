@@ -67,9 +67,24 @@
                                 *</label>
                         </div>
                         <div class="mb_20">
-                            <button type="submit" wire:loading.attr="disabled"
-                                class="tf-btn tf-btn-process w-100 radius-3 btn-fill animate-hover-btn justify-content-center">
-                                Daftar
+                            <button type="submit" style="background-color: #0105da;"
+                                class="btn btn-primary w-100 d-flex justify-content-center align-items-center position-relative"
+                                wire:loading.attr="disabled" wire:target="register">
+
+                                <!-- Saat tidak loading -->
+                                <span class="align-items-center gap-2" wire:loading.class="d-none"
+                                    wire:target="register">
+                                    Daftar
+                                </span>
+
+                                <!-- Saat loading -->
+                                <span class="d-none align-items-center gap-2" wire:loading.class.remove="d-none"
+                                    wire:target="register">
+                                    <div class="spinner-border spinner-border-sm text-light me-2" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    Loading...
+                                </span>
                             </button>
                         </div>
                         <div class="link-row-centered mt_20">

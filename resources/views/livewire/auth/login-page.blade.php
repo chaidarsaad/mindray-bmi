@@ -55,10 +55,28 @@
                         </div>
 
                         <div class="mb_20">
-                            <button type="submit"
-                                class="tf-btn w-100 tf-btn-process radius-3 btn-fill animate-hover-btn justify-content-center">
-                                Masuk
+                            <button type="submit" style="background-color: #0105da;"
+                                class="btn btn-primary w-100 d-flex justify-content-center align-items-center position-relative"
+                                wire:loading.attr="disabled" wire:target="login">
+
+                                <!-- Saat tidak loading -->
+                                <span class="align-items-center gap-2" wire:loading.class="d-none" wire:target="login">
+                                    Masuk
+                                </span>
+
+                                <!-- Saat loading -->
+                                <span class="d-none align-items-center gap-2" wire:loading.class.remove="d-none"
+                                    wire:target="login">
+                                    <div class="spinner-border spinner-border-sm text-light me-2" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    Loading...
+                                </span>
                             </button>
+
+
+
+
                         </div>
                         <div class="link-row-centered mt_20">
                             <a href="{{ route('register') }}" class="tf-btn btn-line">Belum punya akun? daftar
