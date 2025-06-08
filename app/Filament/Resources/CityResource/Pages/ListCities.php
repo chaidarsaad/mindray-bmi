@@ -14,6 +14,7 @@ class ListCities extends ListRecords
     {
         return [
             Actions\CreateAction::make()
+                ->label('Buat Kota Pelatihan')
                 ->modalHeading('Buat Kota'),
         ];
     }

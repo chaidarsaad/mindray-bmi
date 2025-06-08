@@ -14,7 +14,8 @@ class ListTrainingTypes extends ListRecords
     {
         return [
             Actions\CreateAction::make()
-                ->modalHeading('Buat Jenis Pelatihan'),
+                ->modalHeading('Buat Jenis Pelatihan')
+                ->label('Buat Jenis Pelatihan USG'),
         ];
     }
 }
