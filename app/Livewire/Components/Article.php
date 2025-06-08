@@ -11,8 +11,8 @@ class Article extends Component
     public function mount()
     {
         $this->articles = ModelsArticle::where('is_show', 1)
-            ->latest()
             ->take(3)
+            ->orderBy('published_at', 'asc')
             ->get();
     }
     public function render()
