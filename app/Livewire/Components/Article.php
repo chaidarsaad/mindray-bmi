@@ -12,7 +12,7 @@ class Article extends Component
     {
         $this->articles = ModelsArticle::where('is_show', 1)
             ->take(3)
-            ->orderBy('published_at', 'asc')
+            ->orderBy('published_at', 'desc')
             ->get();
     }
     public function render()

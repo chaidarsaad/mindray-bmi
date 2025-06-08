@@ -21,7 +21,7 @@ class ArticlePage extends Component
     public function render()
     {
         $articles = Article::where('is_show', 1)
-            ->orderBy('published_at', 'asc')
+            ->orderBy('published_at', 'desc')
             ->paginate($this->perPage);
 
         return view('livewire.article-page', [
