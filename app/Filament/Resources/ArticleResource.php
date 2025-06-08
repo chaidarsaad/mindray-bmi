@@ -9,6 +9,7 @@ use Filament\Actions\Action;
 use Filament\Forms;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -17,6 +18,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
+use Carbon\Carbon;
 
 class ArticleResource extends Resource
 {
@@ -65,7 +67,17 @@ class ArticleResource extends Resource
                             ->preload(),
                         Forms\Components\Toggle::make('is_show')
                             ->default(1)
-                            ->label('Tampilkan Artikel?'),
+                            ->label('Tampilkan Artikel?')
+                            ->live(),
+                        Forms\Components\DatePicker::make('published_at')
+                            ->label('Tanggal Publikasi')
+                            ->default(now())
+                            ->hidden(condition: fn(Get $get) => !$get('is_show'))
+                            ->required(condition: fn(Get $get) => $get('is_show'))
+                            ->displayFormat('l, d F Y')
+                            ->native(false)
+                            ->closeOnDateSelection()
+                            ->live(),
                         Forms\Components\TextInput::make('judul')
                             ->label('Judul')
                             ->required()
@@ -130,8 +142,10 @@ class ArticleResource extends Resource
                     ->label('Jumlah dilihat')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\ToggleColumn::make('is_show')
-                    ->label('Tampilkan Artikel?'),
+                Tables\Columns\TextColumn::make('published_at')
+                    ->dateTime('l, d F Y')
+                    ->label('Tanggal Publikasi')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

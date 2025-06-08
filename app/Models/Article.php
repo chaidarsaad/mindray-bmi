@@ -20,6 +20,7 @@ class Article extends Model
         'content',
         'views',
         'is_show',
+        'published_at',
     ];
 
     public function setJudulAttribute($value)
