@@ -17,7 +17,7 @@ class TopArticles extends BaseWidget
     protected static ?string $heading = 'Artikel Teratas';
     protected static ?string $description = 'Artikel yang paling banyak dibaca';
     protected static ?int $sort = 3;
-    protected int | string | array $columnSpan = 'full';
+    protected int|string|array $columnSpan = 'full';
     protected static bool $isLazy = false;
 
     public function table(Table $table): Table
@@ -55,7 +55,7 @@ class TopArticles extends BaseWidget
                     ->url(fn($record) => route('admin.articles.preview', $record))
                     ->openUrlInNewTab(),
                 Tables\Actions\EditAction::make()
-                    ->url(fn($record) => route('filament.admin.resources.articles.edit', ['record' => $record])),
+                    ->url(fn($record) => route('filament.admin.resources.artikel.edit', ['record' => $record])),
             ]);
     }
 }
