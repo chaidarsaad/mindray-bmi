@@ -85,21 +85,21 @@ class StatsOverview extends BaseWidget
 
         return [
             Stat::make('Total Produk USG', $totalProducts)
-                ->url(route('filament.admin.resources.products.index'))
+                ->url(route('filament.admin.resources.produk-usg.index'))
                 ->description('klik untuk melihat semua produk'),
             Stat::make('Total Pelatihan', $totalTrainings)
-                ->url(route('filament.admin.resources.trainings.index'))
+                ->url(route('filament.admin.resources.pelatihan.index'))
                 ->description('klik untuk melihat semua pelatihan'),
             Stat::make('Total Peserta Pelatihan', $totalPesertaPelatihan)
                 ->description('jumlah orang yang mengikuti pelatihan, klik untuk melihat peserta')
-                ->url(route('filament.admin.resources.trainings.index')),
+                ->url(route('filament.admin.resources.pelatihan.index')),
             Stat::make('Total Artikel', $totalArticles)
-                ->url(route('filament.admin.resources.articles.index'))
+                ->url(route('filament.admin.resources.artikel.index'))
                 ->description('klik untuk melihat semua artikel'),
             Stat::make('Jumlah Customer Terdaftar', $jumlahCustomer),
             Stat::make('Jumlah Pengunjung', $pengunjung),
             Stat::make('Total Pengeluaran', 'Rp ' . number_format($pengeluaran, 0, ",", ","))
-                ->url(route('filament.admin.resources.expenses.index'))
+                ->url(route('filament.admin.resources.pengeluaran.index'))
                 ->description('klik untuk melihat semua pengeluaran'),
             Stat::make('Total Pemasukan', 'Rp ' . number_format($totalPemasukan, 0, ",", ","))
                 ->description('total pemasukan dari pelatihan dan produk USG'),

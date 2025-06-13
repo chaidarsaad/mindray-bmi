@@ -32,8 +32,8 @@ class TrainingOrderResource extends Resource
     protected static ?string $pluralLabel = 'Pesanan Pelatihan';
     protected static ?string $navigationLabel = 'Pesanan Pelatihan';
     protected static ?string $navigationGroup = 'Manajemen Pemasukan';
-    protected static ?string $slug = 'pesanan-pelatihan';
     protected static ?int $navigationSort = 8;
+    protected static ?string $slug = 'pesanan-pelatihan';
 
     protected static ?string $label = '';
     public static function getGloballySearchableAttributes(): array
