@@ -140,7 +140,7 @@
                                 </div>
 
                                 <div class="meta">
-                                    {{ $article->created_at->locale('id')->isoFormat('dddd, D MMMM YYYY') }}
+                                    {{ $article->published_at->locale('id')->isoFormat('dddd, D MMMM YYYY') }}
                                 </div>
 
                                 <div class="share-buttons"
