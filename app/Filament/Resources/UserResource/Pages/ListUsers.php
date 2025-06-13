@@ -16,7 +16,8 @@ class ListUsers extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            Actions\CreateAction::make()
+                ->label('Tambah Pengguna'),
         ];
     }
 
@@ -32,9 +33,6 @@ class ListUsers extends ListRecords
                 ->modifyQueryUsing(fn(Builder $query) => $query->whereHas('roles', fn($q) => $q->where('name', 'pengelola_web')))
                 ->badge(User::whereHas('roles', fn($q) => $q->where('name', 'pengelola_web'))->count()),
             'Penulis' => Tab::make()
-                ->modifyQueryUsing(fn(Builder $query) => $query->whereHas('roles', fn($q) => $q->where('name', 'penulis')))
-                ->badge(User::whereHas('roles', fn($q) => $q->where('name', 'penulis'))->count()),
-            'Customer' => Tab::make()
                 ->modifyQueryUsing(fn(Builder $query) => $query->whereHas('roles', fn($q) => $q->where('name', 'penulis')))
                 ->badge(User::whereHas('roles', fn($q) => $q->where('name', 'penulis'))->count()),
             'Customer' => Tab::make()
