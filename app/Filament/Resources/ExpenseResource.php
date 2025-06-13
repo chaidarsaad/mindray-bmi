@@ -26,6 +26,8 @@ class ExpenseResource extends Resource
     protected static ?string $navigationLabel = 'Pengeluaran';
     protected static ?string $navigationGroup = 'Manajemen Pengeluaran';
     protected static ?int $navigationSort = 9;
+    protected static ?string $slug = 'pengeluaran';
+
 
     protected static ?string $label = '';
     public static function getGloballySearchableAttributes(): array

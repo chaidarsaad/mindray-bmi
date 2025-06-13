@@ -22,6 +22,8 @@ class CityResource extends Resource
     protected static ?string $navigationLabel = 'Kota Pelatihan';
     protected static ?string $navigationGroup = 'Manajemen Pelatihan';
     protected static ?int $navigationSort = 12;
+    protected static ?string $slug = 'kota-pelatihan';
+
     public static function form(Form $form): Form
     {
         return $form

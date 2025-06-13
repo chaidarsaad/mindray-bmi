@@ -28,6 +28,7 @@ class ArticleResource extends Resource
     protected static ?string $navigationLabel = 'Artikel';
     protected static ?string $navigationGroup = 'Manajemen Artikel';
     protected static ?int $navigationSort = 16;
+    protected static ?string $slug = 'artikel';
 
     protected static ?string $label = '';
     public static function getGloballySearchableAttributes(): array

@@ -21,6 +21,8 @@ class QuestionResource extends Resource
     protected static ?string $navigationLabel = 'Pertanyaan';
     protected static ?string $navigationGroup = 'Data Utama';
     protected static ?int $navigationSort = 6;
+    protected static ?string $slug = 'pertanyaan';
+
 
     public static function form(Form $form): Form
     {

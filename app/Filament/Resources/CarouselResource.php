@@ -23,6 +23,7 @@ class CarouselResource extends Resource
     protected static ?string $navigationLabel = 'Banner';
     protected static ?string $navigationGroup = 'Data Utama';
     protected static ?int $navigationSort = 2;
+    protected static ?string $slug = 'banner';
     public static function form(Form $form): Form
     {
         return $form

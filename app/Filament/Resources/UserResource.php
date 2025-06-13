@@ -29,7 +29,7 @@ class UserResource extends Resource
     protected static ?string $navigationLabel = 'Pengguna';
     protected static ?string $navigationGroup = 'Manajemen Pengguna';
     protected static ?int $navigationSort = 20;
-
+    protected static ?string $slug = 'pengguna';
     protected static ?string $label = '';
 
 
@@ -73,7 +73,8 @@ class UserResource extends Resource
                             ->moveFiles()
                             ->columnSpanFull()
                             ->afterStateUpdated(function ($state) {
-                                if (! $state instanceof TemporaryUploadedFile) return;
+                                if (!$state instanceof TemporaryUploadedFile)
+                                    return;
 
                                 // Delete old avatar if exists
                                 $oldAvatar = auth()->user()->avatar;

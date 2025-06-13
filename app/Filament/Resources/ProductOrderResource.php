@@ -29,6 +29,7 @@ class ProductOrderResource extends Resource
     protected static ?string $pluralLabel = 'Pesanan Produk USG';
     protected static ?string $navigationLabel = 'Pesanan Produk USG';
     protected static ?string $navigationGroup = 'Manajemen Pemasukan';
+    protected static ?string $slug = 'pesanan-produk-usg';
     protected static ?int $navigationSort = 7;
 
     protected static ?string $label = '';

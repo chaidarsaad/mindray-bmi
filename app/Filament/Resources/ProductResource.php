@@ -30,6 +30,8 @@ class ProductResource extends Resource
     protected static ?string $navigationLabel = 'Produk USG';
     protected static ?string $navigationGroup = 'Manajemen Produk';
     protected static ?int $navigationSort = 11;
+    protected static ?string $slug = 'produk-usg';
+
 
     protected static ?string $label = '';
     public static function getGloballySearchableAttributes(): array

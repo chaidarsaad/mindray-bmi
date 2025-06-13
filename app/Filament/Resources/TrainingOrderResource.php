@@ -32,6 +32,7 @@ class TrainingOrderResource extends Resource
     protected static ?string $pluralLabel = 'Pesanan Pelatihan';
     protected static ?string $navigationLabel = 'Pesanan Pelatihan';
     protected static ?string $navigationGroup = 'Manajemen Pemasukan';
+    protected static ?string $slug = 'pesanan-pelatihan';
     protected static ?int $navigationSort = 8;
 
     protected static ?string $label = '';
@@ -135,15 +136,17 @@ class TrainingOrderResource extends Resource
                                                 return [
                                                     $judul => $group->mapWithKeys(function ($item) {
                                                         $isExpired = optional($item->start_date)->isPast();
-                                                        return [$item->id => sprintf(
-                                                            '%s (%s) - %s s.d. %s - Rp %s%s',
-                                                            $item->city->name,
-                                                            $item->trainingType->name,
-                                                            optional($item->start_date)->translatedFormat('l, d'),
-                                                            optional($item->end_date)->translatedFormat('l, d F Y'),
-                                                            number_format($item->price, 0, ',', '.'),
-                                                            $isExpired ? ' (Sudah Terselenggara)' : ''
-                                                        )];
+                                                        return [
+                                                            $item->id => sprintf(
+                                                                '%s (%s) - %s s.d. %s - Rp %s%s',
+                                                                $item->city->name,
+                                                                $item->trainingType->name,
+                                                                optional($item->start_date)->translatedFormat('l, d'),
+                                                                optional($item->end_date)->translatedFormat('l, d F Y'),
+                                                                number_format($item->price, 0, ',', '.'),
+                                                                $isExpired ? ' (Sudah Terselenggara)' : ''
+                                                            )
+                                                        ];
                                                     })->toArray(),
                                                 ];
                                             })->toArray();

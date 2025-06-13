@@ -28,6 +28,8 @@ class TrainingResource extends Resource
     protected static ?string $pluralLabel = 'Pelatihan';
     protected static ?string $navigationLabel = 'Pelatihan';
     protected static ?string $navigationGroup = 'Manajemen Pelatihan';
+    protected static ?string $slug = 'pelatihan';
+
     protected static ?int $navigationSort = 14;
 
     protected static ?string $label = '';
@@ -126,9 +128,9 @@ class TrainingResource extends Resource
                             'trainingPrices.city',
                             'trainingPrices.trainingType',
                             'trainingPrices.orderDetails' => fn($query) =>
-                            $query->whereHas('trainingOrder', function ($q) {
-                                $q->where('payment_status', 'paid');
-                            })->with('trainingOrder.user'),
+                                $query->whereHas('trainingOrder', function ($q) {
+                                    $q->where('payment_status', 'paid');
+                                })->with('trainingOrder.user'),
                         ]);
 
                         return view('filament.resources.training-resource.modals.training-detail', [

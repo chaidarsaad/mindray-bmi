@@ -20,6 +20,7 @@ class FeatureResource extends Resource
 
     protected static ?string $pluralLabel = 'Kelebihan';
     protected static ?string $navigationLabel = 'Kelebihan';
+    protected static ?string $slug = 'kelebihan';
     protected static ?string $navigationGroup = 'Data Utama';
     protected static ?int $navigationSort = 5;
 

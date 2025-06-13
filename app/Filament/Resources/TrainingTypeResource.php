@@ -21,6 +21,8 @@ class TrainingTypeResource extends Resource
     protected static ?string $pluralLabel = 'Jenis Pelatihan USG';
     protected static ?string $navigationLabel = 'Jenis Pelatihan USG';
     protected static ?string $navigationGroup = 'Manajemen Pelatihan';
+    protected static ?string $slug = 'jenis-pelatihan-usg';
+
     protected static ?int $navigationSort = 13;
 
 

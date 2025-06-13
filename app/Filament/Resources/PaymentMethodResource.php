@@ -23,6 +23,7 @@ class PaymentMethodResource extends Resource
     protected static ?string $navigationLabel = 'Metode Pembayaran';
     protected static ?string $navigationGroup = 'Data Utama';
     protected static ?int $navigationSort = 1;
+    protected static ?string $slug = 'metode-pembayaran';
     public static function form(Form $form): Form
     {
         return $form
