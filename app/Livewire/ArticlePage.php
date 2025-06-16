@@ -10,7 +10,7 @@ use Livewire\WithPagination;
 class ArticlePage extends Component
 {
     use WithPagination;
-    public $perPage = 6;
+    public $perPage = 9;
     public $about;
 
     public function mount()
