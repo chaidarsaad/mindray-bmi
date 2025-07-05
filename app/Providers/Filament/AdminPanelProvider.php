@@ -60,9 +60,6 @@ class AdminPanelProvider extends PanelProvider
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
             ])
-            ->plugins([
-                FilamentShieldPlugin::make(),
-            ])
             ->authMiddleware([
                     // Authenticate::class,
                 RedirectIfNotFilamentAdmin::class,
@@ -96,9 +93,11 @@ class AdminPanelProvider extends PanelProvider
                     ->sort(20)
                     ->isActiveWhen(fn() => request()->routeIs('filament.admin.auth.profile'))
                     ->url(fn() => route('filament.admin.auth.profile', absolute: true))
-                    ->icon('heroicon-o-user'),
+                    ->icon('heroicon-o-user')
+                    ->group('Data Utama'),
             ])
             ->plugins([
+                FilamentShieldPlugin::make(),
                 EasyFooterPlugin::make()
                     ->withFooterPosition('footer')
                     ->withLoadTime('Halaman ini dimuat pada'),
