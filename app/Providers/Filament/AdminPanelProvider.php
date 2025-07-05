@@ -7,6 +7,7 @@ use App\Filament\Pages\Profile;
 use App\Http\Middleware\RedirectIfNotFilamentAdmin;
 use App\Livewire\Auth\LoginPage;
 use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
+use Devonab\FilamentEasyFooter\EasyFooterPlugin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -63,7 +64,7 @@ class AdminPanelProvider extends PanelProvider
                 FilamentShieldPlugin::make(),
             ])
             ->authMiddleware([
-                // Authenticate::class,
+                    // Authenticate::class,
                 RedirectIfNotFilamentAdmin::class,
             ])
             ->userMenuItems([
@@ -96,6 +97,11 @@ class AdminPanelProvider extends PanelProvider
                     ->isActiveWhen(fn() => request()->routeIs('filament.admin.auth.profile'))
                     ->url(fn() => route('filament.admin.auth.profile', absolute: true))
                     ->icon('heroicon-o-user'),
+            ])
+            ->plugins([
+                EasyFooterPlugin::make()
+                    ->withFooterPosition('footer')
+                    ->withLoadTime('Halaman ini dimuat pada'),
             ])
         ;
     }
