@@ -93,7 +93,6 @@ class AdminPanelProvider extends PanelProvider
                     ->sort(20)
                     ->isActiveWhen(fn() => request()->routeIs('filament.admin.auth.profile'))
                     ->url(fn() => route('filament.admin.auth.profile', absolute: true))
-                    ->icon('heroicon-o-user')
                     ->group('Data Utama'),
             ])
             ->plugins([
