@@ -9,10 +9,17 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
 use Filament\Pages\Dashboard as BaseDashboard;
+use Illuminate\Contracts\Support\Htmlable;
 
 class Dashboard extends BaseDashboard
 {
     use BaseDashboard\Concerns\HasFiltersForm, HasWidgetShield;
+    protected static ?string $navigationLabel = 'Resume Bisnis';
+
+    public function getHeading(): string|Htmlable
+    {
+        return 'Resume Bisnis';
+    }
 
     public function mount(): void
     {
