@@ -47,7 +47,8 @@ class CheckTrainingEndDate
             session()->flash('notify-error', 'Pelatihan sudah selesai dan tidak dapat dipesan.');
 
             // Redirect ke dashboard atau halaman lain
-            return redirect()->route('home');
+            return redirect()->back();
+            // return redirect()->route('home');
         }
 
         // Jika belum lewat, lanjutkan ke route berikutnya

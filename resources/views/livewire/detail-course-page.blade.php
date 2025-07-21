@@ -311,5 +311,19 @@
                 wrapper.appendChild(iframe);
             });
         });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            let message = @json(session('notify-error'));
+
+            if (message) {
+                Toastify({
+                    text: message,
+                    duration: 3000,
+                    gravity: "top",
+                    position: "center",
+                    backgroundColor: "red",
+                }).showToast();
+            }
+        });
     </script>
 @endpush
