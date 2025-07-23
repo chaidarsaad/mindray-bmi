@@ -47,6 +47,24 @@ class LoginPage extends Component
         $this->showPassword = !$this->showPassword;
     }
 
+    private function formatSecondsToHuman($seconds)
+    {
+        if ($seconds >= 3600) {
+            $hours = floor($seconds / 3600);
+            $minutes = floor(($seconds % 3600) / 60);
+            return $hours . ' jam' . ($minutes > 0 ? ' ' . $minutes . ' menit' : '');
+        }
+
+        if ($seconds >= 60) {
+            $minutes = floor($seconds / 60);
+            $secs = $seconds % 60;
+            return $minutes . ' menit' . ($secs > 0 ? ' ' . $secs . ' detik' : '');
+        }
+
+        return $seconds . ' detik';
+    }
+
+
     public function login()
     {
         try {
@@ -64,7 +82,8 @@ class LoginPage extends Component
 
         if (RateLimiter::tooManyAttempts($throttleKey, 5)) {
             $seconds = RateLimiter::availableIn($throttleKey);
-            $this->dispatch('notify-error', message: "Terlalu banyak percobaan login. Coba lagi dalam {$seconds} detik.");
+            $timeLeft = $this->formatSecondsToHuman($seconds);
+            $this->dispatch('notify-error', message: "Terlalu banyak percobaan login. Coba lagi dalam {$timeLeft}.");
             return;
         }
 
@@ -84,7 +103,7 @@ class LoginPage extends Component
             return redirect()->intended(route('home'));
         }
 
-        RateLimiter::hit($throttleKey, 3600);
+        RateLimiter::hit($throttleKey, 5400);
 
         $this->password = '';
 
