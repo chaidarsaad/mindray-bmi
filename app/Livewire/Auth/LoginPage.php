@@ -5,6 +5,8 @@ namespace App\Livewire\Auth;
 use App\Models\About;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Validation\ValidationException;
 
 class LoginPage extends Component
 {
@@ -48,14 +50,13 @@ class LoginPage extends Component
 
     public function login()
     {
-        try {
-            $this->validate();
-        } catch (\Illuminate\Validation\ValidationException $e) {
-            // Ambil pesan error pertama dan kirimkan ke Toastify
-            $errorMessage = collect($e->validator->errors()->all())->first();
-            // $this->dispatch('notify-error', ['message' => $errorMessage]);
-            $this->dispatch('notify-error', message: $errorMessage);
+        $this->validate();
 
+        $throttleKey = strtolower($this->name) . '|' . request()->ip();
+
+        if (RateLimiter::tooManyAttempts($throttleKey, 5)) {
+            $seconds = RateLimiter::availableIn($throttleKey);
+            $this->dispatch('notify-error', message: "Terlalu banyak percobaan login. Coba lagi dalam {$seconds} detik.");
             return;
         }
 
@@ -63,6 +64,7 @@ class LoginPage extends Component
         $password = $this->password;
 
         if (Auth::attempt(['name' => $name, 'password' => $password])) {
+            RateLimiter::clear($throttleKey); // reset count saat login berhasil
             session()->regenerate();
 
             $user = Auth::user();
@@ -74,9 +76,12 @@ class LoginPage extends Component
             return redirect()->intended(route('home'));
         }
 
+        RateLimiter::hit($throttleKey, 60); // hit count, expire dalam 60 detik
+
         $this->password = '';
         $this->dispatch('notify-error', message: 'Nama atau password salah');
     }
+
     public function render()
     {
         return view('livewire.auth.login-page');
