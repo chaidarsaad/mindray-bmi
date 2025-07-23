@@ -31,7 +31,7 @@ Route::get('/semua-pelatihan', TrainingPage::class)->name('training.all');
 Route::get('/semua-artikel', ArticlePage::class)->name('article.all');
 
 Route::middleware(['guest'])->group(function () {
-    Route::get('/masuk', LoginPage::class)->name('login');
+    Route::get('/masuk', LoginPage::class)->name('login')->middleware('throttle:5,1');
     Route::get('/daftar', RegisterPage::class)->name('register');
 });
 
