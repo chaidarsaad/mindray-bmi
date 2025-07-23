@@ -48,9 +48,21 @@ class LoginPage extends Component
         $this->showPassword = !$this->showPassword;
     }
 
+    use Illuminate\Validation\ValidationException;
+    use Illuminate\Support\Facades\RateLimiter;
+    use Illuminate\Support\Facades\Auth;
+
     public function login()
     {
-        $this->validate();
+        try {
+            $this->validate();
+        } catch (ValidationException $e) {
+            $errorMessage = collect($e->validator->errors()->all())->first();
+
+            $this->dispatch('notify-error', message: $errorMessage);
+
+            return;
+        }
 
         $name = strtolower(trim($this->name));
         $throttleKey = $name . '|' . request()->ip();
@@ -65,6 +77,7 @@ class LoginPage extends Component
 
         if (Auth::attempt(['name' => $name, 'password' => $password])) {
             RateLimiter::clear($throttleKey);
+
             session()->regenerate();
 
             $user = Auth::user();
@@ -79,9 +92,9 @@ class LoginPage extends Component
         RateLimiter::hit($throttleKey, 60);
 
         $this->password = '';
+
         $this->dispatch('notify-error', message: 'Nama atau password salah');
     }
-
 
     public function render()
     {
