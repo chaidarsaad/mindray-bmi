@@ -84,7 +84,7 @@ class LoginPage extends Component
             return redirect()->intended(route('home'));
         }
 
-        RateLimiter::hit($throttleKey, 60);
+        RateLimiter::hit($throttleKey, 3600);
 
         $this->password = '';
 
