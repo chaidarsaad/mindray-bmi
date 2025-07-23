@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Validation\ValidationException;
-
 class LoginPage extends Component
 {
     public $name = '';
@@ -47,10 +46,6 @@ class LoginPage extends Component
     {
         $this->showPassword = !$this->showPassword;
     }
-
-    use Illuminate\Validation\ValidationException;
-    use Illuminate\Support\Facades\RateLimiter;
-    use Illuminate\Support\Facades\Auth;
 
     public function login()
     {
