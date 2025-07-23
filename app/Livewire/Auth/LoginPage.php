@@ -52,7 +52,8 @@ class LoginPage extends Component
     {
         $this->validate();
 
-        $throttleKey = strtolower($this->name) . '|' . request()->ip();
+        $name = strtolower(trim($this->name));
+        $throttleKey = $name . '|' . request()->ip();
 
         if (RateLimiter::tooManyAttempts($throttleKey, 5)) {
             $seconds = RateLimiter::availableIn($throttleKey);
@@ -60,11 +61,10 @@ class LoginPage extends Component
             return;
         }
 
-        $name = strtolower(trim($this->name));
         $password = $this->password;
 
         if (Auth::attempt(['name' => $name, 'password' => $password])) {
-            RateLimiter::clear($throttleKey); // reset count saat login berhasil
+            RateLimiter::clear($throttleKey);
             session()->regenerate();
 
             $user = Auth::user();
@@ -76,11 +76,12 @@ class LoginPage extends Component
             return redirect()->intended(route('home'));
         }
 
-        RateLimiter::hit($throttleKey, 60); // hit count, expire dalam 60 detik
+        RateLimiter::hit($throttleKey, 60);
 
         $this->password = '';
         $this->dispatch('notify-error', message: 'Nama atau password salah');
     }
+
 
     public function render()
     {
