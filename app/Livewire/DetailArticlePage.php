@@ -19,13 +19,13 @@ class DetailArticlePage extends Component
     {
         $this->about = About::first();
 
-        $this->article = Article::with('tags')
+        $this->article = Article::with('tags', 'user')
             ->where('slug', $slug)
             ->firstOrFail();
         if ($this->article->is_show == 0) {
             return redirect()->route('home');
         }
-        $this->otherArticle = Article::where('id', '!=', $this->article->id)->get();
+        $this->otherArticle = Article::where('id', '!=', $this->article->id)->with('tags', 'user')->get();
 
         $sessionKey = 'article_viewed_' . $this->article->id;
         if (!session()->has($sessionKey)) {

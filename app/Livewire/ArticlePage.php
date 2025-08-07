@@ -21,6 +21,7 @@ class ArticlePage extends Component
     public function render()
     {
         $articles = Article::where('is_show', 1)
+            ->with('tags', 'user')
             ->orderBy('published_at', 'desc')
             ->paginate($this->perPage);
 

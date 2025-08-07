@@ -11,10 +11,11 @@ class CreateCarousel extends CreateRecord
 {
     protected static string $resource = CarouselResource::class;
 
-    public function getTitle(): string | Htmlable
+    public function getTitle(): string|Htmlable
     {
         return 'Buat Banner';
     }
+
     protected function getRedirectUrl(): string
     {
         return $this->getResource()::getUrl('index');

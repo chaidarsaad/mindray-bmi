@@ -13,7 +13,10 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Spatie\ImageOptimizer\OptimizerChainFactory;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
+
 
 class CarouselResource extends Resource
 {
@@ -35,6 +38,7 @@ class CarouselResource extends Resource
                             ->getUploadedFileNameForStorageUsing(
                                 fn(TemporaryUploadedFile $file): string => 'banner-' . $file->hashName()
                             )
+                            ->directory('carousels')
                             ->label('Gambar')
                             ->image()
                             ->maxSize(500)
