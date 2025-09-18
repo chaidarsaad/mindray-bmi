@@ -10,6 +10,8 @@
     @stack('meta-seo')
     <title>@yield('title')</title>
 
+    <link rel="canonical" href="https://www.usgmindray.com/" />
+
     {{-- Style --}}
     @livewireStyles()
     @include('includes.style')

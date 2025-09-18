@@ -6,8 +6,9 @@
     RewriteEngine On
 
     # Force www
-    RewriteCond %{HTTP_HOST} !^www\. [NC]
-    RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [L,R=301]
+   RewriteCond %{HTTPS} off [OR]
+    RewriteCond %{HTTP_HOST} !^www\.usgmindray\.com$ [NC]
+    RewriteRule ^(.*)$ https://www.usgmindray.com/$1 [L,R=301]
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
