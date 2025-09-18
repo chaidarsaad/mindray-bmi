@@ -1,6 +1,16 @@
 <?php
 
 return [
+    /*
+     * Path ke service account JSON
+     */
+    'credentials_path' => storage_path('app/analytics/service-account-credentials.json'),
+
+    /*
+     * GA4 Property ID
+     */
+    'property_id' => env('GA4_PROPERTY_ID'),
+
 
     /**
      * Dashboard Page
