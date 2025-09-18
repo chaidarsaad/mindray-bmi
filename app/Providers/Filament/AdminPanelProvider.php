@@ -6,6 +6,7 @@ use App\Filament\AvatarProviders\GetAvatarProvider;
 use App\Filament\Pages\Profile;
 use App\Http\Middleware\RedirectIfNotFilamentAdmin;
 use App\Livewire\Auth\LoginPage;
+use BezhanSalleh\FilamentGoogleAnalytics\FilamentGoogleAnalyticsPlugin;
 use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 use Devonab\FilamentEasyFooter\EasyFooterPlugin;
 use Filament\Http\Middleware\Authenticate;
@@ -100,7 +101,9 @@ class AdminPanelProvider extends PanelProvider
                 EasyFooterPlugin::make()
                     ->withFooterPosition('footer')
                     ->withLoadTime('Halaman ini dimuat pada'),
+                FilamentGoogleAnalyticsPlugin::make(),
             ])
+            ->viteTheme('resources/css/filament/admin/theme.css')
         ;
     }
 }
