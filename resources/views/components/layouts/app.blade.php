@@ -12,6 +12,18 @@
 
     <link rel="canonical" href="https://www.usgmindray.com/" />
 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JC3FTSN0RY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-JC3FTSN0RY');
+    </script>
+
     {{-- Style --}}
     @livewireStyles()
     @include('includes.style')
@@ -38,18 +50,6 @@
                         csrfData.csrf);
                 });
         }, 2 * 60 * 1000);
-    </script>
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JC3FTSN0RY"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'G-JC3FTSN0RY');
     </script>
 </body>
 
