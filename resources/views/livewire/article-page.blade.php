@@ -75,33 +75,9 @@
                             </div>
                         </div>
                         <div class="mt-0 d-flex justify-content-center">
-                            {{ $articles->links('pagination::bootstrap-4', ['scrollTo' => false]) }}
+                            {{ $articles->links(data: ['scrollTo' => false]) }}
                         </div>
-                        <!-- pagination -->
-                        {{-- <ul class="tf-pagination-wrap tf-pagination-list">
-                            <li class="active">
-                                <a href="#" class="pagination-link">1</a>
-                            </li>
-                            <li>
-                                <a href="#" class="pagination-link animate-hover-btn">2</a>
-                            </li>
-                            <li>
-                                <a href="#" class="pagination-link animate-hover-btn">3</a>
-                            </li>
-                            <li>
-                                <a href="#" class="pagination-link animate-hover-btn">4</a>
-                            </li>
-                            <li>
-                                <a href="#" class="pagination-link animate-hover-btn">
-                                    <span class="icon icon-arrow-right"></span>
-                                </a>
-                            </li>
-                        </ul> --}}
-                        {{-- <div class="tf-pagination-wrap view-more-button text-center">
-                            <button class="tf-btn-loading tf-loading-default style-2 btn-loadmore">
-                                <span class="text"> Tampilkan Lainnya </span>
-                            </button>
-                        </div> --}}
+
                     </div>
                 </section>
             @endif
@@ -131,7 +107,7 @@
 </div>
 
 @push('scripts')
-    <script>
+    {{-- <script>
         document.addEventListener('livewire:navigated', () => {
             if (sessionStorage.getItem('paginationScroll') === 'true') {
                 const el = document.querySelector('.article-scroll');
@@ -151,6 +127,6 @@
             if (target && target.closest('.pagination')) {
                 sessionStorage.setItem('paginationScroll', 'true');
             }
-        });
+        }); --}}
     </script>
 @endpush

@@ -23,6 +23,7 @@ use Illuminate\Support\ServiceProvider;
 use Carbon\Carbon;
 use Filament\Http\Responses\Auth\Contracts\LogoutResponse as LogoutResponseContract;
 use App\Http\Responses\LogoutResponse;
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -39,6 +40,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Paginator::useBootstrapFour();
         Carbon::setLocale('id');
         date_default_timezone_set('Asia/Jakarta');
 
