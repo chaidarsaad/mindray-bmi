@@ -5,11 +5,12 @@ namespace App\Livewire;
 use App\Models\About;
 use App\Models\Article;
 use Livewire\Component;
+use Livewire\WithoutUrlPagination;
 use Livewire\WithPagination;
 
 class ArticlePage extends Component
 {
-    use WithPagination;
+    use WithPagination, WithoutUrlPagination;
     public $perPage = 9;
     public $about;
 

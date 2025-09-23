@@ -75,7 +75,7 @@
                             </div>
                         </div>
                         <div class="mt-0 d-flex justify-content-center">
-                            {{ $articles->links('pagination::bootstrap-4') }}
+                            {{ $articles->links('pagination::bootstrap-4', ['scrollTo' => false]) }}
                         </div>
                         <!-- pagination -->
                         {{-- <ul class="tf-pagination-wrap tf-pagination-list">
