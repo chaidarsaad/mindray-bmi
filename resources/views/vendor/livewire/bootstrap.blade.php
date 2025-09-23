@@ -97,8 +97,6 @@ $scrollIntoViewJsSnippet = ($scrollTo !== false)
                     </p>
                 </div>
                 </div>
-
-
             </div>
         </nav>
     @endif

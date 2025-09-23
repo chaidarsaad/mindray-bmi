@@ -6,18 +6,20 @@ use App\Models\About;
 use App\Models\Training;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Livewire\WithoutUrlPagination;
 use Livewire\WithPagination;
 
 class TrainingPage extends Component
 {
-    public $perPage = 6;
+    use WithPagination, WithoutUrlPagination;
+
+    public $perPage = 9;
     public $about;
 
     public function mount()
     {
         $this->about = About::first();
     }
-
 
     public function render()
     {

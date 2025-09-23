@@ -127,6 +127,6 @@
             if (target && target.closest('.pagination')) {
                 sessionStorage.setItem('paginationScroll', 'true');
             }
-        }); --}}
-    </script>
+        });
+    </script> --}}
 @endpush

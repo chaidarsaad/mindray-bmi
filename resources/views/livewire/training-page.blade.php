@@ -75,7 +75,7 @@
                             </div>
                         </div>
                         <div class="mt-0 d-flex justify-content-center">
-                            {{ $trainings->links('pagination::bootstrap-4') }}
+                            {{ $trainings->links(data: ['scrollTo' => false]) }}
                         </div>
                 </section>
             @endif
@@ -105,7 +105,7 @@
 </div>
 
 @push('scripts')
-    <script>
+    {{-- <script>
         document.addEventListener('livewire:navigated', () => {
             if (sessionStorage.getItem('paginationScroll') === 'true') {
                 const el = document.querySelector('.training-scroll');
@@ -126,5 +126,5 @@
                 sessionStorage.setItem('paginationScroll', 'true');
             }
         });
-    </script>
+    </script> --}}
 @endpush
